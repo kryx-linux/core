@@ -4,16 +4,16 @@
 # Depends on:  ncurses zlib
 
 name=util-linux-ng
-version=2.16.2
+version=2.17
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.16/$name-$version.tar.bz2)
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.17/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --disable-{nls,wall} \
+                --disable-{nls,wall,fallocate} \
                 --enable-{write,rdev,raw,kill}
     make
     make DESTDIR=$PKG install
