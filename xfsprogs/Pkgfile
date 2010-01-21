@@ -4,9 +4,9 @@
 # Depends on:  util-linux-ng
 
 name=xfsprogs
-version=3.0.3
+version=3.1.0
 release=1
-source=(ftp://oss.sgi.com/projects/xfs/previous/$name-$version.tar.gz)
+source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
@@ -16,12 +16,12 @@ build() {
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --libexecdir=/usr/lib \
-                --sbindir=/sbin \
-                --enable-gettext=no  
-
+                --disable-gettext
     make
     make DIST_ROOT=$PKG install install-dev
+
+    rm $PKG/lib/libhandle.{a,la,so}
+    ln -sf ../../lib/libhandle.so.1.0.3 $PKG/usr/lib/libhandle.so
 
     rm -r $PKG/usr/share
 }
