@@ -4,20 +4,22 @@
 # Depends on:  ncurses
 
 name=bash
-version=4.1
+version=4.1.2
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-4.1.tar.gz \
-        profile)
+        $name-4.1-001-002.patch.gz profile)
 
 build() {
     cd $name-4.1
+
+    gunzip -c $SRC/$name-4.1-001-002.patch.gz | patch -p0
 
     ./configure --prefix=/usr \
                 --exec-prefix= \
                 --mandir=/usr/man \
                 --disable-nls \
-                --with-curses 
-    make -j1
+                --with-curses
+    make
 
     install -D -m 755 bash $PKG/bin/bash
     install -D -m 644 doc/bash.1 $PKG/usr/man/man1/bash.1
