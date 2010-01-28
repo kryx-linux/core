@@ -1,29 +1,27 @@
 # Description: Multi-user cron daemon
-# URL:         http://apollo.backplane.com/FreeSrc
+# URL:         http://www.jimpryor.net/linux/dcron.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dcron
-version=3.2
-release=2
-source=(http://apollo.backplane.com/FreeSrc/dcron32.tgz \
-        crontab runjobs crond $name-$version.patch)
+version=4.4
+release=1
+source=(http://www.jimpryor.net/linux/releases/$name-$version.tar.gz \
+        crontab runjobs crond)
 
 build() {
-    cd $name
-    patch -p1 -i $SRC/$name-$version.patch
+    cd $name-$version
 
-    make
-    make DESTDIR=$PKG install
-
-    install -d $PKG/var/{spool/cron,log} 
-    install -d $PKG/etc/{cron.d,cron/{hourly,daily,weekly,monthly}}
-    install -d -m 700 $PKG/var/spool/cron/crontabs
+    make PREFIX=/usr
+    make DESTDIR=$PKG MANDIR=/usr/man CRONTAB_GROUP=users install
 
     install -m 600 $SRC/crontab $PKG/var/spool/cron/crontabs/root
     ln -s ../var/spool/cron/crontabs/root $PKG/etc/crontab
-
     install -D -m 755 $SRC/crond $PKG/etc/rc.d/crond
     install -D -m 755 $SRC/runjobs $PKG/usr/sbin/runjobs
 
+    install -d $PKG/etc/cron/{hourly,daily,weekly,monthly}
+
+    install -d $PKG/var/log
     touch $PKG/var/log/cron
+    chmod 0640 $PKG/var/log/cron
 }

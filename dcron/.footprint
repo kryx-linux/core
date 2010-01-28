@@ -10,19 +10,20 @@ drwxr-xr-x	root/root	etc/rc.d/
 -rwxr-xr-x	root/root	etc/rc.d/crond
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
--rwsr-xr-x	root/root	usr/bin/crontab
+-rwsr-x---	root/users	usr/bin/crontab
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/crontab.1.gz
 drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/crond.8.gz
 drwxr-xr-x	root/root	usr/sbin/
--rwxr-xr-x	root/root	usr/sbin/crond
+-rwx------	root/root	usr/sbin/crond
 -rwxr-xr-x	root/root	usr/sbin/runjobs
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/log/
--rw-r--r--	root/root	var/log/cron (EMPTY)
+-rw-r-----	root/root	var/log/cron (EMPTY)
 drwxr-xr-x	root/root	var/spool/
 drwxr-xr-x	root/root	var/spool/cron/
-drwx------	root/root	var/spool/cron/crontabs/
+drwxr-xr-x	root/root	var/spool/cron/cronstamps/
+drwxr-xr-x	root/root	var/spool/cron/crontabs/
 -rw-------	root/root	var/spool/cron/crontabs/root
