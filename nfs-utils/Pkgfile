@@ -5,7 +5,7 @@
 
 name=nfs-utils
 version=1.2.1
-release=1
+release=2
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.bz2 \
         exports nfs nfsserver)
 
@@ -22,6 +22,8 @@ build () {
                 --sysconfdir=/etc
     make
     make DESTDIR=$PKG install
+
+    rm $PKG/sbin/{mount,umount}.nfs4
 
     install -D -m 755 $SRC/nfs $PKG/etc/rc.d/nfs
     install -D -m 755 $SRC/nfsserver $PKG/etc/rc.d/nfsserver
