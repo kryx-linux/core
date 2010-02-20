@@ -10,7 +10,7 @@ start)
 	/usr/sbin/rpc.mountd
 	/usr/sbin/rpc.statd --no-notify
 	/usr/sbin/rpc.nfsd 8
-	/usr/sbin/sm-notify -q
+	/usr/sbin/sm-notify
 	;;
 stop)
 	killall -q -2 nfsd
@@ -29,4 +29,4 @@ restart)
 	;;
 esac
 
-# End of file
+# End of
