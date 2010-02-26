@@ -50,6 +50,7 @@ lrwxrwxrwx	root/root	usr/man/man8/rtstat.8.gz -> lnstat.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-bfifo.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-cbq-details.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-cbq.8.gz
+-rw-r--r--	root/root	usr/man/man8/tc-drr.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-htb.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/tc-pfifo.8.gz -> tc-bfifo.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-pfifo_fast.8.gz
