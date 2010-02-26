@@ -293,6 +293,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/accept4.2.gz
 -rw-r--r--	root/root	usr/man/man2/access.2.gz
 -rw-r--r--	root/root	usr/man/man2/acct.2.gz
+-rw-r--r--	root/root	usr/man/man2/add_key.2.gz
 -rw-r--r--	root/root	usr/man/man2/adjtimex.2.gz
 -rw-r--r--	root/root	usr/man/man2/afs_syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/alarm.2.gz
@@ -438,6 +439,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ioprio_get.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioprio_set.2.gz
 -rw-r--r--	root/root	usr/man/man2/ipc.2.gz
+-rw-r--r--	root/root	usr/man/man2/keyctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/kill.2.gz
 -rw-r--r--	root/root	usr/man/man2/killpg.2.gz
 -rw-r--r--	root/root	usr/man/man2/lchown.2.gz
@@ -545,6 +547,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/removexattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/rename.2.gz
 -rw-r--r--	root/root	usr/man/man2/renameat.2.gz
+-rw-r--r--	root/root	usr/man/man2/request_key.2.gz
 -rw-r--r--	root/root	usr/man/man2/rmdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigaction.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigpending.2.gz
