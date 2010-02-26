@@ -4,8 +4,8 @@
 # Depends on: bzip2, xz, zlib
 
 name=libarchive
-version=2.7.1
-release=2
+version=2.8.0
+release=1
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
 
 build() {

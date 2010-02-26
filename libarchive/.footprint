@@ -8,9 +8,11 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libarchive.a
 -rwxr-xr-x	root/root	usr/lib/libarchive.la
-lrwxrwxrwx	root/root	usr/lib/libarchive.so -> libarchive.so.2.7.1
-lrwxrwxrwx	root/root	usr/lib/libarchive.so.2 -> libarchive.so.2.7.1
--rwxr-xr-x	root/root	usr/lib/libarchive.so.2.7.1
+lrwxrwxrwx	root/root	usr/lib/libarchive.so -> libarchive.so.2.8.0
+lrwxrwxrwx	root/root	usr/lib/libarchive.so.2 -> libarchive.so.2.8.0
+-rwxr-xr-x	root/root	usr/lib/libarchive.so.2.8.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libarchive.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/bsdcpio.1.gz
