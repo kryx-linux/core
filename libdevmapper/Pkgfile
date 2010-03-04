@@ -3,12 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libdevmapper
-version=1.02.43
+version=1.02.44
 release=1
-source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.60.tgz)
+source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.61.tgz)
 
 build() {
-    cd LVM2.2.02.60
+    cd LVM2.2.02.61
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin \
