@@ -1,18 +1,23 @@
 # Description: Lets users edit command lines as they are typed in
 # URL:         http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  ncurses
 
 name=readline
-version=6.1
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
-        inputrc)
+version=6.1.2
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-6.1.tar.gz \
+        $name-6.1-001-002.patch.gz inputrc)
 
 build() {
-    cd $name-$version
+    cd $name-6.1
+    
+    gunzip -c $SRC/$name-6.1-001-002.patch.gz | patch -p0
+    
     ./configure --prefix=/usr --mandir=/usr/man
-    make
+    make SHLIB_LIBS=-lncurses
     make DESTDIR=$PKG install
+    
     install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
     rm -r $PKG/usr/share/info
 }
