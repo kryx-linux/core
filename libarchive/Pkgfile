@@ -4,7 +4,7 @@
 # Depends on: bzip2, xz, zlib
 
 name=libarchive
-version=2.8.0
+version=2.8.3
 release=1
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
 
@@ -13,8 +13,13 @@ build() {
 
 	# We're passing --without-lzmadec, because we want to use xz for
 	# LZMA support, not the obsolete lzmadec library.
+	#
+	# We're passing --without-xml2 and --without-expat to avoid linking
+	# to libraries which are only available in opt. XML support is only
+	# needed for the xar format which we can live without.
 	./configure --prefix=/usr --mandir=/usr/man \
-	            --disable-xattr --without-lzmadec
+	            --disable-xattr --without-lzmadec \
+	            --without-xml2 --without-expat
 
 	make
 	make DESTDIR=$PKG install
