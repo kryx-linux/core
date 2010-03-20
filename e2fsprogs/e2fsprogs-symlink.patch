@@ -1,6 +1,6 @@
-diff -Nru e2fsprogs-1.41.9.orig/e2fsck/Makefile.in e2fsprogs-1.41.9/e2fsck/Makefile.in
---- e2fsprogs-1.41.9.orig/e2fsck/Makefile.in	2009-08-24 20:56:23.512062398 +0200
-+++ e2fsprogs-1.41.9/e2fsck/Makefile.in	2009-08-24 20:57:10.332053609 +0200
+diff -Nru e2fsprogs-1.41.11.orig/e2fsck/Makefile.in e2fsprogs-1.41.11/e2fsck/Makefile.in
+--- e2fsprogs-1.41.11.orig/e2fsck/Makefile.in	2010-03-17 10:08:54.000000000 +0100
++++ e2fsprogs-1.41.11/e2fsck/Makefile.in	2010-03-17 10:09:09.000000000 +0100
 @@ -202,16 +202,16 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(root_sbindir)/$$i; \
  	done
@@ -43,10 +43,10 @@ diff -Nru e2fsprogs-1.41.9.orig/e2fsck/Makefile.in e2fsprogs-1.41.9/e2fsck/Makef
  		$(DESTDIR)$(man8dir)/fsck.ext4dev.8
  
  install-strip: install
-diff -Nru e2fsprogs-1.41.9.orig/lib/uuid/Makefile.in e2fsprogs-1.41.9/lib/uuid/Makefile.in
---- e2fsprogs-1.41.9.orig/lib/uuid/Makefile.in	2009-08-24 20:56:23.522055416 +0200
-+++ e2fsprogs-1.41.9/lib/uuid/Makefile.in	2009-08-24 20:57:10.332053609 +0200
-@@ -146,9 +146,9 @@
+diff -Nru e2fsprogs-1.41.11.orig/lib/uuid/Makefile.in e2fsprogs-1.41.11/lib/uuid/Makefile.in
+--- e2fsprogs-1.41.11.orig/lib/uuid/Makefile.in	2010-03-17 10:08:54.000000000 +0100
++++ e2fsprogs-1.41.11/lib/uuid/Makefile.in	2010-03-17 10:09:09.000000000 +0100
+@@ -150,9 +150,9 @@
  	$(Q) $(RM) -f $(DESTDIR)$(man3dir)/uuid_generate_random.3.gz \
  		$(DESTDIR)$(man3dir)/uuid_generate_time.3.gz
  	$(E) "	LINK $(man3dir)/uuid_generate_random.3"
@@ -58,9 +58,9 @@ diff -Nru e2fsprogs-1.41.9.orig/lib/uuid/Makefile.in e2fsprogs-1.41.9/lib/uuid/M
  	$(E) "	INSTALL_DATA $(libdir)/pkgconfig/uuid.pc"
  	$(Q) $(INSTALL_DATA) uuid.pc $(DESTDIR)$(libdir)/pkgconfig/uuid.pc
  
-diff -Nru e2fsprogs-1.41.9.orig/misc/Makefile.in e2fsprogs-1.41.9/misc/Makefile.in
---- e2fsprogs-1.41.9.orig/misc/Makefile.in	2009-08-24 20:56:23.552053442 +0200
-+++ e2fsprogs-1.41.9/misc/Makefile.in	2009-08-24 20:57:10.352062592 +0200
+diff -Nru e2fsprogs-1.41.11.orig/misc/Makefile.in e2fsprogs-1.41.11/misc/Makefile.in
+--- e2fsprogs-1.41.11.orig/misc/Makefile.in	2010-03-17 10:08:54.000000000 +0100
++++ e2fsprogs-1.41.11/misc/Makefile.in	2010-03-17 10:09:09.000000000 +0100
 @@ -404,23 +404,23 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(sbindir)/$$i; \
  	done

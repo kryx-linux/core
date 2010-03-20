@@ -4,7 +4,7 @@
 # Depends on:  util-linux-ng
 
 name=e2fsprogs
-version=1.41.10
+version=1.41.11
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
