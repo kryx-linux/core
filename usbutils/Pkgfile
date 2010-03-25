@@ -4,9 +4,9 @@
 # Depends on:  libusb-compat
 
 name=usbutils
-version=0.86
-release=2
-source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
+version=0.87
+release=1
+source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
