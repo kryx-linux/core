@@ -4,9 +4,9 @@
 # Depends on:  libpcre
 
 name=grep
-version=2.5.4
+version=2.6
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
