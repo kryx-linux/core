@@ -70,6 +70,7 @@ drwxr-xr-x	root/root	usr/share/kbd/consolefonts/
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/LatArCyrHeb-16+.psfu.gz
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/LatArCyrHeb-16.psfu.gz
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/LatArCyrHeb-19.psfu.gz
+-rw-r--r--	root/root	usr/share/kbd/consolefonts/LatKaCyrHeb-14.psfu.gz
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/Mik_8x16.gz
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/UniCyrExt_8x16.psf.gz
 -rw-r--r--	root/root	usr/share/kbd/consolefonts/UniCyr_8x14.psf.gz
@@ -327,6 +328,8 @@ drwxr-xr-x	root/root	usr/share/kbd/keymaps/i386/azerty/
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/azerty/fr.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/azerty/wangbe.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/azerty/wangbe2.map.gz
+drwxr-xr-x	root/root	usr/share/kbd/keymaps/i386/colemak/
+-rw-r--r--	root/root	usr/share/kbd/keymaps/i386/colemak/en-latin9.map.gz
 drwxr-xr-x	root/root	usr/share/kbd/keymaps/i386/dvorak/
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/dvorak/ANSI-dvorak.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/dvorak/dvorak-fr.map.gz
@@ -485,6 +488,7 @@ drwxr-xr-x	root/root	usr/share/kbd/keymaps/i386/qwertz/
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/cz.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de-latin1-nodeadkeys.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de-latin1.map.gz
+-rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de-mobii.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de_CH-latin1.map.gz
 -rw-r--r--	root/root	usr/share/kbd/keymaps/i386/qwertz/de_alt_UTF-8.map.gz
