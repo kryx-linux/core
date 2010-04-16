@@ -18,8 +18,8 @@ start)
 	;;
 stop)
 	if [ -f /var/run/sshd.pid ]; then
-		kill `cat /var/run/sshd.pid`
-		rm -f /var/run/ssh.pid
+		kill $(< /var/run/sshd.pid)
+		rm -f /var/run/sshd.pid
 	else
 		killall -q /usr/sbin/sshd
 	fi
