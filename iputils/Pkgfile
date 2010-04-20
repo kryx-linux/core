@@ -4,7 +4,7 @@
 # Packager: Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=iputils
-version=s20100214
+version=s20100418
 release=1
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
