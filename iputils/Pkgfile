@@ -1,7 +1,7 @@
 # Description: Basic networking applet
 # URL: http://www.linux-foundation.org/en/Net:Iputils
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Packager: Juergen Daubert, juergen dot daubert at t-online dot de
+# Depends on: sysfsutils
 
 name=iputils
 version=s20100418
