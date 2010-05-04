@@ -1,5 +1,5 @@
-054b66f315b3d04ad06544ce26e72365  gcc-core-4.4.3.tar.bz2
-cd179ec4f05ee17ce76464da25a2674c  gcc-g++-4.4.3.tar.bz2
+eb68755f64b9a4e37751992abb41c4fc  gcc-core-4.4.4.tar.bz2
+d51a6ec3eac1a90e7fc280d976ce7f80  gcc-g++-4.4.4.tar.bz2
 a617c4d3fa11e0c9410ac213eb061677  gcc-nocheck-fixincludes.patch
-34711c4de46eaf79aa018206dbec4389  gcc-objc-4.4.3.tar.bz2
+871cdd1a1ed8806a9bd5afcef0938fef  gcc-objc-4.4.4.tar.bz2
 547895a1bfb0224835995a3bd9690ae4  test-demangle.c.diff
