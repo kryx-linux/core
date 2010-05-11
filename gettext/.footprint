@@ -36,17 +36,17 @@ drwxr-xr-x	root/root	usr/lib/gettext/
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so -> libasprintf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so.0 -> libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libasprintf.so.0.0.0
--rwxr-xr-x	root/root	usr/lib/libgettextlib-0.17.so
+-rwxr-xr-x	root/root	usr/lib/libgettextlib-0.18.so
 -rwxr-xr-x	root/root	usr/lib/libgettextlib.la
-lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.17.so
+lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.18.so
 -rw-r--r--	root/root	usr/lib/libgettextpo.a
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.la
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.4.0
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.4.0
--rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.4.0
--rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.17.so
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.5.0
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.5.0
+-rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.5.0
+-rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.18.so
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc.la
-lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.17.so
+lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.18.so
 -rw-r--r--	root/root	usr/lib/preloadable_libintl.so
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
@@ -84,6 +84,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/codeset.m4
+-rw-r--r--	root/root	usr/share/aclocal/fcntl-o.m4
 -rw-r--r--	root/root	usr/share/aclocal/gettext.m4
 -rw-r--r--	root/root	usr/share/aclocal/glibc2.m4
 -rw-r--r--	root/root	usr/share/aclocal/glibc21.m4
@@ -107,6 +108,7 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/progtest.m4
 -rw-r--r--	root/root	usr/share/aclocal/size_max.m4
 -rw-r--r--	root/root	usr/share/aclocal/stdint_h.m4
+-rw-r--r--	root/root	usr/share/aclocal/threadlib.m4
 -rw-r--r--	root/root	usr/share/aclocal/uintmax_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/visibility.m4
 -rw-r--r--	root/root	usr/share/aclocal/wchar_t.m4
@@ -114,7 +116,7 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/xsize.m4
 drwxr-xr-x	root/root	usr/share/gettext/
 -rw-r--r--	root/root	usr/share/gettext/ABOUT-NLS
--rw-r--r--	root/root	usr/share/gettext/archive.tar.gz
+-rw-r--r--	root/root	usr/share/gettext/archive.dir.tar.gz
 -rwxr-xr-x	root/root	usr/share/gettext/config.rpath
 -rw-r--r--	root/root	usr/share/gettext/gettext.h
 drwxr-xr-x	root/root	usr/share/gettext/intl/
@@ -169,7 +171,9 @@ drwxr-xr-x	root/root	usr/share/gettext/intl/
 -rw-r--r--	root/root	usr/share/gettext/intl/ref-del.sin
 -rw-r--r--	root/root	usr/share/gettext/intl/relocatable.c
 -rw-r--r--	root/root	usr/share/gettext/intl/relocatable.h
+-rw-r--r--	root/root	usr/share/gettext/intl/setlocale.c
 -rw-r--r--	root/root	usr/share/gettext/intl/textdomain.c
+-rw-r--r--	root/root	usr/share/gettext/intl/threadlib.c
 -rw-r--r--	root/root	usr/share/gettext/intl/tsearch.c
 -rw-r--r--	root/root	usr/share/gettext/intl/tsearch.h
 -rw-r--r--	root/root	usr/share/gettext/intl/vasnprintf.c

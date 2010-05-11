@@ -4,8 +4,8 @@
 # Depends on:  ncurses
 
 name=gettext
-version=0.17
-release=3
+version=0.18
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -15,7 +15,7 @@ build() {
                 --disable-csharp \
                 --disable-{,native-}java \
                 --disable-nls \
-                --without-emacs \
+                --without-{emacs,cvs} \
                 --with-included-{glib,libcroco,libxml}
     make
     make -j1 DESTDIR=$PKG install
