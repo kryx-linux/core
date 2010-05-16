@@ -4,7 +4,7 @@
 # Depends on:  readline ncurses
 
 name=inetutils
-version=1.7
+version=1.8
 release=1
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
         inetd.conf inetd)
