@@ -4,19 +4,17 @@
 # Depends on:  util-linux-ng
 
 name=e2fsprogs
-version=1.41.11
+version=1.41.12
 release=1
-source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
-        $name-symlink.patch)
+source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
-    patch -p1 -i $SRC/$name-symlink.patch
-
     ./configure --prefix=/usr \
                 --with-root-prefix= \
                 --mandir=/usr/man \
+                --enable-symlink-install \
                 --enable-elf-shlibs \
                 --disable-e2initrd-helper \
                 --disable-nls \
