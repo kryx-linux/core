@@ -6,8 +6,8 @@ name=udev
 version=154
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
-	start_udev)
+        http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
+        start_udev)
 
 build() {
 	cd udev-$version
