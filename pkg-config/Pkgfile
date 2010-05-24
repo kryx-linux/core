@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=pkg-config
-version=0.23
+version=0.24
 release=1
 source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz)
 
@@ -12,4 +12,7 @@ build() {
 	./configure --prefix=/usr --mandir=/usr/man
 	make
 	make DESTDIR=$PKG install
+
+	rm $PKG/usr/share/doc/pkg-config/pkg-config-guide.html
+	rmdir $PKG/usr/share/doc/{pkg-config,}
 }
