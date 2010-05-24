@@ -72,6 +72,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CLASSIFY.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CONNMARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CONNSECMARK.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_CT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_DSCP.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_MARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NFLOG.so
