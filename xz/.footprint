@@ -33,6 +33,7 @@ drwxr-xr-x	root/root	usr/include/lzma/
 -rw-r--r--	root/root	usr/include/lzma/container.h
 -rw-r--r--	root/root	usr/include/lzma/delta.h
 -rw-r--r--	root/root	usr/include/lzma/filter.h
+-rw-r--r--	root/root	usr/include/lzma/hardware.h
 -rw-r--r--	root/root	usr/include/lzma/index.h
 -rw-r--r--	root/root	usr/include/lzma/index_hash.h
 -rw-r--r--	root/root	usr/include/lzma/lzma.h

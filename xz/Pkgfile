@@ -3,9 +3,9 @@
 # Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=xz
-version=4.999.9beta
+version=4.999.9beta-124-gb637
 release=1
-source=(http://tukaani.org/xz/$name-$version.tar.xz)
+source=(http://tukaani.org/xz/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
