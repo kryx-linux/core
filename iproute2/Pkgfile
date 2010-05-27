@@ -4,7 +4,7 @@
 # Depends on:  db
 
 name=iproute2
-version=2.6.33
+version=2.6.34
 release=1
 source=(http://devresources.linuxfoundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
         net.iproute2)
@@ -14,6 +14,7 @@ build() {
     sed -i "s|-O2|$CFLAGS -DIPT_LIB_DIR=\\\\\"/usr/lib/xtables\\\\\"|" Makefile
     make
     make MANDIR=/usr/man DESTDIR=$PKG install
-    rm -r $PKG/{share,usr/lib}
+    install -m 0755 tc/tc $PKG/sbin
+    rm -r $PKG/share
     install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
 }
