@@ -5,16 +5,16 @@
 
 name=iproute2
 version=2.6.34
-release=1
+release=2
 source=(http://devresources.linuxfoundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
-        net.iproute2)
+        net.iproute2 iproute2-tc_install.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/iproute2-tc_install.patch
     sed -i "s|-O2|$CFLAGS -DIPT_LIB_DIR=\\\\\"/usr/lib/xtables\\\\\"|" Makefile
     make
     make MANDIR=/usr/man DESTDIR=$PKG install
-    install -m 0755 tc/tc $PKG/sbin
     rm -r $PKG/share
     install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
 }

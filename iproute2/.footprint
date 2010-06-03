@@ -11,6 +11,8 @@ drwxr-xr-x	root/root	etc/rc.d/
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/tc/
 -rwxr-xr-x	root/root	lib/tc/experimental.dist
+lrwxrwxrwx	root/root	lib/tc/m_ipt.so -> m_xt.so
+-rwxr-xr-x	root/root	lib/tc/m_xt.so
 -rwxr-xr-x	root/root	lib/tc/normal.dist
 -rwxr-xr-x	root/root	lib/tc/pareto.dist
 -rwxr-xr-x	root/root	lib/tc/paretonormal.dist
