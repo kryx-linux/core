@@ -4,7 +4,7 @@
 # Depends on:  db gdbm
 
 name=perl
-version=5.10.1
+version=5.12.1
 release=1
 source=(http://www.cpan.org/src/5.0/$name-$version.tar.bz2)
 
@@ -13,6 +13,7 @@ build() {
 
     ./Configure -des \
                 -Dprefix=/usr \
+                -Dprivlib=/usr/lib/perl5/${version%.*} \
                 -Darchname=linux \
                 -Dman1ext=1pm \
                 -Dman3ext=3pm \
@@ -20,7 +21,8 @@ build() {
                 -Dman3dir=/usr/man/man3 \
                 -Di_gdbm \
                 -Di_db \
-                -Duseshrplib=true \
+                -Duseshrplib \
+                -Dusethreads \
                 -Doptimize="$CFLAGS"
     make
     make DESTDIR=$PKG install
@@ -36,8 +38,9 @@ build() {
          -iname 'Change*' -or \
          -iname 'README*' -or \
          -name '*.bs' -or \
-         -name .packlist -or \
-         -name perllocal.pod | xargs rm
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+    
     find $PKG -depth -empty -exec rmdir {} \;
     chmod -R +w $PKG
 }
