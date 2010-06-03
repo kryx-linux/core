@@ -5,10 +5,11 @@
 
 name=pkgutils
 version=5.34.2
-release=1
+release=2
 source=(http://crux.nu/files/$name-$version.tar.gz)
 
 build () {
 	cd $name-$version
-	make DESTDIR=$PKG install
+	LDFLAGS="-static $(pkg-config --libs --static libarchive)" \
+        make DESTDIR=$PKG install
 }
