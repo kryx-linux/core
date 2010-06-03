@@ -5,7 +5,7 @@
 
 name=iputils
 version=s20100418
-release=1
+release=2
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
 
@@ -18,7 +18,8 @@ build() {
     install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
     install ping{,6} $PKG/bin/
     install arping $PKG/sbin/
-    install tracepath{,6} traceroute6 clockdiff rarpd rdisc tftpd $PKG/usr/sbin/
+    install tracepath{,6} traceroute6 clockdiff rarpd rdisc $PKG/usr/sbin/
     cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
+    rm $PKG/usr/man/man8/tftpd.*
     chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
 }
