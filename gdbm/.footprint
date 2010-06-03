@@ -1,8 +1,10 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/include/
--rw-r--r--	root/root	usr/include/dbm.h
--rw-r--r--	root/root	usr/include/gdbm.h
--rw-r--r--	root/root	usr/include/ndbm.h
+lrwxrwxrwx	root/root	usr/include/gdbm.h -> gdbm/gdbm.h
+drwxr-xr-x	root/root	usr/include/gdbm/
+-rw-r--r--	root/root	usr/include/gdbm/dbm.h
+-rw-r--r--	root/root	usr/include/gdbm/gdbm.h
+-rw-r--r--	root/root	usr/include/gdbm/ndbm.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libgdbm.a
 -rwxr-xr-x	root/root	usr/lib/libgdbm.la

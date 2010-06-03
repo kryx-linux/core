@@ -4,15 +4,22 @@
 
 name=gdbm
 version=1.8.3
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+release=2
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+        $name-$version-compat-linking.patch)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr
-    make prefix=/usr
-    make prefix=$PKG/usr install
-    make prefix=$PKG/usr install-compat
-    rm -rf $PKG/usr/info
+    
+    patch -p1 -i $SRC/$name-$version-compat-linking.patch
+    
+    ./configure --prefix=/usr \
+                --includedir=/usr/include/gdbm 
+    
+    make
+    make -j1 INSTALL_ROOT=$PKG install install-compat
+    ln -sf gdbm/gdbm.h $PKG/usr/include/gdbm.h
+
+    rm -r $PKG/usr/info
     chown -R root.root $PKG
 }
