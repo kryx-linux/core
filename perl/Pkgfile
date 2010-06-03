@@ -13,7 +13,7 @@ build() {
 
     ./Configure -des \
                 -Dprefix=/usr \
-                -Dprivlib=/usr/lib/perl5/${version%.*} \
+                -D{priv,site}lib=/usr/lib/perl5/${version%.*} \
                 -Darchname=linux \
                 -Dman1ext=1pm \
                 -Dman3ext=3pm \
