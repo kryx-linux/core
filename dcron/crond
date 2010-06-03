@@ -5,7 +5,7 @@
 
 case $1 in
 start)
-	/usr/sbin/crond -l info -L /var/log/cron
+	/usr/sbin/crond -S -l info
 	;;
 stop)
 	killall -q /usr/sbin/crond

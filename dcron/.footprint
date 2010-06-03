@@ -20,8 +20,6 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwx------	root/root	usr/sbin/crond
 -rwxr-xr-x	root/root	usr/sbin/runjobs
 drwxr-xr-x	root/root	var/
-drwxr-xr-x	root/root	var/log/
--rw-r-----	root/root	var/log/cron (EMPTY)
 drwxr-xr-x	root/root	var/spool/
 drwxr-xr-x	root/root	var/spool/cron/
 drwxr-xr-x	root/root	var/spool/cron/cronstamps/
