@@ -1,0 +1,41 @@
+# http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=3aba072d90b500e76f7f1cb06c659fb3cf02c6b8
+
+commit 3aba072d90b500e76f7f1cb06c659fb3cf02c6b8
+Author: Jakub Jelinek <jakub@redhat.com>
+Date:   Wed Jul 22 13:23:08 2009 +0200
+
+    Undefine __i686 on x86.
+
+diff --git a/Makeconfig b/Makeconfig
+index 9f134cc..2ebe184 100644
+--- a/Makeconfig
++++ b/Makeconfig
+@@ -780,12 +780,12 @@ endif
+ # The assembler can generate debug information too.
+ ifndef ASFLAGS
+ ifeq ($(have-cpp-asm-debuginfo),yes)
+-ASFLAGS := $(filter -g%,$(CFLAGS))
++ASFLAGS = $(filter -g%,$(CFLAGS))
+ else
+-ASFLAGS :=
++ASFLAGS =
+ endif
+ endif
+-ASFLAGS += $(ASFLAGS-config) $(asflags-cpu)
++ASFLAGS += $(ASFLAGS-config) $(asflags-cpu) $(sysdep-ASFLAGS)
+ 
+ ifndef BUILD_CC
+ BUILD_CC = $(CC)
+diff --git a/sysdeps/i386/Makefile b/sysdeps/i386/Makefile
+index 5f0d9be..8cac74a 100644
+--- a/sysdeps/i386/Makefile
++++ b/sysdeps/i386/Makefile
+@@ -2,6 +2,8 @@
+ # Every i386 port in use uses gas syntax (I think).
+ asm-CPPFLAGS += -DGAS_SYNTAX
+ 
++sysdep-ASFLAGS += -U__i686
++
+ # The i386 `long double' is a distinct type we support.
+ long-double-fcts = yes
+ 
