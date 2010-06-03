@@ -4,23 +4,23 @@
 # Depends on:  zlib
 
 name=binutils
-version=2.19.1
-release=2
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2
-        test-demangle.c.diff)
+version=2.20.1
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
-    patch -d $name-$version -p0 -i $SRC/test-demangle.c.diff
     sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in
+    sed -i '/^# RELEASE=y/s/#//' $name-$version/bfd/Makefile.in
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
+                                --mandir=/usr/man \
                                 --enable-shared \
-                                --disable-nls
+                                --disable-nls 
     make tooldir=/usr
     make check
     make tooldir=/usr DESTDIR=$PKG install
     cp ../$name-$version/include/libiberty.h $PKG/usr/include
-    rm -rf $PKG/usr/info
+    rm -r $PKG/usr/share
     sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/libbfd.la
 }
