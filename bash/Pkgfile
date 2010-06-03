@@ -1,11 +1,11 @@
 # Description: An sh-compatible command language interpreter
 # URL:         http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  ncurses
+# Depends on:  ncurses readline
 
 name=bash
 version=4.1.7
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-4.1.tar.gz \
         $name-4.1-001-007.patch.gz profile)
 
@@ -18,7 +18,8 @@ build() {
                 --exec-prefix= \
                 --mandir=/usr/man \
                 --disable-nls \
-                --with-curses
+                --with-curses \
+                --with-installed-readline
     make -j1
 
     install -D -m 755 bash $PKG/bin/bash
