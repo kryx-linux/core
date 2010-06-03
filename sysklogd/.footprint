@@ -20,5 +20,8 @@ drwxr-xr-x	root/root	usr/sbin/
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/log/
 -rw-r-----	root/root	var/log/auth (EMPTY)
+-rw-r-----	root/root	var/log/cron (EMPTY)
+-rw-r-----	root/root	var/log/debug (EMPTY)
+-rw-r-----	root/root	var/log/kernel (EMPTY)
 -rw-r-----	root/root	var/log/mail (EMPTY)
 -rw-r-----	root/root	var/log/messages (EMPTY)

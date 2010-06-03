@@ -4,7 +4,7 @@
 
 name=sysklogd
 version=1.5
-release=3
+release=4
 source=(http://www.ibiblio.org/pub/Linux/system/daemons/$name-$version.tar.gz \
         rotatelog syslog syslog.conf sysklogd)
 
@@ -28,6 +28,6 @@ build() {
     install -m 755 $SRC/sysklogd $PKG/etc/rc.d
 
     chmod -R +w $PKG
-    touch $PKG/var/log/{messages,auth,mail}
-    chmod 640 $PKG/var/log/{messages,auth,mail}
+    touch $PKG/var/log/{messages,auth,mail,cron,kernel,debug}
+    chmod 640 $PKG/var/log/{messages,auth,mail,cron,kernel,debug}
 }
