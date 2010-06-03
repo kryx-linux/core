@@ -1,11 +1,11 @@
 # Description: A collection of core GNU utilities
 # URL:         http://www.gnu.org/software/coreutils/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  libgmp
+# Depends on:  libgmp acl libcap
 
 name=coreutils
 version=8.5
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.xz
         coreutils-uname.patch)
 
@@ -14,13 +14,10 @@ build() {
 
     patch -p1 -i $SRC/coreutils-uname.patch
 
-    DEFAULT_POSIX2_VERSION=199209 \
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-assert \
-                --disable-libcap \
-                --disable-xattr \
                 --enable-no-install-program=uptime,kill,chcon,runcon,groups
     make
     make DESTDIR=$PKG install 
