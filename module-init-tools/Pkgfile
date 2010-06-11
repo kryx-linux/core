@@ -3,12 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=module-init-tools
-version=3.11.1
+version=3.12
 release=1
 source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
+    touch *.5 *.8
     ./configure --prefix=/usr \
                 --bindir=/sbin \
                 --sbindir=/sbin
