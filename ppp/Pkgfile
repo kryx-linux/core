@@ -14,7 +14,7 @@ build () {
     patch -p1 -i $SRC/$name-nofilter.patch
     ./configure --prefix=/usr --sysconfdir=/etc
     make
-    make INSTROOT=$PKG install install-etcppp
+    make -j1 INSTROOT=$PKG install install-etcppp
     mv $PKG/usr/{share/man,man} && rm -r $PKG/usr/share
     chmod +w -R $PKG
 }

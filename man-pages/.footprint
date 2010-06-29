@@ -461,6 +461,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/madvise.2.gz
 -rw-r--r--	root/root	usr/man/man2/madvise1.2.gz
 -rw-r--r--	root/root	usr/man/man2/mbind.2.gz
+-rw-r--r--	root/root	usr/man/man2/migrate_pages.2.gz
 -rw-r--r--	root/root	usr/man/man2/mincore.2.gz
 -rw-r--r--	root/root	usr/man/man2/mkdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/mkdirat.2.gz
@@ -1188,6 +1189,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fseek.3.gz
 -rw-r--r--	root/root	usr/man/man3/fseeko.3.gz
 -rw-r--r--	root/root	usr/man/man3/fsetpos.3.gz
+-rw-r--r--	root/root	usr/man/man3/fstatvfs.3.gz
 -rw-r--r--	root/root	usr/man/man3/ftell.3.gz
 -rw-r--r--	root/root	usr/man/man3/ftello.3.gz
 -rw-r--r--	root/root	usr/man/man3/ftime.3.gz
@@ -1535,7 +1537,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/mkfifo.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifoat.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkostemp.3.gz
+-rw-r--r--	root/root	usr/man/man3/mkostemps.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkstemp.3.gz
+-rw-r--r--	root/root	usr/man/man3/mkstemps.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktime.3.gz
 -rw-r--r--	root/root	usr/man/man3/mmap64.3.gz
@@ -1847,6 +1851,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/srandom_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/sscanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/ssignal.3.gz
+-rw-r--r--	root/root	usr/man/man3/statvfs.3.gz
 -rw-r--r--	root/root	usr/man/man3/stdarg.3.gz
 -rw-r--r--	root/root	usr/man/man3/stderr.3.gz
 -rw-r--r--	root/root	usr/man/man3/stdin.3.gz
