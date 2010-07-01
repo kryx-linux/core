@@ -22,8 +22,12 @@ fi
 # Mount root read-only
 /bin/mount -n -o remount,ro /
 
+if [ -f /forcefsck ]; then
+FORCEFSCK="-f"
+fi
+
 # Check filesystems
-/sbin/fsck -A -T -C -a
+/sbin/fsck $FORCEFSCK -A -T -C -a
 if [ $? -gt 1 ]; then
 	echo
 	echo "***************  FILESYSTEM CHECK FAILED  ******************"
