@@ -1,7 +1,7 @@
 # Description: Utility for incremental file transfers over networks
 # URL:         http://rsync.samba.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  openssh
+# Depends on:  openssh acl
 
 name=rsync
 version=3.0.7

@@ -1,7 +1,7 @@
 # Description: Highly configurable text editor
 # URL:         http://www.vim.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  ncurses
+# Depends on:  ncurses acl
 
 name=vim
 version=7.2.400

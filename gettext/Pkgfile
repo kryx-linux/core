@@ -1,7 +1,7 @@
 # Description: The GNU internationalization library
 # URL:         http://www.gnu.org/software/gettext/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  ncurses
+# Depends on:  ncurses acl
 
 name=gettext
 version=0.18.1.1
