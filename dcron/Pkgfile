@@ -6,12 +6,14 @@ name=dcron
 version=4.4
 release=2
 source=(http://www.jimpryor.net/linux/releases/$name-$version.tar.gz \
-        crontab runjobs crond)
+        dcron.diff crontab runjobs crond)
 
 build() {
     cd $name-$version
 
-    make PREFIX=/usr  
+    patch -p1 -i $SRC/dcron.diff
+
+    make PREFIX=/usr
     make DESTDIR=$PKG MANDIR=/usr/man CRONTAB_GROUP=users install
 
     install -m 600 $SRC/crontab $PKG/var/spool/cron/crontabs/root
