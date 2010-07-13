@@ -14,5 +14,5 @@ build() {
     make
 
     install -d -m 755 $PKG/usr/man/man8
-    make prefix=/ mandir=/usr/man DESTDIR=$PKG install
+    make prefix=/ bindir=/sbin mandir=/usr/man DESTDIR=$PKG install
 }
