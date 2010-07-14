@@ -4,9 +4,9 @@
 # Depends on:  ncurses
 
 name=psmisc
-version=22.11
+version=22.12
 release=1
-source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz)
+source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
