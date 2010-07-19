@@ -1,19 +1,18 @@
 # Description: LInux boot LOader
-# URL:         http://tldp.org/HOWTO/LILO.html
+# URL:         http://lilo.alioth.debian.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  libdevmapper
 
 name=lilo
-version=22.8
-release=2
-source=(http://www.ibiblio.org/pub/Linux/system/boot/lilo/$name-$version.src.tar.gz \
+version=23.0
+release=1
+source=(http://alioth.debian.org/frs/download.php/3315/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
 build() {
     cd $name-$version
     patch -p1 -i $SRC/$name-config.patch
     make all
-    make ROOT=$PKG install
+    make DESTDIR=$PKG install
     install -m 644 $SRC/lilo.conf $PKG/etc
-    rm $PKG/{sbin/mkrescue,usr/man/man8/mkrescue.8}
 }
