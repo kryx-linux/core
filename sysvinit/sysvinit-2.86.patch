@@ -75,3 +75,15 @@ diff -ru sysvinit-2.86/src/Makefile sysvinit-2.86-new/src/Makefile
  		done
  ifeq ($(ROOT),)
  		#
+diff -aur sysvinit-2.86.orig/src/init.c sysvinit-2.86/src/init.c
+--- sysvinit-2.86.orig/src/init.c	2004-07-30 14:16:20.000000000 +0200
++++ sysvinit-2.86/src/init.c	2010-07-23 16:32:36.679827761 +0200
+@@ -1884,7 +1884,7 @@
+ 	 *	The existing init process execs a new init binary.
+ 	 */
+ 	env = init_buildenv(0);
+-	execl(myname, myname, "--init", NULL, env);
++	execle(myname, myname, "--init", NULL, env);
+ 
+ 	/*
+ 	 *	We shouldn't be here, something failed. 
