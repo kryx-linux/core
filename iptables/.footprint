@@ -27,9 +27,9 @@ lrwxrwxrwx	root/root	usr/lib/libiptc.so -> libiptc.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libiptc.so.0 -> libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.4.0.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.4 -> libxtables.so.4.0.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.4.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.5.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.5 -> libxtables.so.5.0.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.5.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
@@ -57,7 +57,6 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_REDIRECT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_REJECT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_SAME.so
--rwxr-xr-x	root/root	usr/lib/xtables/libipt_SET.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_SNAT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_TTL.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_ULOG.so
@@ -66,7 +65,6 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_ecn.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_icmp.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_realm.so
--rwxr-xr-x	root/root	usr/lib/xtables/libipt_set.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_ttl.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_unclean.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CLASSIFY.so
@@ -74,14 +72,17 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CONNSECMARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_DSCP.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_LED.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_MARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NFLOG.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NFQUEUE.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NOTRACK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_RATEEST.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_SECMARK.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_SET.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_TCPMSS.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_TCPOPTSTRIP.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_TEE.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_TOS.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_TPROXY.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_TRACE.so
@@ -111,6 +112,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_rateest.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_recent.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_sctp.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_set.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_socket.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_standard.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_state.so
