@@ -4,11 +4,13 @@
 
 name=m4
 version=1.4.14
-release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+release=2
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+        $name-$version-include_stat.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version-include_stat.patch
     ./configure --prefix=/usr --mandir=/usr/man
     make
     make DESTDIR=$PKG install

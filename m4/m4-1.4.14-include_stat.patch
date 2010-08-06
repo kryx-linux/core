@@ -1,0 +1,13 @@
+# http://article.gmane.org/gmane.comp.gnu.m4.patches/1214
+
+diff -Nru m4-1.4.14.orig/src/m4.h m4-1.4.14/src/m4.h
+--- m4-1.4.14.orig/src/m4.h	2010-08-06 08:46:39.299428640 +0000
++++ m4-1.4.14/src/m4.h	2010-08-06 08:47:02.695302376 +0000
+@@ -33,6 +33,7 @@
+ #include <stdint.h>
+ #include <string.h>
++#include <sys/stat.h>
+ #include <sys/types.h>
+ 
+ #include "binary-io.h"
+ #include "clean-temp.h"
