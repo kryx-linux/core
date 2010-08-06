@@ -5,13 +5,14 @@
 
 name=ppp
 version=2.4.5
-release=1
+release=2
 source=(http://ppp.samba.org/ftp/ppp/$name-$version.tar.gz \
-        $name-nofilter.patch)
+        $name-nofilter.patch $name-$version-pppol2tp.patch)
 
 build () {
     cd $name-$version
     patch -p1 -i $SRC/$name-nofilter.patch
+    patch -p1 -i $SRC/$name-$version-pppol2tp.patch
     ./configure --prefix=/usr --sysconfdir=/etc
     make
     make -j1 INSTROOT=$PKG install install-etcppp
