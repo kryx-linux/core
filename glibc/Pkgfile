@@ -3,20 +3,24 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.11.2
+version=2.12.1
 release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
-        http://crux.nu/files/distfiles/kernel-headers-2.6.34.tar.xz
+        http://crux.nu/files/distfiles/kernel-headers-2.6.35.tar.xz
         glibc-fedora_i686.patch
+        Optimize-__getpagesize-a-bit.patch
         hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
     # install kernel headers
     mkdir $PKG/usr/
-    cp -r kernel-headers-2.6.34/include $PKG/usr
+    cp -r kernel-headers-2.6.35/include $PKG/usr
     chown root:root $PKG/usr
 
     patch -p1 -d $name-$version -i $SRC/$name-fedora_i686.patch
+    patch -R -p1 -d $name-$version -i $SRC/Optimize-__getpagesize-a-bit.patch
+
+    sed -i '/^all-subdirs/,+6s/manual//' $name-$version/Makeconfig
 
     mkdir build
     cd build
@@ -35,6 +39,7 @@ build() {
     cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
     mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
+    touch $PKG/etc/ld.so.cache
 
     rm -rf $PKG/usr/share/{info,locale}
 }

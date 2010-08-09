@@ -1,8 +1,9 @@
-4af7b09a785fb683097a7f92a546b885  glibc-2.11.2.tar.xz
-458a43cf62e4d5d9c6270e4f9b73c758  glibc-fedora_i686.patch
+6c8b3f5c56d80eba760cc896e7462b0e  Optimize-__getpagesize-a-bit.patch
+4802b783766b5b487c601a19b5ce35f1  glibc-2.12.1.tar.xz
+6144e4b4074fc01deea1549de4920df1  glibc-fedora_i686.patch
 96156bec8e05de67384dc93e72bdc313  host.conf
 fbbc215a9b15ba4846f326cc88108057  hosts
-2def7decd65d3c7eb135b84649c2c2a9  kernel-headers-2.6.34.tar.xz
+34fe6c5433cd6cda30123b7bb73ef378  kernel-headers-2.6.35.tar.xz
 f7fefce570a3c776e26e778c5e401490  ld.so.conf
 75931315bf9bc9be15a5e25e4ddd5f0d  nsswitch.conf
 acf9daad1ee85de5efd3543965596a63  resolv.conf

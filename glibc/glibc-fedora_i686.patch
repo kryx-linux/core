@@ -1,4 +1,5 @@
 # http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=3aba072d90b500e76f7f1cb06c659fb3cf02c6b8
+# 2010-08-03: reapplied for glibc 2.12.1
 
 commit 3aba072d90b500e76f7f1cb06c659fb3cf02c6b8
 Author: Jakub Jelinek <jakub@redhat.com>
@@ -6,16 +7,15 @@ Date:   Wed Jul 22 13:23:08 2009 +0200
 
     Undefine __i686 on x86.
 
-diff --git a/Makeconfig b/Makeconfig
-index 9f134cc..2ebe184 100644
---- a/Makeconfig
-+++ b/Makeconfig
-@@ -780,12 +780,12 @@ endif
+diff -Nru glibc-2.12.1.orig/Makeconfig glibc-2.12.1/Makeconfig
+--- glibc-2.12.1.orig/Makeconfig	2010-07-27 13:34:39.000000000 +0200
++++ glibc-2.12.1/Makeconfig	2010-08-03 23:10:22.519954554 +0200
+@@ -789,12 +789,12 @@
  # The assembler can generate debug information too.
  ifndef ASFLAGS
  ifeq ($(have-cpp-asm-debuginfo),yes)
--ASFLAGS := $(filter -g%,$(CFLAGS))
-+ASFLAGS = $(filter -g%,$(CFLAGS))
+-ASFLAGS := $(filter -g% -fdebug-prefix-map=%,$(CFLAGS))
++ASFLAGS = $(filter -g% -fdebug-prefix-map=%,$(CFLAGS))
  else
 -ASFLAGS :=
 +ASFLAGS =
@@ -26,10 +26,9 @@ index 9f134cc..2ebe184 100644
  
  ifndef BUILD_CC
  BUILD_CC = $(CC)
-diff --git a/sysdeps/i386/Makefile b/sysdeps/i386/Makefile
-index 5f0d9be..8cac74a 100644
---- a/sysdeps/i386/Makefile
-+++ b/sysdeps/i386/Makefile
+diff -Nru glibc-2.12.1.orig/sysdeps/i386/Makefile glibc-2.12.1/sysdeps/i386/Makefile
+--- glibc-2.12.1.orig/sysdeps/i386/Makefile	2010-07-27 13:34:39.000000000 +0200
++++ glibc-2.12.1/sysdeps/i386/Makefile	2010-08-03 23:12:02.319954272 +0200
 @@ -2,6 +2,8 @@
  # Every i386 port in use uses gas syntax (I think).
  asm-CPPFLAGS += -DGAS_SYNTAX
