@@ -4,11 +4,14 @@
 
 name=libdevmapper
 version=1.02.53
-release=2
-source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.72.tgz)
+release=1
+source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.72.tgz 
+        lvm2-static_build.patch)
 
 build() {
     cd LVM2.2.02.72
+
+    patch -p1 -i $SRC/lvm2-static_build.patch
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin \
