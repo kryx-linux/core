@@ -4,11 +4,13 @@
 
 name=pkg-config
 version=0.25
-release=1
-source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz)
+release=2
+source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz
+        $name.diff)
 
 build() {
 	cd $name-$version
+	patch -p1 -i $SRC/$name.diff
 	./configure --prefix=/usr --mandir=/usr/man
 	make
 	make DESTDIR=$PKG install
