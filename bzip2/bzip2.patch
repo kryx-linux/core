@@ -1,6 +1,6 @@
-diff -aur bzip2-1.0.5.orig/Makefile bzip2-1.0.5/Makefile
---- bzip2-1.0.5.orig/Makefile	2008-02-14 13:39:18.000000000 +0100
-+++ bzip2-1.0.5/Makefile	2009-06-14 13:49:03.889599030 +0200
+diff -aur bzip2-1.0.6.orig/Makefile bzip2-1.0.6/Makefile
+--- bzip2-1.0.6.orig/Makefile	2008-02-14 13:39:18.000000000 +0100
++++ bzip2-1.0.6/Makefile	2009-06-14 13:49:03.889599030 +0200
 @@ -21,7 +21,7 @@
  LDFLAGS=
  
@@ -84,9 +84,9 @@ diff -aur bzip2-1.0.5.orig/Makefile bzip2-1.0.5/Makefile
  
  clean: 
  	rm -f *.o libbz2.a bzip2 bzip2recover \
-diff -aur bzip2-1.0.5.orig/Makefile-libbz2_so bzip2-1.0.5/Makefile-libbz2_so
---- bzip2-1.0.5.orig/Makefile-libbz2_so	2007-12-09 14:00:50.000000000 +0100
-+++ bzip2-1.0.5/Makefile-libbz2_so	2009-06-14 13:48:27.519580669 +0200
+diff -aur bzip2-1.0.6.orig/Makefile-libbz2_so bzip2-1.0.6/Makefile-libbz2_so
+--- bzip2-1.0.6.orig/Makefile-libbz2_so	2007-12-09 14:00:50.000000000 +0100
++++ bzip2-1.0.6/Makefile-libbz2_so	2009-06-14 13:48:27.519580669 +0200
 @@ -24,7 +24,7 @@
  SHELL=/bin/sh
  CC=gcc
@@ -98,26 +98,26 @@ diff -aur bzip2-1.0.5.orig/Makefile-libbz2_so bzip2-1.0.5/Makefile-libbz2_so
        huffman.o    \
 @@ -37,11 +37,15 @@
  all: $(OBJS)
- 	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.4 $(OBJS)
- 	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.4
+ 	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.6 $(OBJS)
+ 	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.6
 -	rm -f libbz2.so.1.0
--	ln -s libbz2.so.1.0.4 libbz2.so.1.0
+-	ln -s libbz2.so.1.0.6 libbz2.so.1.0
 +
 +install:
 +	install -d $(PREFIX)/lib
-+	install -m 755 libbz2.so.1.0.4 $(PREFIX)/lib
-+	ln -sf libbz2.so.1.0.4 $(PREFIX)/lib/libbz2.so.1.0
++	install -m 755 libbz2.so.1.0.6 $(PREFIX)/lib
++	ln -sf libbz2.so.1.0.6 $(PREFIX)/lib/libbz2.so.1.0
 +	ln -sf libbz2.so.1.0 $(PREFIX)/lib/libbz2.so
  
  clean: 
--	rm -f $(OBJS) bzip2.o libbz2.so.1.0.4 libbz2.so.1.0 bzip2-shared
-+	rm -f $(OBJS) bzip2.o libbz2.so.1.0.4 bzip2-shared
+-	rm -f $(OBJS) bzip2.o libbz2.so.1.0.6 libbz2.so.1.0 bzip2-shared
++	rm -f $(OBJS) bzip2.o libbz2.so.1.0.6 bzip2-shared
  
  blocksort.o: blocksort.c
  	$(CC) $(CFLAGS) -c blocksort.c
-diff -aur bzip2-1.0.5.orig/bzlib_private.h bzip2-1.0.5/bzlib_private.h
---- bzip2-1.0.5.orig/bzlib_private.h	2007-12-09 15:00:46.000000000 +0100
-+++ bzip2-1.0.5/bzlib_private.h	2009-06-14 13:53:28.200579230 +0200
+diff -aur bzip2-1.0.6.orig/bzlib_private.h bzip2-1.0.6/bzlib_private.h
+--- bzip2-1.0.6.orig/bzlib_private.h	2007-12-09 15:00:46.000000000 +0100
++++ bzip2-1.0.6/bzlib_private.h	2009-06-14 13:53:28.200579230 +0200
 @@ -128,7 +128,7 @@
  
  /*-- Stuff for randomising repetitive blocks. --*/
@@ -136,9 +136,9 @@ diff -aur bzip2-1.0.5.orig/bzlib_private.h bzip2-1.0.5/bzlib_private.h
  
  #define BZ_INITIALISE_CRC(crcVar)              \
  {                                              \
-diff -aur bzip2-1.0.5.orig/crctable.c bzip2-1.0.5/crctable.c
---- bzip2-1.0.5.orig/crctable.c	2007-12-09 13:29:49.000000000 +0100
-+++ bzip2-1.0.5/crctable.c	2009-06-14 13:52:33.248830630 +0200
+diff -aur bzip2-1.0.6.orig/crctable.c bzip2-1.0.6/crctable.c
+--- bzip2-1.0.6.orig/crctable.c	2007-12-09 13:29:49.000000000 +0100
++++ bzip2-1.0.6/crctable.c	2009-06-14 13:52:33.248830630 +0200
 @@ -28,7 +28,7 @@
    comp.compression FAQ.
  --*/
@@ -148,9 +148,9 @@ diff -aur bzip2-1.0.5.orig/crctable.c bzip2-1.0.5/crctable.c
  
     /*-- Ugly, innit? --*/
  
-diff -aur bzip2-1.0.5.orig/randtable.c bzip2-1.0.5/randtable.c
---- bzip2-1.0.5.orig/randtable.c	2007-12-09 13:32:55.000000000 +0100
-+++ bzip2-1.0.5/randtable.c	2009-06-14 13:53:38.063580427 +0200
+diff -aur bzip2-1.0.6.orig/randtable.c bzip2-1.0.6/randtable.c
+--- bzip2-1.0.6.orig/randtable.c	2007-12-09 13:32:55.000000000 +0100
++++ bzip2-1.0.6/randtable.c	2009-06-14 13:53:38.063580427 +0200
 @@ -23,7 +23,7 @@
  
  
