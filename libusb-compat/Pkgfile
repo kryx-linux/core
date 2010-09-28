@@ -6,7 +6,7 @@
 name=libusb-compat
 version=0.1.3
 release=2
-source=(http://dl.sourceforge.net/sourceforge/libusb/$name-$version.tar.bz2)
+source=(http://downloads.sourceforge.net/project/libusb/$name-0.1/$name-$version/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
