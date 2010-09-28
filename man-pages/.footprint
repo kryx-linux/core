@@ -3439,6 +3439,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/rtnetlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/shm_overview.7.gz
+-rw-r--r--	root/root	usr/man/man7/sigevent.7.gz
 -rw-r--r--	root/root	usr/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/man/man7/socket.7.gz
 -rw-r--r--	root/root	usr/man/man7/spufs.7.gz
