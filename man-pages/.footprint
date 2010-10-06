@@ -1051,7 +1051,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/error.3.gz
 -rw-r--r--	root/root	usr/man/man3/error_at_line.3.gz
 -rw-r--r--	root/root	usr/man/man3/error_message_count.3.gz
--rw-r--r--	root/root	usr/man/man3/error_on_per_line.3.gz
+-rw-r--r--	root/root	usr/man/man3/error_one_per_line.3.gz
 -rw-r--r--	root/root	usr/man/man3/error_print_progname.3.gz
 -rw-r--r--	root/root	usr/man/man3/errx.3.gz
 -rw-r--r--	root/root	usr/man/man3/etext.3.gz
@@ -1071,6 +1071,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/execlp.3.gz
 -rw-r--r--	root/root	usr/man/man3/execv.3.gz
 -rw-r--r--	root/root	usr/man/man3/execvp.3.gz
+-rw-r--r--	root/root	usr/man/man3/execvpe.3.gz
 -rw-r--r--	root/root	usr/man/man3/exit.3.gz
 -rw-r--r--	root/root	usr/man/man3/exp.3.gz
 -rw-r--r--	root/root	usr/man/man3/exp10.3.gz
@@ -1209,7 +1210,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fwprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwrite.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwrite_unlocked.3.gz
+-rw-r--r--	root/root	usr/man/man3/gai_cancel.3.gz
+-rw-r--r--	root/root	usr/man/man3/gai_error.3.gz
 -rw-r--r--	root/root	usr/man/man3/gai_strerror.3.gz
+-rw-r--r--	root/root	usr/man/man3/gai_suspend.3.gz
 -rw-r--r--	root/root	usr/man/man3/gamma.3.gz
 -rw-r--r--	root/root	usr/man/man3/gammaf.3.gz
 -rw-r--r--	root/root	usr/man/man3/gammal.3.gz
@@ -1217,6 +1221,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/get_current_dir_name.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_myaddress.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaddrinfo.3.gz
+-rw-r--r--	root/root	usr/man/man3/getaddrinfo_a.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaliasbyname.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaliasbyname_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaliasent.3.gz
@@ -1826,6 +1831,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sigsetjmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigsetmask.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigsetops.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigstack.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigvec.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigwait.3.gz
 -rw-r--r--	root/root	usr/man/man3/sin.3.gz
@@ -2016,6 +2022,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/vfprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vfscanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vfwprintf.3.gz
+-rw-r--r--	root/root	usr/man/man3/vlimit.3.gz
 -rw-r--r--	root/root	usr/man/man3/vprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vscanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vsnprintf.3.gz
@@ -2023,6 +2030,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/vsscanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vswprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/vsyslog.3.gz
+-rw-r--r--	root/root	usr/man/man3/vtimes.3.gz
 -rw-r--r--	root/root	usr/man/man3/vwarn.3.gz
 -rw-r--r--	root/root	usr/man/man3/vwarnx.3.gz
 -rw-r--r--	root/root	usr/man/man3/vwprintf.3.gz
@@ -3331,6 +3339,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 drwxr-xr-x	root/root	usr/man/man6/
 -rw-r--r--	root/root	usr/man/man6/intro.6.gz
 drwxr-xr-x	root/root	usr/man/man7/
+-rw-r--r--	root/root	usr/man/man7/aio.7.gz
 -rw-r--r--	root/root	usr/man/man7/armscii-8.7.gz
 -rw-r--r--	root/root	usr/man/man7/arp.7.gz
 -rw-r--r--	root/root	usr/man/man7/ascii.7.gz
