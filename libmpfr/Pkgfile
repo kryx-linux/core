@@ -4,7 +4,7 @@
 # Depends on:  libgmp
 
 name=libmpfr
-version=3.0.0-p3
+version=3.0.0-p4
 release=1
 source=(http://www.mpfr.org/mpfr-${version%-*}/mpfr-${version%-*}.tar.xz
         $name-$version.patch.gz)
