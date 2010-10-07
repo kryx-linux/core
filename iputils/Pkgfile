@@ -4,8 +4,8 @@
 # Depends on: sysfsutils
 
 name=iputils
-version=s20100418
-release=2
+version=s20101006
+release=1
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
 
@@ -20,6 +20,5 @@ build() {
     install arping $PKG/sbin/
     install tracepath{,6} traceroute6 clockdiff rarpd rdisc $PKG/usr/sbin/
     cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
-    rm $PKG/usr/man/man8/tftpd.*
     chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
 }
