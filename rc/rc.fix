@@ -7,8 +7,8 @@
 #######################################################################
 # X11 font-related checks
 #######################################################################
-if [ -d /usr/lib/X11/fonts ]; then
-    for i in `/bin/ls -d /usr/lib/X11/fonts/*`; do
+if [ -d /usr/share/fonts/X11 ]; then
+    for i in `/bin/ls -d /usr/share/fonts/X11/*`; do
         if [ ! -f $i/fonts.dir ]; then
             mkfontdir $i &> /dev/null
             mkfontscale $i &> /dev/null
