@@ -3,13 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libdevmapper
-version=1.02.54
+version=1.02.55
 release=1
-source=(ftp://sources.redhat.com/pub/lvm2/old/LVM2.2.02.73.tgz
+source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.74.tgz
         lvm2-static_build.patch)
 
 build() {
-    cd LVM2.2.02.73
+    cd LVM2.2.02.74
 
     patch -p1 -i $SRC/lvm2-static_build.patch
 
