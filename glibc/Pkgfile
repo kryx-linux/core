@@ -4,11 +4,12 @@
 
 name=glibc
 version=2.12.1
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
         http://crux.nu/files/distfiles/kernel-headers-2.6.35.tar.xz
         glibc-fedora_i686.patch
         Optimize-__getpagesize-a-bit.patch
+        CVE-2010-3847.patch CVE-2010-3856.patch
         hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
@@ -19,6 +20,8 @@ build() {
 
     patch -p1 -d $name-$version -i $SRC/$name-fedora_i686.patch
     patch -R -p1 -d $name-$version -i $SRC/Optimize-__getpagesize-a-bit.patch
+    patch -p1 -d $name-$version -i $SRC/CVE-2010-3847.patch
+    patch -p1 -d $name-$version -i $SRC/CVE-2010-3856.patch
 
     sed -i '/^all-subdirs/,+6s/manual//' $name-$version/Makeconfig
 

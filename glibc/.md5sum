@@ -1,3 +1,5 @@
+733615b9c7f778639725ca40dbb781c6  CVE-2010-3847.patch
+e64fc10ef089b48de254b5322b54cd42  CVE-2010-3856.patch
 6c8b3f5c56d80eba760cc896e7462b0e  Optimize-__getpagesize-a-bit.patch
 4802b783766b5b487c601a19b5ce35f1  glibc-2.12.1.tar.xz
 6144e4b4074fc01deea1549de4920df1  glibc-fedora_i686.patch
