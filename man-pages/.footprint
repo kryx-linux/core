@@ -442,6 +442,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ioprio_get.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioprio_set.2.gz
 -rw-r--r--	root/root	usr/man/man2/ipc.2.gz
+-rw-r--r--	root/root	usr/man/man2/kexec_load.2.gz
 -rw-r--r--	root/root	usr/man/man2/keyctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/kill.2.gz
 -rw-r--r--	root/root	usr/man/man2/killpg.2.gz
@@ -1475,6 +1476,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/lgammaf_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/lgammal.3.gz
 -rw-r--r--	root/root	usr/man/man3/lgammal_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/lio_listio.3.gz
 -rw-r--r--	root/root	usr/man/man3/llabs.3.gz
 -rw-r--r--	root/root	usr/man/man3/lldiv.3.gz
 -rw-r--r--	root/root	usr/man/man3/llrint.3.gz
