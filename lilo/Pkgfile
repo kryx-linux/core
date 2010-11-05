@@ -4,9 +4,9 @@
 # Depends on:  libdevmapper
 
 name=lilo
-version=23.0
+version=23.1
 release=1
-source=(http://alioth.debian.org/frs/download.php/3315/$name-$version.tar.gz \
+source=(http://lilo.alioth.debian.org/ftp/sources/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
 build() {
