@@ -4,12 +4,15 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.3
+version=7.3.50
 release=1
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2)
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2
+        http://crux.nu/files/distfiles/vim-7.3.001-050.xz)
 
 build () {
     cd vim73/src
+
+    unxz -c $SRC/vim-7.3.*.xz | patch -p0 -d $SRC/vim73
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
