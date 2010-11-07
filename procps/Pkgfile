@@ -5,22 +5,14 @@
 
 name=procps
 version=3.2.8
-release=1
+release=2
 source=(http://procps.sourceforge.net/$name-$version.tar.gz \
-        sysctl.conf)
+        $name-$version.patch sysctl.conf)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version.patch
     make
-    make DESTDIR=$PKG \
-         ldconfig=true \
-         man1=$PKG/usr/man/man1/ \
-         man5=$PKG/usr/man/man5/ \
-         man8=$PKG/usr/man/man8/ \
-         install
-    install -D -m644 ../sysctl.conf $PKG/etc/sysctl.conf
-    rm -f $PKG/{bin/kill,usr/man/man1/kill.1}
-    ln -sf pgrep $PKG/usr/bin/pkill
-    ln -sf skill $PKG/usr/bin/snice
-    chmod +w -R $PKG
-}
+    make DESTDIR=$PKG install
+    install -D -m644 $SRC/sysctl.conf $PKG/etc/sysctl.conf
+} 
