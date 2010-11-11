@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=tar
-version=1.23
+version=1.25
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz \
         $name-rootp.patch tar.1 rmt.8)
 
 build() {
@@ -13,7 +13,8 @@ build() {
     patch -p1 -i $SRC/$name-rootp.patch
     ./configure --prefix= \
                 --libexec=/usr/lib/tar \
-                --disable-nls
+                --disable-nls \
+                FORCE_UNSAFE_CONFIGURE=1
     make
     make DESTDIR=$PKG install
     rm -rf $PKG/{sbin,share}
