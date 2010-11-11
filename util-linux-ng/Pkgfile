@@ -14,7 +14,7 @@ build() {
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-{nls,wall} \
-                --enable-{write,rdev,raw,kill}
+                --enable-{write,raw,kill}
     make
     make DESTDIR=$PKG install
 
