@@ -530,6 +530,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/prctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/pread.2.gz
 -rw-r--r--	root/root	usr/man/man2/pread64.2.gz
+-rw-r--r--	root/root	usr/man/man2/prlimit.2.gz
 -rw-r--r--	root/root	usr/man/man2/prof.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect6.2.gz
