@@ -5,14 +5,17 @@
 
 name=procps
 version=3.2.8
-release=2
-source=(http://procps.sourceforge.net/$name-$version.tar.gz \
-        $name-$version.patch sysctl.conf)
+release=3
+source=(http://procps.sourceforge.net/$name-$version.tar.gz
+        $name-$version.patch
+        $name-$version-linux-ver-init.patch
+        sysctl.conf)
 
 build() {
     cd $name-$version
     patch -p1 -i $SRC/$name-$version.patch
+    patch -p0 -i $SRC/$name-$version-linux-ver-init.patch
     make
     make DESTDIR=$PKG install
     install -D -m644 $SRC/sysctl.conf $PKG/etc/sysctl.conf
-} 
+}
