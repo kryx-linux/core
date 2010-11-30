@@ -5,7 +5,7 @@
 name=xz
 version=4.999.9beta-212-gacbc
 release=1
-source=(http://tukaani.org/xz/$name-$version.tar.gz)
+source=(http://crux.nu/files/distfiles/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
