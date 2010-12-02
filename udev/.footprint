@@ -4,8 +4,8 @@ drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/udev.conf
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/firmware/
-lrwxrwxrwx	root/root	lib/libudev.so.0 -> libudev.so.0.9.1
--rwxr-xr-x	root/root	lib/libudev.so.0.9.1
+lrwxrwxrwx	root/root	lib/libudev.so.0 -> libudev.so.0.9.3
+-rwxr-xr-x	root/root	lib/libudev.so.0.9.3
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/ata_id
 -rwxr-xr-x	root/root	lib/udev/cdrom_id
@@ -13,14 +13,10 @@ drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/create_floppy_devices
 drwxr-xr-x	root/root	lib/udev/devices/
 crw-------	root/root	lib/udev/devices/console (5, 1)
-lrwxrwxrwx	root/root	lib/udev/devices/core -> /proc/kcore
-lrwxrwxrwx	root/root	lib/udev/devices/fd -> /proc/self/fd
+crw-------	root/root	lib/udev/devices/kmsg (1, 11)
 crw-rw-rw-	root/root	lib/udev/devices/null (1, 3)
 drwxr-xr-x	root/root	lib/udev/devices/pts/
 drwxr-xr-x	root/root	lib/udev/devices/shm/
-lrwxrwxrwx	root/root	lib/udev/devices/stderr -> /proc/self/fd/2
-lrwxrwxrwx	root/root	lib/udev/devices/stdin -> /proc/self/fd/0
-lrwxrwxrwx	root/root	lib/udev/devices/stdout -> /proc/self/fd/1
 crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/edd_id
 -rwxr-xr-x	root/root	lib/udev/firmware
@@ -31,7 +27,6 @@ crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/50-firmware.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
--rw-r--r--	root/root	lib/udev/rules.d/55-lfs.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-floppy.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-alsa.rules
@@ -40,7 +35,6 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage-tape.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-v4l.rules
--rw-r--r--	root/root	lib/udev/rules.d/61-cdrom.rules
 -rw-r--r--	root/root	lib/udev/rules.d/61-persistent-storage-edd.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-cd-aliases-generator.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-persistent-net-generator.rules
@@ -62,7 +56,7 @@ lrwxrwxrwx	root/root	usr/bin/udevinfo -> /sbin/udevadm
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libudev.h
 drwxr-xr-x	root/root	usr/lib/
-lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.0.9.1
+lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.0.9.3
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	usr/man/
