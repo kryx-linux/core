@@ -530,6 +530,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/prctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/pread.2.gz
 -rw-r--r--	root/root	usr/man/man2/pread64.2.gz
+-rw-r--r--	root/root	usr/man/man2/preadv.2.gz
 -rw-r--r--	root/root	usr/man/man2/prlimit.2.gz
 -rw-r--r--	root/root	usr/man/man2/prof.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect.2.gz
@@ -538,6 +539,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/putpmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite64.2.gz
+-rw-r--r--	root/root	usr/man/man2/pwritev.2.gz
 -rw-r--r--	root/root	usr/man/man2/query_module.2.gz
 -rw-r--r--	root/root	usr/man/man2/read.2.gz
 -rw-r--r--	root/root	usr/man/man2/readahead.2.gz
@@ -1677,6 +1679,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedprio.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_sigmask.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_sigqueue.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_testcancel.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_timedjoin_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_tryjoin_np.3.gz
