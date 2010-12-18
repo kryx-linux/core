@@ -11,10 +11,6 @@ if ! /bin/mountpoint -q /dev ; then
 	fi
 	
 	/bin/mount -n -t $UDEVFS udev /dev -o exec,nosuid,mode=0755,size=8M
-
-	if [ $UDEVFS = "tmpfs" ]; then
-		/bin/cp -a /lib/udev/devices/{console,null,kmsg} /dev/
-	fi
 fi
 
 # make sure hotplugger is not set
