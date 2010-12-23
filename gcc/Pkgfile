@@ -4,7 +4,7 @@
 # Depends on:  zlib libmpc
 
 name=gcc
-version=4.5.1
+version=4.5.2
 release=1
 source=(http://ftp.gnu.org/gnu/gcc/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-nocheck-fixincludes.patch)
@@ -26,18 +26,17 @@ build() {
                                 --disable-nls \
                                 --with-x=no \
                                 --with-system-zlib \
-                                --with-pkgversion="CRUX" 
+                                --with-pkgversion="CRUX"
     make bootstrap
-    make -j1 check
     make -j1 DESTDIR=$PKG install
 
     mkdir $PKG/lib
     ln -sf ../usr/bin/cpp $PKG/lib/cpp
     ln -sf gcc $PKG/usr/bin/cc
     ln -sf g++ $PKG/usr/bin/c++
-    
+
     mv $PKG/usr/lib/gcc/*/$version/include-fixed/{limits.h,syslimits.h} $PKG/usr/lib/gcc/*/$version/include/
-    
+
     rm $PKG/usr/lib/{libiberty.a,libstdc++.so.6.0.14-gdb.py}
     rm -r $PKG/usr/share 
     rm -r $PKG/usr/bin/*-linux-gnu-*
