@@ -3,14 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=groff
-version=1.20.1
+version=1.21
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-
-    touch doc/gnu.eps
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
@@ -21,7 +19,7 @@ build() {
 
     rm -rf $PKG/usr/share/{info,doc}
 
-    ln -sf eqn $PKG/usr/bin/geqn
-    ln -sf tbl $PKG/usr/bin/gtbl
-    ln -sf soelim $PKG/usr/bin/zsoelim
+    ln -s eqn $PKG/usr/bin/geqn
+    ln -s tbl $PKG/usr/bin/gtbl
+    ln -s soelim $PKG/usr/bin/zsoelim
 }
