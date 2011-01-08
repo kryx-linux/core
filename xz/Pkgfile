@@ -1,11 +1,11 @@
 # Description: Compression utility using the lzma algorithm, successor of lzma-utils
 # URL:         http://tukaani.org/xz/
-# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=xz
-version=4.999.9beta-212-gacbc
+version=5.0.0
 release=1
-source=(http://crux.nu/files/distfiles/$name-$version.tar.gz)
+source=(http://tukaani.org/xz/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
@@ -15,5 +15,8 @@ build() {
                 --enable-dynamic
     make
     make DESTDIR=$PKG install
+    
+    ln -s liblzma.so.5.0.0 $PKG/usr/lib/liblzma.so.0
+
     rm -r $PKG/usr/share
 }
