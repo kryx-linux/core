@@ -5,7 +5,7 @@
 
 name=pkgutils
 version=5.35.1
-release=1
+release=2
 source=(http://crux.nu/files/$name-$version.tar.gz)
 
 build () {
