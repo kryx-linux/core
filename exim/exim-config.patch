@@ -1,6 +1,6 @@
-diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
---- exim-4.73.orig/src/EDITME	2011-01-05 19:45:31.046233071 +0100
-+++ exim-4.73/src/EDITME	2011-01-05 19:45:45.760710662 +0100
+diff -Nru exim-4.74.orig/src/EDITME exim-4.74/src/EDITME
+--- exim-4.74.orig/src/EDITME	2011-01-25 10:08:58.230470315 +0100
++++ exim-4.74/src/EDITME	2011-01-25 10:09:14.328390661 +0100
 @@ -74,7 +74,7 @@
  # this would be wanted.
  ###############################################################################
@@ -46,7 +46,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  # SUPPORT_MAILSTORE=yes
  # SUPPORT_MBX=yes
  
-@@ -261,8 +261,8 @@
+@@ -286,8 +286,8 @@
  LOOKUP_LSEARCH=yes
  LOOKUP_DNSDB=yes
  
@@ -57,7 +57,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  # LOOKUP_IBASE=yes
  # LOOKUP_LDAP=yes
  # LOOKUP_MYSQL=yes
-@@ -332,7 +332,7 @@
+@@ -357,7 +357,7 @@
  # files are defaulted in the OS/Makefile-Default file, but can be overridden in
  # local OS-specific make files.
  
@@ -66,7 +66,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -527,10 +527,10 @@
+@@ -552,10 +552,10 @@
  # included in the Exim binary. You will then need to set up the run time
  # configuration to make use of the mechanism(s) selected.
  
@@ -79,7 +79,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  # AUTH_SPA=yes
  
  
-@@ -630,10 +630,10 @@
+@@ -655,10 +655,10 @@
  # leave these settings commented out.
  
  # This setting is required for any TLS support (either OpenSSL or GnuTLS)
@@ -92,7 +92,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  # Uncomment these settings if you are using GnuTLS
  # USE_GNUTLS=yes
-@@ -697,7 +697,7 @@
+@@ -722,7 +722,7 @@
  # %s. This will be replaced by one of the strings "main", "panic", or "reject"
  # to form the final file names. Some installations may want something like this:
  
@@ -101,7 +101,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  # which results in files with names /var/log/exim_mainlog, etc. The directory
  # in which the log files are placed must exist; Exim does not try to create
-@@ -746,7 +746,7 @@
+@@ -771,7 +771,7 @@
  # files. Both the name of the command and the suffix that it adds to files
  # need to be defined here. See also the EXICYCLOG_MAX configuration.
  
@@ -110,7 +110,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  COMPRESS_SUFFIX=gz
  
  
-@@ -754,7 +754,7 @@
+@@ -779,7 +779,7 @@
  # If the exigrep utility is fed compressed log files, it tries to uncompress
  # them using this command.
  
@@ -119,7 +119,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -864,9 +864,9 @@
+@@ -889,9 +889,9 @@
  # You may well also have to specify a local "include" file and an additional
  # library for TCP wrappers, so you probably need something like this:
  #
@@ -131,7 +131,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  #
  # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
  # as well.
-@@ -899,7 +899,7 @@
+@@ -924,7 +924,7 @@
  # aliases). The following setting can be changed to specify a different
  # location for the system alias file.
  
@@ -140,7 +140,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -945,13 +945,13 @@
+@@ -970,13 +970,13 @@
  # haven't got Perl, Exim will still build and run; you just won't be able to
  # use those utilities.
  
@@ -161,7 +161,7 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -1145,7 +1145,7 @@
+@@ -1170,7 +1170,7 @@
  # (process id) to a file so that it can easily be identified. The path of the
  # file can be specified here. Some installations may want something like this:
  
@@ -170,9 +170,9 @@ diff -Nru exim-4.73.orig/src/EDITME exim-4.73/src/EDITME
  
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
-diff -Nru exim-4.73.orig/src/configure.default exim-4.73/src/configure.default
---- exim-4.73.orig/src/configure.default	2011-01-05 19:45:31.046233071 +0100
-+++ exim-4.73/src/configure.default	2011-01-05 19:45:45.760710662 +0100
+diff -Nru exim-4.74.orig/src/configure.default exim-4.74/src/configure.default
+--- exim-4.74.orig/src/configure.default	2011-01-25 10:08:58.230470315 +0100
++++ exim-4.74/src/configure.default	2011-01-25 10:09:14.328390661 +0100
 @@ -56,7 +56,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
