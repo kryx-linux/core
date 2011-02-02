@@ -13,7 +13,7 @@ http://bugs.gentoo.org/165263
  	rm -f libgdbm_compat.la
  	$(LIBTOOL) --mode=link $(CC) -o libgdbm_compat.la -rpath $(libdir) \
 -		-version-info $(SHLIB_VER) $(C_LOBJS)
-+		-version-info $(SHLIB_VER) $(C_LOBJS) libgdbm.la
++		-version-info $(SHLIB_VER) $(C_LOBJS) libgdbm.la -L./.libs
  
  gdbm.h:	gdbm.proto gdbmerrno.h gdbm.proto2
  	rm -f gdbm.h

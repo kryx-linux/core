@@ -4,7 +4,7 @@
 
 name=gdbm
 version=1.8.3
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
         $name-$version-compat-linking.patch)
 
@@ -19,6 +19,8 @@ build() {
     make
     make -j1 INSTALL_ROOT=$PKG install install-compat
     ln -sf gdbm/gdbm.h $PKG/usr/include/gdbm.h
+
+    sed -i "/dependency_libs/s|=.*$|='/usr/lib/libgdbm.la'|" $PKG/usr/lib/libgdbm_compat.la
 
     rm -r $PKG/usr/info
     chown -R root.root $PKG
