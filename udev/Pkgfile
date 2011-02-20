@@ -4,7 +4,7 @@
 
 name=udev
 version=166
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
         start_udev)
 
@@ -12,23 +12,20 @@ build() {
     cd udev-$version
 
     ./configure --prefix=/usr \
-                --exec-prefix= \
+                --sbindir=/sbin \
                 --sysconfdir=/etc \
-                --libdir=/usr/lib \
+                --with-rootlibdir=/lib \
                 --libexecdir=/lib/udev \
                 --mandir=/usr/man \
                 --disable-extras \
-                --disable-introspection
+                --disable-introspection \
+                --enable-static
 
     make
-    make install DESTDIR=$PKG pkgconfigdir=/usr/lib/pkgconfig
+    make install DESTDIR=$PKG
 
     mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
     mkdir -p $PKG/lib
-
-    # Fix location of libaries
-    mv $PKG/usr/lib/libudev.so.* $PKG/lib
-    ln -sf ../../lib/$(readlink $PKG/usr/lib/libudev.so) $PKG/usr/lib/libudev.so
 
     # Populate nodes
     mknod -m 600 $PKG/lib/udev/devices/console c 5 1
