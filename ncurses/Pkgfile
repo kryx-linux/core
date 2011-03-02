@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=ncurses
-version=5.7
+version=5.8
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
@@ -16,7 +16,8 @@ build() {
 --with-normal \
 --with-shared \
 --without-debug \
---without-ada
+--without-ada \
+--without-tests
 "
 
     ./configure $OPTIONS
@@ -30,10 +31,9 @@ build() {
 
     mkdir $PKG/lib
 
-    for i in w ''; do \
-        mv $PKG/usr/lib/libncurses$i.so.* $PKG/lib && \
-        ln -sf libncurses$i.so $PKG/usr/lib/libcurses$i.so && \
-        ln -sf ../../lib/libncurses$i.so.5 $PKG/usr/lib/libncurses$i.so && \
-        ln -sf ../../lib/libncurses$i.so.5 $PKG/usr/lib/libncurses$i.so.5 \
-    ; done
+    for i in w ''; do
+        mv $PKG/usr/lib/libncurses$i.so.* $PKG/lib
+        ln -sf libncurses$i.so $PKG/usr/lib/libcurses$i.so
+        ln -sf ../../lib/libncurses$i.so.$version $PKG/usr/lib/libncurses$i.so
+    done
 }
