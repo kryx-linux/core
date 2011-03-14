@@ -4,26 +4,34 @@
 
 name=libdevmapper
 version=1.02.63
-release=1
+release=2
 source=(ftp://sources.redhat.com/pub/lvm2/releases/LVM2.2.02.84.tgz
-        lvm2-static_build.patch)
+	lvm2-static_udev_rt.patch
+	lvm2-static_build.patch)
 
 build() {
     cd LVM2.2.02.84
 
     patch -p1 -i $SRC/lvm2-static_build.patch
+    patch -p1 -i $SRC/lvm2-static_udev_rt.patch
 
     ./configure --prefix=/usr \
-                --sbindir=/sbin \
-                --libdir=/lib \
-                --datarootdir=/usr \
-                --with-staticdir=/sbin \
-                --with-usrlibdir=/usr/lib \
-                --disable-readline \
-                --enable-pkgconfig \
-                --enable-static_link \
-                --with-{user,group}=root
+		--exec-prefix= \
+		--datarootdir=/usr \
+		--with-udev-prefix= \
+		--disable-readline \
+		--enable-pkgconfig \
+		--enable-static_link \
+		--enable-udev_sync \
+		--enable-udev_rules \
+		--with-{user,group}=root
 
     make device-mapper
     make DESTDIR=$PKG install_device-mapper
+    install -m0644 -D udev/12-dm-permissions.rules $PKG/etc/udev/rules.d/12-dm-permissions.rules.example
+
+    #pkgconfig insists on /lib one or the other way...
+    sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
 }
+
+# vim: sts=4 sw=4 ts=8 noet ft=sh:

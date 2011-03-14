@@ -1,5 +1,14 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/udev/
+drwxr-xr-x	root/root	etc/udev/rules.d/
+-rw-r--r--	root/root	etc/udev/rules.d/12-dm-permissions.rules.example
 drwxr-xr-x	root/root	lib/
 -r-xr-xr-x	root/root	lib/libdevmapper.so.1.02
+drwxr-xr-x	root/root	lib/udev/
+drwxr-xr-x	root/root	lib/udev/rules.d/
+-r--r--r--	root/root	lib/udev/rules.d/10-dm.rules
+-r--r--r--	root/root	lib/udev/rules.d/13-dm-disk.rules
+-r--r--r--	root/root	lib/udev/rules.d/95-dm-notify.rules
 drwxr-xr-x	root/root	sbin/
 -r-xr-xr-x	root/root	sbin/dmsetup
 -r-xr-xr-x	root/root	sbin/dmsetup.static
