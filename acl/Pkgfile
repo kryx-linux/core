@@ -6,7 +6,7 @@
 name=acl
 version=2.2.49
 release=1
-source=(http://mirrors.zerg.biz/nongnu/$name/$name-$version.src.tar.gz)
+source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
 
 build() {
     cd $name-$version
