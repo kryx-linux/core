@@ -3,14 +3,17 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=166
-release=2
+version=167
+release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-        start_udev)
+        $name-disable_extras.patch start_udev)
 
 build() {
     cd udev-$version
 
+    patch -p1 -i $SRC/$name-disable_extras.patch
+
+    autoreconf
     ./configure --prefix=/usr \
                 --sbindir=/sbin \
                 --sysconfdir=/etc \
