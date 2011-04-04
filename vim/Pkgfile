@@ -4,11 +4,12 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.3.102
+version=7.3.154
 release=1
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2
         http://crux.nu/files/distfiles/vim-7.3.001-050.xz
-        http://crux.nu/files/distfiles/vim-7.3.051-102.xz)
+        http://crux.nu/files/distfiles/vim-7.3.051-102.xz
+        http://crux.nu/files/distfiles/vim-7.3.103-154.xz)
 
 build () {
     cd vim73/src
@@ -18,13 +19,13 @@ build () {
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-vim-name=vim \
-                --with-x=no \
-                --enable-gui=no \
+                --without-x \
+                --disable-gui \
                 --enable-multibyte \
                 --disable-gpm \
                 --disable-nls
 
-    make VIMRTDIR=
+    make VIMRTDIR= 
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
@@ -40,13 +41,15 @@ build () {
     ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
 
     ./configure --prefix=/ \
+                --datarootdir=/usr/share \
                 --with-vim-name=vi \
-                --with-x=no \
-                --enable-gui=no \
+                --without-x \
+                --disable-gui \
                 --enable-multibyte \
                 --disable-gpm \
                 --disable-nls \
                 --with-features=tiny
 
+    make VIMRTDIR=
     make VIMRTDIR= DESTDIR=$PKG installvimbin
 }
