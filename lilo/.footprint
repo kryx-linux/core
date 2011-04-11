@@ -12,3 +12,4 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/lilo.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/keytab-lilo
+-rwxr-xr-x	root/root	usr/sbin/lilo-uuid-diskid
