@@ -4,12 +4,16 @@
 # Depends on:  zlib
 
 name=file
-version=5.05
+version=5.06
 release=1
 source=(ftp://ftp.fu-berlin.de/unix/tools/file/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
+
+    # http://mx.gw.com/pipermail/file/2011/000770.html
+    sed -i '2s/5/6/' src/patchlevel.h
+    
     ./configure --prefix=/usr --mandir=/usr/man --enable-fsect-man5 
     make
     make DESTDIR=$PKG install
