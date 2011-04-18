@@ -39,6 +39,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/acl_error.3.gz
 -rw-r--r--	root/root	usr/man/man3/acl_extended_fd.3.gz
 -rw-r--r--	root/root	usr/man/man3/acl_extended_file.3.gz
+lrwxrwxrwx	root/root	usr/man/man3/acl_extended_file_nofollow.3.gz -> acl_extended_file.3.gz
 -rw-r--r--	root/root	usr/man/man3/acl_free.3.gz
 -rw-r--r--	root/root	usr/man/man3/acl_from_mode.3.gz
 -rw-r--r--	root/root	usr/man/man3/acl_from_text.3.gz

@@ -4,7 +4,7 @@
 # Depends on:  attr
 
 name=acl
-version=2.2.49
+version=2.2.50
 release=1
 source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
 
