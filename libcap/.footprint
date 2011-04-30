@@ -1,6 +1,6 @@
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libcap.so.2 -> libcap.so.2.20
--rw-r--r--	root/root	lib/libcap.so.2.20
+lrwxrwxrwx	root/root	lib/libcap.so.2 -> libcap.so.2.21
+-rw-r--r--	root/root	lib/libcap.so.2.21
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/capsh
 -rwxr-xr-x	root/root	sbin/getcap
@@ -12,7 +12,7 @@ drwxr-xr-x	root/root	usr/include/sys/
 -rw-r--r--	root/root	usr/include/sys/capability.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libcap.a
-lrwxrwxrwx	root/root	usr/lib/libcap.so -> ../../lib/libcap.so.2.20
+lrwxrwxrwx	root/root	usr/lib/libcap.so -> ../../lib/libcap.so.2.21
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/capsh.1.gz
@@ -22,10 +22,12 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/cap_compare.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_copy_ext.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_copy_int.3.gz
+-rw-r--r--	root/root	usr/man/man3/cap_drop_bound.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_dup.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_free.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_from_name.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_from_text.3.gz
+-rw-r--r--	root/root	usr/man/man3/cap_get_bound.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_get_fd.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_get_file.3.gz
 -rw-r--r--	root/root	usr/man/man3/cap_get_flag.3.gz
