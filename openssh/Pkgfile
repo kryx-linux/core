@@ -5,12 +5,11 @@
 
 name=openssh
 version=5.8p2
-release=1
+release=2
 source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz sshd)
 
 build() {
     cd $name-$version
-    sed -i 's/p1/p2/' version.h
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib/ssh \
                 --sysconfdir=/etc/ssh \
