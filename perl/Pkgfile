@@ -4,7 +4,7 @@
 # Depends on:  db gdbm
 
 name=perl
-version=5.12.3
+version=5.12.4
 release=1
 source=(http://www.cpan.org/src/5.0/$name-$version.tar.bz2)
 
