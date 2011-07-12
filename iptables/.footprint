@@ -1,6 +1,6 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
-lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/iptables-multi
+lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/xtables-multi
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libipq.h
 drwxr-xr-x	root/root	usr/include/libiptc/
@@ -27,9 +27,9 @@ lrwxrwxrwx	root/root	usr/lib/libiptc.so -> libiptc.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libiptc.so.0 -> libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.5.0.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.5 -> libxtables.so.5.0.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.5.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.6.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.6 -> libxtables.so.6.0.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.6.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
@@ -67,6 +67,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_realm.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_ttl.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_unclean.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_AUDIT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CHECKSUM.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CLASSIFY.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_CONNMARK.so
@@ -96,6 +97,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_conntrack.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_cpu.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_dccp.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libxt_devgroup.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_dscp.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_esp.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_hashlimit.so
@@ -129,6 +131,8 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_u32.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_udp.so
 drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man1/
+-rw-r--r--	root/root	usr/man/man1/iptables-xml.1.gz
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ipq_create_handle.3.gz
 -rw-r--r--	root/root	usr/man/man3/ipq_destroy_handle.3.gz
@@ -147,14 +151,12 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/ip6tables.8.gz
 -rw-r--r--	root/root	usr/man/man8/iptables-restore.8.gz
 -rw-r--r--	root/root	usr/man/man8/iptables-save.8.gz
--rw-r--r--	root/root	usr/man/man8/iptables-xml.8.gz
 -rw-r--r--	root/root	usr/man/man8/iptables.8.gz
 drwxr-xr-x	root/root	usr/sbin/
-lrwxrwxrwx	root/root	usr/sbin/ip6tables -> ip6tables-multi
--rwxr-xr-x	root/root	usr/sbin/ip6tables-multi
-lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> ip6tables-multi
-lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> ip6tables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables -> iptables-multi
--rwxr-xr-x	root/root	usr/sbin/iptables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> iptables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables-save -> iptables-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables -> xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-save -> xtables-multi
+-rwxr-xr-x	root/root	usr/sbin/xtables-multi
