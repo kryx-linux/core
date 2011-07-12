@@ -4,13 +4,14 @@
 # Depends on:  db iptables
 
 name=iproute2
-version=2.6.38
+version=2.6.39
 release=1
-source=(http://devresources.linuxfoundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
-        net.iproute2)
+source=(http://devresources.linuxfoundation.org/dev/iproute2/download/$name-$version.tar.gz \
+        $name-$version.patch net.iproute2)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version.patch
     sed -i "s|-O2|$CFLAGS|" Makefile
     ./configure
     make
