@@ -3,17 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=iptables
-version=1.4.11.1
-release=2
-source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2
-        $name-$version-man-fixes.patch) 
+version=1.4.12
+release=1
+source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2) 
 
 build () {
     cd $name-$version
-
-    patch -p1 -i $SRC/$name-$version-man-fixes.patch
-    automake
-
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --libexecdir=/usr/lib \
