@@ -4,14 +4,14 @@
 # Depends on:  attr
 
 name=libcap
-version=2.21
+version=2.22
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.bz2)
 
 build () {
     cd libcap-$version
 
-    sed -i '/^CFLAGS :=/s/:/\?/' Make.Rules 
+    sed -i "/^CFLAGS/s/-O2/$CFLAGS/" Make.Rules 
 
     make
     make RAISE_SETFCAP=no DESTDIR=$PKG man_prefix=/usr install
