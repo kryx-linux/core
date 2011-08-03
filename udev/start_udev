@@ -32,6 +32,3 @@ test -z "$(/bin/pidof -s udevd)" && /sbin/udevd --daemon
 /sbin/udevadm trigger --type=devices --action=add
 /sbin/udevadm settle
 
-# retry any failures
-/sbin/udevadm trigger --type=failed --action=add
-/sbin/udevadm settle

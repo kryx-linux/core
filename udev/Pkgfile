@@ -3,9 +3,9 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=171
+version=173
 release=1
-source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
+source=(http://www.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
         start_udev)
 
 build() {
