@@ -5,14 +5,16 @@
 
 name=curl
 version=7.21.7
-release=1
+release=2
 source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --enable-ipv6
+                --enable-ipv6 \
+                --without-libidn \
+                --enable-threaded-resolver
     make
     make DESTDIR=$PKG install
 }
