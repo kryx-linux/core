@@ -4,9 +4,9 @@
 # Depends on:  openssl
 
 name=wget
-version=1.12
+version=1.13.1
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.lzma \
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz \
         wgetrc)
 
 build() {
@@ -16,7 +16,8 @@ build() {
                 --sysconfdir=/etc \
                 --mandir=/usr/man \
                 --disable-debug \
-                --disable-nls
+                --disable-nls \
+                --with-ssl=openssl
 
     make
     make DESTDIR=$PKG install 
