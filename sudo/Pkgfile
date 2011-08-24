@@ -4,7 +4,7 @@
 # Depends on:  zlib
 
 name=sudo
-version=1.8.1p2
+version=1.8.2
 release=1
 source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
 
@@ -16,7 +16,8 @@ build() {
                 --mandir=/usr/man \
                 --with-logfac=auth \
                 --with-timedir=/var/lib/sudo \
-                --without-pam
+                --without-pam \
+                --disable-nls
 
     make
     make DESTDIR=$PKG install
