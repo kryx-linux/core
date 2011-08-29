@@ -4,17 +4,17 @@
 # Depends on:  ncurses zlib
 
 name=util-linux-ng
-version=2.19.1
+version=2.20
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/util-linux/v2.19/util-linux-$version.tar.bz2)
+source=(http://ftp.kernel.org/pub/linux/utils/util-linux/v2.20/util-linux-$version.tar.bz2)
 
 build() {
     cd util-linux-$version
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --disable-{nls,wall} \
-                --enable-{write,raw,kill,partx}
+                --disable-{nls,wall,mountpoint} \
+                --enable-{write,raw,kill}
     make
     make DESTDIR=$PKG install
 
