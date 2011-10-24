@@ -550,6 +550,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/reboot.2.gz
 -rw-r--r--	root/root	usr/man/man2/recv.2.gz
 -rw-r--r--	root/root	usr/man/man2/recvfrom.2.gz
+-rw-r--r--	root/root	usr/man/man2/recvmmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/recvmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/remap_file_pages.2.gz
 -rw-r--r--	root/root	usr/man/man2/removexattr.2.gz
@@ -564,6 +565,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/rt_sigreturn.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigsuspend.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigtimedwait.2.gz
+-rw-r--r--	root/root	usr/man/man2/rt_tgsigqueueinfo.2.gz
 -rw-r--r--	root/root	usr/man/man2/sbrk.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_get_priority_max.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_get_priority_min.2.gz
@@ -605,6 +607,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/sethostid.2.gz
 -rw-r--r--	root/root	usr/man/man2/sethostname.2.gz
 -rw-r--r--	root/root	usr/man/man2/setitimer.2.gz
+-rw-r--r--	root/root	usr/man/man2/setns.2.gz
 -rw-r--r--	root/root	usr/man/man2/setpgid.2.gz
 -rw-r--r--	root/root	usr/man/man2/setpgrp.2.gz
 -rw-r--r--	root/root	usr/man/man2/setpriority.2.gz
@@ -665,6 +668,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/sync.2.gz
 -rw-r--r--	root/root	usr/man/man2/sync_file_range.2.gz
 -rw-r--r--	root/root	usr/man/man2/sync_file_range2.2.gz
+-rw-r--r--	root/root	usr/man/man2/syncfs.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscalls.2.gz
 -rw-r--r--	root/root	usr/man/man2/sysctl.2.gz
@@ -1839,6 +1843,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/significandl.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigorset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigpause.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigqueue.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigrelse.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigsetjmp.3.gz
@@ -3273,6 +3278,7 @@ drwxr-xr-x	root/root	usr/man/man3p/
 -rw-r--r--	root/root	usr/man/man3p/y1.3p.gz
 -rw-r--r--	root/root	usr/man/man3p/yn.3p.gz
 drwxr-xr-x	root/root	usr/man/man4/
+-rw-r--r--	root/root	usr/man/man4/cciss.4.gz
 -rw-r--r--	root/root	usr/man/man4/console.4.gz
 -rw-r--r--	root/root	usr/man/man4/console_codes.4.gz
 -rw-r--r--	root/root	usr/man/man4/console_ioctl.4.gz
@@ -3284,6 +3290,7 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/full.4.gz
 -rw-r--r--	root/root	usr/man/man4/futex.4.gz
 -rw-r--r--	root/root	usr/man/man4/hd.4.gz
+-rw-r--r--	root/root	usr/man/man4/hpsa.4.gz
 -rw-r--r--	root/root	usr/man/man4/initrd.4.gz
 -rw-r--r--	root/root	usr/man/man4/intro.4.gz
 -rw-r--r--	root/root	usr/man/man4/kmem.4.gz
