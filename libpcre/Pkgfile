@@ -4,7 +4,7 @@
 
 name=libpcre
 version=8.20
-release=2
+release=3
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2)
 
 build() {
@@ -17,6 +17,14 @@ build() {
                 --enable-jit
     make
     make DESTDIR=$PKG install
+
+    install -d $PKG/lib
+    local lib
+    for lib in libpcre libpcrecpp libpcreposix ; do
+        mv $PKG/usr/lib/${lib}.so* $PKG/lib
+        ln -sf ../../lib/$(readlink $PKG/lib/${lib}.so) $PKG/usr/lib/${lib}.so
+        rm $PKG/lib/${lib}.so
+    done
 
     rm -r $PKG/usr/share
 }
