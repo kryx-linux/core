@@ -3,9 +3,9 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=174
+version=175
 release=1
-source=(http://people.freedesktop.org/~kay/$name-$version.tar.bz2 \
+source=(http://people.freedesktop.org/~kay/$name/$name-$version.tar.bz2 \
         81-crux.rules start_udev)
 
 build() {
