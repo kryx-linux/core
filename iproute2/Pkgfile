@@ -4,13 +4,13 @@
 # Depends on:  db iptables
 
 name=iproute2
-version=3.0.0
+version=3.1.0
 release=1
-source=(https://github.com/shemminger/iproute2/tarball/v3.0.0/$name-$version.tar.gz \
+source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz \
         net.iproute2)
 
 build() {
-    cd shemminger-$name-*
+    cd $name-$version
     sed -i "/^CCOPTS/s|-O2|$CFLAGS|" Makefile
     ./configure
     make
