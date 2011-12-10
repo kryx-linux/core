@@ -6,7 +6,7 @@
 name=man-pages
 version=3.35
 release=1
-source=(http://man7.org/linux/man-pages/download/$name-$version.tar.gz \
+source=(http://man7.org/linux/download/man-pages/$name-$version.tar.gz \
         http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2003-a.tar.bz2)
 
 build() {
