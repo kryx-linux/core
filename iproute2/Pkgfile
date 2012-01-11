@@ -4,13 +4,14 @@
 # Depends on:  db iptables
 
 name=iproute2
-version=3.1.0
+version=3.2.0
 release=1
-source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz \
-        net.iproute2)
+source=(http://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
+        $name-$version-remove_libnl_headers.patch net.iproute2)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version-remove_libnl_headers.patch
     sed -i "/^CCOPTS/s|-O2|$CFLAGS|" Makefile
     ./configure
     make
