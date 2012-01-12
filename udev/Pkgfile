@@ -5,7 +5,7 @@
 name=udev
 version=175
 release=1
-source=(http://people.freedesktop.org/~kay/$name/$name-$version.tar.bz2 \
+source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
         81-crux.rules start_udev)
 
 build() {
