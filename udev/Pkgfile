@@ -4,7 +4,7 @@
 
 name=udev
 version=175
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
         81-crux.rules start_udev)
 
@@ -21,7 +21,8 @@ build() {
                 --disable-gudev \
                 --disable-udev_acl \
                 --disable-keymap \
-                --enable-static
+                --enable-static \
+                --enable-rule_generator
 
     make
     make install DESTDIR=$PKG

@@ -21,6 +21,7 @@ crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/firmware
 -rwxr-xr-x	root/root	lib/udev/mtd_probe
 -rwxr-xr-x	root/root	lib/udev/pci-db
+-rw-r--r--	root/root	lib/udev/rule_generator.functions
 drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/42-qemu-usb.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-firmware.rules
@@ -33,7 +34,9 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-v4l.rules
 -rw-r--r--	root/root	lib/udev/rules.d/61-accelerometer.rules
+-rw-r--r--	root/root	lib/udev/rules.d/75-cd-aliases-generator.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-net-description.rules
+-rw-r--r--	root/root	lib/udev/rules.d/75-persistent-net-generator.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-probe_mtd.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-tty-description.rules
 -rw-r--r--	root/root	lib/udev/rules.d/78-sound-card.rules
@@ -44,6 +47,8 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rwxr-xr-x	root/root	lib/udev/udevd
 -rwxr-xr-x	root/root	lib/udev/usb-db
 -rwxr-xr-x	root/root	lib/udev/v4l_id
+-rwxr-xr-x	root/root	lib/udev/write_cd_rules
+-rwxr-xr-x	root/root	lib/udev/write_net_rules
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/start_udev
 -rwxr-xr-x	root/root	sbin/udevadm
