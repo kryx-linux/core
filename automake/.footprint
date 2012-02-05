@@ -61,6 +61,7 @@ drwxr-xr-x	root/root	usr/share/automake-1.11/Automake/
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/DisjConditions.pm
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/FileUtils.pm
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/General.pm
+-rw-r--r--	root/root	usr/share/automake-1.11/Automake/Getopt.pm
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/Item.pm
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/ItemDef.pm
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/Location.pm
@@ -78,6 +79,7 @@ drwxr-xr-x	root/root	usr/share/automake-1.11/Automake/
 -rwxr-xr-x	root/root	usr/share/automake-1.11/acinstall
 drwxr-xr-x	root/root	usr/share/automake-1.11/am/
 -rw-r--r--	root/root	usr/share/automake-1.11/am/ansi2knr.am
+-rw-r--r--	root/root	usr/share/automake-1.11/am/check-html.am
 -rw-r--r--	root/root	usr/share/automake-1.11/am/check.am
 -rw-r--r--	root/root	usr/share/automake-1.11/am/check2.am
 -rw-r--r--	root/root	usr/share/automake-1.11/am/clean-hdr.am
