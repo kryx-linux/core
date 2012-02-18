@@ -5,15 +5,16 @@
 
 name=shadow
 version=4.1.5
-release=1
+release=2
 source=(http://pkg-shadow.alioth.debian.org/releases/$name-$version.tar.bz2
-        pwck login.defs)
+        pwck login.defs
+        $name-$version-{copydir,nscd}.patch)
 
 build() {
     cd $name-$version
    
-    # http://anonscm.debian.org/viewvc/pkg-shadow/upstream/trunk/libmisc/copydir.c?r1=3655&r2=3706
-    sed -i '49i#include <stdarg.h>' libmisc/copydir.c
+    patch -p2 -i $SRC/$name-$version-copydir.patch
+    patch -p2 -i $SRC/$name-$version-nscd.patch
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
