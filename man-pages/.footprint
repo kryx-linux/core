@@ -587,6 +587,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/send.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendfile.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendfile64.2.gz
+-rw-r--r--	root/root	usr/man/man2/sendmmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendto.2.gz
 -rw-r--r--	root/root	usr/man/man2/set_mempolicy.2.gz
