@@ -1,0 +1,33 @@
+# Description: Kernel module utilities and library
+# URL:         http://git.kernel.org/?p=utils/kernel/kmod/kmod.git
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+
+name=kmod
+version=7
+release=1
+source=(http://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz)
+
+build() {
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+                --bindir=/sbin \
+                --sysconfdir=/etc \
+                --mandir=/usr/man \
+                --with-rootprefix= \
+                --with-rootlibdir=/lib
+
+    make
+    make DESTDIR=$PKG install
+
+    install -d $PKG/etc/{modprobe,depmod}.d
+    install -d $PKG/bin
+
+    ln -s kmod $PKG/sbin/modinfo
+    ln -s kmod $PKG/sbin/depmod
+    ln -s kmod $PKG/sbin/insmod
+    ln -s kmod $PKG/sbin/lsmod
+    ln -s kmod $PKG/sbin/rmmod
+    ln -s kmod $PKG/sbin/modprobe
+    ln -s ../sbin/kmod $PKG/bin/lsmod
+}
