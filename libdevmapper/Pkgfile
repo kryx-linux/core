@@ -4,12 +4,12 @@
 # Depends on:  udev
 
 name=libdevmapper
-version=1.02.69
+version=1.02.74
 release=1
-source=(ftp://sources.redhat.com/pub/lvm2/releases/LVM2.2.02.90.tgz)
+source=(ftp://sources.redhat.com/pub/lvm2/releases/LVM2.2.02.95.tgz)
 
 build() {
-    cd LVM2.2.02.90
+    cd LVM2.2.02.95
 
     ./configure --prefix=/usr \
 		--exec-prefix= \
