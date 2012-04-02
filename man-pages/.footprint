@@ -789,6 +789,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/aio_return.3.gz
 -rw-r--r--	root/root	usr/man/man3/aio_suspend.3.gz
 -rw-r--r--	root/root	usr/man/man3/aio_write.3.gz
+-rw-r--r--	root/root	usr/man/man3/aligned_alloc.3.gz
 -rw-r--r--	root/root	usr/man/man3/alloca.3.gz
 -rw-r--r--	root/root	usr/man/man3/alphasort.3.gz
 -rw-r--r--	root/root	usr/man/man3/argz.3.gz
@@ -1236,6 +1237,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/gcvt.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_current_dir_name.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_myaddress.3.gz
+-rw-r--r--	root/root	usr/man/man3/get_nprocs.3.gz
+-rw-r--r--	root/root	usr/man/man3/get_nprocs_conf.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaddrinfo.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaddrinfo_a.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaliasbyname.3.gz
@@ -1533,7 +1536,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/makecontext.3.gz
 -rw-r--r--	root/root	usr/man/man3/makedev.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc.3.gz
+-rw-r--r--	root/root	usr/man/man3/malloc_get_state.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc_hook.3.gz
+-rw-r--r--	root/root	usr/man/man3/malloc_set_state.3.gz
+-rw-r--r--	root/root	usr/man/man3/mallopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/matherr.3.gz
 -rw-r--r--	root/root	usr/man/man3/mblen.3.gz
 -rw-r--r--	root/root	usr/man/man3/mbrlen.3.gz
@@ -1708,6 +1714,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/putwc_unlocked.3.gz
 -rw-r--r--	root/root	usr/man/man3/putwchar.3.gz
 -rw-r--r--	root/root	usr/man/man3/putwchar_unlocked.3.gz
+-rw-r--r--	root/root	usr/man/man3/pvalloc.3.gz
 -rw-r--r--	root/root	usr/man/man3/qecvt.3.gz
 -rw-r--r--	root/root	usr/man/man3/qecvt_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/qfcvt.3.gz
@@ -1776,6 +1783,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/scalbnf.3.gz
 -rw-r--r--	root/root	usr/man/man3/scalbnl.3.gz
 -rw-r--r--	root/root	usr/man/man3/scandir.3.gz
+-rw-r--r--	root/root	usr/man/man3/scandirat.3.gz
 -rw-r--r--	root/root	usr/man/man3/scanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/sched_getcpu.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48.3.gz
