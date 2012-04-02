@@ -4,7 +4,7 @@
 # Depends on:  libgmp acl libcap
 
 name=coreutils
-version=8.15
+version=8.16
 release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.xz
         coreutils-uname.patch)
@@ -13,7 +13,8 @@ build() {
     cd $name-$version
 
     patch -p1 -i $SRC/coreutils-uname.patch
-
+    export FORCE_UNSAFE_CONFIGURE=1
+    
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
                 --mandir=/usr/man \
