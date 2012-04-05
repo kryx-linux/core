@@ -50,7 +50,6 @@ drwxr-xr-x	root/root	usr/share/aclocal-1.11/
 -rw-r--r--	root/root	usr/share/aclocal-1.11/tar.m4
 -rw-r--r--	root/root	usr/share/aclocal-1.11/upc.m4
 -rw-r--r--	root/root	usr/share/aclocal-1.11/vala.m4
-drwxr-xr-x	root/root	usr/share/aclocal/
 drwxr-xr-x	root/root	usr/share/automake-1.11/
 drwxr-xr-x	root/root	usr/share/automake-1.11/Automake/
 -rw-r--r--	root/root	usr/share/automake-1.11/Automake/ChannelDefs.pm
