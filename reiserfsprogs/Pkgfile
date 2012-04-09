@@ -6,7 +6,7 @@
 name=reiserfsprogs
 version=3.6.21
 release=1
-source=(http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.kernel.org/pub/linux/utils/fs/reiserfs/$name-$version.tar.bz2)
+source=(http://crux.nu/files/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
