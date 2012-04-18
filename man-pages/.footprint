@@ -1539,6 +1539,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/malloc_get_state.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc_hook.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc_set_state.3.gz
+-rw-r--r--	root/root	usr/man/man3/malloc_trim.3.gz
+-rw-r--r--	root/root	usr/man/man3/malloc_usable_size.3.gz
 -rw-r--r--	root/root	usr/man/man3/mallopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/matherr.3.gz
 -rw-r--r--	root/root	usr/man/man3/mblen.3.gz
