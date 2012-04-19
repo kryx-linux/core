@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# - if /dev is not mounted - mount as a devtmpfs (CONFIG_DEVTMPFS=y) or tmpfs
+# - if /dev is not mounted - mount as a devtmpfs (CONFIG_DEVTMPFS=y)
 # - if /dev is mounted (e.g. due to handover from initramfs or
 #   CONFIG_DEVTMPFS_MOUNT=y), remount with specific options
 # - some video drivers require exec access in /dev, thus it's set here
@@ -10,13 +10,11 @@ UDEVOPTS="exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384"
 if /bin/mountpoint -q /dev ; then
 	/bin/mount -n -o remount,${UDEVOPTS} dev /dev
 else
-	if /bin/sed -n '/devtmpfs/q1' /proc/filesystems ; then
-		UDEVFS=tmpfs
-	else
-		UDEVFS=devtmpfs
-	fi
-	/bin/mount -n -t $UDEVFS -o ${UDEVOPTS} dev /dev
+	/bin/mount -n -t devtmpfs -o ${UDEVOPTS} dev /dev
 fi
+
+# mount /run directory
+/bin/mount -n -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
 
 # make sure hotplugger is not set
 echo > /proc/sys/kernel/hotplug
