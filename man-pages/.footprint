@@ -533,6 +533,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pread64.2.gz
 -rw-r--r--	root/root	usr/man/man2/preadv.2.gz
 -rw-r--r--	root/root	usr/man/man2/prlimit.2.gz
+-rw-r--r--	root/root	usr/man/man2/process_vm_readv.2.gz
+-rw-r--r--	root/root	usr/man/man2/process_vm_writev.2.gz
 -rw-r--r--	root/root	usr/man/man2/prof.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect6.2.gz
@@ -1411,6 +1413,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/insque.3.gz
 -rw-r--r--	root/root	usr/man/man3/intro.3.gz
 -rw-r--r--	root/root	usr/man/man3/iruserok.3.gz
+-rw-r--r--	root/root	usr/man/man3/iruserok_af.3.gz
 -rw-r--r--	root/root	usr/man/man3/isalnum.3.gz
 -rw-r--r--	root/root	usr/man/man3/isalpha.3.gz
 -rw-r--r--	root/root	usr/man/man3/isascii.3.gz
@@ -1551,6 +1554,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/mbsrtowcs.3.gz
 -rw-r--r--	root/root	usr/man/man3/mbstowcs.3.gz
 -rw-r--r--	root/root	usr/man/man3/mbtowc.3.gz
+-rw-r--r--	root/root	usr/man/man3/mcheck.3.gz
+-rw-r--r--	root/root	usr/man/man3/mcheck_check_all.3.gz
+-rw-r--r--	root/root	usr/man/man3/mcheck_pedantic.3.gz
 -rw-r--r--	root/root	usr/man/man3/memalign.3.gz
 -rw-r--r--	root/root	usr/man/man3/memccpy.3.gz
 -rw-r--r--	root/root	usr/man/man3/memchr.3.gz
@@ -1577,6 +1583,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/modff.3.gz
 -rw-r--r--	root/root	usr/man/man3/modfl.3.gz
 -rw-r--r--	root/root	usr/man/man3/mpool.3.gz
+-rw-r--r--	root/root	usr/man/man3/mprobe.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_close.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_getattr.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_notify.3.gz
@@ -1731,6 +1738,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/random_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/rawmemchr.3.gz
 -rw-r--r--	root/root	usr/man/man3/rcmd.3.gz
+-rw-r--r--	root/root	usr/man/man3/rcmd_af.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_comp.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_exec.3.gz
 -rw-r--r--	root/root	usr/man/man3/readdir.3.gz
@@ -1762,6 +1770,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/rewind.3.gz
 -rw-r--r--	root/root	usr/man/man3/rewinddir.3.gz
 -rw-r--r--	root/root	usr/man/man3/rexec.3.gz
+-rw-r--r--	root/root	usr/man/man3/rexec_af.3.gz
 -rw-r--r--	root/root	usr/man/man3/rindex.3.gz
 -rw-r--r--	root/root	usr/man/man3/rint.3.gz
 -rw-r--r--	root/root	usr/man/man3/rintf.3.gz
@@ -1772,9 +1781,11 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/rpc.3.gz
 -rw-r--r--	root/root	usr/man/man3/rpmatch.3.gz
 -rw-r--r--	root/root	usr/man/man3/rresvport.3.gz
+-rw-r--r--	root/root	usr/man/man3/rresvport_af.3.gz
 -rw-r--r--	root/root	usr/man/man3/rtime.3.gz
 -rw-r--r--	root/root	usr/man/man3/rtnetlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/ruserok.3.gz
+-rw-r--r--	root/root	usr/man/man3/ruserok_af.3.gz
 -rw-r--r--	root/root	usr/man/man3/scalb.3.gz
 -rw-r--r--	root/root	usr/man/man3/scalbf.3.gz
 -rw-r--r--	root/root	usr/man/man3/scalbl.3.gz
