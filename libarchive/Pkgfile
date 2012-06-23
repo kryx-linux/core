@@ -1,15 +1,15 @@
 # Description: Library to create and read several archive formats
-# URL: http://people.freebsd.org/~kientzle/libarchive/
-# Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: bzip2, xz, zlib, acl
+# URL:         http://libarchive.github.com/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  bzip2, xz, zlib, acl
 
 name=libarchive
-version=3.0.3
+version=3.0.4
 release=1
-source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
+source=(https://github.com/downloads/$name/$name/$name-$version.tar.gz)
 
 build() {
-	cd libarchive-$version
+	cd $name-$version
 
 	# We're passing --without-lzmadec, because we want to use xz for
 	# LZMA support, not the obsolete lzmadec library.
