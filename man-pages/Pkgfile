@@ -5,13 +5,13 @@
 
 name=man-pages
 version=3.41
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz \
         http://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2003-a.tar.xz)
 
 build() {
     cd $name-$version
-    rm man1/time.1 man5/passwd.5 man2/quotactl.2
+    rm man1/time.1 man5/passwd.5
     make gz
     make MANDIR=/usr/man DESTDIR=$PKG install
 
