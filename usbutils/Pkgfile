@@ -4,9 +4,9 @@
 # Depends on:  libusb
 
 name=usbutils
-version=005
+version=006
 release=1
-source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz)
+source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
