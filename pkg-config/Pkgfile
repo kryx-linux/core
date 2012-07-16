@@ -3,9 +3,9 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=pkg-config
-version=0.26
-release=2
-source=(http://people.freedesktop.org/~dbn/$name-$version-internal-glib.tar.gz)
+version=0.27
+release=1
+source=(http://pkgconfig.freedesktop.org/releases/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
