@@ -3,17 +3,18 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  ncurses zlib
 
-name=util-linux-ng
-version=2.21.2
+name=util-linux
+version=2.22-rc1
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/util-linux/v2.21/util-linux-$version.tar.xz)
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz)
 
 build() {
-    cd util-linux-$version
+    cd $name-$version
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --disable-{nls,wall,mountpoint} \
+                --disable-{nls,wall} \
+                --disable-{login,su,sulogin} \
                 --enable-{write,raw,kill}
     make
     make DESTDIR=$PKG install
