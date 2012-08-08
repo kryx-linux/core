@@ -4,7 +4,7 @@
 
 name=ports
 version=1.5
-release=10
+release=11
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
         core.rsync opt.rsync xorg.rsync contrib.rsync.inactive)
 
@@ -13,9 +13,8 @@ build () {
     make
     make DESTDIR=$PKG install
 
-    install -m 0644 ../core.rsync $PKG/etc/ports/core.rsync
-    install -m 0644 ../opt.rsync $PKG/etc/ports/opt.rsync
-    install -m 0644 ../xorg.rsync $PKG/etc/ports/xorg.rsync
-    install -m 0644 ../contrib.rsync.inactive \
-        $PKG/etc/ports/contrib.rsync.inactive
+    install -m 0644 $SRC/core.rsync $PKG/etc/ports/core.rsync
+    install -m 0644 $SRC/opt.rsync $PKG/etc/ports/opt.rsync
+    install -m 0644 $SRC/xorg.rsync $PKG/etc/ports/xorg.rsync
+    install -m 0644 $SRC/contrib.rsync.inactive $PKG/etc/ports/contrib.rsync.inactive
 }
