@@ -5,11 +5,13 @@
 
 name=gettext
 version=0.18.1.1
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
+    # fix for glibc 'gets' removal
+    sed -i -e '/gets is a/d' $name-*/*/stdio.in.h
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-csharp \
