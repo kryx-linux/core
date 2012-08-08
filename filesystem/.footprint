@@ -22,6 +22,7 @@ drwxr-xr-x	root/root	opt/bin/
 drwxr-xr-x	root/root	opt/sbin/
 drwxr-xr-x	root/root	proc/
 drwxr-x---	root/root	root/
+drwxr-xr-x	root/root	run/
 drwxr-xr-x	root/root	sbin/
 drwxr-xr-x	root/root	sys/
 drwxrwxrwt	root/root	tmp/
