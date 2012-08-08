@@ -3,43 +3,42 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.12.2
-release=2
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
-        http://crux.nu/files/distfiles/kernel-headers-2.6.35.tar.xz
-        glibc-fedora_i686.patch
-        glibc-ignore_origin.patch
-        Optimize-__getpagesize-a-bit.patch
-        hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
+version=2.16.0
+release=1
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
+	http://crux.nu/files/distfiles/kernel-headers-3.4.7.tar.xz \
+	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
+	$name-resolv_assert.patch)
 
 build() {
-    # install kernel headers
-    mkdir $PKG/usr/
-    cp -r kernel-headers-2.6.35/include $PKG/usr
-    chown root:root $PKG/usr
+	# install kernel headers
+	mkdir $PKG/usr/
+	cp -r kernel-headers-3.4.7/include $PKG/usr
+	chown root:root $PKG/usr
 
-    patch -p1 -d $name-$version -i $SRC/$name-fedora_i686.patch
-    patch -R -p1 -d $name-$version -i $SRC/Optimize-__getpagesize-a-bit.patch
-    patch -p1 -d $name-$version -i $SRC/$name-ignore_origin.patch
+	patch -p1 -d $name-$version -i $SRC/$name-resolv_assert.patch
 
-    mkdir build
-    cd build
-    ../$name-$version/configure --prefix=/usr \
-                                --libexecdir=/usr/lib \
-                                --with-headers=$PKG/usr/include \
-                                --with-tls \
-                                --enable-kernel=2.6.27 \
-                                --enable-add-ons \
-                                --disable-profile \
-                                --without-gd
-    make 
-    #make check
-    make install_root=$PKG install
+	mkdir build
+	cd build
+	../$name-$version/configure --prefix=/usr \
+		--libexecdir=/usr/lib \
+		--with-headers=$PKG/usr/include \
+		--with-tls \
+		--enable-kernel=2.6.39 \
+		--enable-add-ons \
+		--disable-profile \
+		--without-gd \
+		--enable-obsolete-rpc
+	make 
+	#make check
+	make install_root=$PKG install
 
-    cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
-    ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
-    mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
-    touch $PKG/etc/ld.so.cache
+	cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
+	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
+	mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
+	touch $PKG/etc/ld.so.cache
 
-    rm -rf $PKG/usr/share/{info,locale}
+	rm -rf $PKG/usr/share/{info,locale} \
+		$PKG/usr/bin/tzselect \
+		$PKG/usr/sbin/z{dump,ic}
 }
