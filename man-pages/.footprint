@@ -517,7 +517,6 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/outsw.2.gz
 -rw-r--r--	root/root	usr/man/man2/outw.2.gz
 -rw-r--r--	root/root	usr/man/man2/outw_p.2.gz
--rw-r--r--	root/root	usr/man/man2/path_resolution.2.gz
 -rw-r--r--	root/root	usr/man/man2/pause.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_iobase.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_read.2.gz
@@ -3336,11 +3335,8 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/console_ioctl.4.gz
 -rw-r--r--	root/root	usr/man/man4/cpuid.4.gz
 -rw-r--r--	root/root	usr/man/man4/dsp56k.4.gz
--rw-r--r--	root/root	usr/man/man4/epoll.4.gz
 -rw-r--r--	root/root	usr/man/man4/fd.4.gz
--rw-r--r--	root/root	usr/man/man4/fifo.4.gz
 -rw-r--r--	root/root	usr/man/man4/full.4.gz
--rw-r--r--	root/root	usr/man/man4/futex.4.gz
 -rw-r--r--	root/root	usr/man/man4/hd.4.gz
 -rw-r--r--	root/root	usr/man/man4/hpsa.4.gz
 -rw-r--r--	root/root	usr/man/man4/initrd.4.gz
@@ -3371,11 +3367,9 @@ drwxr-xr-x	root/root	usr/man/man4/
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/acct.5.gz
 -rw-r--r--	root/root	usr/man/man5/charmap.5.gz
--rw-r--r--	root/root	usr/man/man5/complex.5.gz
 -rw-r--r--	root/root	usr/man/man5/core.5.gz
 -rw-r--r--	root/root	usr/man/man5/dir_colors.5.gz
 -rw-r--r--	root/root	usr/man/man5/elf.5.gz
--rw-r--r--	root/root	usr/man/man5/environ.5.gz
 -rw-r--r--	root/root	usr/man/man5/filesystems.5.gz
 -rw-r--r--	root/root	usr/man/man5/fs.5.gz
 -rw-r--r--	root/root	usr/man/man5/ftpusers.5.gz
