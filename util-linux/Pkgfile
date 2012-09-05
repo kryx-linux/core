@@ -4,15 +4,12 @@
 # Depends on:  ncurses zlib
 
 name=util-linux
-version=2.22-rc2
-release=2
-source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz \
-        $name-$version-fix1.diff)
+version=2.22
+release=1
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
-
-    patch -p1 -i $SRC/$name-$version-fix1.diff
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
