@@ -5,7 +5,7 @@
 
 name=util-linux-ng
 version=2.22
-release=1
+release=2
 source=(http://ftp.kernel.org/pub/linux/utils/util-linux/v2.22/util-linux-$version.tar.xz)
 
 build() {
@@ -16,7 +16,8 @@ build() {
                 --disable-{nls,wall,mountpoint} \
                 --disable-{login,su,sulogin} \
                 --disable-utmpdump \
-                --enable-{write,raw,kill}
+                --enable-{write,raw,kill} \
+                --enable-deprecated-mount 
     make
     make DESTDIR=$PKG install
 
