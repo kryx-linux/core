@@ -1,6 +1,8 @@
+# http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-libs/timezone-data/files/timezone-data-2012a-makefile.patch
+
 diff -Nru tzcode.orig/Makefile tzcode/Makefile
---- tzcode.orig/Makefile	2012-08-03 19:21:09.713863123 +0200
-+++ tzcode/Makefile	2012-08-03 19:21:31.769750400 +0200
+--- tzcode.orig/Makefile	2012-09-13 10:25:47.698561812 +0200
++++ tzcode/Makefile	2012-09-13 10:31:12.070115537 +0200
 @@ -39,17 +39,17 @@
  
  # Everything gets put in subdirectories of. . .
@@ -18,28 +20,10 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  # The "tzselect", "zic", and "zdump" commands get installed in. . .
  
 -ETCDIR=		$(TOPDIR)/etc
-+SBINDIR=		$(TOPDIR)/sbin
++SBINDIR=	$(TOPDIR)/sbin
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -88,7 +88,7 @@
- 
- # Non-default libraries needed to link.
- # Add -lintl if you want to use `gettext' on Solaris.
--LDLIBS=
-+LDLIBS=$(LDFLAGS)
- 
- # Add the following to the end of the "CFLAGS=" line as needed.
- #  -DHAVE_ADJTIME=0 if `adjtime' does not exist (SVR0?)
-@@ -214,7 +214,7 @@
- # before the first Monday in January when a "%V" format is used and January 1
- # falls on a Friday, Saturday, or Sunday.
- 
--CFLAGS=
-+CFLAGS += -std=gnu99
- 
- # If you want zic's -s option used when installing, uncomment the next line
- # ZFLAGS=	-s
 @@ -223,7 +223,7 @@
  ZIC=		$(zic) $(ZFLAGS)
  
@@ -62,7 +46,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  TZCSRCS=	zic.c localtime.c asctime.c scheck.c ialloc.c
  TZCOBJS=	zic.o localtime.o asctime.o scheck.o ialloc.o
-@@ -298,14 +300,16 @@
+@@ -298,13 +300,15 @@
  
  ALL:		all date
  
@@ -74,16 +58,14 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  		cp iso3166.tab zone.tab $(TZDIR)/.
 -		-mkdir $(TOPDIR) $(ETCDIR)
 -		cp tzselect zic zdump $(ETCDIR)/.
--		-mkdir $(TOPDIR) $(MANDIR) \
-+		-mkdir -p $(TOPDIR) $(SBINDIR)
++		-mkdir $(TOPDIR) $(SBINDIR)
 +		cp zic zdump $(SBINDIR)/.
-+		-mkdir -p $(TOPDIR) $(BINDIR)
++		-mkdir $(TOPDIR) $(BINDIR)
 +		cp tzselect $(BINDIR)/.
-+		-mkdir -p $(TOPDIR) $(MANDIR) \
+ 		-mkdir $(TOPDIR) $(MANDIR) \
  			$(MANDIR)/man3 $(MANDIR)/man5 $(MANDIR)/man8
  		-rm -f $(MANDIR)/man3/newctime.3 \
- 			$(MANDIR)/man3/newtzset.3 \
-@@ -314,13 +318,11 @@
+@@ -314,8 +318,6 @@
  			$(MANDIR)/man8/zdump.8 \
  			$(MANDIR)/man8/zic.8
  		cp newctime.3 newtzset.3 $(MANDIR)/man3/.
@@ -91,14 +73,20 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
 -		cp tzselect.8 zdump.8 zic.8 $(MANDIR)/man8/.
  
  INSTALL:	ALL install date.1
--		-mkdir $(TOPDIR) $(BINDIR)
-+		-mkdir -p $(TOPDIR) $(BINDIR)
- 		cp date $(BINDIR)/.
--		-mkdir $(TOPDIR) $(MANDIR) $(MANDIR)/man1
-+		-mkdir -p $(TOPDIR) $(MANDIR) $(MANDIR)/man1
- 		-rm -f $(MANDIR)/man1/date.1
- 		cp date.1 $(MANDIR)/man1/.
+ 		-mkdir $(TOPDIR) $(BINDIR)
+@@ -329,10 +331,10 @@
+ 		  'static char const TZVERSION[]="tz$(VERSION)";'
  
+ zdump:		$(TZDOBJS)
+-		$(CC) $(CFLAGS) $(LFLAGS) $(TZDOBJS) $(LDLIBS) -o $@
++		$(CC) $(CFLAGS) $(LDFLAGS) $(TZDOBJS) $(LDLIBS) -o $@
+ 
+ zic:		$(TZCOBJS) yearistype
+-		$(CC) $(CFLAGS) $(LFLAGS) $(TZCOBJS) $(LDLIBS) -o $@
++		$(CC) $(CFLAGS) $(LDFLAGS) $(TZCOBJS) $(LDLIBS) -o $@
+ 
+ yearistype:	yearistype.sh
+ 		cp yearistype.sh yearistype
 @@ -354,9 +356,9 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
@@ -111,6 +99,15 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  posix_right:	posix_only other_two
  
+@@ -371,7 +373,7 @@
+ 			then ranlib $@ ; fi
+ 
+ date:		$(DATEOBJS)
+-		$(CC) $(CFLAGS) date.o localtime.o asctime.o strftime.o \
++		$(CC) $(CFLAGS) $(LDFLAGS) date.o localtime.o asctime.o strftime.o \
+ 			$(LDLIBS) -lc -o $@
+ 
+ tzselect:	tzselect.ksh
 @@ -382,7 +384,7 @@
  			<$? >$@
  		chmod +x $@
@@ -121,8 +118,8 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  check_tables:	checktab.awk $(PRIMARY_YDATA)
  		$(AWK) -f checktab.awk $(PRIMARY_YDATA)
 diff -Nru tzcode.orig/tzselect.ksh tzcode/tzselect.ksh
---- tzcode.orig/tzselect.ksh	2012-08-03 19:21:09.713863123 +0200
-+++ tzcode/tzselect.ksh	2012-08-03 19:21:31.773083616 +0200
+--- tzcode.orig/tzselect.ksh	2012-09-13 10:25:47.698561812 +0200
++++ tzcode/tzselect.ksh	2012-09-13 10:26:06.107893321 +0200
 @@ -1,4 +1,4 @@
 -#! /bin/ksh
 +#! /bin/bash
