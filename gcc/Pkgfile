@@ -4,7 +4,7 @@
 # Depends on:  zlib libmpc
 
 name=gcc
-version=4.7-20120901
+version=4.7.2-RC-20120914
 release=1
 source=(ftp://gcc.gnu.org/pub/gcc/snapshots/$version/$name-$version.tar.bz2
         $name-nocheck-fixincludes.patch)
