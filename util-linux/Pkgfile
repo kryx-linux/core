@@ -4,9 +4,10 @@
 # Depends on:  ncurses zlib
 
 name=util-linux
-version=2.22
+version=2.22.0.50
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz)
+#source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz)
+source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
@@ -14,7 +15,7 @@ build() {
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-{nls,wall} \
-                --disable-{login,su,sulogin} \
+                --disable-{login,su,sulogin,runuser} \
                 --enable-{write,raw,kill}
     make
     make DESTDIR=$PKG install
@@ -22,7 +23,7 @@ build() {
     install -d $PKG/{etc,var/{lib/libuuid,run/uuidd}}
     touch $PKG/etc/adjtime
 
-    rm -r $PKG/usr/{share,man/ru}
+    rm -r $PKG/usr/share
     rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
     rm $PKG/usr/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }
