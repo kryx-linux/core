@@ -4,19 +4,23 @@
 
 name=glibc
 version=2.16.0
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-3.4.7.tar.xz \
+	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
-	$name-resolv_assert.patch)
+	$name-resolv_assert.patch \
+	$name-segfault_in_strncasecmp.patch \
+	$name-strtod_integer_overflow.patch)
 
 build() {
 	# install kernel headers
 	mkdir $PKG/usr/
-	cp -r kernel-headers-3.4.7/include $PKG/usr
+	cp -r kernel-headers-3.4.11/include $PKG/usr
 	chown root:root $PKG/usr
 
 	patch -p1 -d $name-$version -i $SRC/$name-resolv_assert.patch
+	patch -p1 -d $name-$version -i $SRC/$name-segfault_in_strncasecmp.patch
+	patch -p1 -d $name-$version -i $SRC/$name-strtod_integer_overflow.patch
 
 	mkdir build
 	cd build
