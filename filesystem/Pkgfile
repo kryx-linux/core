@@ -67,7 +67,7 @@ build() {
     cp securetty $PKG/etc
     cp fstab $PKG/etc
     cp mime.types $PKG/etc
-    touch $PKG/etc/mtab
+    ln -s /proc/self/mounts $PKG/etc/mtab
     chmod 640 $PKG/etc/shadow
 
     # /usr/bin/crux
