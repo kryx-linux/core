@@ -19,6 +19,11 @@ if [ -x /sbin/lvm ]; then
 	/sbin/vgchange --ignorelockingfailure -a y
 fi
 
+# Scan for btrfs volumes to simplify fstab entries
+if [ -r /sys/fs/btrfs ]; then
+	/sbin/btrfs dev scan
+fi
+
 # Mount root read-only
 /bin/mount -o remount,ro /
 
