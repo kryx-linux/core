@@ -4,7 +4,7 @@
 # Depends on:  ncurses zlib
 
 name=util-linux
-version=2.22.0.50
+version=2.22.50-df0bd
 release=1
 #source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.22/$name-$version.tar.xz)
 source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz)
