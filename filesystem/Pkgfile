@@ -4,7 +4,7 @@
 
 name=filesystem
 version=2.8
-release=2
+release=3
 source=(issue motd shells group passwd shadow securetty fstab mime.types)
 
 build() {
@@ -13,6 +13,7 @@ build() {
     mkdir $PKG/sbin
     mkdir $PKG/boot
     mkdir $PKG/dev
+    mkdir $PKG/dev/{pts,shm}
     mkdir $PKG/proc
     mkdir $PKG/sys
     mkdir $PKG/etc
