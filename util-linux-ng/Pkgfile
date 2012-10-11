@@ -4,8 +4,8 @@
 # Depends on:  ncurses zlib
 
 name=util-linux-ng
-version=2.22
-release=2
+version=2.22.1
+release=1
 source=(http://ftp.kernel.org/pub/linux/utils/util-linux/v2.22/util-linux-$version.tar.xz)
 
 build() {
@@ -24,7 +24,7 @@ build() {
     install -d $PKG/{etc,var/{lib/libuuid,run/uuidd}}
     touch $PKG/etc/adjtime
 
-    rm -r $PKG/usr/{share,man/ru}
+    rm -r $PKG/usr/share
     rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
     rm $PKG/usr/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }
