@@ -522,6 +522,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pciconfig_read.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_write.2.gz
 -rw-r--r--	root/root	usr/man/man2/personality.2.gz
+-rw-r--r--	root/root	usr/man/man2/phys.2.gz
 -rw-r--r--	root/root	usr/man/man2/pipe.2.gz
 -rw-r--r--	root/root	usr/man/man2/pipe2.2.gz
 -rw-r--r--	root/root	usr/man/man2/pivot_root.2.gz
@@ -1827,6 +1828,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/scandirat.3.gz
 -rw-r--r--	root/root	usr/man/man3/scanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/sched_getcpu.3.gz
+-rw-r--r--	root/root	usr/man/man3/secure_getenv.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/seekdir.3.gz
