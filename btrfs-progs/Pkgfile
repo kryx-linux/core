@@ -4,7 +4,7 @@
 # Depends on:  util-linux-ng e2fsprogs
 
 name=btrfs-progs
-version=20120904
+version=20121004
 release=1
 source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz)
 
