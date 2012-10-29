@@ -4,7 +4,7 @@
 # Depends on:  ncurses
 
 name=procps
-version=3.3.3
+version=3.3.4
 release=1
 source=(http://ftp.de.debian.org/debian/pool/main/p/$name/${name}_$version.orig.tar.xz
         sysctl.conf)
