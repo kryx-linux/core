@@ -15,8 +15,8 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/instmodsh
 -rwxr-xr-x	root/root	usr/bin/json_pp
 -rwxr-xr-x	root/root	usr/bin/libnetcfg
-lrwxrwxrwx	root/root	usr/bin/perl -> perl5.16.1
--rwxr-xr-x	root/root	usr/bin/perl5.16.1
+lrwxrwxrwx	root/root	usr/bin/perl -> perl5.16.2
+-rwxr-xr-x	root/root	usr/bin/perl5.16.2
 -rwxr-xr-x	root/root	usr/bin/perlbug
 -rwxr-xr-x	root/root	usr/bin/perldoc
 -rwxr-xr-x	root/root	usr/bin/perlivp
@@ -495,6 +495,8 @@ drwxr-xr-x	root/root	usr/lib/perl5/5.16/Module/Build/Platform/
 -rw-r--r--	root/root	usr/lib/perl5/5.16/Module/Build/YAML.pm
 -rw-r--r--	root/root	usr/lib/perl5/5.16/Module/CoreList.pm
 -rw-r--r--	root/root	usr/lib/perl5/5.16/Module/CoreList.pod
+drwxr-xr-x	root/root	usr/lib/perl5/5.16/Module/CoreList/
+-rw-r--r--	root/root	usr/lib/perl5/5.16/Module/CoreList/TieHashDelta.pm
 -rw-r--r--	root/root	usr/lib/perl5/5.16/Module/Load.pm
 drwxr-xr-x	root/root	usr/lib/perl5/5.16/Module/Load/
 -rw-r--r--	root/root	usr/lib/perl5/5.16/Module/Load/Conditional.pm
@@ -1230,8 +1232,10 @@ drwxr-xr-x	root/root	usr/lib/perl5/5.16/pod/
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5140delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5141delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5142delta.pod
+-rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5143delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5160delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5161delta.pod
+-rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl5162delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl561delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl56delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.16/pod/perl581delta.pod
@@ -2380,8 +2384,10 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/perl5140delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl5141delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl5142delta.1pm.gz
+-rw-r--r--	root/root	usr/man/man1/perl5143delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl5160delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl5161delta.1pm.gz
+-rw-r--r--	root/root	usr/man/man1/perl5162delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl561delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl56delta.1pm.gz
 -rw-r--r--	root/root	usr/man/man1/perl581delta.1pm.gz
