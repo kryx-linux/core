@@ -4,7 +4,7 @@
 
 name=kmod
 version=11
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz)
 
 build() {
@@ -13,7 +13,7 @@ build() {
     ./configure --prefix=/usr \
                 --bindir=/sbin \
                 --sysconfdir=/etc \
-                --mandir=/usr/man \
+                --disable-manpages \
                 --with-rootlibdir=/lib
 
     make
@@ -21,6 +21,10 @@ build() {
 
     install -d $PKG/etc/{modprobe,depmod}.d
     install -d $PKG/bin
+    install -d $PKG/usr/man/{man5,man8}
+
+    install -m 0644 man/*.5 $PKG/usr/man/man5
+    install -m 0644 man/*.8 $PKG/usr/man/man8
 
     ln -s kmod $PKG/sbin/modinfo
     ln -s kmod $PKG/sbin/depmod
