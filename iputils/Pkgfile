@@ -4,7 +4,7 @@
 # Depends on: libcap openssl sysfsutils
 
 name=iputils
-version=s20121106
+version=s20121114
 release=1
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
