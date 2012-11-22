@@ -1,5 +1,11 @@
+98db8d4c9865cb6a844762d74531a4e9  contrib-x86_64.rsync.inactive
 49132c847c2d14ed0dbb61c6f53b0e1a  contrib.rsync.inactive
+3222c4c3b1d82a62fb438de2a08c0309  core-x86_64-multilib.rsync
+c93fb29daf64e403722f39c599dbc4e1  core-x86_64.rsync
 8cb8a1539dd74bb566c166877ac16856  core.rsync
+03681c2fd24e73406f14ce78b4db805c  opt-x86_64-multilib.rsync
+bdd14eea5dd3d10ddddeb0a31c6ef9fe  opt-x86_64.rsync
 541d0991ecf5f96ae52d1e13f481e123  opt.rsync
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
+770e23e3a183c7c111a3541d799b61ff  xorg-x86_64-multilib.rsync
 efeb3ce474a4a0c67ecb62c0eaaf4e34  xorg.rsync

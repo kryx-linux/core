@@ -10,7 +10,7 @@ lrwxrwxrwx	root/root	etc/localtime -> ../usr/share/zoneinfo/UTC
 -rw-r--r--	root/root	etc/rpc
 drwxr-xr-x	root/root	lib/
 -rwxr-xr-x	root/root	lib/ld-2.16.so
-lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ld-2.16.so
+lrwxrwxrwx	root/root	lib/ld-linux-x86-64.so.2 -> ld-2.16.so
 -rwxr-xr-x	root/root	lib/libBrokenLocale-2.16.so
 lrwxrwxrwx	root/root	lib/libBrokenLocale.so.1 -> libBrokenLocale-2.16.so
 -rwxr-xr-x	root/root	lib/libSegFault.so
@@ -65,7 +65,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/getent
 -rwxr-xr-x	root/root	usr/bin/iconv
 -rwxr-xr-x	root/root	usr/bin/ldd
--rwxr-xr-x	root/root	usr/bin/lddlibc4
 -rwxr-xr-x	root/root	usr/bin/locale
 -rwxr-xr-x	root/root	usr/bin/localedef
 -rwxr-xr-x	root/root	usr/bin/makedb
@@ -333,7 +332,7 @@ drwxr-xr-x	root/root	usr/include/bits/
 drwxr-xr-x	root/root	usr/include/gnu/
 -rw-r--r--	root/root	usr/include/gnu/lib-names.h
 -rw-r--r--	root/root	usr/include/gnu/libc-version.h
--rw-r--r--	root/root	usr/include/gnu/stubs-32.h
+-rw-r--r--	root/root	usr/include/gnu/stubs-64.h
 -rw-r--r--	root/root	usr/include/gnu/stubs.h
 -rw-r--r--	root/root	usr/include/grp.h
 -rw-r--r--	root/root	usr/include/gshadow.h
@@ -1483,12 +1482,9 @@ drwxr-xr-x	root/root	usr/lib/gconv/
 -rwxr-xr-x	root/root	usr/lib/gconv/libKSC.so
 -rw-r--r--	root/root	usr/lib/gcrt1.o
 drwxr-xr-x	root/root	usr/lib/getconf/
--rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V6_ILP32_OFF32
--rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V6_ILP32_OFFBIG
--rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V7_ILP32_OFF32
--rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V7_ILP32_OFFBIG
--rwxr-xr-x	root/root	usr/lib/getconf/XBS5_ILP32_OFF32
--rwxr-xr-x	root/root	usr/lib/getconf/XBS5_ILP32_OFFBIG
+-rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V6_LP64_OFF64
+-rwxr-xr-x	root/root	usr/lib/getconf/POSIX_V7_LP64_OFF64
+-rwxr-xr-x	root/root	usr/lib/getconf/XBS5_LP64_OFF64
 -rw-r--r--	root/root	usr/lib/libBrokenLocale.a
 lrwxrwxrwx	root/root	usr/lib/libBrokenLocale.so -> ../../lib/libBrokenLocale.so.1
 -rw-r--r--	root/root	usr/lib/libanl.a

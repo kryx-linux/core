@@ -5,13 +5,13 @@
 name=libgmp
 version=5.0.5
 release=1
-source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.xz)
+source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.bz2)
 
 build() {
     cd gmp-$version
-    ABI=32 ./configure --prefix=/usr \
+    ./configure --prefix=/usr \
                        --enable-cxx \
-                       --build=i686-pc-linux-gnu
+                       --build=x86_64-unknown-linux-gnu
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/share

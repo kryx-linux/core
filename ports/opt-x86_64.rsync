@@ -1,0 +1,3 @@
+host=crux.nu
+collection=ports/crux-2.8/opt-x86_64/
+destination=/usr/ports/opt-x86_64

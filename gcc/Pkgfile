@@ -6,12 +6,13 @@
 name=gcc
 version=4.7.2
 release=1
-source=(ftp://gcc.gnu.org/pub/gcc/releases/$name-$version/$name-$version.tar.bz2
-        $name-nocheck-fixincludes.patch)
+source=(ftp://gcc.gnu.org/pub/gcc/releases/$name-$version/$name-$version.tar.bz2 \
+	$name-nocheck-fixincludes.patch $name-$version-multilib-dirs.patch)
 
 
 build() {
     patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
+	patch -d $name-$version -p1 -i $SRC/$name-$version-multilib-dirs.patch
 
     mkdir build
     cd build
@@ -26,7 +27,8 @@ build() {
                                 --disable-nls \
                                 --with-x=no \
                                 --with-system-zlib \
-                                --with-pkgversion="CRUX-i686"
+                                --enable-multilib \
+                                --with-pkgversion="CRUX-x86_64-multilib"
     make bootstrap
     make -j1 DESTDIR=$PKG install
 
@@ -35,12 +37,12 @@ build() {
     ln -sf gcc $PKG/usr/bin/cc
     ln -sf g++ $PKG/usr/bin/c++
 
-    mv $PKG/usr/lib/gcc/*/4.7.2/include-fixed/{limits.h,syslimits.h} $PKG/usr/lib/gcc/*/4.7.2/include/
+    mv $PKG/usr/lib/gcc/*/$version/include-fixed/{limits.h,syslimits.h} $PKG/usr/lib/gcc/*/$version/include/
 
-    rm -f $PKG/usr/lib/{libiberty.a,libstdc++.so.6.0.17-gdb.py}
+    rm -f $PKG/usr/lib{,32}/{libiberty.a,libstdc++.so.6.0.17-gdb.py}
     rm -r $PKG/usr/share 
     rm -r $PKG/usr/bin/*-linux-gnu-*
-    rm -r $PKG/usr/lib/gcc/*/4.7.2/{install-tools,include-fixed} 
+    rm -r $PKG/usr/lib/gcc/*/$version/{install-tools,include-fixed} 
 
-    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/{libstdc++.la,libsupc++.la}
+    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib{,32}/{libstdc++.la,libsupc++.la}
 }

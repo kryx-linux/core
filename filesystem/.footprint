@@ -18,6 +18,8 @@ lrwxrwxrwx	root/root	etc/mtab -> /proc/self/mounts
 drwxr-xr-x	root/root	home/
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/modules/
+drwxr-xr-x	root/root	lib32/
+lrwxrwxrwx	root/root	lib64 -> lib
 drwxr-xr-x	root/root	mnt/
 drwxr-xr-x	root/root	opt/
 drwxr-xr-x	root/root	opt/bin/
@@ -33,6 +35,8 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/crux
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib64 -> lib
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 drwxr-xr-x	root/root	usr/man/man2/
