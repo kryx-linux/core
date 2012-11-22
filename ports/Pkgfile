@@ -7,10 +7,8 @@ version=1.5
 release=13
 
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
-        core.rsync opt.rsync xorg.rsync contrib.rsync.inactive \
-        core-x86_64.rsync opt-x86_64.rsync contrib-x86_64.rsync.inactive \
-        core-x86_64-multilib.rsync opt-x86_64-multilib.rsync \
-        xorg-x86_64-multilib.rsync)
+        core.rsync opt.rsync xorg.rsync compat-32.rsync \
+        contrib.rsync.inactive)
 
 build () {
     cd $name-$version
@@ -20,11 +18,6 @@ build () {
     install -m 0644 $SRC/core.rsync $PKG/etc/ports
     install -m 0644 $SRC/opt.rsync $PKG/etc/ports
     install -m 0644 $SRC/xorg.rsync $PKG/etc/ports
-    install -m 0644 $SRC/core-x86_64.rsync $PKG/etc/ports
-    install -m 0644 $SRC/opt-x86_64.rsync $PKG/etc/ports
+    install -m 0644 $SRC/compat-32.rsync $PKG/etc/ports
     install -m 0644 $SRC/contrib.rsync.inactive $PKG/etc/ports
-    install -m 0644 $SRC/contrib-x86_64.rsync.inactive $PKG/etc/ports
-    install -m 0644 $SRC/core-x86_64-multilib.rsync $PKG/etc/ports
-    install -m 0644 $SRC/opt-x86_64-multilib.rsync $PKG/etc/ports
-    install -m 0644 $SRC/xorg-x86_64-multilib.rsync $PKG/etc/ports
 }

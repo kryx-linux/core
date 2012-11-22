@@ -1,3 +1,0 @@
-host=morpheus.net
-collection=crux-multilib-ports/opt-multilib/2.8/
-destination=/usr/ports/opt-multilib
