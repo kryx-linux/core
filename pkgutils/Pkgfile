@@ -4,14 +4,11 @@
 # Depends on:  libarchive
 
 name=pkgutils
-version=5.35.2
+version=5.35.3
 release=1
-source=(http://crux.nu/files/$name-$version.tar.gz \
-	pkgmk pkgmk.conf)
+source=(http://crux.nu/files/$name-$version.tar.gz)
 
 build () {
 	cd $name-$version
 	make DESTDIR=$PKG install
-	install -m 0755 -D $SRC/pkgmk $PKG/usr/bin/pkgmk
-	install -m 0644 -D $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
 }
