@@ -4,7 +4,7 @@
 
 name=glibc-32
 version=2.16.0
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
 	$name-$version-multilib-dirs.patch \
@@ -31,7 +31,6 @@ build() {
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
 		--with-headers=$PKG/usr/include \
-		--with-tls \
 		--enable-kernel=2.6.27 \
 		--enable-add-ons \
 		--disable-profile \
