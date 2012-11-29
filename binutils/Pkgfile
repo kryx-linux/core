@@ -5,7 +5,7 @@
 # Depends on:  zlib
 
 name=binutils
-version=2.22
+version=2.23.1
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
