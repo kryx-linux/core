@@ -5,11 +5,11 @@
 
 name=xfsprogs
 version=3.1.9
-release=1
+release=2
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 
 build() {
-    #cd $name-$version
+    cd $name-$version
 
     make configure
 
