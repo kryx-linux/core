@@ -4,13 +4,13 @@
 # Depends on:  db iptables
 
 name=iproute2
-version=3.6.0
+version=3.7.0
 release=1
 source=(http://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
         net.iproute2)
 
 build() {
-    cd $name-$version
+    cd iproute-$version
     ./configure
     make CCOPTS="$CFLAGS"
     make MANDIR=/usr/man DESTDIR=$PKG install
