@@ -5,12 +5,12 @@
 
 name=iproute2
 version=3.7.0
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
         net.iproute2)
 
 build() {
-    cd iproute-$version
+    cd $name-$version
     ./configure
     make CCOPTS="$CFLAGS"
     make MANDIR=/usr/man DESTDIR=$PKG install
