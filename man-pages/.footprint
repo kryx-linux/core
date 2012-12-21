@@ -571,6 +571,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/rt_sigsuspend.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigtimedwait.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_tgsigqueueinfo.2.gz
+-rw-r--r--	root/root	usr/man/man2/s390_runtime_instr.2.gz
 -rw-r--r--	root/root	usr/man/man2/sbrk.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_get_priority_max.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_get_priority_min.2.gz
@@ -1415,6 +1416,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/iconv.3.gz
 -rw-r--r--	root/root	usr/man/man3/iconv_close.3.gz
 -rw-r--r--	root/root	usr/man/man3/iconv_open.3.gz
+-rw-r--r--	root/root	usr/man/man3/if_freenameindex.3.gz
+-rw-r--r--	root/root	usr/man/man3/if_indextoname.3.gz
+-rw-r--r--	root/root	usr/man/man3/if_nameindex.3.gz
+-rw-r--r--	root/root	usr/man/man3/if_nametoindex.3.gz
 -rw-r--r--	root/root	usr/man/man3/ilogb.3.gz
 -rw-r--r--	root/root	usr/man/man3/ilogbf.3.gz
 -rw-r--r--	root/root	usr/man/man3/ilogbl.3.gz
