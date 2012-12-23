@@ -4,7 +4,7 @@
 # Depends on: libcap openssl sysfsutils
 
 name=iputils
-version=s20121126
+version=s20121221
 release=1
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
@@ -12,7 +12,7 @@ source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
 build() {
     cd $name-$version
 
-    make CCOPTOPT="$CFLAGS"
+    make USE_GNUTLS=no CCOPTOPT="$CFLAGS"
 
     install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
     install ping{,6} $PKG/bin/
