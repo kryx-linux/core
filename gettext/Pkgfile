@@ -4,14 +4,12 @@
 # Depends on:  ncurses acl
 
 name=gettext
-version=0.18.1.1
-release=2
+version=0.18.2
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    # fix for glibc 'gets' removal
-    sed -i -e '/gets is a/d' $name-*/*/stdio.in.h
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-csharp \
@@ -22,5 +20,5 @@ build() {
     make
     make -j1 DESTDIR=$PKG install
     rm -r $PKG/usr/share/{info,doc}
-    rm $PKG/usr/share/gettext/intl/{COPYING*,ChangeLog}
+    rm $PKG/usr/share/gettext/intl/ChangeLog
 }
