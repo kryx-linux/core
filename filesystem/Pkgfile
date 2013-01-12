@@ -4,7 +4,7 @@
 
 name=filesystem
 version=3.0
-release=1
+release=2
 source=(issue motd shells group passwd shadow securetty fstab mime.types)
 
 build() {
@@ -77,7 +77,7 @@ build() {
 cat > $PKG/usr/bin/crux << EOF
 #!/bin/sh
 
-echo "CRUX version $version x86_64-multilib"
+echo "CRUX version $version"
 
 # End of file
 EOF
