@@ -523,6 +523,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pciconfig_iobase.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_read.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_write.2.gz
+-rw-r--r--	root/root	usr/man/man2/perf_event_open.2.gz
 -rw-r--r--	root/root	usr/man/man2/personality.2.gz
 -rw-r--r--	root/root	usr/man/man2/phys.2.gz
 -rw-r--r--	root/root	usr/man/man2/pipe.2.gz
@@ -1285,12 +1286,14 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/getc_unlocked.3.gz
 -rw-r--r--	root/root	usr/man/man3/getchar.3.gz
 -rw-r--r--	root/root	usr/man/man3/getchar_unlocked.3.gz
+-rw-r--r--	root/root	usr/man/man3/getcontext.3.gz
 -rw-r--r--	root/root	usr/man/man3/getcwd.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdate.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdate_err.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdate_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdelim.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdirentries.3.gz
+-rw-r--r--	root/root	usr/man/man3/getdtablesize.3.gz
 -rw-r--r--	root/root	usr/man/man3/getenv.3.gz
 -rw-r--r--	root/root	usr/man/man3/getfsent.3.gz
 -rw-r--r--	root/root	usr/man/man3/getfsfile.3.gz
@@ -1729,6 +1732,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_getattr_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getconcurrency.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getcpuclockid.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_getname_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_join.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_kill.3.gz
@@ -1738,6 +1742,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_setcancelstate.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setcanceltype.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setconcurrency.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_setname_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedprio.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_sigmask.3.gz
@@ -1858,6 +1863,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/setaliasent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setbuf.3.gz
 -rw-r--r--	root/root	usr/man/man3/setbuffer.3.gz
+-rw-r--r--	root/root	usr/man/man3/setcontext.3.gz
 -rw-r--r--	root/root	usr/man/man3/setenv.3.gz
 -rw-r--r--	root/root	usr/man/man3/setfsent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setgrent.3.gz
@@ -3559,6 +3565,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/ld.so.8.gz
 -rw-r--r--	root/root	usr/man/man8/ldconfig.8.gz
 -rw-r--r--	root/root	usr/man/man8/nscd.8.gz
+-rw-r--r--	root/root	usr/man/man8/sln.8.gz
 -rw-r--r--	root/root	usr/man/man8/sync.8.gz
 -rw-r--r--	root/root	usr/man/man8/tzselect.8.gz
 -rw-r--r--	root/root	usr/man/man8/zdump.8.gz
