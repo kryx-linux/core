@@ -294,6 +294,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Kashgar
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Kathmandu
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Katmandu
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Khandyga
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Kolkata
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Krasnoyarsk
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Kuala_Lumpur
@@ -338,6 +339,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ulaanbaatar
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ulan_Bator
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Urumqi
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ust-Nera
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Vientiane
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Vladivostok
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Yakutsk
@@ -453,6 +455,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Brussels
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Bucharest
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Budapest
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Busingen
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Chisinau
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Dublin
@@ -900,6 +903,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Kashgar
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Kathmandu
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Katmandu
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Khandyga
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Kolkata
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Krasnoyarsk
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Kuala_Lumpur
@@ -944,6 +948,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Ulaanbaatar
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Ulan_Bator
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Urumqi
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Ust-Nera
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Vientiane
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Vladivostok
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Yakutsk
@@ -1059,6 +1064,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Brussels
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Bucharest
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Budapest
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Busingen
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Chisinau
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Dublin
@@ -1505,6 +1511,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Kashgar
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Kathmandu
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Katmandu
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Khandyga
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Kolkata
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Krasnoyarsk
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Kuala_Lumpur
@@ -1549,6 +1556,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Ulaanbaatar
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Ulan_Bator
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Urumqi
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Ust-Nera
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Vientiane
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Vladivostok
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Yakutsk
@@ -1664,6 +1672,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Brussels
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Bucharest
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Budapest
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Busingen
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Chisinau
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Dublin
