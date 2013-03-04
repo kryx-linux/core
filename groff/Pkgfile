@@ -4,7 +4,7 @@
 
 name=groff
 version=1.22.2
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -24,6 +24,12 @@ build() {
 
     make
     make DESTDIR=$PKG install
+
+    sed -e 's|^\(papersize\).*|\1 /etc/papersize|' \
+        -i $PKG/usr/share/groff/current/font/*/DESC
+    
+    install -d $PKG/etc
+    echo 'letter' > $PKG/etc/papersize
 
     rm -rf $PKG/usr/share/{info,doc}
 
