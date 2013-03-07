@@ -182,6 +182,7 @@ drwxr-xr-x	root/root	usr/share/gettext/intl/
 -rw-r--r--	root/root	usr/share/gettext/intl/verify.h
 -rw-r--r--	root/root	usr/share/gettext/intl/version.c
 -rw-r--r--	root/root	usr/share/gettext/intl/wprintf-parse.h
+-rw-r--r--	root/root	usr/share/gettext/intl/xsize.c
 -rw-r--r--	root/root	usr/share/gettext/intl/xsize.h
 -rw-r--r--	root/root	usr/share/gettext/javaversion.class
 -rw-r--r--	root/root	usr/share/gettext/msgunfmt.tcl
