@@ -5,8 +5,8 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/btrfs-find-root
 -rwxr-xr-x	root/root	sbin/btrfs-image
 -rwxr-xr-x	root/root	sbin/btrfs-map-logical
--rwxr-xr-x	root/root	sbin/btrfs-restore
 -rwxr-xr-x	root/root	sbin/btrfs-show
+-rwxr-xr-x	root/root	sbin/btrfs-show-super
 -rwxr-xr-x	root/root	sbin/btrfs-vol
 -rwxr-xr-x	root/root	sbin/btrfs-zero-log
 -rwxr-xr-x	root/root	sbin/btrfsck
