@@ -343,6 +343,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/fadvise64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fadvise64_64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fallocate.2.gz
+-rw-r--r--	root/root	usr/man/man2/fattach.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchmod.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchmodat.2.gz
@@ -352,6 +353,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/fcntl.2.gz
 -rw-r--r--	root/root	usr/man/man2/fcntl64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fdatasync.2.gz
+-rw-r--r--	root/root	usr/man/man2/fdetach.2.gz
 -rw-r--r--	root/root	usr/man/man2/fgetxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/finit_module.2.gz
 -rw-r--r--	root/root	usr/man/man2/flistxattr.2.gz
@@ -394,6 +396,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/gethostid.2.gz
 -rw-r--r--	root/root	usr/man/man2/gethostname.2.gz
 -rw-r--r--	root/root	usr/man/man2/getitimer.2.gz
+-rw-r--r--	root/root	usr/man/man2/getmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/getpagesize.2.gz
 -rw-r--r--	root/root	usr/man/man2/getpeername.2.gz
 -rw-r--r--	root/root	usr/man/man2/getpgid.2.gz
@@ -415,6 +418,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/gettimeofday.2.gz
 -rw-r--r--	root/root	usr/man/man2/getuid.2.gz
 -rw-r--r--	root/root	usr/man/man2/getuid32.2.gz
+-rw-r--r--	root/root	usr/man/man2/getunwind.2.gz
 -rw-r--r--	root/root	usr/man/man2/getxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/gtty.2.gz
 -rw-r--r--	root/root	usr/man/man2/idle.2.gz
@@ -445,6 +449,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ioprio_get.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioprio_set.2.gz
 -rw-r--r--	root/root	usr/man/man2/ipc.2.gz
+-rw-r--r--	root/root	usr/man/man2/isastream.2.gz
 -rw-r--r--	root/root	usr/man/man2/kcmp.2.gz
 -rw-r--r--	root/root	usr/man/man2/kexec_load.2.gz
 -rw-r--r--	root/root	usr/man/man2/keyctl.2.gz
@@ -524,6 +529,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pciconfig_read.2.gz
 -rw-r--r--	root/root	usr/man/man2/pciconfig_write.2.gz
 -rw-r--r--	root/root	usr/man/man2/perf_event_open.2.gz
+-rw-r--r--	root/root	usr/man/man2/perfmonctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/personality.2.gz
 -rw-r--r--	root/root	usr/man/man2/phys.2.gz
 -rw-r--r--	root/root	usr/man/man2/pipe.2.gz
@@ -543,6 +549,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pselect.2.gz
 -rw-r--r--	root/root	usr/man/man2/pselect6.2.gz
 -rw-r--r--	root/root	usr/man/man2/ptrace.2.gz
+-rw-r--r--	root/root	usr/man/man2/putmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/putpmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite64.2.gz
@@ -3394,6 +3401,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/filesystems.5.gz
 -rw-r--r--	root/root	usr/man/man5/fs.5.gz
 -rw-r--r--	root/root	usr/man/man5/ftpusers.5.gz
+-rw-r--r--	root/root	usr/man/man5/gai.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/group.5.gz
 -rw-r--r--	root/root	usr/man/man5/host.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/hosts.5.gz
@@ -3406,6 +3414,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/networks.5.gz
 -rw-r--r--	root/root	usr/man/man5/nologin.5.gz
 -rw-r--r--	root/root	usr/man/man5/nscd.conf.5.gz
+-rw-r--r--	root/root	usr/man/man5/nss.5.gz
 -rw-r--r--	root/root	usr/man/man5/nsswitch.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/numa_maps.5.gz
 -rw-r--r--	root/root	usr/man/man5/proc.5.gz
