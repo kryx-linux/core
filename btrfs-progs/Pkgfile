@@ -4,7 +4,7 @@
 # Depends on:  util-linux e2fsprogs lzo
 
 name=btrfs-progs
-version=20130510
+version=20130619
 release=1
 source=(http://crux.s3.amazonaws.com/dist/$name-$version.tar.xz)
 
