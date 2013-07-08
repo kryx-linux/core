@@ -1,10 +1,7 @@
-# http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-libs/timezone-data/files/timezone-data-2012a-makefile.patch
-# Patch reapplied and fixed for tzcode 2013a
-
-diff -Nru tzcode.orig/Makefile tzcode/Makefile
---- tzcode.orig/Makefile	2013-02-27 18:20:35.000000000 +0100
-+++ tzcode/Makefile	2013-03-03 10:03:29.000000000 +0100
-@@ -45,17 +45,17 @@
+diff -urN tzcode.orig/Makefile tzcode/Makefile
+--- tzcode.orig/Makefile	2013-07-05 09:38:01.000000000 -0500
++++ tzcode/Makefile	2013-07-08 09:21:43.660000054 -0500
+@@ -45,20 +45,20 @@
  
  # Everything gets put in subdirectories of. . .
  
@@ -18,27 +15,30 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
 -TZDIR=		$(TOPDIR)/etc/zoneinfo
 +TZDIR=		$(TOPDIR)/share/zoneinfo
  
+ # Types to try, as an alternative to time_t.  int64_t should be first.
+ TIME_T_ALTERNATIVES= int64_t int32_t uint32_t uint64_t
+ 
  # The "tzselect", "zic", and "zdump" commands get installed in. . .
  
 -ETCDIR=		$(TOPDIR)/etc
-+SBINDIR=	$(TOPDIR)/sbin
++SBINDIR=		$(TOPDIR)/sbin
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -289,8 +289,10 @@
+@@ -292,8 +292,10 @@
  
  ###############################################################################
  
 -cc=		cc
 -CC=		$(cc) -DTZDIR=\"$(TZDIR)\"
-+CC+=		-DTZDIR=\"$(TZDIR)\"
++CC+=        -DTZDIR=\"$(TZDIR)\"
 +ifeq ($(NLS),1)
 +CC += -DHAVE_GETTEXT=1 -DTZ_DOMAIN=\"libc\"
 +endif
  
  TZCSRCS=	zic.c localtime.c asctime.c scheck.c ialloc.c
  TZCOBJS=	zic.o localtime.o asctime.o scheck.o ialloc.o
-@@ -331,13 +333,15 @@
+@@ -334,13 +336,15 @@
  
  ALL:		all date
  
@@ -57,7 +57,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  		-mkdir $(TOPDIR) $(MANDIR) \
  			$(MANDIR)/man3 $(MANDIR)/man5 $(MANDIR)/man8
  		-rm -f $(MANDIR)/man3/newctime.3 \
-@@ -347,8 +351,6 @@
+@@ -350,8 +354,6 @@
  			$(MANDIR)/man8/zdump.8 \
  			$(MANDIR)/man8/zic.8
  		cp newctime.3 newtzset.3 $(MANDIR)/man3/.
@@ -66,7 +66,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  INSTALL:	ALL install date.1
  		-mkdir $(TOPDIR) $(BINDIR)
-@@ -388,9 +390,9 @@
+@@ -391,9 +393,9 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
  other_two:	zic leapseconds $(TDATA)
@@ -78,7 +78,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  posix_right:	posix_only other_two
  
-@@ -418,7 +420,7 @@
+@@ -421,7 +423,7 @@
  			<$? >$@
  		chmod +x $@
  
