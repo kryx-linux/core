@@ -1,6 +1,7 @@
 # Description: Library giving userland programs access to USB devices
 # URL:         http://libusbx.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  udev
 
 name=libusb
 version=1.0.16
