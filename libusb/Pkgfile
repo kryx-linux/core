@@ -1,14 +1,14 @@
 # Description: Library giving userland programs access to USB devices
-# URL:         http://libusb.sourceforge.net/
+# URL:         http://libusbx.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libusb
-version=1.0.9
-release=2
-source=(http://downloads.sourceforge.net/project/$name/$name-1.0/$name-$version/$name-$version.tar.bz2)
+version=1.0.16
+release=1
+source=(http://downloads.sourceforge.net/project/libusbx/releases/${version%-*}/source/libusbx-$version.tar.bz2)
 
 build () {
-    cd $name-$version
+    cd libusbx-$version
     
     ./configure --prefix=/usr 
     make
