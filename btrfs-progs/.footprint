@@ -14,6 +14,7 @@ drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/btrfs/
 -rw-r--r--	root/root	usr/include/btrfs/btrfs-list.h
+-rw-r--r--	root/root	usr/include/btrfs/btrfsck.h
 -rw-r--r--	root/root	usr/include/btrfs/crc32c.h
 -rw-r--r--	root/root	usr/include/btrfs/ctree.h
 -rw-r--r--	root/root	usr/include/btrfs/extent-cache.h
