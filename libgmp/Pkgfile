@@ -4,8 +4,9 @@
 
 name=libgmp
 version=5.1.2
-release=1
-source=(ftp://ftp.gmplib.org/pub/gmp-$version/gmp-$version.tar.xz)
+release=2
+source=(ftp://ftp.gmplib.org/pub/gmp-$version/gmp-$version.tar.xz \
+    gmp.h)
 
 build() {
     cd gmp-$version
@@ -14,5 +15,7 @@ build() {
                 --build=x86_64-unknown-linux-gnu
     make
     make DESTDIR=$PKG install
+    mv $PKG/usr/include/gmp{,-64}.h
+    cp $SRC/gmp.h $PKG/usr/include/
     rm -r $PKG/usr/share
 }
