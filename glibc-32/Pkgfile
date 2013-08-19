@@ -4,7 +4,7 @@
 
 name=glibc-32
 version=2.16.0
-release=4
+release=5
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
 	$name-$version-multilib-dirs.patch \
@@ -38,7 +38,7 @@ build() {
 		--disable-profile \
 		--without-gd \
 		--enable-obsolete-rpc \
-		--host=i686-pc-linux-gnu
+		--enable-multi-arch i686-pc-linux-gnu
 	make 
 	#make check
 	make install_root=$PKG install
