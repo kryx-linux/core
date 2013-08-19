@@ -35,7 +35,8 @@ build() {
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
-		--enable-obsolete-rpc
+		--enable-obsolete-rpc \
+        --enable-multi-arch
 	make 
 	#make check
 	make install_root=$PKG install
