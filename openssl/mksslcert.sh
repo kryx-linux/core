@@ -29,7 +29,7 @@ main() {
 		FQDN="$3"
 	fi
 	INFO=".\n.\n.\n.\n.\n$FQDN\nroot@$FQDN"
-	OPTS="req -new -nodes -x509 -days 365 -newkey rsa:1024"
+	OPTS="req -new -nodes -x509 -days 365 -newkey rsa:2048"
 	
 	echo -e $INFO | openssl $OPTS -out $CRT -keyout $KEY 2> /dev/null
 	
