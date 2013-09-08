@@ -4,7 +4,7 @@
 # Depends on:  udev
 
 name=libusb
-version=1.0.16
+version=1.0.17
 release=1
 source=(http://downloads.sourceforge.net/project/libusbx/releases/${version%-*}/source/libusbx-$version.tar.bz2)
 
