@@ -4,7 +4,7 @@
 
 name=glibc-32
 version=2.16.0
-release=5
+release=6
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
 	$name-$version-multilib-dirs.patch \
@@ -13,7 +13,8 @@ source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	glibc-resolv_assert.patch \
 	glibc-segfault_in_strncasecmp.patch \
 	glibc-strtod_integer_overflow.patch \
-	glibc-regexp_buffer_overrun.patch)
+	glibc-regexp_buffer_overrun.patch
+	glibc-CVE-2013-4332.patch)
 
 build() {
 	# install kernel headers
@@ -26,6 +27,7 @@ build() {
 	patch -p1 -d glibc-$version -i $SRC/glibc-strtod_integer_overflow.patch
 	patch -p1 -d glibc-$version -i $SRC/glibc-regexp_buffer_overrun.patch
 	patch -p1 -d glibc-$version -i $SRC/$name-$version-multilib-dirs.patch
+	patch -p1 -d glibc-$version -i $SRC/glibc-CVE-2013-4332.patch
 
 	mkdir build
 	cd build
