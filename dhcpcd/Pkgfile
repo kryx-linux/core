@@ -1,9 +1,10 @@
 # Description: An RFC2131-compliant DHCP client daemon
 # URL:         http://roy.marples.name/projects/dhcpcd/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  udev
 
 name=dhcpcd
-version=6.0.5
+version=6.1.0
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
