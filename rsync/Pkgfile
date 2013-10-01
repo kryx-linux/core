@@ -1,10 +1,10 @@
 # Description: Utility for incremental file transfers over networks
 # URL:         http://rsync.samba.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  acl
+# Depends on:  acl zlib
 
 name=rsync
-version=3.0.9
+version=3.1.0
 release=1
 source=(http://rsync.samba.org/ftp/$name/src/$name-$version.tar.gz \
         rsyncd.conf rsyncd rsync.driver)
@@ -15,7 +15,8 @@ build () {
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-rsh=ssh \
-                --with-included-popt
+                --with-included-popt \
+                --with-included-zlib=no
 
     make
     make DESTDIR=$PKG install
