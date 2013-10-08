@@ -1,10 +1,9 @@
-diff -Nru tar-1.18.orig/src/extract.c tar-1.18/src/extract.c
---- tar-1.18.orig/src/extract.c	2007-07-05 08:19:23.000000000 +0200
-+++ tar-1.18/src/extract.c	2007-07-05 08:19:37.000000000 +0200
-@@ -113,8 +113,6 @@
+--- tar-1.27.orig/src/extract.c	2013-10-08 18:37:10.138985808 +0200
++++ tar-1.27/src/extract.c	2013-10-08 18:38:19.661979057 +0200
+@@ -176,8 +176,6 @@
  extr_init (void)
  {
-   we_are_root = geteuid () == 0;
+   we_are_root = geteuid () == ROOT_UID;
 -  same_permissions_option += we_are_root;
 -  same_owner_option += we_are_root;
  
