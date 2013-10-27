@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu 
 
 name=tzdata
-version=2013g
+version=2013h
 release=1
 source=(ftp://ftp.iana.org/tz/releases/$name$version.tar.gz
         ftp://ftp.iana.org/tz/releases/tzcode$version.tar.gz
