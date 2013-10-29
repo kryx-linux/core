@@ -1,8 +1,6 @@
-# http://bugs.exim.org/show_bug.cgi?id=1164
-
-diff -Nru exim-4.80.orig/OS/Makefile-Base exim-4.80/OS/Makefile-Base
---- exim-4.80.orig/OS/Makefile-Base	2012-05-31 15:48:44.513624313 +0200
-+++ exim-4.80/OS/Makefile-Base	2012-05-31 16:23:02.159673311 +0200
+diff -Nru exim-4.82.orig/OS/Makefile-Base exim-4.82/OS/Makefile-Base
+--- exim-4.82.orig/OS/Makefile-Base	2013-10-28 15:29:04.754760862 +0100
++++ exim-4.82/OS/Makefile-Base	2013-10-28 15:29:52.016435763 +0100
 @@ -457,7 +457,7 @@
  
  # Update Exim's version information and build the version object.
@@ -12,12 +10,12 @@ diff -Nru exim-4.80.orig/OS/Makefile-Base exim-4.80/OS/Makefile-Base
  	@../scripts/reversion
  
  cnumber.h: version.h
-diff -Nru exim-4.80.orig/src/version.sh exim-4.80/src/version.sh
---- exim-4.80.orig/src/version.sh	2012-05-31 15:48:44.510291099 +0200
-+++ exim-4.80/src/version.sh	2012-05-31 16:23:02.159673311 +0200
+diff -Nru exim-4.82.orig/src/version.sh exim-4.82/src/version.sh
+--- exim-4.82.orig/src/version.sh	2013-10-28 15:29:04.751427646 +0100
++++ exim-4.82/src/version.sh	2013-10-28 15:29:52.016435763 +0100
 @@ -1,4 +1,4 @@
  # automatically generated file - see ../scripts/reversion
- EXIM_RELEASE_VERSION="4.80"
+ EXIM_RELEASE_VERSION="4.82"
  EXIM_VARIANT_VERSION=""
 -EXIM_COMPILE_NUMBER="1"
 +EXIM_COMPILE_NUMBER="0"
