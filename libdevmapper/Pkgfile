@@ -4,16 +4,19 @@
 # Depends on:  udev
 
 name=libdevmapper
-version=1.02.82
+version=1.02.83
 release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.103.tgz)
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.104.tgz)
 
 build() {
-    cd LVM2.2.02.103
+    cd LVM2.2.02.104
 
     # needed for static linking with eudev
     export UDEV_LIBS="$(pkg-config --libs --static libudev)"
-    
+
+    # needed for static linking
+    export LIBS="-lpthread"
+
     ./configure --prefix=/usr \
                 --exec-prefix= \
                 --datarootdir=/usr \
