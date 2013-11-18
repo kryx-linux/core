@@ -356,6 +356,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/indent.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/initex.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/ishd.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/j.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/java.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/javascript.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/jsp.vim
@@ -512,6 +513,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/htmldjango.vim
 -rw-r--r--	root/root	usr/share/vim/indent/idlang.vim
 -rw-r--r--	root/root	usr/share/vim/indent/ishd.vim
+-rw-r--r--	root/root	usr/share/vim/indent/j.vim
 -rw-r--r--	root/root	usr/share/vim/indent/java.vim
 -rw-r--r--	root/root	usr/share/vim/indent/javascript.vim
 -rw-r--r--	root/root	usr/share/vim/indent/jsp.vim
@@ -862,6 +864,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/ishd.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/iss.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ist.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/j.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/jal.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/jam.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/jargon.vim
@@ -927,6 +930,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/mgl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mgp.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mib.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/mix.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mma.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mmix.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mmp.vim
