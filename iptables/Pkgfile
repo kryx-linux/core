@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=iptables
-version=1.4.20
+version=1.4.21
 release=1
 source=(ftp://ftp.netfilter.org/pub/iptables/$name-$version.tar.bz2) 
 
@@ -15,8 +15,4 @@ build () {
                 --enable-libipq
     make
     make DESTDIR=$PKG install
-
-    # Install connlabel.conf unconditionally
-    # http://bugzilla.netfilter.org/show_bug.cgi?id=828
-    #install -D -m 0644 etc/xtables/connlabel.conf $PKG/etc/xtables/connlabel.conf
 }
