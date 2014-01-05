@@ -5,20 +5,17 @@
 
 name=grep
 version=2.16
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
-
-    # Fix version string
-    # http://article.gmane.org/gmane.comp.gnu.grep.bugs/4957
-    sed -i '/^.*_TEXINFOS/d' doc/Makefile.am
-    autoreconf
 
     ./configure --prefix=/usr \
                 --disable-nls \
                 --mandir=/usr/man
     make
     make DESTDIR=$PKG install
+
+    rm -r $PKG/usr/share
 }
