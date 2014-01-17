@@ -4,7 +4,7 @@
 # Depends on:  udev
 
 name=dhcpcd
-version=6.2.0
+version=6.2.1
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
