@@ -6,7 +6,7 @@
 name=lilo
 version=24.0
 release=1
-source=(https://alioth.debian.org/frs/download.php/file/3922/$name-$version.tar.gz \
+source=(http://lilo.alioth.debian.org/ftp/sources/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
 build() {
