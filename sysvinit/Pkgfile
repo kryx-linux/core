@@ -4,7 +4,7 @@
 
 name=sysvinit
 version=2.88
-release=2
+release=3
 source=(http://download.savannah.gnu.org/releases/$name/$name-${version}dsf.tar.bz2)
 
 build() {
@@ -16,6 +16,13 @@ build() {
     # Provided by util-linux 
     rm $PKG/{bin/mountpoint,usr/bin/utmpdump}
     rm $PKG/usr/man/man1/{mountpoint,utmpdump}.1
+    rm $PKG/usr/bin/{last,lastb,mesg,wall}
+    rm $PKG/usr/man/man1/{last,lastb,mesg,wall}.1
+    rmdir $PKG/usr/bin
+
+    # Provided by procps
+    rm $PKG/bin/pidof
+    rm $PKG/usr/man/man8/pidof.8
 
     install -d $PKG/var/log
     touch $PKG/var/log/wtmp
