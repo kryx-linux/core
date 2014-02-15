@@ -1,0 +1,41 @@
+# Description: Userspace device management daemon
+# URL:         http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  kmod
+
+name=eudev
+version=1.4
+release=2
+source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
+        81-crux.rules start_udev)
+
+build() {
+    cd $name-$version
+
+    sed -i '/^Libs:/s/-ludev/-ludev -lrt/' src/libudev/libudev.pc.in
+    
+    ./configure --prefix=/usr \
+                --sbindir=/sbin --bindir=/sbin \
+                --sysconfdir=/etc \
+                --with-rootprefix= \
+                --with-rootlibdir=/lib \
+                --libexecdir=/lib \
+                --disable-introspection \
+                --disable-gudev \
+                --disable-manpages \
+                --disable-keymap \
+                --enable-split-usr \
+                --enable-modules \
+                --enable-libkmod
+
+    make
+    make install DESTDIR=$PKG
+
+    # Devices
+    mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
+    mkdir -p $PKG/{lib,sbin,run}
+
+    # Add CRUX items
+    install -m 0755 $SRC/start_udev $PKG/sbin
+    install -m 0644 $SRC/81-crux.rules $PKG/lib/udev/rules.d
+}
