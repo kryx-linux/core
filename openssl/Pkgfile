@@ -4,12 +4,13 @@
 
 name=openssl
 version=1.0.1f
-release=1
+release=2
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
-        mksslcert.sh)
+        mksslcert.sh pod2man.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/pod2man.patch
     export MAKEFLAGS="$MAKEFLAGS -j1"
     ./config --prefix=/usr --openssldir=/etc/ssl shared
     sed -i "s|-O3|$CFLAGS|" Makefile
