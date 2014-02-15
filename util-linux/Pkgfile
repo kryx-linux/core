@@ -5,7 +5,7 @@
 
 name=util-linux
 version=2.24.1
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/$name/v2.24/$name-$version.tar.xz)
 
 build() {
@@ -15,7 +15,6 @@ build() {
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-{login,su,sulogin,nologin} \
-                --disable-{last,mesg,wall} \
                 --enable-{write,raw,kill} 
 
     make
