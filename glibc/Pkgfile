@@ -3,42 +3,31 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.16.0
-release=5
+version=2.19
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
-	$name-$version-multilib-dirs.patch \
-	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
-	$name-resolv_assert.patch \
-	$name-segfault_in_strncasecmp.patch \
-	$name-strtod_integer_overflow.patch \
-	$name-regexp_buffer_overrun.patch \
-        $name-CVE-2013-4332.patch)
+	http://crux.nu/files/distfiles/kernel-headers-3.12.tar.bz2 \
+	$name-2.18.0-multilib-dirs.patch \
+	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
 	mkdir $PKG/usr/
-	cp -r kernel-headers-3.4.11/include $PKG/usr
+	cp -r $SRC/kernel-headers-3.12/include $PKG/usr
 	chown root:root $PKG/usr
 
-	patch -p1 -d $name-$version -i $SRC/$name-resolv_assert.patch
-	patch -p1 -d $name-$version -i $SRC/$name-segfault_in_strncasecmp.patch
-	patch -p1 -d $name-$version -i $SRC/$name-strtod_integer_overflow.patch
-	patch -p1 -d $name-$version -i $SRC/$name-regexp_buffer_overrun.patch
-	patch -p1 -d $name-$version -i $SRC/$name-$version-multilib-dirs.patch
-	patch -p1 -d $name-$version -i $SRC/$name-CVE-2013-4332.patch
+        patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.18.0-multilib-dirs.patch
 
-	mkdir build
-	cd build
+	mkdir $SRC/build
+	cd $SRC/build
 	../$name-$version/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=2.6.39 \
+		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
-		--enable-obsolete-rpc \
-        --enable-multi-arch
+		--enable-obsolete-rpc --enable-multi-arch
 	make 
 	#make check
 	make install_root=$PKG install
