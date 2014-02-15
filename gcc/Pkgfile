@@ -28,7 +28,7 @@ build() {
                                 --with-x=no \
                                 --with-system-zlib \
                                 --enable-multilib \
-                                --with-pkgversion="CRUX-x86_64-multilib"
+                                --with-pkgversion="CRUX"
     make bootstrap
     make -j1 DESTDIR=$PKG install
 
