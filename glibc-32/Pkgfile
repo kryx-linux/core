@@ -3,31 +3,21 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.16.0
-release=6
+version=2.19
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-3.4.11.tar.xz \
+	http://crux.nu/files/distfiles/kernel-headers-3.12.tar.bz2 \
 	$name-$version-multilib-dirs.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
-	lib32.conf \
-	glibc-resolv_assert.patch \
-	glibc-segfault_in_strncasecmp.patch \
-	glibc-strtod_integer_overflow.patch \
-	glibc-regexp_buffer_overrun.patch
-	glibc-CVE-2013-4332.patch)
+	lib32.conf) 
 
 build() {
 	# install kernel headers
 	mkdir $PKG/usr/
-	cp -r kernel-headers-3.4.11/include $PKG/usr
+	cp -r kernel-headers-3.12/include $PKG/usr
 	chown root:root $PKG/usr
 
-	patch -p1 -d glibc-$version -i $SRC/glibc-resolv_assert.patch
-	patch -p1 -d glibc-$version -i $SRC/glibc-segfault_in_strncasecmp.patch
-	patch -p1 -d glibc-$version -i $SRC/glibc-strtod_integer_overflow.patch
-	patch -p1 -d glibc-$version -i $SRC/glibc-regexp_buffer_overrun.patch
 	patch -p1 -d glibc-$version -i $SRC/$name-$version-multilib-dirs.patch
-	patch -p1 -d glibc-$version -i $SRC/glibc-CVE-2013-4332.patch
 
 	mkdir build
 	cd build
@@ -35,7 +25,7 @@ build() {
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=2.6.27 \
+		--enable-kernel=3.10 \
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
