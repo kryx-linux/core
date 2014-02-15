@@ -4,10 +4,9 @@
 # Depends on:  udev
 
 name=dhcpcd
-version=6.1.0
+version=6.2.1
 release=1
-#source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
-source=(http://crux.nu/files/distfiles/$name-$version.tar.bz2)
+source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version

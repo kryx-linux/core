@@ -17,6 +17,9 @@ start)
 	if [ ! -f /etc/ssh/ssh_host_ecdsa_key ]; then
 		/usr/bin/ssh-keygen -t ecdsa -N "" -f /etc/ssh/ssh_host_ecdsa_key > /dev/null
 	fi
+	if [ ! -f /etc/ssh/ssh_host_ed25519_key ]; then
+		/usr/bin/ssh-keygen -t ed25519 -N "" -f /etc/ssh/ssh_host_ed25519_key > /dev/null
+	fi
 	/usr/sbin/sshd
 	;;
 stop)
