@@ -16,14 +16,14 @@ build() {
 	cp -r $SRC/kernel-headers-3.12/include $PKG/usr
 	chown root:root $PKG/usr
 
-        patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.18.0-multilib-dirs.patch
+	patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.18.0-multilib-dirs.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
 	../$name-$version/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=3.12 \
+		--enable-kernel=3.10 \
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
