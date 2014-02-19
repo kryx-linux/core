@@ -4,8 +4,8 @@
 # Depends on:  libpcre
 
 name=grep
-version=2.16
-release=2
+version=2.17
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
