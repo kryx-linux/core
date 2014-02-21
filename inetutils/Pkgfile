@@ -5,7 +5,7 @@
 
 name=inetutils
 version=1.9.2
-release=3
+release=4
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
         inetd.conf inetd)
 
@@ -18,7 +18,7 @@ build() {
                 --localstatedir=/var \
                 --sysconfdir=/etc \
                 --disable-{servers,clients} \
-                --enable-{hostname,ifconfig,inetd,ftp,telnet,traceroute,whois}
+                --enable-{hostname,ifconfig,inetd,ftp,telnet,traceroute}
     
     make
     make DESTDIR=$PKG install
