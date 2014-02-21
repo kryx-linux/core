@@ -5,7 +5,7 @@
 
 name=binutils
 version=2.24
-release=1
+release=2
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
@@ -21,5 +21,5 @@ build() {
     make tooldir=/usr DESTDIR=$PKG install
     install -m 0644  ../$name-$version/include/libiberty.h $PKG/usr/include
     rm -r $PKG/usr/share
-    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/libbfd.la
+    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,opcodes}.la
 }
