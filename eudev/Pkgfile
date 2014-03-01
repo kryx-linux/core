@@ -4,8 +4,8 @@
 # Depends on:  kmod
 
 name=eudev
-version=1.4
-release=2
+version=1.5
+release=1
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
         81-crux.rules start_udev)
 
@@ -30,6 +30,10 @@ build() {
 
     make
     make install DESTDIR=$PKG
+    
+    # create binary hwdb
+    LD_LIBRARY_PATH=$PKG/lib \
+    $PKG/sbin/udevadm hwdb --update --root=$PKG
 
     # Devices
     mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
@@ -38,4 +42,7 @@ build() {
     # Add CRUX items
     install -m 0755 $SRC/start_udev $PKG/sbin
     install -m 0644 $SRC/81-crux.rules $PKG/lib/udev/rules.d
+
+    # remove broken rule
+    rm $PKG/lib/udev/rules.d/80-net-setup-link.rules
 }

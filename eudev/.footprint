@@ -1,5 +1,6 @@
 drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/udev/
+-r--r--r--	root/root	etc/udev/hwdb.bin
 drwxr-xr-x	root/root	etc/udev/hwdb.d/
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-OUI.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-acpi-vendor.hwdb
@@ -29,6 +30,7 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/42-usb-hid-pm.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
+-rw-r--r--	root/root	lib/udev/rules.d/60-drm.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-input.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-serial.rules
