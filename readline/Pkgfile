@@ -13,8 +13,8 @@ build() {
     cd $name-${version:0:3}
 
     ./configure --prefix=/usr --mandir=/usr/man
-    make SHLIB_LIBS=-lncurses
-    make DESTDIR=$PKG install
+    make -j1 SHLIB_LIBS=-lncurses
+    make -j1 DESTDIR=$PKG install
 
     install -d $PKG/lib
     mv $PKG/usr/lib/lib*.so.* $PKG/lib
