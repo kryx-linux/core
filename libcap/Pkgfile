@@ -4,9 +4,9 @@
 # Depends on:  attr
 
 name=libcap
-version=2.22
+version=2.24
 release=1
-source=(http://crux.s3.amazonaws.com/dist/libcap-$version.tar.bz2)
+source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
 
 build () {
     cd libcap-$version
