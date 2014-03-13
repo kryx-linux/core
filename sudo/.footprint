@@ -28,4 +28,6 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/visudo
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/lib/
-drwx------	root/root	var/lib/sudo/
+drwx--x--x	root/root	var/lib/sudo/
+drwxr-xr-x	root/root	var/run/
+drwx--x--x	root/root	var/run/sudo/
