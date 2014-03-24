@@ -4,7 +4,7 @@
 # Depends on:  kmod
 
 name=eudev
-version=1.5.1
+version=1.5.3
 release=1
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
         81-crux.rules start_udev)
@@ -28,7 +28,7 @@ build() {
                 --enable-modules \
                 --enable-libkmod
 
-    make
+    make CFLAGS="$CFLAGS -D_GNU_SOURCE" 
     make install DESTDIR=$PKG
     
     # create binary hwdb
