@@ -4,13 +4,15 @@
 # Depends on:  ncurses
 
 name=readline
-version=6.3
+version=6.3.3
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz \
-        inputrc)
+        $name-$version.patch.gz inputrc)
 
 build() {
     cd $name-${version:0:3}
+
+    gunzip -c $SRC/$name-$version.patch.gz | patch -p0
 
     ./configure --prefix=/usr --mandir=/usr/man
     make -j1 SHLIB_LIBS=-lncurses
