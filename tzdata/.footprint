@@ -249,6 +249,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Antarctica/
 -rw-r--r--	root/root	usr/share/zoneinfo/Antarctica/Rothera
 -rw-r--r--	root/root	usr/share/zoneinfo/Antarctica/South_Pole
 -rw-r--r--	root/root	usr/share/zoneinfo/Antarctica/Syowa
+-rw-r--r--	root/root	usr/share/zoneinfo/Antarctica/Troll
 -rw-r--r--	root/root	usr/share/zoneinfo/Antarctica/Vostok
 drwxr-xr-x	root/root	usr/share/zoneinfo/Arctic/
 -rw-r--r--	root/root	usr/share/zoneinfo/Arctic/Longyearbyen
@@ -851,6 +852,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Antarctica/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Antarctica/Rothera
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Antarctica/South_Pole
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Antarctica/Syowa
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Antarctica/Troll
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Antarctica/Vostok
 drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Arctic/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Arctic/Longyearbyen
@@ -1452,6 +1454,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Antarctica/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Antarctica/Rothera
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Antarctica/South_Pole
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Antarctica/Syowa
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Antarctica/Troll
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Antarctica/Vostok
 drwxr-xr-x	root/root	usr/share/zoneinfo/right/Arctic/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Arctic/Longyearbyen
