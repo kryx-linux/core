@@ -351,19 +351,6 @@ index 5f54714..197b521 100644
  
  The operation succeeded.
  
-diff --git a/doc/ssl/SSL_set_shutdown.pod b/doc/ssl/SSL_set_shutdown.pod
-index 011a022..fe01308 100644
---- a/doc/ssl/SSL_set_shutdown.pod
-+++ b/doc/ssl/SSL_set_shutdown.pod
-@@ -24,7 +24,7 @@ The shutdown state of an ssl connection is a bitmask of:
- 
- =over 4
- 
--=item 0
-+=item Z<>0
- 
- No shutdown setting, yet.
- 
 diff --git a/doc/ssl/SSL_shutdown.pod b/doc/ssl/SSL_shutdown.pod
 index 42a89b7..85d4a64 100644
 --- a/doc/ssl/SSL_shutdown.pod
