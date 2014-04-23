@@ -1435,6 +1435,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/inet_aton.3.gz
 -rw-r--r--	root/root	usr/man/man3/inet_lnaof.3.gz
 -rw-r--r--	root/root	usr/man/man3/inet_makeaddr.3.gz
+-rw-r--r--	root/root	usr/man/man3/inet_net_ntop.3.gz
+-rw-r--r--	root/root	usr/man/man3/inet_net_pton.3.gz
 -rw-r--r--	root/root	usr/man/man3/inet_netof.3.gz
 -rw-r--r--	root/root	usr/man/man3/inet_network.3.gz
 -rw-r--r--	root/root	usr/man/man3/inet_ntoa.3.gz
