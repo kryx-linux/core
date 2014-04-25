@@ -5,11 +5,12 @@
 
 name=gawk
 version=4.1.1
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+release=2
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz pipe.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/pipe.patch
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
                 --mandir=/usr/man \
