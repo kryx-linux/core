@@ -325,6 +325,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/fadvise64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fadvise64_64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fallocate.2.gz
+-rw-r--r--	root/root	usr/man/man2/fanotify_init.2.gz
+-rw-r--r--	root/root	usr/man/man2/fanotify_mark.2.gz
 -rw-r--r--	root/root	usr/man/man2/fattach.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchmod.2.gz
@@ -3215,6 +3217,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/ddp.7.gz
 -rw-r--r--	root/root	usr/man/man7/environ.7.gz
 -rw-r--r--	root/root	usr/man/man7/epoll.7.gz
+-rw-r--r--	root/root	usr/man/man7/fanotify.7.gz
 -rw-r--r--	root/root	usr/man/man7/feature_test_macros.7.gz
 -rw-r--r--	root/root	usr/man/man7/fifo.7.gz
 -rw-r--r--	root/root	usr/man/man7/futex.7.gz
@@ -3307,6 +3310,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/regex.7.gz
 -rw-r--r--	root/root	usr/man/man7/rtld-audit.7.gz
 -rw-r--r--	root/root	usr/man/man7/rtnetlink.7.gz
+-rw-r--r--	root/root	usr/man/man7/sched.7.gz
 -rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/shm_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/sigevent.7.gz
