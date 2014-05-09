@@ -5,16 +5,13 @@
 
 name=shadow
 version=4.2
-release=1
-source=(http://pkg-shadow.alioth.debian.org/releases/$name-$version.tar.xz
-        http://crux.nu/files/distfiles/$name-man-$version.tar.xz
+release=2
+source=(http://pkg-shadow.alioth.debian.org/releases/$name-$version-dist.tar.xz
         pwck login.defs)
 
 build() {
     cd $name-$version
 
-    autoreconf --force --install
-   
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --sysconfdir=/etc \
