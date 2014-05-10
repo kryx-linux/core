@@ -5,13 +5,13 @@
 
 name=perl
 version=5.16.3
-release=2
+release=3
 source=(http://www.cpan.org/src/5.0/$name-$version.tar.bz2 \
-        http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Locale-Maketext-1.23.tar.gz)
+        http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Locale-Maketext-1.25.tar.gz)
 
 build() {
     rm -rf $name/$version/dist/Locale-Maketext
-    mv $SRC/Locale-Maketext-1.23 $name-$version/dist/Locale-Maketext
+    mv $SRC/Locale-Maketext-1.25 $name-$version/dist/Locale-Maketext
 
     cd $name-$version
 
