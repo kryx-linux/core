@@ -4,7 +4,7 @@
 # Depends on:  util-linux
 
 name=xfsprogs
-version=3.1.11
+version=3.2.0
 release=1
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 
@@ -20,10 +20,10 @@ build() {
                 --mandir=/usr/man \
                 --disable-gettext
     make
-    make DIST_ROOT=$PKG install install-dev
+    make -j1 DIST_ROOT=$PKG install install-dev
 
     rm $PKG/lib/libhandle.{a,la,so}
-    ln -sf ../../lib/libhandle.so.1.0.3 $PKG/usr/lib/libhandle.so
+    ln -sf ../../lib/$(readlink $PKG/lib/libhandle.so.1) $PKG/usr/lib/libhandle.so
 
     rm -r $PKG/usr/share
 }
