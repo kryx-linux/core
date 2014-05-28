@@ -10,12 +10,12 @@ diff -Nru exim-4.82.orig/OS/Makefile-Base exim-4.82/OS/Makefile-Base
  	@../scripts/reversion
  
  cnumber.h: version.h
-diff -Nru exim-4.82.orig/src/version.sh exim-4.82/src/version.sh
---- exim-4.82.orig/src/version.sh	2013-10-28 15:29:04.751427646 +0100
-+++ exim-4.82/src/version.sh	2013-10-28 15:29:52.016435763 +0100
+--- exim-4.82.1.orig/src/version.sh	2014-05-28 19:30:19.828197324 +0200
++++ exim-4.82.1/src/version.sh	2014-05-28 19:30:50.839265749 +0200
 @@ -1,4 +1,4 @@
  # automatically generated file - see ../scripts/reversion
  EXIM_RELEASE_VERSION="4.82"
- EXIM_VARIANT_VERSION=""
+-EXIM_VARIANT_VERSION="_1-5b7a7c0-XX"
 -EXIM_COMPILE_NUMBER="1"
++EXIM_VARIANT_VERSION=""
 +EXIM_COMPILE_NUMBER="0"
