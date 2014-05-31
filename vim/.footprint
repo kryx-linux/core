@@ -75,6 +75,7 @@ drwxr-xr-x	root/root	usr/share/vim/colors/
 -rw-r--r--	root/root	usr/share/vim/colors/desert.vim
 -rw-r--r--	root/root	usr/share/vim/colors/elflord.vim
 -rw-r--r--	root/root	usr/share/vim/colors/evening.vim
+-rw-r--r--	root/root	usr/share/vim/colors/industry.vim
 -rw-r--r--	root/root	usr/share/vim/colors/koehler.vim
 -rw-r--r--	root/root	usr/share/vim/colors/morning.vim
 -rw-r--r--	root/root	usr/share/vim/colors/murphy.vim
