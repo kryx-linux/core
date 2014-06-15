@@ -85,6 +85,7 @@ drwxr-xr-x	root/root	usr/man/man0p/
 -rw-r--r--	root/root	usr/man/man0p/wordexp.h.0p.gz
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/getent.1.gz
+-rw-r--r--	root/root	usr/man/man1/iconv.1.gz
 -rw-r--r--	root/root	usr/man/man1/intro.1.gz
 -rw-r--r--	root/root	usr/man/man1/ldd.1.gz
 -rw-r--r--	root/root	usr/man/man1/locale.1.gz
@@ -3191,6 +3192,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/proc.5.gz
 -rw-r--r--	root/root	usr/man/man5/procfs.5.gz
 -rw-r--r--	root/root	usr/man/man5/protocols.5.gz
+-rw-r--r--	root/root	usr/man/man5/repertoiremap.5.gz
 -rw-r--r--	root/root	usr/man/man5/resolv.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/resolver.5.gz
 -rw-r--r--	root/root	usr/man/man5/rpc.5.gz
@@ -3343,6 +3345,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/vdso.7.gz
 -rw-r--r--	root/root	usr/man/man7/x25.7.gz
 drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/iconvconfig.8.gz
 -rw-r--r--	root/root	usr/man/man8/intro.8.gz
 -rw-r--r--	root/root	usr/man/man8/ld-linux.8.gz
 -rw-r--r--	root/root	usr/man/man8/ld-linux.so.8.gz
