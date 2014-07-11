@@ -4,10 +4,11 @@
 
 name=glibc-32
 version=2.19
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-3.12.tar.bz2 \
-	$name-$version-multilib-dirs.patch \
+	$name-$version-multilib-dirs.patch
+	CVE-2014-0475.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
 	lib32.conf) 
 
@@ -18,6 +19,7 @@ build() {
 	chown root:root $PKG/usr
 
 	patch -p1 -d glibc-$version -i $SRC/$name-$version-multilib-dirs.patch
+	patch -p1 -d glibc-$version -i $SRC/CVE-2014-0475.patch
 
 	mkdir build
 	cd build
