@@ -1,7 +1,7 @@
-diff -Nru exim-4.82.orig/OS/Makefile-Base exim-4.82/OS/Makefile-Base
---- exim-4.82.orig/OS/Makefile-Base	2013-10-28 15:29:04.754760862 +0100
-+++ exim-4.82/OS/Makefile-Base	2013-10-28 15:29:52.016435763 +0100
-@@ -457,7 +457,7 @@
+diff -rupN exim-4.83.orig/OS/Makefile-Base exim-4.83/OS/Makefile-Base
+--- exim-4.83.orig/OS/Makefile-Base	2014-07-23 15:39:50.700697125 +0200
++++ exim-4.83/OS/Makefile-Base	2014-07-23 15:41:06.597953279 +0200
+@@ -457,7 +457,7 @@ PHDRS = ../config.h ../dbfunctions.h ../
  
  # Update Exim's version information and build the version object.
  
@@ -10,12 +10,12 @@ diff -Nru exim-4.82.orig/OS/Makefile-Base exim-4.82/OS/Makefile-Base
  	@../scripts/reversion
  
  cnumber.h: version.h
---- exim-4.82.1.orig/src/version.sh	2014-05-28 19:30:19.828197324 +0200
-+++ exim-4.82.1/src/version.sh	2014-05-28 19:50:48.119490963 +0200
+diff -rupN exim-4.83.orig/src/version.sh exim-4.83/src/version.sh
+--- exim-4.83.orig/src/version.sh	2014-07-23 15:39:50.650698931 +0200
++++ exim-4.83/src/version.sh	2014-07-23 15:41:59.726032700 +0200
 @@ -1,4 +1,4 @@
  # automatically generated file - see ../scripts/reversion
- EXIM_RELEASE_VERSION="4.82"
--EXIM_VARIANT_VERSION="_1-5b7a7c0-XX"
+ EXIM_RELEASE_VERSION="4.83"
+ EXIM_VARIANT_VERSION=""
 -EXIM_COMPILE_NUMBER="1"
-+EXIM_VARIANT_VERSION=".1"
 +EXIM_COMPILE_NUMBER="0"
