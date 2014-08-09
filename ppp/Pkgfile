@@ -4,7 +4,7 @@
 # Depends on:  zlib, openssl
 
 name=ppp
-version=2.4.6
+version=2.4.7
 release=1
 source=(http://ppp.samba.org/ftp/ppp/$name-$version.tar.gz \
         $name-nofilter.patch)
