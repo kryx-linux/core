@@ -270,6 +270,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Bishkek
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Brunei
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Calcutta
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Chita
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Choibalsan
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Chongqing
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Chungking
@@ -327,6 +328,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Seoul
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Shanghai
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Singapore
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Srednekolymsk
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Taipei
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Tashkent
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Tbilisi
@@ -873,6 +875,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Bishkek
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Brunei
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Calcutta
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Chita
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Choibalsan
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Chongqing
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Chungking
@@ -930,6 +933,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Seoul
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Shanghai
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Singapore
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Srednekolymsk
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Taipei
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Tashkent
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Asia/Tbilisi
@@ -1475,6 +1479,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Bishkek
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Brunei
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Calcutta
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Chita
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Choibalsan
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Chongqing
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Chungking
@@ -1532,6 +1537,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Seoul
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Shanghai
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Singapore
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Srednekolymsk
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Taipei
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Tashkent
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Asia/Tbilisi
@@ -1820,3 +1826,4 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/US/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/WET
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Zulu
 -rw-r--r--	root/root	usr/share/zoneinfo/zone.tab
+-rw-r--r--	root/root	usr/share/zoneinfo/zone1970.tab

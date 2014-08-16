@@ -10,9 +10,9 @@
 
 
 diff -Nru tzcode.orig/Makefile tzcode/Makefile
---- tzcode.orig/Makefile	2013-12-21 14:05:52.169527862 +0100
-+++ tzcode/Makefile	2013-12-21 14:06:05.299054045 +0100
-@@ -45,21 +45,21 @@
+--- tzcode.orig/Makefile	2014-08-11 10:16:52.358988157 +0200
++++ tzcode/Makefile	2014-08-11 10:29:05.974725907 +0200
+@@ -44,21 +44,21 @@
  
  # Everything gets put in subdirectories of. . .
  
@@ -37,7 +37,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -290,8 +290,10 @@
+@@ -309,8 +309,10 @@
  
  ###############################################################################
  
@@ -50,7 +50,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  AR=		ar
  
-@@ -341,19 +343,18 @@
+@@ -359,19 +361,18 @@
  ALL:		all date
  
  install:	all $(DATA) $(REDO) $(MANS)
@@ -62,7 +62,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  			$(DESTDIR)$(MANDIR)/man8
  		$(ZIC) -y $(YEARISTYPE) \
  			-d $(DESTDIR)$(TZDIR) -l $(LOCALTIME) -p $(POSIXRULES)
- 		cp -f iso3166.tab zone.tab $(DESTDIR)$(TZDIR)/.
+ 		cp -f iso3166.tab $(ZONETABLES) $(DESTDIR)$(TZDIR)/.
 -		cp tzselect zic zdump $(DESTDIR)$(ETCDIR)/.
 +		cp zic zdump $(DESTDIR)$(SBINDIR)/.
 +		cp tzselect $(DESTDIR)$(BINDIR)/.
@@ -74,7 +74,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  INSTALL:	ALL install date.1
  		mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
-@@ -396,19 +397,17 @@
+@@ -414,19 +415,17 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
  right_posix:	right_only leapseconds
@@ -99,7 +99,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  			-L leapseconds $(TDATA)
  
  zones:		$(REDO)
-@@ -431,7 +430,7 @@
+@@ -449,7 +448,7 @@
  			<$? >$@
  		chmod +x $@
  
@@ -107,4 +107,4 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
 +check:		check_character_set check_tables
  
  check_character_set: $(ENCHILADA)
- 		sharp='#'; ! grep -n $(INVALID_CHAR) $(ENCHILADA)
+ 		LC_ALL=en_US.utf8 && export LC_ALL && \
