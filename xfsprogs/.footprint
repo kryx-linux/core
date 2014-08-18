@@ -44,7 +44,6 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/mkfs.xfs.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_admin.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_bmap.8.gz
--rw-r--r--	root/root	usr/man/man8/xfs_check.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_copy.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_db.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_estimate.8.gz
@@ -64,7 +63,6 @@ lrwxrwxrwx	root/root	usr/man/man8/xfs_info.8.gz -> xfs_growfs.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/xfs_admin
 -rwxr-xr-x	root/root	usr/sbin/xfs_bmap
--rwxr-xr-x	root/root	usr/sbin/xfs_check
 -rwxr-xr-x	root/root	usr/sbin/xfs_copy
 -rwxr-xr-x	root/root	usr/sbin/xfs_db
 -rwxr-xr-x	root/root	usr/sbin/xfs_estimate
