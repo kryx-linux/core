@@ -1402,6 +1402,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/gnu_get_libc_release.3.gz
 -rw-r--r--	root/root	usr/man/man3/gnu_get_libc_version.3.gz
 -rw-r--r--	root/root	usr/man/man3/grantpt.3.gz
+-rw-r--r--	root/root	usr/man/man3/group_member.3.gz
 -rw-r--r--	root/root	usr/man/man3/gsignal.3.gz
 -rw-r--r--	root/root	usr/man/man3/h_errno.3.gz
 -rw-r--r--	root/root	usr/man/man3/hash.3.gz
@@ -1471,6 +1472,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/iscntrl_l.3.gz
 -rw-r--r--	root/root	usr/man/man3/isdigit.3.gz
 -rw-r--r--	root/root	usr/man/man3/isdigit_l.3.gz
+-rw-r--r--	root/root	usr/man/man3/isfdtype.3.gz
 -rw-r--r--	root/root	usr/man/man3/isfinite.3.gz
 -rw-r--r--	root/root	usr/man/man3/isgraph.3.gz
 -rw-r--r--	root/root	usr/man/man3/isgraph_l.3.gz
