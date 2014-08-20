@@ -4,9 +4,9 @@
 # Depends on:  ncurses zlib
 
 name=util-linux
-version=2.24.2
+version=2.25
 release=1
-source=(https://www.kernel.org/pub/linux/utils/$name/v2.24/$name-$version.tar.xz)
+source=(https://www.kernel.org/pub/linux/utils/$name/v2.25/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
@@ -15,7 +15,8 @@ build() {
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-{login,su,sulogin,nologin} \
-                --enable-{write,raw,kill} 
+                --enable-{write,raw,kill} \
+                --without-python
 
     make
     make DESTDIR=$PKG install
