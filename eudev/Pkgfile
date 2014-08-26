@@ -25,6 +25,7 @@ build() {
                 --disable-introspection \
                 --disable-gudev \
                 --disable-keymap \
+                --disable-manpages \
                 --enable-split-usr \
                 --enable-modules \
                 --enable-libkmod
