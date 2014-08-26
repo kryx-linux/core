@@ -5,24 +5,25 @@
 
 name=eudev
 version=1.10
-release=1
+release=2
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
+        $name-man-$version.tar.xz
         81-crux.rules start_udev)
 
 build() {
     cd $name-$version
 
     sed -i '/^Libs:/s/-ludev/-ludev -lrt/' src/libudev/libudev.pc.in
-    
+
     ./configure --prefix=/usr \
                 --sbindir=/sbin --bindir=/sbin \
                 --sysconfdir=/etc \
                 --with-rootprefix= \
                 --with-rootlibdir=/lib \
                 --libexecdir=/lib \
+                --mandir=/usr/man \
                 --disable-introspection \
                 --disable-gudev \
-                --disable-manpages \
                 --disable-keymap \
                 --enable-split-usr \
                 --enable-modules \
@@ -30,7 +31,8 @@ build() {
 
     make CFLAGS="$CFLAGS -D_GNU_SOURCE" 
     make install DESTDIR=$PKG
-    
+    make -C man install DESTDIR=$PKG
+
     # create binary hwdb
     LD_LIBRARY_PATH=$PKG/lib \
     $PKG/sbin/udevadm hwdb --update --root=$PKG
