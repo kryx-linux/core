@@ -22,6 +22,6 @@ fi
 [ -f /var/log/old/$1.3 ] && mv /var/log/old/$1.3 /var/log/old/$1.4
 [ -f /var/log/old/$1.2 ] && mv /var/log/old/$1.2 /var/log/old/$1.3
 [ -f /var/log/old/$1.1 ] && mv /var/log/old/$1.1 /var/log/old/$1.2
-[ -f /var/log/$1 ] && (cp /var/log/$1 /var/log/old/$1.1; echo -n "" > /var/log/$1)
+[ -f /var/log/$1 ] && (cp /var/log/$1 /var/log/old/$1.1 && echo -n "" > /var/log/$1)
 
 # End of file
