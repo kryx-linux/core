@@ -10,8 +10,8 @@
 
 
 diff -Nru tzcode.orig/Makefile tzcode/Makefile
---- tzcode.orig/Makefile	2014-08-11 10:16:52.358988157 +0200
-+++ tzcode/Makefile	2014-08-11 10:29:05.974725907 +0200
+--- tzcode.orig/Makefile	2014-08-31 09:30:13.303203534 +0200
++++ tzcode/Makefile	2014-08-31 09:31:17.377582561 +0200
 @@ -44,21 +44,21 @@
  
  # Everything gets put in subdirectories of. . .
@@ -37,7 +37,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -309,8 +309,10 @@
+@@ -321,8 +321,10 @@
  
  ###############################################################################
  
@@ -50,7 +50,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  AR=		ar
  
-@@ -359,19 +361,18 @@
+@@ -372,19 +374,18 @@
  ALL:		all date
  
  install:	all $(DATA) $(REDO) $(MANS)
@@ -74,7 +74,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  INSTALL:	ALL install date.1
  		mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
-@@ -414,19 +415,17 @@
+@@ -427,19 +428,17 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
  right_posix:	right_only leapseconds
@@ -98,13 +98,13 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
 +		$(ZIC) -y $(YEARISTYPE) -d $(DESTDIR)$(TZDIR)/right \
  			-L leapseconds $(TDATA)
  
- zones:		$(REDO)
-@@ -449,7 +448,7 @@
+ posix_packrat:	posix_only backzone
+@@ -467,7 +466,7 @@
  			<$? >$@
  		chmod +x $@
  
--check:		check_character_set check_tables check_web
-+check:		check_character_set check_tables
+-check:		check_character_set check_white_space check_tables check_web
++check:		check_character_set check_white_space check_tables 
  
  check_character_set: $(ENCHILADA)
  		LC_ALL=en_US.utf8 && export LC_ALL && \
