@@ -5,7 +5,7 @@
 
 name=util-linux
 version=2.25.1
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/$name/v2.25/$name-$version.tar.xz)
 
 build() {
@@ -14,7 +14,8 @@ build() {
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-nls \
-                --disable-{login,su,sulogin,nologin} \
+                --disable-{login,su,sulogin,nologin,runuser} \
+                --disable-chfn-chsh \
                 --enable-{write,raw,kill} \
                 --without-python
 
