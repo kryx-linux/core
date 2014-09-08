@@ -90,6 +90,9 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/ldd.1.gz
 -rw-r--r--	root/root	usr/man/man1/locale.1.gz
 -rw-r--r--	root/root	usr/man/man1/localedef.1.gz
+-rw-r--r--	root/root	usr/man/man1/memusage.1.gz
+-rw-r--r--	root/root	usr/man/man1/memusagestat.1.gz
+-rw-r--r--	root/root	usr/man/man1/mtrace.1.gz
 -rw-r--r--	root/root	usr/man/man1/sprof.1.gz
 drwxr-xr-x	root/root	usr/man/man1p/
 -rw-r--r--	root/root	usr/man/man1p/admin.1p.gz
