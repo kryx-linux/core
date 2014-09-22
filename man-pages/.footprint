@@ -3309,12 +3309,14 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/mdoc.7.gz
 -rw-r--r--	root/root	usr/man/man7/mdoc.samples.7.gz
 -rw-r--r--	root/root	usr/man/man7/mq_overview.7.gz
+-rw-r--r--	root/root	usr/man/man7/namespaces.7.gz
 -rw-r--r--	root/root	usr/man/man7/netdevice.7.gz
 -rw-r--r--	root/root	usr/man/man7/netlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/numa.7.gz
 -rw-r--r--	root/root	usr/man/man7/operator.7.gz
 -rw-r--r--	root/root	usr/man/man7/packet.7.gz
 -rw-r--r--	root/root	usr/man/man7/path_resolution.7.gz
+-rw-r--r--	root/root	usr/man/man7/pid_namespaces.7.gz
 -rw-r--r--	root/root	usr/man/man7/pipe.7.gz
 -rw-r--r--	root/root	usr/man/man7/posixoptions.7.gz
 -rw-r--r--	root/root	usr/man/man7/pthreads.7.gz
@@ -3346,6 +3348,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/uri.7.gz
 -rw-r--r--	root/root	usr/man/man7/url.7.gz
 -rw-r--r--	root/root	usr/man/man7/urn.7.gz
+-rw-r--r--	root/root	usr/man/man7/user_namespaces.7.gz
 -rw-r--r--	root/root	usr/man/man7/utf-8.7.gz
 -rw-r--r--	root/root	usr/man/man7/utf8.7.gz
 -rw-r--r--	root/root	usr/man/man7/vdso.7.gz
