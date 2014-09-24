@@ -4,8 +4,8 @@ drwxr-xr-x	root/root	bin/
 drwxr-xr-x	root/root	etc/
 -rw-r--r--	root/root	etc/sysctl.conf
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libprocps.so.3 -> libprocps.so.3.0.0
--rwxr-xr-x	root/root	lib/libprocps.so.3.0.0
+lrwxrwxrwx	root/root	lib/libprocps.so.4 -> libprocps.so.4.0.0
+-rwxr-xr-x	root/root	lib/libprocps.so.4.0.0
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/sysctl
 drwxr-xr-x	root/root	usr/
@@ -39,7 +39,7 @@ drwxr-xr-x	root/root	usr/include/proc/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libprocps.a
 -rwxr-xr-x	root/root	usr/lib/libprocps.la
-lrwxrwxrwx	root/root	usr/lib/libprocps.so -> ../../lib/libprocps.so.3.0.0
+lrwxrwxrwx	root/root	usr/lib/libprocps.so -> ../../lib/libprocps.so.4.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libprocps.pc
 drwxr-xr-x	root/root	usr/man/
@@ -57,6 +57,10 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/uptime.1.gz
 -rw-r--r--	root/root	usr/man/man1/w.1.gz
 -rw-r--r--	root/root	usr/man/man1/watch.1.gz
+drwxr-xr-x	root/root	usr/man/man3/
+-rw-r--r--	root/root	usr/man/man3/openproc.3.gz
+-rw-r--r--	root/root	usr/man/man3/readproc.3.gz
+-rw-r--r--	root/root	usr/man/man3/readproctab.3.gz
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/sysctl.conf.5.gz
 drwxr-xr-x	root/root	usr/man/man8/
