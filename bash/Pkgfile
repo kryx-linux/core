@@ -5,15 +5,16 @@
 
 name=bash
 version=4.3.25
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz \
-        $name-$version.patch.gz profile)
+        $name-$version.patch.gz profile CVE-2014-7169.patch)
 
 build() {
     cd $name-${version:0:3}
 
     gunzip -c $SRC/$name-$version.patch.gz | patch -p0
-    
+    patch -p0 -i $SRC/CVE-2014-7169.patch
+
     ./configure --prefix=/usr \
                 --exec-prefix= \
                 --mandir=/usr/man \
