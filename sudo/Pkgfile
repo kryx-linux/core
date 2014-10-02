@@ -4,12 +4,15 @@
 # Depends on:  zlib
 
 name=sudo
-version=1.8.10p3
+version=1.8.11
 release=1
-source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
+source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz
+        $name-shadow.diff)
 
 build() {
     cd $name-$version
+
+    patch -p1 -i $SRC/$name-shadow.diff 
 
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
