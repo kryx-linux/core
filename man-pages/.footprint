@@ -93,6 +93,7 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/memusage.1.gz
 -rw-r--r--	root/root	usr/man/man1/memusagestat.1.gz
 -rw-r--r--	root/root	usr/man/man1/mtrace.1.gz
+-rw-r--r--	root/root	usr/man/man1/pldd.1.gz
 -rw-r--r--	root/root	usr/man/man1/sprof.1.gz
 drwxr-xr-x	root/root	usr/man/man1p/
 -rw-r--r--	root/root	usr/man/man1p/admin.1p.gz
@@ -3225,6 +3226,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/charsets.7.gz
 -rw-r--r--	root/root	usr/man/man7/complex.7.gz
 -rw-r--r--	root/root	usr/man/man7/cp1251.7.gz
+-rw-r--r--	root/root	usr/man/man7/cp1252.7.gz
 -rw-r--r--	root/root	usr/man/man7/cpuset.7.gz
 -rw-r--r--	root/root	usr/man/man7/credentials.7.gz
 -rw-r--r--	root/root	usr/man/man7/ddp.7.gz
