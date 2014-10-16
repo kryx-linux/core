@@ -3,20 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysklogd
-version=1.5
-release=6
-source=(http://www.ibiblio.org/pub/Linux/system/daemons/$name-$version.tar.gz \
-        rotatelog syslog syslog.conf sysklogd
-        $name-${version}_CVE-2014-3634.diff)
+version=1.5.1
+release=1
+source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
+        rotatelog syslog syslog.conf sysklogd)
 
 build() {
     cd $name-$version
-
-    # http://seclists.org/oss-sec/2014/q4/79
-    patch -p1 -i $SRC/$name-${version}_CVE-2014-3634.diff
-
-    # don't try to fclose(NULL)
-    sed -i -e '192d' ksym_mod.c
 
     mkdir -p $PKG/usr/sbin \
              $PKG/etc/{cron/weekly,rc.d} \
