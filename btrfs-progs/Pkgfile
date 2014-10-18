@@ -4,15 +4,13 @@
 # Depends on:  util-linux e2fsprogs lzo
 
 name=btrfs-progs
-version=3.16.2
+version=3.17
 release=1
-source=(http://crux.nu/files/distfiles/$name-$version.tar.xz
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
 
 build() {
-    cd $name-$version
-
-    sed -i '/btrfs-check.8.gz/d' Documentation/Makefile
+    cd $name-v$version
 
     make CFLAGS="$CFLAGS"
     make prefix=/usr bindir=/sbin mandir=/usr/man DESTDIR=$PKG install
