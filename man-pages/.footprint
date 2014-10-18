@@ -1760,6 +1760,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_join.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_kill.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_kill_other_threads_np.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_rwlockattr_getkind_np.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_rwlockattr_setkind_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_self.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setaffinity_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setcancelstate.3.gz
