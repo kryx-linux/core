@@ -550,6 +550,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Mexico/
 drwxr-xr-x	root/root	usr/share/zoneinfo/Pacific/
 -rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Apia
 -rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Auckland
+-rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Bougainville
 -rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Chatham
 -rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Chuuk
 -rw-r--r--	root/root	usr/share/zoneinfo/Pacific/Easter
@@ -1155,6 +1156,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Mexico/
 drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Pacific/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Apia
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Auckland
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Bougainville
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Chatham
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Chuuk
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Pacific/Easter
@@ -1759,6 +1761,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Mexico/
 drwxr-xr-x	root/root	usr/share/zoneinfo/right/Pacific/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Apia
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Auckland
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Bougainville
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Chatham
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Chuuk
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Pacific/Easter

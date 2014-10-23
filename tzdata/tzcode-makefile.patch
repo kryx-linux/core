@@ -10,8 +10,8 @@
 
 
 diff -Nru tzcode.orig/Makefile tzcode/Makefile
---- tzcode.orig/Makefile	2014-09-26 09:35:04.112735513 +0200
-+++ tzcode/Makefile	2014-09-26 09:36:16.820187315 +0200
+--- tzcode.orig/Makefile	2014-10-23 13:02:05.020110402 +0200
++++ tzcode/Makefile	2014-10-23 13:02:20.519564183 +0200
 @@ -44,21 +44,21 @@
  
  # Everything gets put in subdirectories of. . .
@@ -37,7 +37,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -321,8 +321,10 @@
+@@ -322,8 +322,10 @@
  
  ###############################################################################
  
@@ -50,7 +50,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  AR=		ar
  
-@@ -372,19 +374,18 @@
+@@ -373,19 +375,18 @@
  ALL:		all date
  
  install:	all $(DATA) $(REDO) $(MANS)
@@ -74,7 +74,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  
  INSTALL:	ALL install date.1
  		mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
-@@ -427,19 +428,17 @@
+@@ -428,19 +429,17 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
  right_posix:	right_only leapseconds
@@ -99,7 +99,7 @@ diff -Nru tzcode.orig/Makefile tzcode/Makefile
  			-L leapseconds $(TDATA)
  
  posix_packrat:	posix_only backzone
-@@ -468,7 +467,7 @@
+@@ -469,7 +468,7 @@
  		chmod +x $@
  
  check:		check_character_set check_white_space check_sorted \
