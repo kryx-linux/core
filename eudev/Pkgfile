@@ -4,8 +4,8 @@
 # Depends on:  kmod
 
 name=eudev
-version=1.10
-release=2
+version=2.1.1
+release=1
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
         $name-man-$version.tar.xz
         81-crux.rules start_udev)
