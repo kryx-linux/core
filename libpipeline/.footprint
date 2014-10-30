@@ -3,9 +3,9 @@ drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/pipeline.h
 drwxr-xr-x	root/root	usr/lib/
 -rwxr-xr-x	root/root	usr/lib/libpipeline.la
-lrwxrwxrwx	root/root	usr/lib/libpipeline.so -> libpipeline.so.1.3.0
-lrwxrwxrwx	root/root	usr/lib/libpipeline.so.1 -> libpipeline.so.1.3.0
--rwxr-xr-x	root/root	usr/lib/libpipeline.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libpipeline.so -> libpipeline.so.1.4.0
+lrwxrwxrwx	root/root	usr/lib/libpipeline.so.1 -> libpipeline.so.1.4.0
+-rwxr-xr-x	root/root	usr/lib/libpipeline.so.1.4.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libpipeline.pc
 drwxr-xr-x	root/root	usr/man/
@@ -22,6 +22,7 @@ lrwxrwxrwx	root/root	usr/man/man3/pipecmd_discard_err.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_dump.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_dup.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_exec.3.gz -> libpipeline.3.gz
+lrwxrwxrwx	root/root	usr/man/man3/pipecmd_fchdir.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_free.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_get_nargs.3.gz -> libpipeline.3.gz
 lrwxrwxrwx	root/root	usr/man/man3/pipecmd_new.3.gz -> libpipeline.3.gz
