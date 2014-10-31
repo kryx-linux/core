@@ -10,6 +10,7 @@ lrwxrwxrwx	root/root	usr/bin/vi -> /bin/vi
 lrwxrwxrwx	root/root	usr/bin/view -> vim
 -rwxr-xr-x	root/root	usr/bin/vim
 lrwxrwxrwx	root/root	usr/bin/vimdiff -> vim
+-rwxr-xr-x	root/root	usr/bin/xxd
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/evim.1.gz
@@ -21,6 +22,7 @@ lrwxrwxrwx	root/root	usr/man/man1/vi.1.gz -> vim.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/view.1.gz -> vim.1.gz
 -rw-r--r--	root/root	usr/man/man1/vim.1.gz
 -rw-r--r--	root/root	usr/man/man1/vimdiff.1.gz
+-rw-r--r--	root/root	usr/man/man1/xxd.1.gz
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/vim/
 drwxr-xr-x	root/root	usr/share/vim/autoload/
@@ -325,6 +327,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/diff.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dircolors.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/docbk.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/dockerfile.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dosbatch.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dosini.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dtd.vim
@@ -785,6 +788,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/docbk.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/docbksgml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/docbkxml.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/dockerfile.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dosbatch.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dosini.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dot.vim
@@ -1239,4 +1243,25 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/z8a.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/zimbu.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/zsh.vim
+drwxr-xr-x	root/root	usr/share/vim/tools/
+-rw-r--r--	root/root	usr/share/vim/tools/blink.c
+-rw-r--r--	root/root	usr/share/vim/tools/ccfilter.1
+-rw-r--r--	root/root	usr/share/vim/tools/ccfilter.c
+-rw-r--r--	root/root	usr/share/vim/tools/ccfilter_README.txt
+-rwxr-xr-x	root/root	usr/share/vim/tools/efm_filter.pl
+-rw-r--r--	root/root	usr/share/vim/tools/efm_filter.txt
+-rwxr-xr-x	root/root	usr/share/vim/tools/efm_perl.pl
+-rwxr-xr-x	root/root	usr/share/vim/tools/mve.awk
+-rw-r--r--	root/root	usr/share/vim/tools/mve.txt
+-rwxr-xr-x	root/root	usr/share/vim/tools/pltags.pl
+-rwxr-xr-x	root/root	usr/share/vim/tools/ref
+-rw-r--r--	root/root	usr/share/vim/tools/shtags.1
+-rwxr-xr-x	root/root	usr/share/vim/tools/shtags.pl
+-rw-r--r--	root/root	usr/share/vim/tools/unicode.vim
+-rwxr-xr-x	root/root	usr/share/vim/tools/vim132
+-rw-r--r--	root/root	usr/share/vim/tools/vim_vs_net.cmd
+-rwxr-xr-x	root/root	usr/share/vim/tools/vimm
+-rwxr-xr-x	root/root	usr/share/vim/tools/vimspell.sh
+-rw-r--r--	root/root	usr/share/vim/tools/vimspell.txt
+-rw-r--r--	root/root	usr/share/vim/tools/xcmdsrv_client.c
 -rw-r--r--	root/root	usr/share/vim/vimrc
