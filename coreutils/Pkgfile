@@ -21,7 +21,7 @@ build() {
                 --disable-nls \
                 --disable-assert \
                 --enable-no-install-program=uptime,kill,chcon,runcon,groups
-    make -j1
+    make
     make DESTDIR=$PKG install 
 
     mkdir $PKG/bin
