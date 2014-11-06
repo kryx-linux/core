@@ -4,10 +4,10 @@
 # Depends on:  util-linux e2fsprogs lzo
 
 name=btrfs-progs
-version=3.17
+version=3.17.1
 release=1
-source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz
-        http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz \
+        $name-man-v$version.tar.xz)
 
 build() {
     cd $name-v$version
