@@ -4,7 +4,7 @@
 # Depends on:  eudev
 
 name=dhcpcd
-version=6.6.6
+version=6.6.7
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
