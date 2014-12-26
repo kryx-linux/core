@@ -18,7 +18,7 @@ DHCPOPTS="-h `/bin/hostname` -t 10"
 
 case $1 in
 	start)
-		if [ "${TYPE}" == "DHCP" ]; then
+		if [ "${TYPE}" = "DHCP" ]; then
 			/sbin/dhcpcd ${DHCPOPTS}
 		else
 			/sbin/ip addr add ${ADDR}/${MASK} dev ${DEV} broadcast +
@@ -27,7 +27,7 @@ case $1 in
 		fi
 		;;
 	stop)
-		if [ "${TYPE}" == "DHCP" ]; then
+		if [ "${TYPE}" = "DHCP" ]; then
 			/sbin/dhcpcd -x
 		else
 			/sbin/ip route del default

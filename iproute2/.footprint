@@ -2,6 +2,7 @@ drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/iproute2/
 -rw-r--r--	root/root	etc/iproute2/ematch_map
 -rw-r--r--	root/root	etc/iproute2/group
+-rw-r--r--	root/root	etc/iproute2/nl_protos
 -rw-r--r--	root/root	etc/iproute2/rt_dsfield
 -rw-r--r--	root/root	etc/iproute2/rt_protos
 -rw-r--r--	root/root	etc/iproute2/rt_realms
