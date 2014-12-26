@@ -4,7 +4,7 @@
 # Depends on:  ncurses acl
 
 name=gettext
-version=0.19.3
+version=0.19.4
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
