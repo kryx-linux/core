@@ -21,7 +21,7 @@ build () {
                 --disable-nls
 
     make VIMRTDIR= 
-    make VIMRTDIR= DESTDIR=$PKG install
+    make -j1 VIMRTDIR= DESTDIR=$PKG install
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
@@ -46,5 +46,5 @@ build () {
                 --with-features=tiny
 
     make VIMRTDIR=
-    make VIMRTDIR= DESTDIR=$PKG installvimbin
+    make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
 }
