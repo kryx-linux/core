@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=bison
-version=3.0.2
+version=3.0.3
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -14,6 +14,6 @@ build() {
                 --disable-nls
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share/info
+    rm -r $PKG/usr/share/info $PKG/usr/share/doc/
     rm $PKG/usr/share/bison/README
 }
