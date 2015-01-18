@@ -590,6 +590,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/sched_setparam.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_setscheduler.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_yield.2.gz
+-rw-r--r--	root/root	usr/man/man2/seccomp.2.gz
 -rw-r--r--	root/root	usr/man/man2/security.2.gz
 -rw-r--r--	root/root	usr/man/man2/select.2.gz
 -rw-r--r--	root/root	usr/man/man2/select_tut.2.gz
