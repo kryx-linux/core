@@ -326,6 +326,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/eventfd.2.gz
 -rw-r--r--	root/root	usr/man/man2/eventfd2.2.gz
 -rw-r--r--	root/root	usr/man/man2/execve.2.gz
+-rw-r--r--	root/root	usr/man/man2/execveat.2.gz
 -rw-r--r--	root/root	usr/man/man2/exit.2.gz
 -rw-r--r--	root/root	usr/man/man2/exit_group.2.gz
 -rw-r--r--	root/root	usr/man/man2/faccessat.2.gz
@@ -465,6 +466,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/madvise.2.gz
 -rw-r--r--	root/root	usr/man/man2/madvise1.2.gz
 -rw-r--r--	root/root	usr/man/man2/mbind.2.gz
+-rw-r--r--	root/root	usr/man/man2/memfd_create.2.gz
 -rw-r--r--	root/root	usr/man/man2/migrate_pages.2.gz
 -rw-r--r--	root/root	usr/man/man2/mincore.2.gz
 -rw-r--r--	root/root	usr/man/man2/mkdir.2.gz
@@ -576,6 +578,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/rt_sigsuspend.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigtimedwait.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_tgsigqueueinfo.2.gz
+-rw-r--r--	root/root	usr/man/man2/s390_pci_mmio_read.2.gz
+-rw-r--r--	root/root	usr/man/man2/s390_pci_mmio_write.2.gz
 -rw-r--r--	root/root	usr/man/man2/s390_runtime_instr.2.gz
 -rw-r--r--	root/root	usr/man/man2/sbrk.2.gz
 -rw-r--r--	root/root	usr/man/man2/sched_get_priority_max.2.gz
