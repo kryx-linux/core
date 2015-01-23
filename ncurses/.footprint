@@ -72,6 +72,17 @@ lrwxrwxrwx	root/root	usr/lib/libpanel.so.5 -> libpanel.so.5.9
 lrwxrwxrwx	root/root	usr/lib/libpanelw.so -> libpanelw.so.5
 lrwxrwxrwx	root/root	usr/lib/libpanelw.so.5 -> libpanelw.so.5.9
 -rwxr-xr-x	root/root	usr/lib/libpanelw.so.5.9
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/form.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/formw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/menu.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/menuw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncurses++.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncurses++w.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncurses.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncursesw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/panel.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/panelw.pc
 lrwxrwxrwx	root/root	usr/lib/terminfo -> ../share/terminfo
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
