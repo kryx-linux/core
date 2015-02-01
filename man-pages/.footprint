@@ -397,6 +397,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/getpmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/getppid.2.gz
 -rw-r--r--	root/root	usr/man/man2/getpriority.2.gz
+-rw-r--r--	root/root	usr/man/man2/getrandom.2.gz
 -rw-r--r--	root/root	usr/man/man2/getresgid.2.gz
 -rw-r--r--	root/root	usr/man/man2/getresgid32.2.gz
 -rw-r--r--	root/root	usr/man/man2/getresuid.2.gz
@@ -443,6 +444,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ipc.2.gz
 -rw-r--r--	root/root	usr/man/man2/isastream.2.gz
 -rw-r--r--	root/root	usr/man/man2/kcmp.2.gz
+-rw-r--r--	root/root	usr/man/man2/kexec_file_load.2.gz
 -rw-r--r--	root/root	usr/man/man2/kexec_load.2.gz
 -rw-r--r--	root/root	usr/man/man2/keyctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/kill.2.gz
