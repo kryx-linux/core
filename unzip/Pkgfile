@@ -4,11 +4,14 @@
 
 name=unzip
 version=6.0
-release=2
-source=(http://downloads.sourceforge.net/sourceforge/infozip/${name}${version//./}.tar.gz)
+release=3
+source=(http://downloads.sourceforge.net/sourceforge/infozip/${name}${version//./}.tar.gz \
+	unzip-6.0-overflow.patch unzip-6.0-attribs-overflow.patch)
 
 build() {
     cd ${name}${version//./}
+    patch -p1 -i $SRC/unzip-6.0-overflow.patch
+    patch -p1 -i $SRC/unzip-6.0-attribs-overflow.patch
     make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" prefix=/usr linux_noasm
     make -f unix/Makefile prefix=$PKG/usr install
     ln -sf unzip $PKG/usr/bin/zipinfo
