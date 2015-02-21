@@ -436,6 +436,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/io_setup.2.gz
 -rw-r--r--	root/root	usr/man/man2/io_submit.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioctl.2.gz
+-rw-r--r--	root/root	usr/man/man2/ioctl_fat.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioctl_list.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioperm.2.gz
 -rw-r--r--	root/root	usr/man/man2/iopl.2.gz
