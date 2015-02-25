@@ -4,7 +4,7 @@
 
 name=unzip
 version=6.0
-release=4
+release=5
 source=(http://downloads.sourceforge.net/sourceforge/infozip/${name}${version//./}.tar.gz \
 	unzip-6.0-overflow.patch unzip-6.0-attribs-overflow.patch \
 	unzip-6.0-cve-2014-8139.patch \
@@ -19,7 +19,8 @@ build() {
     patch -p1 -i $SRC/unzip-6.0-cve-2014-8140.patch
     patch -p1 -i $SRC/unzip-6.0-cve-2014-8141.patch
 
-    make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" prefix=/usr linux_noasm
+    sed -i 's/-O3//' unix/configure
+    make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" generic
     make -f unix/Makefile prefix=$PKG/usr install
     ln -sf unzip $PKG/usr/bin/zipinfo
 }
