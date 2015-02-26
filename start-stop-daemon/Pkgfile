@@ -3,19 +3,16 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=start-stop-daemon
-version=1.17.23
+version=20141020
 release=1
-source=(http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_${version}.tar.xz)
+source=(start-stop-daemon.c start-stop-daemon.8 crux-patch.diff makefile)
 
 build () {
-    cd dpkg-$version
-    
-    ./configure --disable-update-alternatives
-    
-    make -C lib/compat
-    make -C utils
+    patch -p2 -i crux-patch.diff
+
+    make
 
     install -d $PKG/{sbin,usr/man/man8}
-    install -m 755 utils/$name $PKG/sbin/
-    install -m 644 man/$name.8 $PKG/usr/man/man8/
+    install -m 755 $name $PKG/sbin/
+    install -m 644 $name.8 $PKG/usr/man/man8/
 }
