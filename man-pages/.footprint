@@ -3230,6 +3230,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/armscii-8.7.gz
 -rw-r--r--	root/root	usr/man/man7/arp.7.gz
 -rw-r--r--	root/root	usr/man/man7/ascii.7.gz
+-rw-r--r--	root/root	usr/man/man7/attributes.7.gz
 -rw-r--r--	root/root	usr/man/man7/boot.7.gz
 -rw-r--r--	root/root	usr/man/man7/bootparam.7.gz
 -rw-r--r--	root/root	usr/man/man7/capabilities.7.gz
