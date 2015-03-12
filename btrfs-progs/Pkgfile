@@ -4,14 +4,16 @@
 # Depends on:  util-linux e2fsprogs lzo
 
 name=btrfs-progs
-version=3.18.2
+version=3.19
 release=1
 source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz \
         $name-man-v$version.tar.xz)
 
 build() {
     cd $name-v$version
-
-    make CFLAGS="$CFLAGS"
-    make prefix=/usr bindir=/sbin mandir=/usr/man DESTDIR=$PKG install
+    ./configure --prefix=/usr --mandir=/usr/man --bindir=/sbin
+    make
+    make DESTDIR=$PKG install
+    mv $PKG/usr/share/man $PKG/usr/man
+    rm -r $PKG/usr/share
 }
