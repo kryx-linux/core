@@ -3325,6 +3325,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/namespaces.7.gz
 -rw-r--r--	root/root	usr/man/man7/netdevice.7.gz
 -rw-r--r--	root/root	usr/man/man7/netlink.7.gz
+-rw-r--r--	root/root	usr/man/man7/nptl.7.gz
 -rw-r--r--	root/root	usr/man/man7/numa.7.gz
 -rw-r--r--	root/root	usr/man/man7/operator.7.gz
 -rw-r--r--	root/root	usr/man/man7/packet.7.gz
