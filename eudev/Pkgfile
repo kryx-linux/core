@@ -4,16 +4,26 @@
 # Depends on:  kmod
 
 name=eudev
-version=2.1.1
+version=3.0
 release=1
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
-        $name-man-$version.tar.xz
-        81-crux.rules start_udev)
+        81-crux.rules start_udev
+        $name-remove_gperf_dep.patch
+        keyboard-keys.tar.xz)
 
 build() {
     cd $name-$version
 
+    # See https://github.com/gentoo/eudev/issues/75
+    # remove build-time dependency to gperf for now
+    cp $SRC/keyboard-keys-{from,to}-name.h src/udev
+    patch -p1 -i $SRC/eudev-remove_gperf_dep.patch
+    
+    # needed for static linking, e.g. dmsetup.static 
     sed -i '/^Libs:/s/-ludev/-ludev -lrt/' src/libudev/libudev.pc.in
+
+
+    autoreconf --force --install
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin --bindir=/sbin \
@@ -24,11 +34,8 @@ build() {
                 --mandir=/usr/man \
                 --disable-introspection \
                 --disable-gudev \
-                --disable-keymap \
                 --disable-manpages \
-                --enable-split-usr \
-                --enable-modules \
-                --enable-libkmod
+                --enable-split-usr 
 
     make CFLAGS="$CFLAGS -D_GNU_SOURCE" 
     make install DESTDIR=$PKG

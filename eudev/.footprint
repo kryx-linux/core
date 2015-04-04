@@ -11,12 +11,15 @@ drwxr-xr-x	root/root	etc/udev/hwdb.d/
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-sdio-vendor-model.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-usb-classes.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-usb-vendor-model.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/60-keyboard.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/70-mouse.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/70-touchpad.hwdb
 drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/udev.conf
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/firmware/
-lrwxrwxrwx	root/root	lib/libudev.so.1 -> libudev.so.1.6.0
--rwxr-xr-x	root/root	lib/libudev.so.1.6.0
+lrwxrwxrwx	root/root	lib/libudev.so.1 -> libudev.so.1.6.2
+-rwxr-xr-x	root/root	lib/libudev.so.1.6.2
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/accelerometer
 -rwxr-xr-x	root/root	lib/udev/ata_id
@@ -31,6 +34,7 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-drm.rules
+-rw-r--r--	root/root	lib/udev/rules.d/60-keyboard.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-input.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-serial.rules
@@ -39,6 +43,8 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-v4l.rules
 -rw-r--r--	root/root	lib/udev/rules.d/61-accelerometer.rules
 -rw-r--r--	root/root	lib/udev/rules.d/64-btrfs.rules
+-rw-r--r--	root/root	lib/udev/rules.d/70-mouse.rules
+-rw-r--r--	root/root	lib/udev/rules.d/70-touchpad.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-net-description.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-probe_mtd.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-tty-description.rules
@@ -61,7 +67,7 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libudev.a
 -rwxr-xr-x	root/root	usr/lib/libudev.la
-lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.1.6.0
+lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.1.6.2
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	usr/man/

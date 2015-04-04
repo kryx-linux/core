@@ -1,4 +1,5 @@
 ee21e150df6c804eef03a6cb2fc1cceb  81-crux.rules
-dd945ce34314b4544e9036153d3a97e9  eudev-2.1.1.tar.gz
-584d89028fd64afb6f248a14594acb64  eudev-man-2.1.1.tar.xz
+a2706a1413723b6b82eecb7d6982763c  eudev-3.0.tar.gz
+9fa96b8b4f5df8ebf1bf574dac5f8d95  eudev-remove_gperf_dep.patch
+1dcada037857d727e7d1efb5d8777055  keyboard-keys.tar.xz
 eb80a77a7ea60e8322116791b65ddc5d  start_udev
