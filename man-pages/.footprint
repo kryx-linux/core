@@ -503,6 +503,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/munmap.2.gz
 -rw-r--r--	root/root	usr/man/man2/name_to_handle_at.2.gz
 -rw-r--r--	root/root	usr/man/man2/nanosleep.2.gz
+-rw-r--r--	root/root	usr/man/man2/newfstatat.2.gz
 -rw-r--r--	root/root	usr/man/man2/nfsservctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/nice.2.gz
 -rw-r--r--	root/root	usr/man/man2/oldfstat.2.gz
@@ -541,6 +542,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pread64.2.gz
 -rw-r--r--	root/root	usr/man/man2/preadv.2.gz
 -rw-r--r--	root/root	usr/man/man2/prlimit.2.gz
+-rw-r--r--	root/root	usr/man/man2/prlimit64.2.gz
 -rw-r--r--	root/root	usr/man/man2/process_vm_readv.2.gz
 -rw-r--r--	root/root	usr/man/man2/process_vm_writev.2.gz
 -rw-r--r--	root/root	usr/man/man2/prof.2.gz
@@ -1714,6 +1716,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pmap_unset.3.gz
 -rw-r--r--	root/root	usr/man/man3/popen.3.gz
 -rw-r--r--	root/root	usr/man/man3/posix_fallocate.3.gz
+-rw-r--r--	root/root	usr/man/man3/posix_madvise.3.gz
 -rw-r--r--	root/root	usr/man/man3/posix_memalign.3.gz
 -rw-r--r--	root/root	usr/man/man3/posix_openpt.3.gz
 -rw-r--r--	root/root	usr/man/man3/pow.3.gz
