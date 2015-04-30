@@ -151,6 +151,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_OPENSOCKETFUNCTION.3.gz
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_PASSWORD.3.gz
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_PATH_AS_IS.3.gz
+-rw-r--r--	root/root	usr/man/man3/CURLOPT_PINNEDPUBLICKEY.3.gz
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_PORT.3.gz
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_POST.3.gz
 -rw-r--r--	root/root	usr/man/man3/CURLOPT_POSTFIELDS.3.gz
