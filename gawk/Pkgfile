@@ -4,13 +4,13 @@
 # Depends on:  readline libmpfr
 
 name=gawk
-version=4.1.1
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz pipe.patch)
+version=4.1.2
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
-    patch -p1 -i $SRC/pipe.patch
+
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
                 --mandir=/usr/man \
@@ -20,5 +20,4 @@ build() {
 
     rm -r $PKG/usr/share/info
     rm $PKG/usr/bin/gawk-$version
-    rm $PKG/usr/lib/gawk/*.la
 }
