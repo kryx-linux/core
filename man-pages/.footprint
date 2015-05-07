@@ -753,7 +753,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/CIRCLEQ_INSERT_TAIL.3.gz
 -rw-r--r--	root/root	usr/man/man3/CIRCLEQ_REMOVE.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_ALIGN.3.gz
+-rw-r--r--	root/root	usr/man/man3/CMSG_DATA.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_FIRSTHDR.3.gz
+-rw-r--r--	root/root	usr/man/man3/CMSG_LEN.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_NXTHDR.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_SPACE.3.gz
 -rw-r--r--	root/root	usr/man/man3/CPU_ALLOC.3.gz
@@ -945,12 +947,6 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ceil.3.gz
 -rw-r--r--	root/root	usr/man/man3/ceilf.3.gz
 -rw-r--r--	root/root	usr/man/man3/ceill.3.gz
--rw-r--r--	root/root	usr/man/man3/cerf.3.gz
--rw-r--r--	root/root	usr/man/man3/cerfc.3.gz
--rw-r--r--	root/root	usr/man/man3/cerfcf.3.gz
--rw-r--r--	root/root	usr/man/man3/cerfcl.3.gz
--rw-r--r--	root/root	usr/man/man3/cerff.3.gz
--rw-r--r--	root/root	usr/man/man3/cerfl.3.gz
 -rw-r--r--	root/root	usr/man/man3/cexp.3.gz
 -rw-r--r--	root/root	usr/man/man3/cexp2.3.gz
 -rw-r--r--	root/root	usr/man/man3/cexp2f.3.gz
@@ -1287,10 +1283,12 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/gammaf.3.gz
 -rw-r--r--	root/root	usr/man/man3/gammal.3.gz
 -rw-r--r--	root/root	usr/man/man3/gcvt.3.gz
+-rw-r--r--	root/root	usr/man/man3/get_avphys_pages.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_current_dir_name.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_myaddress.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_nprocs.3.gz
 -rw-r--r--	root/root	usr/man/man3/get_nprocs_conf.3.gz
+-rw-r--r--	root/root	usr/man/man3/get_phys_pages.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaddrinfo.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaddrinfo_a.3.gz
 -rw-r--r--	root/root	usr/man/man3/getaliasbyname.3.gz
@@ -1845,6 +1843,12 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/remquol.3.gz
 -rw-r--r--	root/root	usr/man/man3/res_init.3.gz
 -rw-r--r--	root/root	usr/man/man3/res_mkquery.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_ninit.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_nmkquery.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_nquery.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_nquerydomain.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_nsearch.3.gz
+-rw-r--r--	root/root	usr/man/man3/res_nsend.3.gz
 -rw-r--r--	root/root	usr/man/man3/res_query.3.gz
 -rw-r--r--	root/root	usr/man/man3/res_querydomain.3.gz
 -rw-r--r--	root/root	usr/man/man3/res_search.3.gz
@@ -3162,6 +3166,8 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/initrd.4.gz
 -rw-r--r--	root/root	usr/man/man4/intro.4.gz
 -rw-r--r--	root/root	usr/man/man4/kmem.4.gz
+-rw-r--r--	root/root	usr/man/man4/loop-control.4.gz
+-rw-r--r--	root/root	usr/man/man4/loop.4.gz
 -rw-r--r--	root/root	usr/man/man4/lp.4.gz
 -rw-r--r--	root/root	usr/man/man4/mem.4.gz
 -rw-r--r--	root/root	usr/man/man4/mouse.4.gz
@@ -3370,6 +3376,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/utf8.7.gz
 -rw-r--r--	root/root	usr/man/man7/vdso.7.gz
 -rw-r--r--	root/root	usr/man/man7/x25.7.gz
+-rw-r--r--	root/root	usr/man/man7/xattr.7.gz
 drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/iconvconfig.8.gz
 -rw-r--r--	root/root	usr/man/man8/intro.8.gz
