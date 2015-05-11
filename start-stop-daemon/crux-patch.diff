@@ -1,5 +1,5 @@
 diff --git a/start-stop-daemon/start-stop-daemon.8 b/start-stop-daemon/start-stop-daemon.8
-index 9aad070..6d8275f 100644
+index deae6c6..c17a3dd 100644
 --- a/start-stop-daemon/start-stop-daemon.8
 +++ b/start-stop-daemon/start-stop-daemon.8
 @@ -20,7 +20,7 @@
@@ -7,15 +7,15 @@ index 9aad070..6d8275f 100644
  .\" along with this program.  If not, see <https://www.gnu.org/licenses/>.
  .
 -.TH start\-stop\-daemon 8 "2014-03-26" "Debian Project" "dpkg utilities"
-+.TH start\-stop\-daemon 8 "2015-02-25" "CRUX 3.1" "core services"
++.TH start\-stop\-daemon 8 "2015-05-11" "CRUX 3.1" "core services"
  .SH NAME
  start\-stop\-daemon \- start and stop system daemon programs
  .
 diff --git a/start-stop-daemon/start-stop-daemon.c b/start-stop-daemon/start-stop-daemon.c
-index 6aebe9b..b3c1cb1 100644
+index c35f448..eb5d4e6 100644
 --- a/start-stop-daemon/start-stop-daemon.c
 +++ b/start-stop-daemon/start-stop-daemon.c
-@@ -20,10 +20,33 @@
+@@ -20,10 +20,34 @@
   * Changes by Ian Jackson: added --retry (and associated rearrangements).
   */
  
@@ -25,7 +25,7 @@ index 6aebe9b..b3c1cb1 100644
  
  #include <dpkg/macros.h>
 +#else
-+# define VERSION 		"20141020"
++# define VERSION 		"20140423"
 +# define CRUX 			"CRUX 3.1"
 +
 +# define HAVE_SYS_PARAM_H
@@ -36,6 +36,7 @@ index 6aebe9b..b3c1cb1 100644
 +# define HAVE_ERROR_H
 +# define HAVE_ERR_H
 +
++# define HAVE_CLOCK_MONOTONIC
 +# define HAVE_GETDTABLESIZE
 +# define HAVE_IOPRIO_SET
 +# define HAVE_SETSID
@@ -49,7 +50,7 @@ index 6aebe9b..b3c1cb1 100644
  
  #if defined(linux)
  #  define OSLinux
-@@ -142,6 +165,10 @@
+@@ -142,6 +166,10 @@
  #define HAVE_IOPRIO_SET
  #endif
  
@@ -60,7 +61,17 @@ index 6aebe9b..b3c1cb1 100644
  #define IOPRIO_CLASS_SHIFT 13
  #define IOPRIO_PRIO_VALUE(class, prio) (((class) << IOPRIO_CLASS_SHIFT) | (prio))
  #define IO_SCHED_PRIO_MIN 0
-@@ -577,9 +604,9 @@ usage(void)
+@@ -310,8 +338,7 @@ xstrdup(const char *str)
+ static void
+ timespec_gettime(struct timespec *ts)
+ {
+-#if defined(_POSIX_TIMERS) && _POSIX_TIMERS > 0 && \
+-    defined(_POSIX_MONOTONIC_CLOCK) && _POSIX_MONOTONIC_CLOCK > 0
++#ifdef HAVE_CLOCK_MONOTONIC
+ 	if (clock_gettime(CLOCK_MONOTONIC, ts) < 0)
+ 		fatal("clock_gettime failed");
+ #else
+@@ -615,9 +642,9 @@ usage(void)
  static void
  do_version(void)
  {

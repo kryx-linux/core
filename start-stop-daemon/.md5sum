@@ -1,4 +1,4 @@
-456389724ec3bdfcc0d28457eb0de459  crux-patch.diff
+e3862e0d557d075a44b7b490eab16b63  crux-patch.diff
 707efd334e4ba1d5f65f366a3c03c794  makefile
-00a3895e85c98124737cf4354fbc9c84  start-stop-daemon.8
-70b9c009a9b6c8e8507f1e6a9a64e230  start-stop-daemon.c
+c021c418059b2afcb2f501927239beca  start-stop-daemon.8
+1e37b936e2981abd5dfdab08e5e4cc97  start-stop-daemon.c
