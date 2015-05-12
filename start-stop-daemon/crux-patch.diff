@@ -25,7 +25,7 @@ index c35f448..eb5d4e6 100644
  
  #include <dpkg/macros.h>
 +#else
-+# define VERSION 		"20140423"
++# define VERSION 		"20150423"
 +# define CRUX 			"CRUX 3.1"
 +
 +# define HAVE_SYS_PARAM_H
