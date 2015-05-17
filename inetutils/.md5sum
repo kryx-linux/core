@@ -1,3 +1,4 @@
+63afd1bd27e883d1b026d921a4ef2784  ifconfig-default_behaviour.patch
 87fdb9f85d8fc140b2f873e8e4e18440  inetd
 dd0d71e008809420edada02dda7a3149  inetd.conf
-aa1a9a132259db83e66c1f3265065ba2  inetutils-1.9.2.tar.gz
+491a75cb382ce3f68122e4556addfcae  inetutils-1.9.3.tar.gz
