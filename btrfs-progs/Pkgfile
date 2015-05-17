@@ -1,7 +1,7 @@
 # Description: Filesystem utilities for btrfs
 # URL:         http://btrfs.wiki.kernel.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  util-linux e2fsprogs lzo
+# Depends on:  util-linux e2fsprogs lzo zlib
 
 name=btrfs-progs
 version=4.0
