@@ -4,10 +4,15 @@
 
 name=ca-certificates
 version=20150422
-release=1
+release=2
 source=(cacert.pem)
 
 build () {
+
+    # see http://curl.haxx.se/docs/mk-ca-bundle.html how
+    # to create the bundle from Mozillas data:
+    # mk-ca-bundle.pl -p ALL:TRUSTED_DELEGATOR cacert.pem
+
     install -Dm 644 $SRC/cacert.pem $PKG/etc/ssl/cert.pem
 }
 
