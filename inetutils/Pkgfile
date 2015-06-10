@@ -4,16 +4,13 @@
 # Depends on:  readline
 
 name=inetutils
-version=1.9.3
+version=1.9.4
 release=1
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
-        inetd.conf inetd ifconfig-default_behaviour.patch)
+        inetd.conf inetd)
 
 build() {
     cd inetutils-$version
-
-    # http://article.gmane.org/gmane.comp.gnu.inetutils.bugs/3909
-    patch -p1 -i $SRC/ifconfig-default_behaviour.patch
 
     ./configure --prefix=/usr \
                 --libexecdir=/usr/sbin \
