@@ -3,16 +3,11 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.19
-release=5
+version=2.21
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-3.12.tar.bz2 \
-	$name-$version-multilib-dirs.patch \
-	CVE-2014-0475.patch iconv-gconv_trans.c.patch \
-	CVE-2012-3406-Stack-overflow-in-vfprintf-BZ-16617.patch \
-	CVE-2014-7817-wordexp-fails-to-honour-WRDE_NOCMD.patch \
-	CVE-2014-9402-Avoid-infinite-loop-in-nss_dns-getnetbyname.patch \
-	CVE-2015-1472-wscanf-allocates-too-little-memory.patch \
+	$name-2.20-multilib-dirs.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
@@ -21,37 +16,28 @@ build() {
 	cp -r $SRC/kernel-headers-3.12/include $PKG/usr
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/$name-$version -i $SRC/$name-$version-multilib-dirs.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2014-0475.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/iconv-gconv_trans.c.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2012-3406-Stack-overflow-in-vfprintf-BZ-16617.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2014-7817-wordexp-fails-to-honour-WRDE_NOCMD.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2014-9402-Avoid-infinite-loop-in-nss_dns-getnetbyname.patch
-	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2015-1472-wscanf-allocates-too-little-memory.patch
+        patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
 	../$name-$version/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=3.10 \
+		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
-		--enable-obsolete-rpc \
-		--enable-multi-arch \
-		--enable-static-nss
+		--enable-obsolete-rpc --enable-multi-arch
 	make 
 	#make check
 	make install_root=$PKG install
 
-	install -m 0644 $SRC/$name-$version/nscd/nscd.conf $PKG/etc 
-	install -d $PKG/var/{db,run}/nscd
-
-	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
+	cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
 	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
 	mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
 	touch $PKG/etc/ld.so.cache
 
-	rm -rf $PKG/usr/{share/{info,locale},bin/tzselect,sbin/z{dump,ic}}
+	rm -rf $PKG/usr/share/{info,locale} \
+		$PKG/usr/bin/tzselect \
+		$PKG/usr/sbin/z{dump,ic}
 }
