@@ -5,25 +5,15 @@
 
 name=eudev
 version=3.1.2
-release=1
+release=2
 source=(http://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz
-        81-crux.rules start_udev
-        $name-remove_gperf_dep.patch
-        keyboard-keys.tar.xz)
+        81-crux.rules start_udev)
 
 build() {
     cd $name-$version
-
-    # See https://github.com/gentoo/eudev/issues/75
-    # remove build-time dependency to gperf for now
-    cp $SRC/keyboard-keys-{from,to}-name.h src/udev
-    patch -p1 -i $SRC/eudev-remove_gperf_dep.patch
     
     # needed for static linking, e.g. dmsetup.static 
     sed -i '/^Libs:/s/-ludev/-ludev -lrt/' src/libudev/libudev.pc.in
-
-
-    autoreconf --force --install
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin --bindir=/sbin \
