@@ -1,6 +1,6 @@
 diff -Nru exim-4.85.orig/src/EDITME exim-4.85/src/EDITME
---- exim-4.85.orig/src/EDITME	2015-01-18 14:47:46.495497019 +0100
-+++ exim-4.85/src/EDITME	2015-01-18 14:48:02.728233566 +0100
+--- exim-4.85.orig/src/EDITME	2015-06-22 14:09:18.481256220 +0200
++++ exim-4.85/src/EDITME	2015-06-22 14:10:38.945035474 +0200
 @@ -72,7 +72,7 @@
  # this would be wanted.
  ###############################################################################
@@ -123,15 +123,12 @@ diff -Nru exim-4.85.orig/src/EDITME exim-4.85/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -981,9 +981,9 @@
- # You may well also have to specify a local "include" file and an additional
- # library for TCP wrappers, so you probably need something like this:
+@@ -983,7 +983,7 @@
  #
--# USE_TCP_WRAPPERS=yes
-+USE_TCP_WRAPPERS=yes
+ # USE_TCP_WRAPPERS=yes
  # CFLAGS=-O -I/usr/local/include
 -# EXTRALIBS_EXIM=-L/usr/local/lib -lwrap
-+EXTRALIBS_EXIM=-lwrap
++# EXTRALIBS_EXIM=-lwrap
  #
  # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
  # as well.
@@ -175,8 +172,8 @@ diff -Nru exim-4.85.orig/src/EDITME exim-4.85/src/EDITME
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
 diff -Nru exim-4.85.orig/src/configure.default exim-4.85/src/configure.default
---- exim-4.85.orig/src/configure.default	2015-01-18 14:47:46.505496651 +0100
-+++ exim-4.85/src/configure.default	2015-01-18 14:48:02.728233566 +0100
+--- exim-4.85.orig/src/configure.default	2015-06-22 14:09:18.487922647 +0200
++++ exim-4.85/src/configure.default	2015-06-22 14:09:44.610318588 +0200
 @@ -54,7 +54,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
