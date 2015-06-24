@@ -4,12 +4,15 @@
 
 name=ncurses
 version=5.9
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+release=3
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+        $name-$version-gcc5_buildfixes-1.patch)
 
 build() {
     cd $name-$version
 
+    patch -p1 -i $SRC/$name-$version-gcc5_buildfixes-1.patch
+    
     local OPTIONS="\
 --with-install-prefix=$PKG \
 --prefix=/usr \
