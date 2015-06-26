@@ -4,9 +4,9 @@
 # Depends on:  db gdbm
 
 name=perl
-version=5.18.4
+version=5.22.0
 release=1
-source=(http://www.cpan.org/src/5.0/$name-$version.tar.bz2)
+source=(http://www.cpan.org/src/5.0/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
@@ -15,6 +15,7 @@ build() {
                 -Dprefix=/usr \
                 -Dprivlib=/usr/lib/perl5/${version%.*} \
                 -Dsitelib=/usr/lib/perl5/site_perl/${version%.*} \
+                -Dvendorlib=/usr/lib/perl5/site_perl/${version%.*} \
                 -Darchname=linux \
                 -Dman1ext=1pm \
                 -Dman3ext=3pm \
