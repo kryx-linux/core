@@ -4,7 +4,7 @@
 
 name=dcron
 version=4.5
-release=1
+release=2
 source=(http://www.jimpryor.net/linux/releases/$name-$version.tar.gz \
         crontab runjobs crond)
 
