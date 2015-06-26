@@ -3,36 +3,37 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.19
-release=2
+version=2.21
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-3.12.tar.bz2 \
-	$name-$version-multilib-dirs.patch
-	CVE-2014-0475.patch \
+	http://crux.nu/files/distfiles/kernel-headers-4.1.tar.xz \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
 	lib32.conf) 
 
 build() {
 	# install kernel headers
 	mkdir $PKG/usr/
-	cp -r kernel-headers-3.12/include $PKG/usr
+	cp -r kernel-headers-4.1/include $PKG/usr
 	chown root:root $PKG/usr
-
-	patch -p1 -d glibc-$version -i $SRC/$name-$version-multilib-dirs.patch
-	patch -p1 -d glibc-$version -i $SRC/CVE-2014-0475.patch
 
 	mkdir build
 	cd build
-	CC="${CC:-gcc} -m32" ../glibc-$version/configure --prefix=/usr \
+
+	export libc_cv_slibdir=/lib32
+	export CC="${CC:-gcc} -m32"
+
+	../glibc-$version/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=3.10 \
+		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
 		--without-gd \
 		--enable-obsolete-rpc \
-		--enable-multi-arch i686-pc-linux-gnu
+		--enable-multi-arch \
+		i686-pc-linux-gnu
+
 	make 
 	#make check
 	make install_root=$PKG install
