@@ -4,7 +4,7 @@
 
 name=sysklogd
 version=1.5.1
-release=1
+release=2
 source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
         rotatelog syslog syslog.conf sysklogd)
 
