@@ -5,12 +5,12 @@
 
 name=reiserfsprogs
 version=3.6.24
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/kernel/people/jeffm/$name/v$version/$name-$version.tar.xz)
 
 build () {
     cd $name-$version
     ./configure --prefix=/ --mandir=/usr/man
-    make
+    make CFLAGS="$CFLAGS -std=gnu90"
     make DESTDIR=$PKG install
 }
