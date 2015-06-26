@@ -6,7 +6,7 @@
 name=httpup
 version=0.4.0l
 release=1
-source=(http://jw.smts.ch/files/crux/$name-$version.tar.gz httpup)
+source=(http://crux.nu/files/$name-$version.tar.gz httpup)
 
 build() {
     cd $name-$version
