@@ -4,8 +4,8 @@
 # Depends on:  openssl zlib
 
 name=openssh
-version=6.8p1
-release=2
+version=6.9p1
+release=1
 source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz sshd)
 
 build() {
