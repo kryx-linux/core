@@ -4,7 +4,7 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.4.703
+version=7.4.764
 release=1
 source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
