@@ -27,6 +27,7 @@ drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/gettext-po.h
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/gettext/
+-rwxr-xr-x	root/root	usr/lib/gettext/cldr-plurals
 -rwxr-xr-x	root/root	usr/lib/gettext/hostname
 -rwxr-xr-x	root/root	usr/lib/gettext/project-id
 -rwxr-xr-x	root/root	usr/lib/gettext/urlget
@@ -36,17 +37,17 @@ drwxr-xr-x	root/root	usr/lib/gettext/
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so -> libasprintf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so.0 -> libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libasprintf.so.0.0.0
--rwxr-xr-x	root/root	usr/lib/libgettextlib-0.19.4.so
+-rwxr-xr-x	root/root	usr/lib/libgettextlib-0.19.5.so
 -rwxr-xr-x	root/root	usr/lib/libgettextlib.la
-lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.19.4.so
+lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.19.5.so
 -rw-r--r--	root/root	usr/lib/libgettextpo.a
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.la
 lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.5.3
 lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.5.3
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.5.3
--rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.19.4.so
+-rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.19.5.so
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc.la
-lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.19.4.so
+lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.19.5.so
 -rw-r--r--	root/root	usr/lib/preloadable_libintl.so
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
