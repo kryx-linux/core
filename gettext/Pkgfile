@@ -4,9 +4,9 @@
 # Depends on:  ncurses acl
 
 name=gettext
-version=0.19.5
+version=0.19.5.1
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
