@@ -5,7 +5,7 @@
 
 name=iputils
 version=s20121221
-release=1
+release=2
 source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
         http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
 
@@ -14,10 +14,10 @@ build() {
 
     make USE_GNUTLS=no CCOPTOPT="$CFLAGS"
 
-    install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
+    install -d $PKG/{{s,}bin,usr/{sbin,share/man/man8}}
     install ping{,6} $PKG/bin/
     install arping $PKG/sbin/
     install tracepath{,6} traceroute6 clockdiff rarpd rdisc $PKG/usr/sbin/
-    cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
+    cp -d $SRC/$name-man-$version/* $PKG/usr/share/man/man8
     chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
 }
