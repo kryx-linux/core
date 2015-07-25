@@ -5,7 +5,7 @@
 
 name=dhcpcd
 version=6.9.1
-release=1
+release=2
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
 
 build () {
@@ -14,7 +14,6 @@ build () {
     ./configure --prefix= \
                 --libexecdir=/lib/dhcpcd \
                 --dbdir=/var/lib/dhcpcd \
-                --mandir=/usr/man \
                 --sysconfdir=/etc/dhcpcd \
                 --os=linux \
                 --with-hooks=none
