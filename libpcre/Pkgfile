@@ -4,7 +4,7 @@
 
 name=libpcre
 version=8.37
-release=3
+release=4
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2 \
 	01-seven-security-patches.patch \
 	$name-$version-CVE-2015-5073.patch)
@@ -16,7 +16,6 @@ build() {
     patch -p1 -i $SRC/$name-$version-CVE-2015-5073.patch
 
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --enable-utf8 \
                 --enable-unicode-properties \
                 --enable-jit
@@ -27,6 +26,6 @@ build() {
     mv $PKG/usr/lib/libpcre.so.* $PKG/lib
     ln -sf ../../lib/$(readlink $PKG/usr/lib/libpcre.so) $PKG/usr/lib/libpcre.so
 
-    rm -r $PKG/usr/share
-    rm $PKG/usr/man/man3/{pcre{16,32}*,pcre_utf{16,32}*}
+    rm -r $PKG/usr/share/doc
+    rm $PKG/usr/share/man/man3/{pcre{16,32}*,pcre_utf{16,32}*}
 }
