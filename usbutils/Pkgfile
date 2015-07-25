@@ -5,13 +5,13 @@
 
 name=usbutils
 version=008
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.xz
         usb.ids.xz)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr --mandir=/usr/man --disable-zlib
+    ./configure --prefix=/usr --disable-zlib
     make
     make DESTDIR=$PKG install
     unxz -c $SRC/usb.ids.xz > $PKG/usr/share/usb.ids
