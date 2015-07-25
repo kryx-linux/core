@@ -5,13 +5,13 @@
 
 name=pciutils
 version=3.3.1
-release=1
+release=2
 source=(ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
-    local CONF="ZLIB=no DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/man"
+    local CONF="ZLIB=no DESTDIR=$PKG PREFIX=/usr"
 
     make -j1 $CONF OPT="$CFLAGS" SHARED=yes install install-lib
     make clean
