@@ -15,7 +15,6 @@ build() {
     cd build
 
     ../$name-$version/configure --prefix=/usr \
-                                --mandir=/usr/man \
                                 --enable-shared \
                                 --disable-nls \
                                 --enable-ld=default \
@@ -28,6 +27,6 @@ build() {
 
     install -m 0644  ../$name-$version/include/libiberty.h $PKG/usr/include
 
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/info
     sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,opcodes}.la
 }
