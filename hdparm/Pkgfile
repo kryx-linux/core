@@ -4,11 +4,11 @@
 
 name=hdparm
 version=9.48
-release=1
+release=2
 source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     make
-    make DESTDIR=$PKG mandir=/usr/man install
+    make DESTDIR=$PKG install
 }
