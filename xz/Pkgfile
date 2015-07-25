@@ -4,15 +4,14 @@
 
 name=xz
 version=5.2.1
-release=1
+release=2
 source=(http://tukaani.org/xz/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --disable-nls 
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/doc/
 }
