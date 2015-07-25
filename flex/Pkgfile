@@ -4,22 +4,20 @@
 
 name=flex
 version=2.5.39
-release=1
+release=2
 source=(http://downloads.sourceforge.net/project/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
     
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --disable-nls
     
     make
     make DESTDIR=$PKG install
     
     ln -sf flex $PKG/usr/bin/lex
-    ln -sf flex.1.gz $PKG/usr/man/man1/lex.1.gz
+    ln -sf flex.1.gz $PKG/usr/share/man/man1/lex.1.gz
     
     rm -r $PKG/usr/share/{info,doc}
-    rmdir $PKG/usr/share
 }
