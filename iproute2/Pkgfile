@@ -5,7 +5,7 @@
 
 name=iproute2
 version=4.1.1
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
         lo.iproute2 net.iproute2)
 
@@ -14,9 +14,9 @@ build() {
 
     ./configure
     make CCOPTS="$CFLAGS"
-    make MANDIR=/usr/man DESTDIR=$PKG install
+    make MANDIR=/usr/share/man DESTDIR=$PKG install
 
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/doc
     install -D -m 0755 $SRC/lo.iproute2 $PKG/etc/rc.d/lo
     install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
 }
