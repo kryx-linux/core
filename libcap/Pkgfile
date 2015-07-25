@@ -5,7 +5,7 @@
 
 name=libcap
 version=2.24
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
 
 build () {
@@ -14,7 +14,7 @@ build () {
     sed -i "/^CFLAGS/s/-O2/$CFLAGS/" Make.Rules 
 
     make
-    make RAISE_SETFCAP=no DESTDIR=$PKG man_prefix=/usr install
+    make RAISE_SETFCAP=no DESTDIR=$PKG man_prefix=/usr/share install
 
     install -d $PKG/usr/lib
     mv $PKG/lib/libcap.a $PKG/usr/lib
