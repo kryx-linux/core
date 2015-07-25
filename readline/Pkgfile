@@ -5,7 +5,7 @@
 
 name=readline
 version=6.3.8
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz \
         $name-$version.patch.gz inputrc)
 
@@ -14,7 +14,7 @@ build() {
 
     gunzip -c $SRC/$name-$version.patch.gz | patch -p0
 
-    ./configure --prefix=/usr --mandir=/usr/man
+    ./configure --prefix=/usr
     make -j1 SHLIB_LIBS=-lncurses
     make -j1 DESTDIR=$PKG install
 
