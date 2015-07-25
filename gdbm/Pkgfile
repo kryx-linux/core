@@ -4,15 +4,14 @@
 
 name=gdbm
 version=1.11
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --enable-libgdbm-compat
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/{info,locale}
 }
