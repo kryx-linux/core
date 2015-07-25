@@ -5,21 +5,20 @@
 
 name=man-db
 version=2.7.1
-release=1
+release=2
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz \
         mandb.cron)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-        --mandir=/usr/man \
         --libexecdir=/usr/lib/$name \
         --disable-setuid \
         --disable-nls
     make
     make DESTDIR=$PKG install
 
-    rm -r $PKG/usr/share
+    #rm -r $PKG/usr/share
     rm -r $PKG/usr/lib/tmpfiles.d
 
     install -d $PKG/var/cache/man
