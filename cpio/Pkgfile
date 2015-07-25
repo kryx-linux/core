@@ -4,7 +4,7 @@
 
 name=cpio
 version=2.11
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
@@ -12,10 +12,9 @@ build() {
     # fix for glibc 'gets' removal
     sed -i -e '/gets is a/d' gnu/stdio.in.h
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --disable-nls
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/{share,libexec}
-    rm $PKG/usr/man/man1/mt.1
+    rm -r $PKG/usr/{libexec,share/info}
+    rm $PKG/usr/share/man/man1/mt.1
 }
