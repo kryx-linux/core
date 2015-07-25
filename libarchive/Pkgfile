@@ -5,7 +5,7 @@
 
 name=libarchive
 version=3.1.2
-release=2
+release=3
 source=(http://www.libarchive.org/downloads/$name-$version.tar.gz)
 
 build() {
@@ -18,7 +18,7 @@ build() {
 	# to avoid linking to libraries which are only available in opt. 
 	# XML support is only needed for the xar format which we can live without.
 	
-	./configure --prefix=/usr --mandir=/usr/man \
+	./configure --prefix=/usr \
 	            --without-lzmadec \
 	            --without-xml2 \
                     --without-expat \
