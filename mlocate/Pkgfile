@@ -4,7 +4,7 @@
 
 name=mlocate
 version=0.26
-release=1
+release=2
 source=(https://fedorahosted.org/releases/m/l/$name/$name-$version.tar.xz \
         mlocate updatedb.conf)
 
@@ -12,7 +12,6 @@ build() {
     cd $name-$version
 
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --sysconfdir=/etc \
                 --localstatedir=/var/lib \
                 --disable-nls
