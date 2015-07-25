@@ -5,7 +5,7 @@
 
 name=coreutils
 version=8.24
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.xz
         coreutils-uname.patch)
 
@@ -17,7 +17,6 @@ build() {
     
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
-                --mandir=/usr/man \
                 --disable-nls \
                 --disable-assert \
                 --enable-no-install-program=uptime,kill,chcon,runcon,groups
@@ -27,5 +26,5 @@ build() {
     mkdir $PKG/bin
     mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
     mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/info
 }
