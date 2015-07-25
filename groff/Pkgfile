@@ -4,7 +4,7 @@
 
 name=groff
 version=1.22.3
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -19,7 +19,6 @@ build() {
            -i font/devpdf/Foundry.in
     
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --without-x
 
     make -j1
