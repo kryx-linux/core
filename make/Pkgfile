@@ -4,13 +4,13 @@
 
 name=make
 version=4.1
-release=1
+release=2
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr --mandir=/usr/man --disable-nls
+    ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/info
 }
