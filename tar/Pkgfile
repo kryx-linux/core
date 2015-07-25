@@ -4,15 +4,15 @@
 
 name=tar
 version=1.28
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
 
     ./configure --prefix= \
-                --mandir=/usr/man \
                 --libexec=/usr/lib/tar \
+                --mandir=/usr/share/man \
                 --disable-nls \
                 FORCE_UNSAFE_CONFIGURE=1
 
