@@ -147,29 +147,6 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_tos.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_u32.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_udp.so
-drwxr-xr-x	root/root	usr/man/
-drwxr-xr-x	root/root	usr/man/man1/
--rw-r--r--	root/root	usr/man/man1/iptables-xml.1.gz
-drwxr-xr-x	root/root	usr/man/man3/
--rw-r--r--	root/root	usr/man/man3/ipq_create_handle.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_destroy_handle.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_errstr.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_get_msgerr.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_get_packet.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_message_type.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_perror.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_read.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_set_mode.3.gz
--rw-r--r--	root/root	usr/man/man3/ipq_set_verdict.3.gz
--rw-r--r--	root/root	usr/man/man3/libipq.3.gz
-drwxr-xr-x	root/root	usr/man/man8/
--rw-r--r--	root/root	usr/man/man8/ip6tables-restore.8.gz
--rw-r--r--	root/root	usr/man/man8/ip6tables-save.8.gz
--rw-r--r--	root/root	usr/man/man8/ip6tables.8.gz
--rw-r--r--	root/root	usr/man/man8/iptables-extensions.8.gz
--rw-r--r--	root/root	usr/man/man8/iptables-restore.8.gz
--rw-r--r--	root/root	usr/man/man8/iptables-save.8.gz
--rw-r--r--	root/root	usr/man/man8/iptables.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> xtables-multi
@@ -178,3 +155,27 @@ lrwxrwxrwx	root/root	usr/sbin/iptables -> xtables-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> xtables-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-save -> xtables-multi
 -rwxr-xr-x	root/root	usr/sbin/xtables-multi
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/iptables-xml.1.gz
+drwxr-xr-x	root/root	usr/share/man/man3/
+-rw-r--r--	root/root	usr/share/man/man3/ipq_create_handle.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_destroy_handle.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_errstr.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_get_msgerr.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_get_packet.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_message_type.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_perror.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_read.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_set_mode.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ipq_set_verdict.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/libipq.3.gz
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-restore.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-extensions.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-restore.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables.8.gz
