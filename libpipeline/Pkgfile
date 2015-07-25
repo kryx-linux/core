@@ -4,13 +4,12 @@
 
 name=libpipeline
 version=1.4.0
-release=1
+release=2
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr \
-        --mandir=/usr/man
+    ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
 }
