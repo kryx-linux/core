@@ -5,7 +5,7 @@
 
 name=libdevmapper
 version=1.02.103
-release=1
+release=2
 source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.126.tgz)
 
 build() {
@@ -21,6 +21,7 @@ build() {
                 --exec-prefix= \
                 --datarootdir=/usr \
                 --with-udev-prefix= \
+                --mandir=/usr/share/man \
                 --disable-readline \
                 --enable-pkgconfig \
                 --enable-static_link \
