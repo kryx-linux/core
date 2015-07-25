@@ -4,7 +4,7 @@
 
 name=unzip
 version=6.0
-release=5
+release=6
 source=(http://downloads.sourceforge.net/sourceforge/infozip/${name}${version//./}.tar.gz \
 	unzip-6.0-overflow.patch unzip-6.0-attribs-overflow.patch \
 	unzip-6.0-cve-2014-8139.patch \
@@ -21,6 +21,6 @@ build() {
 
     sed -i 's/-O3//' unix/configure
     make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" generic
-    make -f unix/Makefile prefix=$PKG/usr install
+    make -f unix/Makefile prefix=$PKG/usr MANDIR=$PKG/usr/share/man install
     ln -sf unzip $PKG/usr/bin/zipinfo
 }
