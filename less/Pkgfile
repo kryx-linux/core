@@ -5,14 +5,13 @@
 
 name=less
 version=458
-release=1
+release=2
 source=(http://www.greenwoodsoftware.com/less/$name-$version.tar.gz \
         filter)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --with-regex=pcre
     make
     make DESTDIR=$PKG install
