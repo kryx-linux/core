@@ -5,14 +5,13 @@
 
 name=vim
 version=7.4.764
-release=1
+release=2
 source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
 build () {
     cd $name-$version/src
 
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --with-vim-name=vim \
                 --without-x \
                 --disable-gui \
@@ -24,16 +23,16 @@ build () {
     make -j1 VIMRTDIR= DESTDIR=$PKG install
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
-    rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
+    rm -r $PKG/usr/{share/man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
     rm $PKG/usr/share/vim/*/README.txt
     ln -sf vim $PKG/usr/bin/evim
     ln -sf /bin/vi $PKG/usr/bin/vi
-    ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
-    ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
-    ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
-    ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
-    ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
-    ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/gvim.1.gz
 
     ./configure --prefix=/ \
                 --datarootdir=/usr/share \
