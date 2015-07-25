@@ -5,7 +5,7 @@
 
 name=inetutils
 version=1.9.4
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
         inetd.conf inetd)
 
@@ -14,7 +14,6 @@ build() {
 
     ./configure --prefix=/usr \
                 --libexecdir=/usr/sbin \
-                --mandir=/usr/man \
                 --localstatedir=/var \
                 --sysconfdir=/etc \
                 --disable-{servers,clients} \
@@ -31,5 +30,5 @@ build() {
     install -m 644 $SRC/inetd.conf $PKG/etc
     install -m 755 $SRC/inetd $PKG/etc/rc.d
 
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/info
 }
