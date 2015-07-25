@@ -5,7 +5,7 @@
 
 name=xfsprogs
 version=3.2.3
-release=1
+release=2
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 
 build() {
@@ -17,7 +17,6 @@ build() {
     export OPTIMIZER=$CFLAGS
 
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --disable-gettext
     make
     make -j1 DIST_ROOT=$PKG install install-dev
@@ -25,5 +24,5 @@ build() {
     rm $PKG/lib/libhandle.so
     ln -sf ../../lib/$(readlink $PKG/lib/libhandle.so.1) $PKG/usr/lib/libhandle.so
 
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/doc
 }
