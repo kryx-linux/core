@@ -4,12 +4,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/aclocal-1.15
 -rwxr-xr-x	root/root	usr/bin/automake
 -rwxr-xr-x	root/root	usr/bin/automake-1.15
-drwxr-xr-x	root/root	usr/man/
-drwxr-xr-x	root/root	usr/man/man1/
--rw-r--r--	root/root	usr/man/man1/aclocal-1.15.1.gz
--rw-r--r--	root/root	usr/man/man1/aclocal.1.gz
--rw-r--r--	root/root	usr/man/man1/automake-1.15.1.gz
--rw-r--r--	root/root	usr/man/man1/automake.1.gz
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/aclocal-1.15/
 -rw-r--r--	root/root	usr/share/aclocal-1.15/amversion.m4
@@ -126,3 +120,9 @@ drwxr-xr-x	root/root	usr/share/automake-1.15/am/
 -rwxr-xr-x	root/root	usr/share/automake-1.15/tap-driver.sh
 -rwxr-xr-x	root/root	usr/share/automake-1.15/test-driver
 -rwxr-xr-x	root/root	usr/share/automake-1.15/ylwrap
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/aclocal-1.15.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/aclocal.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/automake-1.15.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/automake.1.gz
