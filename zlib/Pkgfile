@@ -4,14 +4,14 @@
 
 name=zlib
 version=1.2.8
-release=1
+release=2
 source=(http://www.zlib.net/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr --sharedlibdir=/lib
     make
-    make DESTDIR=$PKG mandir=/usr/man install
+    make DESTDIR=$PKG install
     ln -sf ../../lib/libz.so.$version $PKG/usr/lib/libz.so
     rm $PKG/lib/libz.so
 }
