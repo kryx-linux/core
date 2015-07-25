@@ -4,7 +4,7 @@
 
 name=sysklogd
 version=1.5.1
-release=2
+release=3
 source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
         rotatelog syslog syslog.conf sysklogd)
 
@@ -14,10 +14,10 @@ build() {
     mkdir -p $PKG/usr/sbin \
              $PKG/etc/{cron/weekly,rc.d} \
              $PKG/var/log \
-             $PKG/usr/man/{man5,man8}
+             $PKG/usr/share/man/{man5,man8}
 
     make RPM_OPT_FLAGS="$CFLAGS" all
-    make BINDIR=$PKG/usr/sbin MANDIR=$PKG/usr/man install
+    make BINDIR=$PKG/usr/sbin MANDIR=$PKG/usr/share/man install
 
     install -m 755 $SRC/rotatelog $PKG/usr/sbin
     install -m 755 $SRC/syslog $PKG/etc/cron/weekly
