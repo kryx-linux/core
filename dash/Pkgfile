@@ -4,15 +4,15 @@
 
 name=dash
 version=20150602
-release=1
+release=2
 source=(http://jue.li/crux/files/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
     ./autogen.sh
-    ./configure --prefix= --mandir=/usr/man
+    ./configure --prefix= --mandir=/usr/share/man
     make
     make DESTDIR=$PKG install
     ln -s dash $PKG/bin/sh
-    ln -s dash.1 $PKG/usr/man/man1/sh.1
+    ln -s dash.1 $PKG/usr/share/man/man1/sh.1
 }
