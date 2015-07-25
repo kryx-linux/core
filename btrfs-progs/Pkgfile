@@ -5,15 +5,13 @@
 
 name=btrfs-progs
 version=4.1.2
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$version.tar.xz \
         $name-man-v$version.tar.xz)
 
 build() {
     cd $name-v$version
-    ./configure --prefix=/usr --mandir=/usr/man --bindir=/sbin
+    ./configure --prefix=/usr --bindir=/sbin
     make
     make DESTDIR=$PKG install
-    mv $PKG/usr/share/man $PKG/usr/man
-    rm -r $PKG/usr/share
 }
