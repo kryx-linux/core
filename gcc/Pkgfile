@@ -5,7 +5,7 @@
 
 name=gcc
 version=5.2.0
-release=1
+release=2
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-$version/$name-$version.tar.bz2 \
 	$name-nocheck-fixincludes.patch $name-4.7.3-multilib-dirs.patch)
 
@@ -17,7 +17,6 @@ build() {
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
-                                --mandir=/usr/man \
                                 --libexecdir=/usr/lib \
                                 --enable-languages=c,c++,objc \
                                 --enable-threads=posix \
@@ -39,7 +38,7 @@ build() {
 
     mv $PKG/usr/lib/gcc/*/$version/include-fixed/{limits.h,syslimits.h} $PKG/usr/lib/gcc/*/$version/include/
     rm -f $PKG/usr/lib{,32}/{libiberty.a,libstdc++.so.6.0.21-gdb.py}
-    rm -r $PKG/usr/share 
+    rm -r $PKG/usr/share/{info,$name-$version} 
     rm -r $PKG/usr/bin/*-linux-gnu-*
     rm -r $PKG/usr/lib/gcc/*/$version/{install-tools,include-fixed} 
 
