@@ -4,7 +4,7 @@
 
 name=time
 version=1.7
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz $name.1)
 
 build() {
@@ -14,6 +14,6 @@ build() {
     make
     make prefix=$PKG/usr install
     rm -rf $PKG/usr/info
-    mkdir -p $PKG/usr/man/man1
-    cp ../$name.1 $PKG/usr/man/man1
+    mkdir -p $PKG/usr/share/man/man1
+    cp ../$name.1 $PKG/usr/share/man/man1
 }
