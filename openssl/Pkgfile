@@ -4,7 +4,7 @@
 
 name=openssl
 version=1.0.2d
-release=1
+release=2
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
         mksslcert.sh)
 
@@ -21,7 +21,7 @@ build() {
     sed -i "s|-O3|$CFLAGS|" Makefile
 
     make depend
-    make INSTALL_PREFIX=$PKG LIBDIR=lib MANDIR=/usr/man MANSUFFIX=ssl install
+    make INSTALL_PREFIX=$PKG LIBDIR=lib MANDIR=/usr/share/man MANSUFFIX=ssl install
 
     find $PKG -name "*fips*" -delete
     chmod -R +w $PKG
