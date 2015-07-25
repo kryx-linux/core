@@ -5,7 +5,7 @@
 
 name=ppp
 version=2.4.7
-release=1
+release=2
 source=(http://ppp.samba.org/ftp/ppp/$name-$version.tar.gz \
         $name-nofilter.patch)
 
@@ -15,6 +15,5 @@ build () {
     ./configure --prefix=/usr --sysconfdir=/etc
     make
     make -j1 INSTROOT=$PKG install install-etcppp
-    mv $PKG/usr/{share/man,man} && rm -r $PKG/usr/share
     chmod +w -R $PKG
 }
