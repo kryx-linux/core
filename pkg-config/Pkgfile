@@ -4,14 +4,13 @@
 
 name=pkg-config
 version=0.28
-release=1
+release=2
 source=(http://pkgconfig.freedesktop.org/releases/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
     ./configure --prefix=/usr \
-                --mandir=/usr/man \
                 --with-internal-glib \
                 --disable-host-tool
     make
