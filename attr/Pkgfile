@@ -4,7 +4,7 @@
 
 name=attr
 version=2.4.47
-release=1
+release=2
 source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
 
 build() {
@@ -15,8 +15,7 @@ build() {
 
     ./configure --prefix=/usr \
                 --bindir=/bin \
-                --libexecdir=/usr/lib \
-                --mandir=/usr/man
+                --libexecdir=/usr/lib
     make
     make DIST_ROOT=$PKG install install-lib install-dev
 
@@ -26,7 +25,7 @@ build() {
     ln -s ../../lib/libattr.so.1.1.0 $PKG/usr/lib/libattr.so
 
     # category 2 manuals are included in core/man-pages
-    rm -r $PKG/usr/man/man2
+    rm -r $PKG/usr/share/man/man2
 
-    rm -r $PKG/usr/share
+    rm -r $PKG/usr/share/{doc,locale}
 }
