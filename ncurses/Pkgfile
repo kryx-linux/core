@@ -34,7 +34,7 @@ build() {
     make
     make install
 
-    mkdir $PKG/lib
+    install -d $PKG/lib
 
     for i in w ''; do
         mv $PKG/usr/lib/libncurses$i.so.* $PKG/lib
