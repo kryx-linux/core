@@ -35,8 +35,8 @@ build() {
     $PKG/sbin/udevadm hwdb --update --root=$PKG
 
     # Devices
-    mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
-    mkdir -p $PKG/{lib,sbin,run}
+    install -d $PKG/lib/{firmware,udev/devices/{pts,shm}}
+    install -d $PKG/{lib,sbin,run}
 
     # Add CRUX items
     install -m 0755 $SRC/start_udev $PKG/sbin
