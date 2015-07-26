@@ -11,10 +11,10 @@ source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
 build() {
     cd $name-$version
 
-    mkdir -p $PKG/usr/sbin \
-             $PKG/etc/{cron/weekly,rc.d} \
-             $PKG/var/log \
-             $PKG/usr/share/man/{man5,man8}
+    install -d $PKG/usr/sbin \
+               $PKG/etc/{cron/weekly,rc.d} \
+               $PKG/var/log \
+               $PKG/usr/share/man/{man5,man8}
 
     make RPM_OPT_FLAGS="$CFLAGS" all
     make BINDIR=$PKG/usr/sbin MANDIR=$PKG/usr/share/man install
