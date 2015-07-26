@@ -14,6 +14,5 @@ build() {
     make
     make prefix=$PKG/usr install
     rm -rf $PKG/usr/info
-    mkdir -p $PKG/usr/share/man/man1
-    cp ../$name.1 $PKG/usr/share/man/man1
+    install -D -m 0644 $SRC/$name.1 $PKG/usr/share/man/man1/$name.1
 }
