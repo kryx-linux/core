@@ -12,13 +12,13 @@ source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 
 build() {
 	# install kernel headers
-	mkdir $PKG/usr/
+	install -d $PKG/usr/
 	cp -r $SRC/kernel-headers-4.1/include $PKG/usr
 	chown root:root $PKG/usr
 
         patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
 
-	mkdir $SRC/build
+	install -d $SRC/build
 	cd $SRC/build
 	../$name-$version/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
@@ -41,7 +41,7 @@ build() {
 	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
 
 	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
-	mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
+	install -d $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
 	touch $PKG/etc/ld.so.cache
 
 	rm -rf $PKG/usr/share/{info,locale} \
