@@ -5,7 +5,7 @@
 
 name=lilo
 version=24.1
-release=2
+release=3
 source=(http://lilo.alioth.debian.org/ftp/sources/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
@@ -15,6 +15,4 @@ build() {
     make all
     make DESTDIR=$PKG install
     install -m 644 $SRC/lilo.conf $PKG/etc
-    mkdir -p $PKG/share
-    mv $PKG/usr/man $PKG/share/man 
 }

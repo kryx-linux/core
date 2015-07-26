@@ -31,9 +31,9 @@ diff -Nru lilo-24.1.orig/Makefile lilo-24.1/Makefile
  tidy:
  	$(MAKE) -C src tidy
 diff -Nru lilo-24.1.orig/make.vars lilo-24.1/make.vars
---- lilo-24.1.orig/make.vars	2014-10-19 09:31:10.868573065 +0200
-+++ lilo-24.1/make.vars	2014-10-19 09:31:38.537607503 +0200
-@@ -70,14 +70,14 @@
+--- lilo-24.1.orig/make.vars	2015-07-26 16:42:59.144497363 +0200
++++ lilo-24.1/make.vars	2015-07-26 16:43:49.518277641 +0200
+@@ -70,7 +70,7 @@
  #   XL_SECS=n   Support for extra large (non-standard) floppies.
  
  CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DNOKEYBOARD -DONE_SHOT \
@@ -42,14 +42,6 @@ diff -Nru lilo-24.1.orig/make.vars lilo-24.1/make.vars
      -DMDPRAID -DDEVMAPPER
     
  # set the following if you wish LILO.COM to be installed
- DOS_DIR=/dosC/boot
- 
- # select place for man pages
--MAN_DIR=/usr/share/man
-+MAN_DIR=/usr/man
- 
- # set the compiler optimization level
- OPT=-Os
 diff -Nru lilo-24.1.orig/man/Makefile lilo-24.1/man/Makefile
 --- lilo-24.1.orig/man/Makefile	2014-10-19 09:31:10.868573065 +0200
 +++ lilo-24.1/man/Makefile	2014-10-19 09:31:38.537607503 +0200
