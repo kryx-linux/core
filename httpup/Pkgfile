@@ -5,12 +5,12 @@
 
 name=httpup
 version=0.4.0l
-release=1
+release=2
 source=(http://crux.nu/files/$name-$version.tar.gz httpup)
 
 build() {
     cd $name-$version
     make
-    make DESTDIR=$PKG prefix=/usr install
+    make DESTDIR=$PKG prefix=/usr mandir=/usr/share/man install
     install -D -m 755 $SRC/httpup $PKG/etc/ports/drivers/httpup
 }
