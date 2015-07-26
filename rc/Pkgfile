@@ -8,7 +8,7 @@ release=1
 source=(inittab rc rc.modules rc.single rc.multi rc.local rc.fix rc.shutdown rc.conf)
 
 build() {
-    mkdir -p $PKG/etc/rc.d
+    install -d  $PKG/etc/rc.d
     install -m 644 inittab $PKG/etc
     install -m 755 rc $PKG/etc
     install -m 755 rc.modules $PKG/etc
