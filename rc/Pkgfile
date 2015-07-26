@@ -18,7 +18,7 @@ build() {
     install -m 755 rc.fix $PKG/etc
     install -m 755 rc.shutdown $PKG/etc
     install -m 644 rc.conf $PKG/etc
-    mkdir -p $PKG/var/log $PKG/var/lib/urandom
+    install -d $PKG/var/log $PKG/var/lib/urandom
     touch $PKG/var/log/boot $PKG/var/lib/urandom/seed
     chmod 640 $PKG/var/log/boot $PKG/var/lib/urandom/seed
 }
