@@ -1,7 +1,7 @@
-diff -Nru exim-4.85.orig/OS/Makefile-Base exim-4.85/OS/Makefile-Base
---- exim-4.85.orig/OS/Makefile-Base	2015-01-18 14:47:46.505496651 +0100
-+++ exim-4.85/OS/Makefile-Base	2015-01-18 14:50:45.929003558 +0100
-@@ -457,7 +457,7 @@
+diff -Nru exim-4.86.orig/OS/Makefile-Base exim-4.86/OS/Makefile-Base
+--- exim-4.86.orig/OS/Makefile-Base	2015-07-27 09:39:41.642108689 +0200
++++ exim-4.86/OS/Makefile-Base	2015-07-27 09:41:21.145237745 +0200
+@@ -481,7 +481,7 @@
  
  # Update Exim's version information and build the version object.
  
@@ -10,12 +10,12 @@ diff -Nru exim-4.85.orig/OS/Makefile-Base exim-4.85/OS/Makefile-Base
  	@../scripts/reversion
  
  cnumber.h: version.h
-diff -Nru exim-4.85.orig/src/version.sh exim-4.85/src/version.sh
---- exim-4.85.orig/src/version.sh	2015-01-18 14:47:46.498830230 +0100
-+++ exim-4.85/src/version.sh	2015-01-18 14:50:45.929003558 +0100
+diff -Nru exim-4.86.orig/src/version.sh exim-4.86/src/version.sh
+--- exim-4.86.orig/src/version.sh	2015-07-27 09:39:41.645441903 +0200
++++ exim-4.86/src/version.sh	2015-07-27 09:41:21.145237745 +0200
 @@ -1,4 +1,4 @@
  # automatically generated file - see ../scripts/reversion
- EXIM_RELEASE_VERSION="4.85"
+ EXIM_RELEASE_VERSION="4.86"
  EXIM_VARIANT_VERSION=""
 -EXIM_COMPILE_NUMBER="1"
 +EXIM_COMPILE_NUMBER="0"

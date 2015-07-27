@@ -1,4 +1,4 @@
 d0022b47423fae3a46168e84ee0cc3df  exim
-ebae28762b6f125726283dc9434e8709  exim-4.85.tar.bz2
-2bd7bff400bcb92f9b3d7cbe141ab5fc  exim-compile_number.patch
-5bf7e3218a7bdc7c3011dbdfa7f7d9f7  exim-config.patch
+797f248ef3e0c0e2f178e915f88fc4e9  exim-4.86.tar.bz2
+a44ad06cc93a9d584722a36d6e3ccf0a  exim-compile_number.patch
+229111aefc713582f9d6dbb687e5de75  exim-config.patch
