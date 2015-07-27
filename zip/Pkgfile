@@ -11,5 +11,5 @@ source=(http://downloads.sourceforge.net/sourceforge/infozip/${name}${version//.
 build() {
     cd ${name}${version//./}
     make -f unix/Makefile LOCAL_ZIP="$CFLAGS" prefix=/usr generic
-    make -f unix/Makefile INSTALL=install prefix=$PKG/usr MANDIR=$PKG/usr/share/man install
+    make -f unix/Makefile INSTALL=install prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 install
 }
