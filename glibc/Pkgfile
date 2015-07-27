@@ -18,7 +18,7 @@ build() {
 
         patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
 
-	install -d $SRC/build
+	mkdir $SRC/build
 	cd $SRC/build
 	../$name-$version/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
