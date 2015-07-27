@@ -31,7 +31,7 @@ build() {
     make bootstrap
     make -j1 DESTDIR=$PKG install
 
-    mkdir $PKG/lib
+    install -d $PKG/lib
     ln -sf ../usr/bin/cpp $PKG/lib/cpp
     ln -sf gcc $PKG/usr/bin/cc
     ln -sf g++ $PKG/usr/bin/c++
