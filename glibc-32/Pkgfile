@@ -4,18 +4,12 @@
 
 name=glibc-32
 version=2.21
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.1.tar.xz \
-	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
 	lib32.conf) 
 
 build() {
-	# install kernel headers
-	mkdir $PKG/usr/
-	cp -r kernel-headers-4.1/include $PKG/usr
-	chown root:root $PKG/usr
-
 	mkdir build
 	cd build
 
@@ -25,7 +19,7 @@ build() {
 	../glibc-$version/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
-		--with-headers=$PKG/usr/include \
+		--with-headers=$SRC/kernel-headers-4.1/include \
 		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
@@ -38,16 +32,14 @@ build() {
 	#make check
 	make install_root=$PKG install
 
-	cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
-	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
-	mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
-	touch $PKG/etc/ld.so.cache
+	rm -r $PKG/usr/{bin,sbin,share} $PKG/{etc,sbin} $PKG/var
 
-	rm -rf $PKG/usr/{bin,sbin,share} $PKG/{etc,sbin} $PKG/var
-	(mv $PKG/usr/include/gnu/stubs-32.h $SRC;
-	 rm -rf $PKG/usr/include;
-	 install -D $SRC/stubs-32.h $PKG/usr/include/gnu/stubs-32.h)
+	mv $PKG/usr/include/gnu/stubs-32.h $SRC
+	rm -r $PKG/usr/include
+	install -D $SRC/stubs-32.h $PKG/usr/include/gnu/stubs-32.h
 
 	install -D $SRC/lib32.conf $PKG/etc/ld.so.conf.d/lib32.conf
-	mkdir $PKG/lib && ln -s /lib32/ld-linux.so.2 $PKG/lib/ld-linux.so.2
+
+	install -d $PKG/lib
+	ln -s /lib32/ld-linux.so.2 $PKG/lib/ld-linux.so.2
 }

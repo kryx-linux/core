@@ -53,8 +53,6 @@ drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/gnu/
 -rwxr-xr-x	root/root	usr/include/gnu/stubs-32.h
-drwxr-xr-x	root/root	usr/lib/
-drwxr-xr-x	root/root	usr/lib/locale/
 drwxr-xr-x	root/root	usr/lib32/
 -rw-r--r--	root/root	usr/lib32/Mcrt1.o
 -rw-r--r--	root/root	usr/lib32/Scrt1.o

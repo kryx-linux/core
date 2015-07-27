@@ -1,8 +1,3 @@
 9cb398828e8f84f57d1f7d5588cf40cd  glibc-2.21.tar.xz
-96156bec8e05de67384dc93e72bdc313  host.conf
-fbbc215a9b15ba4846f326cc88108057  hosts
 87bb2a93d7887505a39fd65a2ee86b8e  kernel-headers-4.1.tar.xz
-f7fefce570a3c776e26e778c5e401490  ld.so.conf
 a8f4549c716cd37244fbf1ed059497f8  lib32.conf
-75931315bf9bc9be15a5e25e4ddd5f0d  nsswitch.conf
-acf9daad1ee85de5efd3543965596a63  resolv.conf
