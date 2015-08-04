@@ -4,7 +4,7 @@
 
 name=ncurses
 version=5.9
-release=4
+release=5
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
         $name-$version-gcc5_buildfixes-1.patch)
 
@@ -34,11 +34,13 @@ build() {
     make
     make install
 
-    install -d $PKG/lib
+    install -d $PKG/{lib,usr/include/ncursesw}
 
     for i in w ''; do
         mv $PKG/usr/lib/libncurses$i.so.* $PKG/lib
         ln -sf libncurses$i.so $PKG/usr/lib/libcurses$i.so
         ln -sf ../../lib/libncurses$i.so.$version $PKG/usr/lib/libncurses$i.so
     done
+
+    ln -s ../curses.h $PKG/usr/include/ncursesw/ncurses.h
 }
