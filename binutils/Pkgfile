@@ -5,7 +5,7 @@
 
 name=binutils
 version=2.25.1
-release=1
+release=2
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
@@ -28,5 +28,6 @@ build() {
     install -m 0644  ../$name-$version/include/libiberty.h $PKG/usr/include
 
     rm -r $PKG/usr/share/info
+    rm $PKG/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}.1
     sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,opcodes}.la
 }
