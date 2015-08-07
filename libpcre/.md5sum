@@ -1,3 +1,4 @@
 45df6737e61738cc8bb061e0b9c0fbb2  01-seven-security-patches.patch
 5222dd119a2cfde15df9ae2583c64698  libpcre-8.37-CVE-2015-5073.patch
+08fb0081fa8b0b0b1ac60bbd9524fa18  libpcre-8.37-CVE-2015-XXXX.patch
 ed91be292cb01d21bc7e526816c26981  pcre-8.37.tar.bz2
