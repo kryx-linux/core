@@ -4,16 +4,18 @@
 
 name=libpcre
 version=8.37
-release=3
+release=4
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2 \
 	01-seven-security-patches.patch \
-	$name-$version-CVE-2015-5073.patch)
+	$name-$version-CVE-2015-5073.patch \
+	$name-$version-CVE-2015-XXXX.patch)
 
 build() {
     cd pcre-$version
 
     patch -p1 -i $SRC/01-seven-security-patches.patch
     patch -p1 -i $SRC/$name-$version-CVE-2015-5073.patch
+    patch -p1 -i $SRC/$name-$version-CVE-2015-XXXX.patch
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
