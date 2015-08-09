@@ -25,7 +25,6 @@ lrwxrwxrwx	root/root	usr/bin/perl -> perl5.22.0
 -rwxr-xr-x	root/root	usr/bin/podchecker
 -rwxr-xr-x	root/root	usr/bin/podselect
 -rwxr-xr-x	root/root	usr/bin/prove
-lrwxrwxrwx	root/root	usr/bin/psed -> s2p
 lrwxrwxrwx	root/root	usr/bin/pstruct -> c2ph
 -rwxr-xr-x	root/root	usr/bin/ptar
 -rwxr-xr-x	root/root	usr/bin/ptardiff
