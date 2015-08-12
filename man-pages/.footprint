@@ -865,6 +865,12 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/__memalign_hook.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_get_timebase.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_get_timebase_freq.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_mdoio.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_mdoom.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_low.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_med.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_med_low.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_yield.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__realloc_hook.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__setfpucw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/_flushlbf.3.gz
@@ -1102,8 +1108,11 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/div.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dl_iterate_phdr.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dladdr.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/dladdr1.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dlclose.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dlerror.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/dlinfo.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/dlmopen.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dlopen.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dlsym.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/dlvsym.3.gz
@@ -1735,6 +1744,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/nexttowardl.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/nftw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/nl_langinfo.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/nl_langinfo_l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/nrand48.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/nrand48_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/ntohl.3.gz

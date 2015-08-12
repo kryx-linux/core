@@ -9,9 +9,9 @@
 # - Install leaps zoneinfo into zoneinfo/right/ ala glibc
 
 
-diff -Nru tzcode.org/Makefile tzcode/Makefile
---- tzcode.org/Makefile	2015-06-15 12:23:54.796056136 +0200
-+++ tzcode/Makefile	2015-06-15 12:24:08.705558291 +0200
+diff -Nru tzcode.orig/Makefile tzcode/Makefile
+--- tzcode.orig/Makefile	2015-08-12 11:00:16.696813835 +0200
++++ tzcode/Makefile	2015-08-12 11:00:45.296792265 +0200
 @@ -44,21 +44,21 @@
  
  # Everything gets put in subdirectories of. . .
@@ -37,7 +37,7 @@ diff -Nru tzcode.org/Makefile tzcode/Makefile
  
  # If you "make INSTALL", the "date" command gets installed in. . .
  
-@@ -326,8 +326,10 @@
+@@ -320,8 +320,10 @@
  
  #MAKE=		make
  
@@ -50,7 +50,7 @@ diff -Nru tzcode.org/Makefile tzcode/Makefile
  
  AR=		ar
  
-@@ -377,19 +379,18 @@
+@@ -371,19 +373,18 @@
  ALL:		all date $(ENCHILADA)
  
  install:	all $(DATA) $(REDO) $(MANS)
@@ -74,7 +74,7 @@ diff -Nru tzcode.org/Makefile tzcode/Makefile
  
  INSTALL:	ALL install date.1
  		mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
-@@ -432,19 +433,17 @@
+@@ -426,19 +427,17 @@
  # You must replace all of $(TZDIR) to switch from not using leap seconds
  # to using them, or vice versa.
  right_posix:	right_only leapseconds
@@ -99,7 +99,7 @@ diff -Nru tzcode.org/Makefile tzcode/Makefile
  			-L leapseconds $(TDATA)
  
  posix_packrat:	posix_only backzone
-@@ -473,7 +472,7 @@
+@@ -467,7 +466,7 @@
  		chmod +x $@
  
  check:		check_character_set check_white_space check_links check_sorted \

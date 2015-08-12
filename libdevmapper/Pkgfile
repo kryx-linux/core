@@ -4,12 +4,12 @@
 # Depends on:  eudev
 
 name=libdevmapper
-version=1.02.103
-release=2
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.126.tgz)
+version=1.02.104
+release=1
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.127.tgz)
 
 build() {
-    cd LVM2.2.02.126
+    cd LVM2.2.02.127
 
     # needed for static linking with eudev
     export UDEV_LIBS="$(pkg-config --libs --static libudev)"
@@ -32,7 +32,10 @@ build() {
     make device-mapper
     make DESTDIR=$PKG install_device-mapper
     install -m0644 -D udev/12-dm-permissions.rules $PKG/etc/udev/rules.d/12-dm-permissions.rules.example
-
+    
+    # symlink dmsetup to dmstats and not dmsetup.static
+    ln -sf dmsetup $PKG/sbin/dmstats
+    
     # pkgconfig insists on /lib one or the other way...
     sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
 }
