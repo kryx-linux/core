@@ -4,8 +4,8 @@
 # Depends on:  ncurses
 
 name=procps
-version=3.3.10
-release=2
+version=3.3.11
+release=1
 source=(http://downloads.sourceforge.net/project/procps-ng/Production/$name-ng-$version.tar.xz
         sysctl.conf)
 
@@ -13,7 +13,7 @@ build() {
     cd $name-ng-$version
 
     ./configure --prefix=/usr \
-                --exec-prefix=/ \
+                --sbindir=/sbin \
                 --libdir=/usr/lib \
                 --sysconfdir=/etc \
                 --mandir=/usr/man \
@@ -24,10 +24,10 @@ build() {
     make
     make DESTDIR=$PKG install
 
-    install -d $PKG/{lib,etc}
-    mv $PKG/usr/bin/pidof $PKG/bin/
+    install -d $PKG/{bin,lib,etc}
+    mv $PKG/usr/bin/{ps,pidof} $PKG/bin/
     mv $PKG/usr/lib/libprocps.so.* $PKG/lib
-    ln -sf ../../lib/$(readlink $PKG/lib/libprocps.so.4) $PKG/usr/lib/libprocps.so
+    ln -sf ../../lib/$(readlink $PKG/lib/libprocps.so.5) $PKG/usr/lib/libprocps.so
     install -m 0644 $SRC/sysctl.conf $PKG/etc/sysctl.conf
 
     rm -r $PKG/usr/share
