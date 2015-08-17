@@ -5,9 +5,6 @@
 
 case $1 in
 start)
-	if [ ! -f /etc/ssh/ssh_host_key ]; then
-		/usr/bin/ssh-keygen -t rsa1 -N "" -f /etc/ssh/ssh_host_key > /dev/null
-	fi
 	if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
 		/usr/bin/ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key > /dev/null
 	fi
