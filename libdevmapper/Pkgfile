@@ -4,12 +4,12 @@
 # Depends on:  eudev
 
 name=libdevmapper
-version=1.02.105
+version=1.02.106
 release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.128.tgz)
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.129.tgz)
 
 build() {
-    cd LVM2.2.02.128
+    cd LVM2.2.02.129
 
     # needed for static linking with eudev
     export UDEV_LIBS="$(pkg-config --libs --static libudev)"
