@@ -10,14 +10,14 @@ source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 build() {
     cd $name-$version
 
-    local OPTIONS="\
---with-install-prefix=$PKG \
---prefix=/usr \
---mandir=/usr/share/man \
---with-normal \
---with-shared \
---without-debug \
---without-ada \
+    local OPTIONS="
+--with-install-prefix=$PKG
+--prefix=/usr
+--mandir=/usr/share/man
+--with-normal
+--with-shared
+--without-debug
+--without-ada
 --without-tests
 --enable-pc-files
 "
