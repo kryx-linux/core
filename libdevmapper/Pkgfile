@@ -4,12 +4,12 @@
 # Depends on:  eudev
 
 name=libdevmapper
-version=1.02.104
-release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.127.tgz)
+version=1.02.106
+release=2
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/LVM2.2.02.129.tgz)
 
 build() {
-    cd LVM2.2.02.127
+    cd LVM2.2.02.129
 
     # needed for static linking with eudev
     export UDEV_LIBS="$(pkg-config --libs --static libudev)"
@@ -38,4 +38,9 @@ build() {
     
     # pkgconfig insists on /lib one or the other way...
     sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
+    
+    # fix pkg-config file
+    # https://git.fedorahosted.org/cgit/lvm2.git/commit/?id=fc35b6988d65fe3f11a3f668cd8f01fe3294b562
+    sed -i '/^Requires/s/librt//' $PKG/usr/lib/pkgconfig/devmapper.pc
+    echo 'Libs.private: -lm -lrt' >> $PKG/usr/lib/pkgconfig/devmapper.pc
 }
