@@ -1,6 +1,5 @@
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libncurses.so.6 -> libncurses.so.6.0
--rwxr-xr-x	root/root	lib/libncurses.so.6.0
+lrwxrwxrwx	root/root	lib/libncurses.so.6 -> libncursesw.so.6.0
 lrwxrwxrwx	root/root	lib/libncursesw.so.6 -> libncursesw.so.6.0
 -rwxr-xr-x	root/root	lib/libncursesw.so.6.0
 drwxr-xr-x	root/root	usr/
@@ -9,7 +8,6 @@ lrwxrwxrwx	root/root	usr/bin/captoinfo -> tic
 -rwxr-xr-x	root/root	usr/bin/clear
 -rwxr-xr-x	root/root	usr/bin/infocmp
 lrwxrwxrwx	root/root	usr/bin/infotocap -> tic
--rwxr-xr-x	root/root	usr/bin/ncurses6-config
 -rwxr-xr-x	root/root	usr/bin/ncursesw6-config
 lrwxrwxrwx	root/root	usr/bin/reset -> tset
 -rwxr-xr-x	root/root	usr/bin/tabs
@@ -41,39 +39,39 @@ lrwxrwxrwx	root/root	usr/include/ncursesw/ncurses.h -> ../curses.h
 -rw-r--r--	root/root	usr/include/tic.h
 -rw-r--r--	root/root	usr/include/unctrl.h
 drwxr-xr-x	root/root	usr/lib/
-lrwxrwxrwx	root/root	usr/lib/libcurses.a -> libncurses.a
 lrwxrwxrwx	root/root	usr/lib/libcurses.so -> libncurses.so
-lrwxrwxrwx	root/root	usr/lib/libcursesw.so -> libncursesw.so
--rw-r--r--	root/root	usr/lib/libform.a
-lrwxrwxrwx	root/root	usr/lib/libform.so -> libform.so.6
-lrwxrwxrwx	root/root	usr/lib/libform.so.6 -> libform.so.6.0
--rwxr-xr-x	root/root	usr/lib/libform.so.6.0
+-rw-r--r--	root/root	usr/lib/libcursesw.so
+-rw-r--r--	root/root	usr/lib/libform.so
 -rw-r--r--	root/root	usr/lib/libformw.a
 lrwxrwxrwx	root/root	usr/lib/libformw.so -> libformw.so.6
 lrwxrwxrwx	root/root	usr/lib/libformw.so.6 -> libformw.so.6.0
 -rwxr-xr-x	root/root	usr/lib/libformw.so.6.0
--rw-r--r--	root/root	usr/lib/libmenu.a
-lrwxrwxrwx	root/root	usr/lib/libmenu.so -> libmenu.so.6
-lrwxrwxrwx	root/root	usr/lib/libmenu.so.6 -> libmenu.so.6.0
--rwxr-xr-x	root/root	usr/lib/libmenu.so.6.0
+-rw-r--r--	root/root	usr/lib/libmenu.so
 -rw-r--r--	root/root	usr/lib/libmenuw.a
 lrwxrwxrwx	root/root	usr/lib/libmenuw.so -> libmenuw.so.6
 lrwxrwxrwx	root/root	usr/lib/libmenuw.so.6 -> libmenuw.so.6.0
 -rwxr-xr-x	root/root	usr/lib/libmenuw.so.6.0
--rw-r--r--	root/root	usr/lib/libncurses++.a
 -rw-r--r--	root/root	usr/lib/libncurses++w.a
--rw-r--r--	root/root	usr/lib/libncurses.a
-lrwxrwxrwx	root/root	usr/lib/libncurses.so -> ../../lib/libncurses.so.6.0
+-rw-r--r--	root/root	usr/lib/libncurses.so
+lrwxrwxrwx	root/root	usr/lib/libncurses.so.5 -> libncursesw.so
 -rw-r--r--	root/root	usr/lib/libncursesw.a
 lrwxrwxrwx	root/root	usr/lib/libncursesw.so -> ../../lib/libncursesw.so.6.0
--rw-r--r--	root/root	usr/lib/libpanel.a
-lrwxrwxrwx	root/root	usr/lib/libpanel.so -> libpanel.so.6
-lrwxrwxrwx	root/root	usr/lib/libpanel.so.6 -> libpanel.so.6.0
--rwxr-xr-x	root/root	usr/lib/libpanel.so.6.0
+lrwxrwxrwx	root/root	usr/lib/libncursesw.so.5 -> libncursesw.so
+-rw-r--r--	root/root	usr/lib/libpanel.so
 -rw-r--r--	root/root	usr/lib/libpanelw.a
 lrwxrwxrwx	root/root	usr/lib/libpanelw.so -> libpanelw.so.6
 lrwxrwxrwx	root/root	usr/lib/libpanelw.so.6 -> libpanelw.so.6.0
 -rwxr-xr-x	root/root	usr/lib/libpanelw.so.6.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/form.pc -> formw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/formw.pc
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/menu.pc -> menuw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/menuw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncurses++w.pc
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/ncurses.pc -> ncursesw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/ncursesw.pc
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/panel.pc -> panelw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/panelw.pc
 lrwxrwxrwx	root/root	usr/lib/terminfo -> ../share/terminfo
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
@@ -82,7 +80,6 @@ drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/clear.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/infocmp.1m.gz
 -rw-r--r--	root/root	usr/share/man/man1/infotocap.1m.gz
--rw-r--r--	root/root	usr/share/man/man1/ncurses6-config.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/ncursesw6-config.1.gz
 lrwxrwxrwx	root/root	usr/share/man/man1/reset.1.gz -> tset.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/tabs.1.gz
@@ -949,17 +946,6 @@ drwxr-xr-x	root/root	usr/share/man/man5/
 -rw-r--r--	root/root	usr/share/man/man5/terminfo.5.gz
 drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/term.7.gz
-drwxr-xr-x	root/root	usr/share/pkgconfig/
--rw-r--r--	root/root	usr/share/pkgconfig/form.pc
--rw-r--r--	root/root	usr/share/pkgconfig/formw.pc
--rw-r--r--	root/root	usr/share/pkgconfig/menu.pc
--rw-r--r--	root/root	usr/share/pkgconfig/menuw.pc
--rw-r--r--	root/root	usr/share/pkgconfig/ncurses++.pc
--rw-r--r--	root/root	usr/share/pkgconfig/ncurses++w.pc
--rw-r--r--	root/root	usr/share/pkgconfig/ncurses.pc
--rw-r--r--	root/root	usr/share/pkgconfig/ncursesw.pc
--rw-r--r--	root/root	usr/share/pkgconfig/panel.pc
--rw-r--r--	root/root	usr/share/pkgconfig/panelw.pc
 drwxr-xr-x	root/root	usr/share/tabset/
 -rw-r--r--	root/root	usr/share/tabset/std
 -rw-r--r--	root/root	usr/share/tabset/stdcrt
