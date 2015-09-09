@@ -41,6 +41,7 @@ build() {
     # symlinks for ncurses 5 (remove them later))
     ln -s libncursesw.so $PKG/usr/lib/libncurses.so.5
     ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.5
+    ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.6
 
     # some progs expect a /usr/include/curses.h
     ln -s ../curses.h $PKG/usr/include/ncursesw/ncurses.h
