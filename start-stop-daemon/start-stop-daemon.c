@@ -297,17 +297,6 @@ xmalloc(int size)
 }
 
 static char *
-xstrdup(const char *str)
-{
-	char *new_str;
-
-	new_str = strdup(str);
-	if (new_str)
-		return new_str;
-	fatal("strdup(%s) failed", str);
-}
-
-static char *
 xstrndup(const char *str, size_t n)
 {
 	char *new_str;
@@ -1049,10 +1038,11 @@ parse_options(int argc, char * const *argv)
 			 * argument later. */
 			changeuser_len = strcspn(optarg, ":");
 			changeuser = xstrndup(optarg, changeuser_len);
-			if (optarg[changeuser_len] == ':' &&
-			    optarg[changeuser_len + 1] == '\0')
-				fatal("missing group name");
-			changegroup = optarg + changeuser_len + 1;
+			if (optarg[changeuser_len] == ':') {
+				if (optarg[changeuser_len + 1] == '\0')
+					fatal("missing group name");
+				changegroup = optarg + changeuser_len + 1;
+			}
 			break;
 		case 'g':  /* --group <group>|<gid> */
 			changegroup = optarg;

@@ -7,12 +7,12 @@ index deae6c6..28d2de8 100644
  .\" along with this program.  If not, see <https://www.gnu.org/licenses/>.
  .
 -.TH start\-stop\-daemon 8 "2014-03-26" "Debian Project" "dpkg utilities"
-+.TH start\-stop\-daemon 8 "2015-09-15" "CRUX 3.2" "core services"
++.TH start\-stop\-daemon 8 "2015-09-21" "CRUX 3.2" "core services"
  .SH NAME
  start\-stop\-daemon \- start and stop system daemon programs
  .
 diff --git a/start-stop-daemon/start-stop-daemon.c b/start-stop-daemon/start-stop-daemon.c
-index 6d74feb..e94e482 100644
+index c844f2e..67cd043 100644
 --- a/start-stop-daemon/start-stop-daemon.c
 +++ b/start-stop-daemon/start-stop-daemon.c
 @@ -20,10 +20,34 @@
@@ -25,7 +25,7 @@ index 6d74feb..e94e482 100644
  
  #include <dpkg/macros.h>
 +#else
-+# define VERSION 		"20150915"
++# define VERSION 		"20150921"
 +# define CRUX 			"CRUX 3.2"
 +
 +# define HAVE_SYS_PARAM_H
@@ -61,25 +61,7 @@ index 6d74feb..e94e482 100644
  #define IOPRIO_CLASS_SHIFT 13
  #define IOPRIO_PRIO_VALUE(class, prio) (((class) << IOPRIO_CLASS_SHIFT) | (prio))
  #define IO_SCHED_PRIO_MIN 0
-@@ -297,17 +325,6 @@ xmalloc(int size)
- }
- 
- static char *
--xstrdup(const char *str)
--{
--	char *new_str;
--
--	new_str = strdup(str);
--	if (new_str)
--		return new_str;
--	fatal("strdup(%s) failed", str);
--}
--
--static char *
- xstrndup(const char *str, size_t n)
- {
- 	char *new_str;
-@@ -321,8 +338,7 @@ xstrndup(const char *str, size_t n)
+@@ -310,8 +338,7 @@ xstrndup(const char *str, size_t n)
  static void
  timespec_gettime(struct timespec *ts)
  {
@@ -89,7 +71,7 @@ index 6d74feb..e94e482 100644
  	if (clock_gettime(CLOCK_MONOTONIC, ts) < 0)
  		fatal("clock_gettime failed");
  #else
-@@ -626,9 +642,9 @@ usage(void)
+@@ -615,9 +642,9 @@ usage(void)
  static void
  do_version(void)
  {
