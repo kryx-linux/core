@@ -4,8 +4,8 @@
 # Depends on:  zlib
 
 name=file
-version=5.24
-release=2
+version=5.25
+release=1
 source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
 
 build() {
