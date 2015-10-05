@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dash
-version=20150602
-release=2
+version=20150713
+release=1
 source=(http://jue.li/crux/files/$name-$version.tar.xz)
 
 build() {
