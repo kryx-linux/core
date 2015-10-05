@@ -128,6 +128,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Eirunepe
 -rw-r--r--	root/root	usr/share/zoneinfo/America/El_Salvador
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Ensenada
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Fort_Nelson
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Fort_Wayne
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Fortaleza
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Glace_Bay
@@ -734,6 +735,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Eirunepe
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/El_Salvador
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Ensenada
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Fort_Nelson
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Fort_Wayne
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Fortaleza
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Glace_Bay
@@ -1339,6 +1341,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Eirunepe
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/El_Salvador
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Ensenada
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/Fort_Nelson
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Fort_Wayne
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Fortaleza
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Glace_Bay
