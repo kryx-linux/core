@@ -583,6 +583,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/systemverilog.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tcl.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tcsh.vim
+-rw-r--r--	root/root	usr/share/vim/indent/teraterm.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tex.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tf.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tilde.vim
@@ -1172,6 +1173,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/tasm.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tcl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tcsh.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/teraterm.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/terminfo.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tex.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/texinfo.vim
