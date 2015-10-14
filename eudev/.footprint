@@ -5,6 +5,7 @@ drwxr-xr-x	root/root	etc/udev/hwdb.d/
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-OUI.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-acpi-vendor.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-bluetooth-vendor-product.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/20-net-ifname.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-pci-classes.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-pci-vendor-model.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-sdio-classes.hwdb
@@ -14,7 +15,7 @@ drwxr-xr-x	root/root	etc/udev/hwdb.d/
 -rw-r--r--	root/root	etc/udev/hwdb.d/60-evdev.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/60-keyboard.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/70-mouse.hwdb
--rw-r--r--	root/root	etc/udev/hwdb.d/70-touchpad.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/70-pointingstick.hwdb
 drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/udev.conf
 drwxr-xr-x	root/root	lib/
@@ -22,7 +23,6 @@ drwxr-xr-x	root/root	lib/firmware/
 lrwxrwxrwx	root/root	lib/libudev.so.1 -> libudev.so.1.6.3
 -rwxr-xr-x	root/root	lib/libudev.so.1.6.3
 drwxr-xr-x	root/root	lib/udev/
--rwxr-xr-x	root/root	lib/udev/accelerometer
 -rwxr-xr-x	root/root	lib/udev/ata_id
 -rwxr-xr-x	root/root	lib/udev/cdrom_id
 -rwxr-xr-x	root/root	lib/udev/collect
@@ -31,7 +31,6 @@ drwxr-xr-x	root/root	lib/udev/devices/pts/
 drwxr-xr-x	root/root	lib/udev/devices/shm/
 -rwxr-xr-x	root/root	lib/udev/mtd_probe
 drwxr-xr-x	root/root	lib/udev/rules.d/
--rw-r--r--	root/root	lib/udev/rules.d/42-usb-hid-pm.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-block.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
@@ -43,10 +42,8 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-v4l.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-serial.rules
--rw-r--r--	root/root	lib/udev/rules.d/61-accelerometer.rules
 -rw-r--r--	root/root	lib/udev/rules.d/64-btrfs.rules
 -rw-r--r--	root/root	lib/udev/rules.d/70-mouse.rules
--rw-r--r--	root/root	lib/udev/rules.d/70-touchpad.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-net-description.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-probe_mtd.rules
 -rw-r--r--	root/root	lib/udev/rules.d/78-sound-card.rules
