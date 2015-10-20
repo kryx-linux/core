@@ -1,7 +1,7 @@
 # Description: Mail transfer agent
 # URL:         http://www.exim.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  db openssl libpcre tcp_wrappers
+# Depends on:  db openssl libpcre
 
 name=exim
 version=4.86
