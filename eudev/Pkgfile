@@ -22,7 +22,6 @@ build() {
                 --with-rootlibdir=/lib \
                 --libexecdir=/lib \
                 --disable-introspection \
-                --disable-gudev \
                 --disable-manpages \
                 --enable-split-usr 
 
