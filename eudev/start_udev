@@ -16,9 +16,6 @@ fi
 # mount /run directory
 /bin/mount -n -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
 
-# make sure hotplugger is not set
-echo > /proc/sys/kernel/hotplug
-
 # copy devcies from /lib/udev/devices
 cp -ar /lib/udev/devices/* /dev
 
