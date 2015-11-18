@@ -4,8 +4,8 @@
 # Depends on:  openssl
 
 name=wget
-version=1.16.3
-release=2
+version=1.17
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz \
         wgetrc)
 
