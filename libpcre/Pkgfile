@@ -3,19 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libpcre
-version=8.37
-release=5
-source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2 \
-	01-seven-security-patches.patch \
-	$name-$version-CVE-2015-5073.patch \
-	$name-$version-CVE-2015-XXXX.patch)
+version=8.38
+release=1
+source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2)
 
 build() {
     cd pcre-$version
-
-    patch -p1 -i $SRC/01-seven-security-patches.patch
-    patch -p1 -i $SRC/$name-$version-CVE-2015-5073.patch
-    patch -p1 -i $SRC/$name-$version-CVE-2015-XXXX.patch
 
     ./configure --prefix=/usr \
                 --enable-utf8 \
