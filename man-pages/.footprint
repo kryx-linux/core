@@ -869,7 +869,9 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_mdoom.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_low.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_med.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_med_high.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_med_low.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/__ppc_set_ppr_very_low.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__ppc_yield.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__realloc_hook.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/__setfpucw.3.gz
