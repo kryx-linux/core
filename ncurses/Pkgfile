@@ -4,7 +4,7 @@
 
 name=ncurses
 version=6.0
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -21,7 +21,7 @@ build() {
     make
     make DESTDIR=$PKG install
 
-    install -d $PKG/{lib,usr/include/ncursesw}
+    install -d $PKG/lib
 
     # move library to /lib and create symlinks
     mv $PKG/usr/lib/libncursesw.so.* $PKG/lib
@@ -42,7 +42,4 @@ build() {
     ln -s libncursesw.so $PKG/usr/lib/libncurses.so.5
     ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.5
     ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.6
-
-    # some progs expect a /usr/include/curses.h
-    ln -s ../curses.h $PKG/usr/include/ncursesw/ncurses.h
 }
