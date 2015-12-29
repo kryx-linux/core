@@ -83,6 +83,16 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/wchar_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/wint_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/xsize.m4
+drwxr-xr-x	root/root	usr/share/gettext-0.19.7/
+drwxr-xr-x	root/root	usr/share/gettext-0.19.7/its/
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/appdata.its
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/appdata.loc
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/glade.loc
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/glade1.its
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/glade2.its
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/gsettings.its
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/gsettings.loc
+-rw-r--r--	root/root	usr/share/gettext-0.19.7/its/gtkbuilder.its
 drwxr-xr-x	root/root	usr/share/gettext/
 -rw-r--r--	root/root	usr/share/gettext/ABOUT-NLS
 -rw-r--r--	root/root	usr/share/gettext/archive.dir.tar.xz
