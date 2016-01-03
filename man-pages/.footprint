@@ -471,6 +471,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/madvise.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/madvise1.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mbind.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/membarrier.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/memfd_create.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/migrate_pages.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mincore.2.gz
@@ -479,6 +480,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/mknod.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mknodat.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mlock.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/mlock2.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mlockall.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mmap.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/mmap2.2.gz
