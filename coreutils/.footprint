@@ -27,6 +27,7 @@ drwxr-xr-x	root/root	bin/
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/[
+-rwxr-xr-x	root/root	usr/bin/base32
 -rwxr-xr-x	root/root	usr/bin/base64
 -rwxr-xr-x	root/root	usr/bin/basename
 -rwxr-xr-x	root/root	usr/bin/chroot
@@ -105,6 +106,7 @@ drwxr-xr-x	root/root	usr/lib/coreutils/
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/base32.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/base64.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/basename.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/cat.1.gz
