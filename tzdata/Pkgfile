@@ -10,7 +10,7 @@ source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz
 
 build() {
 
-    make install \
+    make -j1 install \
         CFLAGS="$CFLAGS" \
         DESTDIR=$PKG \
         TOPDIR=/usr \
