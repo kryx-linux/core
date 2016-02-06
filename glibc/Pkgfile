@@ -4,10 +4,11 @@
 
 name=glibc
 version=2.22
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.1.tar.xz \
 	$name-2.20-multilib-dirs.patch \
+	CVE-2015-8779.patch CVE-2015-8778.patch CVE-2015-8777.patch CVE-2015-8776.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
@@ -17,6 +18,10 @@ build() {
 	chown root:root $PKG/usr
 
         patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
+	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2015-8779.patch
+	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2015-8778.patch
+	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2015-8777.patch
+	patch -p1 -d $SRC/$name-$version -i $SRC/CVE-2015-8776.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
