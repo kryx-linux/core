@@ -15,7 +15,7 @@ diff -Nru exim-4.86.orig/src/version.sh exim-4.86/src/version.sh
 +++ exim-4.86/src/version.sh	2015-07-27 09:41:21.145237745 +0200
 @@ -1,4 +1,4 @@
  # automatically generated file - see ../scripts/reversion
- EXIM_RELEASE_VERSION="4.86"
- EXIM_VARIANT_VERSION=""
--EXIM_COMPILE_NUMBER="1"
-+EXIM_COMPILE_NUMBER="0"
+ EXIM_RELEASE_VERSION=4.86
+-EXIM_VARIANT_VERSION=_2
++EXIM_VARIANT_VERSION=.2
+ EXIM_COMPILE_NUMBER=0
