@@ -4,12 +4,14 @@
 
 name=sysklogd
 version=1.5.1
-release=3
+release=4
 source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
-        rotatelog syslog syslog.conf sysklogd)
+        sysklogd.diff rotatelog syslog syslog.conf sysklogd)
 
 build() {
     cd $name-$version
+
+    patch -p1 -i $SRC/sysklogd.diff
 
     install -d $PKG/usr/sbin \
                $PKG/etc/{cron/weekly,rc.d} \
