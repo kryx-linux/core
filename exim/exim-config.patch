@@ -1,6 +1,6 @@
-diff -Nru exim-4.86.orig/src/EDITME exim-4.86/src/EDITME
---- exim-4.86.orig/src/EDITME	2015-07-27 09:39:41.648775117 +0200
-+++ exim-4.86/src/EDITME	2015-07-27 09:40:20.660715194 +0200
+diff -Nru exim-4.86.2.orig/src/EDITME exim-4.86.2/src/EDITME
+--- exim-4.86.2.orig/src/EDITME	2016-03-13 12:36:10.099306370 +0100
++++ exim-4.86.2/src/EDITME	2016-03-13 12:37:02.604031333 +0100
 @@ -72,7 +72,7 @@
  # this would be wanted.
  ###############################################################################
@@ -141,6 +141,15 @@ diff -Nru exim-4.86.orig/src/EDITME exim-4.86/src/EDITME
  
  
  #------------------------------------------------------------------------------
+@@ -1059,7 +1059,7 @@
+ #------------------------------------------------------------------------------
+ # Uncomment this setting to include IPv6 support.
+ 
+-# HAVE_IPV6=yes
++HAVE_IPV6=yes
+ 
+ ###############################################################################
+ #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
 @@ -1080,13 +1080,13 @@
  # haven't got Perl, Exim will still build and run; you just won't be able to
  # use those utilities.
@@ -171,9 +180,9 @@ diff -Nru exim-4.86.orig/src/EDITME exim-4.86/src/EDITME
  
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
-diff -Nru exim-4.86.orig/src/configure.default exim-4.86/src/configure.default
---- exim-4.86.orig/src/configure.default	2015-07-27 09:39:41.645441903 +0200
-+++ exim-4.86/src/configure.default	2015-07-27 09:39:57.651536934 +0200
+diff -Nru exim-4.86.2.orig/src/configure.default exim-4.86.2/src/configure.default
+--- exim-4.86.2.orig/src/configure.default	2016-03-13 12:36:10.099306370 +0100
++++ exim-4.86.2/src/configure.default	2016-03-13 12:36:24.978759386 +0100
 @@ -54,7 +54,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
