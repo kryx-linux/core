@@ -314,6 +314,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/clone2.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/close.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/connect.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/copy_file_range.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/creat.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/create_module.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/delete_module.2.gz
@@ -1535,6 +1536,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/isalnum.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/isalnum_l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/isalpha.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/isalpha_l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/isascii.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/isascii_l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/isatty.3.gz
@@ -1753,6 +1755,9 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/nrand48_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/ntohl.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/ntohs.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ntp_adjtime.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ntp_gettime.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ntp_gettimex.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/offsetof.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/on_exit.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/open_memstream.3.gz
@@ -1778,6 +1783,8 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/posix_madvise.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/posix_memalign.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/posix_openpt.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/posix_spawn.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/posix_spawnp.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pow.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pow10.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pow10f.3.gz
@@ -2069,6 +2076,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/strdup.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strdupa.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strerror.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/strerror_l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strerror_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strfmon.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strfmon_l.3.gz
@@ -3228,6 +3236,7 @@ drwxr-xr-x	root/root	usr/share/man/man4/
 -rw-r--r--	root/root	usr/share/man/man4/initrd.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/intro.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/kmem.4.gz
+-rw-r--r--	root/root	usr/share/man/man4/lirc.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/loop-control.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/loop.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/lp.4.gz
