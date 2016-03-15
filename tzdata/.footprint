@@ -265,6 +265,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Bahrain
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Baku
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Bangkok
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Barnaul
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Beirut
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Bishkek
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Brunei
@@ -448,6 +449,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Etc/
 drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Amsterdam
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Andorra
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Astrakhan
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Athens
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Belfast
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Belgrade
@@ -495,6 +497,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Tallinn
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Tirane
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Tiraspol
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Ulyanovsk
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Uzhgorod
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Vaduz
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Vatican
@@ -871,6 +874,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Bahrain
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Baku
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Bangkok
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Barnaul
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Beirut
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Bishkek
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Brunei
@@ -1054,6 +1058,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Etc/
 drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Amsterdam
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Andorra
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Astrakhan
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Athens
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Belfast
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Belgrade
@@ -1101,6 +1106,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Tallinn
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Tirane
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Tiraspol
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Ulyanovsk
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Uzhgorod
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Vaduz
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Vatican
