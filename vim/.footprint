@@ -152,7 +152,6 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/doc/arabic.txt
 -rw-r--r--	root/root	usr/share/vim/doc/autocmd.txt
 -rw-r--r--	root/root	usr/share/vim/doc/change.txt
--rw-r--r--	root/root	usr/share/vim/doc/channel.txt
 -rw-r--r--	root/root	usr/share/vim/doc/cmdline.txt
 -rw-r--r--	root/root	usr/share/vim/doc/debug.txt
 -rw-r--r--	root/root	usr/share/vim/doc/debugger.txt
@@ -167,6 +166,7 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/doc/ft_ada.txt
 -rw-r--r--	root/root	usr/share/vim/doc/ft_sql.txt
 -rw-r--r--	root/root	usr/share/vim/doc/gui.txt
+-rw-r--r--	root/root	usr/share/vim/doc/gui_w16.txt
 -rw-r--r--	root/root	usr/share/vim/doc/gui_w32.txt
 -rw-r--r--	root/root	usr/share/vim/doc/gui_x11.txt
 -rw-r--r--	root/root	usr/share/vim/doc/hangulin.txt
@@ -334,7 +334,6 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dosini.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dtd.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dtrace.vim
--rw-r--r--	root/root	usr/share/vim/ftplugin/eiffel.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/elinks.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/erlang.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/eruby.vim
@@ -359,7 +358,6 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/hamster.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/haskell.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/help.vim
--rw-r--r--	root/root	usr/share/vim/ftplugin/hgcommit.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/hog.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/hostconf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/hostsaccess.vim
@@ -1267,7 +1265,6 @@ drwxr-xr-x	root/root	usr/share/vim/tools/
 -rw-r--r--	root/root	usr/share/vim/tools/ccfilter.1
 -rw-r--r--	root/root	usr/share/vim/tools/ccfilter.c
 -rw-r--r--	root/root	usr/share/vim/tools/ccfilter_README.txt
--rwxr-xr-x	root/root	usr/share/vim/tools/demoserver.py
 -rwxr-xr-x	root/root	usr/share/vim/tools/efm_filter.pl
 -rw-r--r--	root/root	usr/share/vim/tools/efm_filter.txt
 -rwxr-xr-x	root/root	usr/share/vim/tools/efm_perl.pl
