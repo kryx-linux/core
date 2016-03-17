@@ -4,7 +4,7 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.4.1073
+version=7.4.1583
 release=1
 source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
@@ -16,6 +16,7 @@ build () {
                 --without-x \
                 --disable-gui \
                 --enable-multibyte \
+                --enable-cscope \
                 --disable-gpm \
                 --disable-nls
 
