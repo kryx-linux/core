@@ -4,8 +4,8 @@
 # Depends on:  zlib
 
 name=sudo
-version=1.8.14p3
-release=2
+version=1.8.16
+release=1
 source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
 
 build() {
