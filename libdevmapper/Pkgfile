@@ -5,11 +5,11 @@
 
 name=libdevmapper
 version=1.02.120
-release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.146.tgz)
+release=2
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.147.tgz)
 
 build() {
-    cd LVM2.2.02.146
+    cd LVM2.2.02.147
 
     ./configure --prefix=/usr \
                 --exec-prefix= \
