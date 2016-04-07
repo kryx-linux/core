@@ -8,8 +8,15 @@ PROG=/usr/sbin/exim
 PID=/var/run/exim.pid
 OPTS="-bd -q15m"
 
+CRT=/etc/ssl/certs/exim.crt
+KEY=/etc/ssl/keys/exim.key
+
 case $1 in
 start)
+	if [ ! -s $CRT -o ! -s $KEY ]; then 
+		/usr/bin/mksslcert $KEY $CRT
+		chown mail $CRT $KEY
+	fi
 	$SSD --start --pidfile $PID --exec $PROG -- $OPTS
 	;;
 stop)
