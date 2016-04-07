@@ -1,6 +1,6 @@
 diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
---- exim-4.87.orig/src/EDITME	2016-04-07 13:13:37.489879288 +0200
-+++ exim-4.87/src/EDITME	2016-04-07 13:13:56.162537206 +0200
+--- exim-4.87.orig/src/EDITME	2016-04-07 14:30:34.113532400 +0200
++++ exim-4.87/src/EDITME	2016-04-07 14:30:57.046039274 +0200
 @@ -72,7 +72,7 @@
  # this would be wanted.
  ###############################################################################
@@ -181,8 +181,8 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
 diff -Nru exim-4.87.orig/src/configure.default exim-4.87/src/configure.default
---- exim-4.87.orig/src/configure.default	2016-04-07 13:13:37.486546075 +0200
-+++ exim-4.87/src/configure.default	2016-04-07 13:16:39.806618024 +0200
+--- exim-4.87.orig/src/configure.default	2016-04-07 14:30:34.113532400 +0200
++++ exim-4.87/src/configure.default	2016-04-07 14:32:40.208988073 +0200
 @@ -55,7 +55,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
@@ -203,12 +203,3 @@ diff -Nru exim-4.87.orig/src/configure.default exim-4.87/src/configure.default
  
  # In order to support roaming users who wish to send email from anywhere,
  # you may want to make Exim listen on other ports as well as port 25, in
-@@ -165,7 +165,7 @@
- # daemon_smtp_ports = 25 : 465 : 587
- # tls_on_connect_ports = 465
- 
--
-+asdad
- # Specify the domain you want to be added to all unqualified addresses
- # here. An unqualified address is one that does not contain an "@" character
- # followed by a domain. For example, "caesar@rome.example" is a fully qualified
