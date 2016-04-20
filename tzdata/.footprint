@@ -337,6 +337,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Thimbu
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Thimphu
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Tokyo
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Tomsk
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Ujung_Pandang
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Ulaanbaatar
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Ulan_Bator
@@ -470,6 +471,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Jersey
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Kaliningrad
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Kiev
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Kirov
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Lisbon
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/Ljubljana
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Europe/London
@@ -946,6 +948,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Thimbu
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Thimphu
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Tokyo
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Tomsk
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ujung_Pandang
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ulaanbaatar
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Ulan_Bator
@@ -1079,6 +1082,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Jersey
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Kaliningrad
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Kiev
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Kirov
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Lisbon
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Ljubljana
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/London
