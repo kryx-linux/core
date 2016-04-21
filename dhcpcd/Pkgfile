@@ -4,7 +4,7 @@
 # Depends on:  eudev
 
 name=dhcpcd
-version=6.10.2
+version=6.10.3
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
 
@@ -16,7 +16,7 @@ build () {
                 --dbdir=/var/lib/dhcpcd \
                 --sysconfdir=/etc/dhcpcd \
                 --os=linux \
-                --with-hooks=none
+                --with-hooks=
 
     make 
     make DESTDIR=$PKG install
