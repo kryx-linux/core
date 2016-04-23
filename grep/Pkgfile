@@ -4,15 +4,14 @@
 # Depends on:  libpcre
 
 name=grep
-version=2.24
+version=2.25
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
 
-    ./configure --prefix=/usr \
-                --disable-nls
+    ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install
 
