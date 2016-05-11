@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=man-pages
-version=4.05
+version=4.06
 release=1
 source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz \
         http://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2013-a.tar.xz)
@@ -11,7 +11,6 @@ source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz \
 build() {
     cd $name-$version
     rm man1/time.1 man5/passwd.5 man5/attr.5
-    make gz
     make DESTDIR=$PKG install
 
     cd $SRC/$name-posix-2013-a

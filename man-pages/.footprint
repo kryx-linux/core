@@ -3224,7 +3224,6 @@ drwxr-xr-x	root/root	usr/share/man/man3p/
 -rw-r--r--	root/root	usr/share/man/man3p/y0.3p.gz
 drwxr-xr-x	root/root	usr/share/man/man4/
 -rw-r--r--	root/root	usr/share/man/man4/cciss.4.gz
--rw-r--r--	root/root	usr/share/man/man4/console.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/console_codes.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/console_ioctl.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/cpuid.4.gz
@@ -3314,6 +3313,8 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/boot.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/bootparam.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/capabilities.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/cgroup_namespaces.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/cgroups.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/charsets.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/complex.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/cp1251.7.gz
