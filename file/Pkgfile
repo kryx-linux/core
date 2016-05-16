@@ -4,7 +4,7 @@
 # Depends on:  zlib
 
 name=file
-version=5.26
+version=5.27
 release=1
 source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
 
