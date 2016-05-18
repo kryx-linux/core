@@ -5,11 +5,14 @@
 
 name=dhcpcd
 version=6.11.0
-release=1
-source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
+release=2
+source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
+    dhcpcd-truncated-packet.patch)
 
 build () {
     cd $name-$version
+
+    patch -p0 <$SRC/dhcpcd-truncated-packet.patch
 
     ./configure --prefix= \
                 --libexecdir=/lib/dhcpcd \
@@ -18,7 +21,7 @@ build () {
                 --os=linux \
                 --with-hooks=
 
-    make 
+    make
     make DESTDIR=$PKG install
     chmod -R u+w $PKG
 }
