@@ -71,6 +71,7 @@ drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/ss.pc
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/e2freefrag
+-rwxr-xr-x	root/root	usr/sbin/e4crypt
 -rwxr-xr-x	root/root	usr/sbin/e4defrag
 -rwxr-xr-x	root/root	usr/sbin/filefrag
 -rwxr-xr-x	root/root	usr/sbin/mklost+found
@@ -82,6 +83,7 @@ drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/chattr.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/compile_et.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/fuse2fs.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/lsattr.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/mk_cmds.1.gz
 drwxr-xr-x	root/root	usr/share/man/man3/
@@ -101,6 +103,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/e2image.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e2label.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e2undo.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/e4crypt.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e4defrag.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/filefrag.8.gz
 lrwxrwxrwx	root/root	usr/share/man/man8/fsck.ext2.8.gz -> e2fsck.8.gz
