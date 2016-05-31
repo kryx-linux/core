@@ -3,12 +3,17 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=make
-version=4.1
-release=2
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+version=4.2
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2
+        fix_parallel_build.patch)
 
 build() {
     cd $name-$version
+    
+    # http://thread.gmane.org/gmane.comp.gnu.make.bugs/8729
+    patch -p1 -i $SRC/fix_parallel_build.patch
+
     ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install
