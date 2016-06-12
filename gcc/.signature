@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/brew.pub
+RWTpvsc3ZC2JOl9x1MojyBsdhoA9vudF5w8m+9aWzWaiuRwY+5vdkGwONMLw4mXgEwhrsuQ5XEMnz4TGTi4aQ3DsnlVQZIBw7AU=
+SHA256 (Pkgfile) = 4155a760cd7d3e9cf2d7375a7759108f4bf558ea24904ce6d7ea4276568b5298
+SHA256 (.footprint) = 83f49dd4b496c0ed4f93a03fbca2adadd34451954cefbcbd588240b8e4a65c70
+SHA256 (gcc-6.1.0.tar.bz2) = 09c4c85cabebb971b1de732a0219609f93fc0af5f86f6e437fd8d7f832f1a351
+SHA256 (gcc-nocheck-fixincludes.patch) = 850a71d2c64b9f2bec31821bd972bf89c2d57764faf64948100eaf474fd63bbb
+SHA256 (gcc-4.7.3-multilib-dirs.patch) = 149b151999d0afad909ca0d1eaf1f9a81c9cd6499e56989ec4fc574d108eeef6
