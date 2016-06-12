@@ -1,3 +1,4 @@
-e51e02bf552a0a1fbbdc948fb2f5e83c  glibc-2.22.tar.xz
+e602b6c3a332f4a06e2914e02ae2b295  glibc-2.23-upstream_fixes-1.patch
+456995968f3acadbed39f5eba31678df  glibc-2.23.tar.xz
 87bb2a93d7887505a39fd65a2ee86b8e  kernel-headers-4.1.tar.xz
 a8f4549c716cd37244fbf1ed059497f8  lib32.conf
