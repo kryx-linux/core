@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqtsC9C5gQvQu7+YwDLOraqyctnyFkGY9VI5FLYpVCSPQrM8GZnHd9C67uj81mV0ASKWGlqZOV+y1qNfMnaWqGAE=
+SHA256 (Pkgfile) = b59ce6e64472e4838137cc7c8f6691eb615dfb71f1b2c4a11b5924fdb72250af
+SHA256 (.footprint) = 608048c966e1d37c9a125620bd8f68cb635ea30d18031d197c6efc30aa2d4a13
+SHA256 (procps-ng-3.3.11.tar.xz) = e9493169a2d2adc0bc045538707310c8e877b385e4e296143b62607d2bb044ed
+SHA256 (sysctl.conf) = c728d3ccac5dc9ba8a9b8d40d466961268cc1640ef2b98b2e8aa2a21bcdf9a9c

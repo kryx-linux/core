@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqlXAYlHAoiHMhJNhp8uAt9Zv9HugwBNyD9TppPXSJkGhysADJeNXu7v5puJF4we3R/olJpVI5pcQHYYqrXKl9Q8=
+SHA256 (Pkgfile) = f50671c5094f7f67b6482fc40d60dad711abb0e270f77c4dfbce5bfaa903d904
+SHA256 (.footprint) = 690f2f34640c14c400696da04370817d917bea51bd91682ecb2e022b78a2235f
+SHA256 (lzo-2.09.tar.gz) = f294a7ced313063c057c504257f437c8335c41bfeed23531ee4e6a2b87bcb34c

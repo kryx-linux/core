@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRZAkQEVz8Sod3y2RtIagYyvkHYR3JM2MYqiPG97Dr2qOZB3yvG2vZR/8mQSmzLVlBQfZmCK6ZdXC9Idvx5wNpI2B0mT1vxYAA=
-SHA256 (Pkgfile) = 7804b084bbbb00acac7d11a62355f31e795da9bc5518627fe6ea14dce0e736cb
+RWRJc1FUaeVeqjzlaPtlPTKQ0lZX9ee3WxKcOwEIWWokvuoI58OsWWx4mSy5WMjPYAS82zBgzJP6wD/37561pgy4xJm0ji5bIAw=
+SHA256 (Pkgfile) = 00636daeca45cb4a2fb2c11ee84bbaf6d264b1a8d7f0f22adc423f864c17a8b8
 SHA256 (.footprint) = d98e59dd85f4b3b9111e6e8e8e0ed7fad02857516b72660c087be79b992aa37f
-SHA256 (glibc-2.22.tar.xz) = eb731406903befef1d8f878a46be75ef862b9056ab0cde1626d08a7a05328948
+SHA256 (glibc-2.23.tar.xz) = 94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9
 SHA256 (kernel-headers-4.1.tar.xz) = 8c21d346390a12a068ef511513c3c348a2309d164186ad69cfcaa0b2c8effb97
 SHA256 (lib32.conf) = 2f174d2bcefe1c29327690514f34d6970fffdd54398320ca23a11b5f1e3c9b2d

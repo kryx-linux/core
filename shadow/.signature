@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqjBw4f6j6PjwkPvCJeYq+Hi1FIOMskNt0PTG6gYxdhOBCo7xyzW4twsGCdBv2vk5phnueLFgX8MzO/AEooOIogI=
+SHA256 (Pkgfile) = 45d8f15b9105a784f742617beed285525724a826b0b9d6556ab0342d1a44191f
+SHA256 (.footprint) = 196891826eef19be5e249380bc5c9560b10051556be4a3be5d33e099a56f23ae
+SHA256 (shadow-4.2.1.tar.xz) = 3b0893d1476766868cd88920f4f1231c4795652aa407569faff802bcda0f3d41
+SHA256 (pwck) = c62f1bf5785c2bb93bb269156bfa02b06728a01ff5d6c2e09cf6285701a1fda0
+SHA256 (login.defs) = a5c63da222b9dd921b60a21be8fc888726b557fd3fde9f60c8899376d0311b0b

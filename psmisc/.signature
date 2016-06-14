@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqgp25GnB8XlDNq+vCQIyWpnxV1j12jkJmZRrlWu2iibDJPQh2KOTsWcJA8DPGzhvf8lOMTwuoJ/WonTBNZPQ0Ag=
+SHA256 (Pkgfile) = 0e4fb2c2f325e61fa80dab384988e45f09b375bf70ebe3f2e0f0a6831da6f98a
+SHA256 (.footprint) = 773b36a2c40e760344e5f7d49c0f1bcd79bc743fe034411ebaf9cb5c5a5f83c7
+SHA256 (psmisc-22.21.tar.gz) = 97323cad619210845b696d7d722c383852b2acb5c49b5b0852c4f29c77a8145a
+SHA256 (fuseropts.patch) = 368853d8385e9f8d0a071035b24f8f977d6b03dbcaf939ed47000b2889b82e02
