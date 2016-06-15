@@ -1,5 +1,6 @@
 9d858c9d37cbc66a462d32e76bd0b365  compat-32.rsync.inactive
 50fce84f0327ee5c100f66594024b5f2  contrib.rsync.inactive
+b8dd0aad383810cad920d6548cd1cb56  core.pub
 faedd8944bd5ecc397f73bf73bd624d4  core.rsync
 eded5385d3637f1918a82f4409abc64a  opt.rsync
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz

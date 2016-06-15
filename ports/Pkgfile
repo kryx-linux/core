@@ -4,11 +4,11 @@
 
 name=ports
 version=1.5
-release=17
+release=18
 
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
-        core.rsync opt.rsync xorg.rsync compat-32.rsync.inactive \
-        contrib.rsync.inactive)
+        core.rsync core.pub opt.rsync xorg.rsync \ 
+	compat-32.rsync.inactive contrib.rsync.inactive)
 
 build () {
     cd $name-$version
@@ -20,4 +20,5 @@ build () {
     install -m 0644 $SRC/xorg.rsync $PKG/etc/ports
     install -m 0644 $SRC/compat-32.rsync.inactive $PKG/etc/ports
     install -m 0644 $SRC/contrib.rsync.inactive $PKG/etc/ports
+    install -m 0644 $SRC/core.pub $PKG/etc/ports
 }
