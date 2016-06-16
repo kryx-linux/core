@@ -4,8 +4,8 @@
 # Depends on:  zlib flex
 
 name=binutils
-version=2.25.1
-release=3
+version=2.26
+release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
