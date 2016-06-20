@@ -4,15 +4,12 @@
 # Depends on:  eudev
 
 name=dhcpcd
-version=6.11.0
-release=2
-source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
-    dhcpcd-truncated-packet.patch)
+version=6.11.1
+release=1
+source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
 
 build () {
     cd $name-$version
-
-    patch -p0 <$SRC/dhcpcd-truncated-packet.patch
 
     ./configure --prefix= \
                 --libexecdir=/lib/dhcpcd \
