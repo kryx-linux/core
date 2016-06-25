@@ -4,7 +4,7 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.4.1859
+version=7.4.1947
 release=1
 source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
@@ -47,4 +47,6 @@ build () {
 
     make VIMRTDIR=
     make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
+
+    sed -i '/^packadd matchit/s/^/" /' $PKG/usr/share/vim/vimrc
 }
