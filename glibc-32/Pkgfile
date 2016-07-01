@@ -15,6 +15,7 @@ build() {
 
 	export libc_cv_slibdir=/lib32
 	export CC="${CC:-gcc} -m32"
+	export CFLAGS="$CFLAGS -Wno-error=parentheses"
 
 	../glibc-$version/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
