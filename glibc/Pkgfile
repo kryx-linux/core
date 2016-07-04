@@ -6,14 +6,14 @@ name=glibc
 version=2.23
 release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-4.1.tar.xz \
+	http://crux.nu/files/distfiles/kernel-headers-4.4.14.tar.xz \
 	$name-2.20-multilib-dirs.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
 	install -d $PKG/usr/
-	cp -r $SRC/kernel-headers-4.1/include $PKG/usr
+	cp -r $SRC/kernel-headers-4.4.14/include $PKG/usr
 	chown root:root $PKG/usr
 
         patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
