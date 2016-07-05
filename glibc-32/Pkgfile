@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.23
+version=2.23-bbe472f
 release=1
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
+source=(http://crux.nu/files/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.4.14.tar.xz \
 	lib32.conf) 
 
@@ -17,7 +17,7 @@ build() {
 	export CC="${CC:-gcc} -m32"
 	export CFLAGS="$CFLAGS -Wno-error=parentheses"
 
-	../glibc-$version/configure --prefix=/usr \
+	../glibc-${version:0:4}/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
 		--with-headers=$SRC/kernel-headers-4.4.14/include \
