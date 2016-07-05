@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.23
+version=2.23-bbe472f
 release=1
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
+source=(http://crux.nu/files/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.4.14.tar.xz \
 	$name-2.20-multilib-dirs.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
@@ -16,11 +16,11 @@ build() {
 	cp -r $SRC/kernel-headers-4.4.14/include $PKG/usr
 	chown root:root $PKG/usr
 
-        patch -p1 -d $SRC/$name-$version -i $SRC/$name-2.20-multilib-dirs.patch
+        patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-2.20-multilib-dirs.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
-	../$name-$version/configure --prefix=/usr \
+	../$name-${version:0:4}/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
 		--enable-kernel=3.12 \
@@ -35,7 +35,7 @@ build() {
 	#make check
 	make install_root=$PKG install
 
-	install -m 0644 $SRC/$name-$version/nscd/nscd.conf $PKG/etc 
+	install -m 0644 $SRC/$name-${version:0:4}/nscd/nscd.conf $PKG/etc 
 	install -d $PKG/var/{db,run}/nscd
 
 	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
