@@ -4,15 +4,13 @@
 # Depends on:  ncurses
 
 name=readline
-version=6.3.8
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz \
-        $name-$version.patch.gz inputrc)
+version=7.0-beta2
+release=1
+source=(http://ftp.gnu.org/gnu/bash/$name-$version.tar.gz \
+        inputrc)
 
 build() {
-    cd $name-${version:0:3}
-
-    gunzip -c $SRC/$name-$version.patch.gz | patch -p0
+    cd $name-$version
 
     ./configure --prefix=/usr
     make -j1 SHLIB_LIBS=-lncurses
@@ -22,6 +20,10 @@ build() {
     mv $PKG/usr/lib/lib*.so.* $PKG/lib
     ln -sf ../../lib/libhistory.so.${version:0:3} $PKG/usr/lib/libhistory.so
     ln -sf ../../lib/libreadline.so.${version:0:3} $PKG/usr/lib/libreadline.so
+
+    # Compatibility symlinks, remove later
+    ln -s libreadline.so.7.0 $PKG/lib/libreadline.so.6
+    ln -s libhistory.so.7.0 $PKG/lib/libhistory.so.6
 
     install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
     rm -r $PKG/usr/share/{doc,info}
