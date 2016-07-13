@@ -4,15 +4,13 @@
 # Depends on:  ncurses readline
 
 name=bash
-version=4.3.46
+version=4.4-beta2
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz \
-        $name-$version.patch.gz profile)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
+        profile)
 
 build() {
-    cd $name-${version:0:3}
-
-    gunzip -c $SRC/$name-$version.patch.gz | patch -p0
+    cd $name-$version
 
     ./configure --prefix=/usr \
                 --exec-prefix= \
