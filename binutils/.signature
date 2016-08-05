@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpmnpjVL6gOfJf+jmhJ/1NJgZw1QtLJOX1ONovGHBi6QPfNrd93TX63yjbhrJDBHnRSBglU/WRkKUdSl1D4iwQc=
-SHA256 (Pkgfile) = c7bd995898240ace4ed160866fc5547d28d359fef96ba094fb7a8cba7ac50e25
-SHA256 (.footprint) = f7d4710cdb23f5bf60fe9ffefb9622f28af777ce6187c0bdb7487a9f0c26b484
-SHA256 (binutils-2.26.1.tar.bz2) = 39c346c87aa4fb14b2f786560aec1d29411b6ec34dce3fe7309fe3dd56949fd8
+RWRJc1FUaeVeqqsRTbj989MoFoTL73vVgmJ1r6C1bNiNgKQvGkN1P/KcqH61f00hrr9jBDM9rYEMdtCLSoDz4K4fHRT5YfymFwM=
+SHA256 (Pkgfile) = bc1057d5ca9b46ce99298bbb6207e5b73b831e13bd006c759c8a065274e4da06
+SHA256 (.footprint) = c107f4169c1e0ed4094f53a4d14ea58c27068f1ea505fcfb3fa76ee3c808849d
+SHA256 (binutils-2.27.tar.bz2) = 369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88
