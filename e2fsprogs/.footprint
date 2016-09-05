@@ -83,7 +83,6 @@ drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/chattr.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/compile_et.1.gz
--rw-r--r--	root/root	usr/share/man/man1/fuse2fs.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/lsattr.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/mk_cmds.1.gz
 drwxr-xr-x	root/root	usr/share/man/man3/
