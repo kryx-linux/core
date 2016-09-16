@@ -4,9 +4,9 @@
 # Depends on:  ncurses
 
 name=readline
-version=7.0-rc2
+version=7.0
 release=1
-source=(http://ftp.gnu.org/gnu/bash/$name-$version.tar.gz \
+source=(http://ftp.gnu.org/gnu/readline/$name-$version.tar.gz \
         inputrc)
 
 build() {
@@ -20,10 +20,6 @@ build() {
     mv $PKG/usr/lib/lib*.so.* $PKG/lib
     ln -sf ../../lib/libhistory.so.${version:0:3} $PKG/usr/lib/libhistory.so
     ln -sf ../../lib/libreadline.so.${version:0:3} $PKG/usr/lib/libreadline.so
-
-    # Compatibility symlinks, remove later
-    ln -s libreadline.so.7.0 $PKG/lib/libreadline.so.6
-    ln -s libhistory.so.7.0 $PKG/lib/libhistory.so.6
 
     install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
     rm -r $PKG/usr/share/{doc,info}
