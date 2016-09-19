@@ -4,7 +4,7 @@
 
 name=ncurses
 version=6.0
-release=3
+release=4
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
@@ -37,9 +37,4 @@ build() {
     # linker script for the curses library
     echo "INPUT(-lncursesw)" > $PKG/usr/lib/libcursesw.so
     ln -s libncurses.so $PKG/usr/lib/libcurses.so
-
-    # symlinks for ncurses 5 (remove them later))
-    ln -s libncursesw.so $PKG/usr/lib/libncurses.so.5
-    ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.5
-    ln -s libncursesw.so $PKG/usr/lib/libncursesw.so.6
 }
