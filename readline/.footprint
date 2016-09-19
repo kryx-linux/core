@@ -1,8 +1,10 @@
 drwxr-xr-x	root/root	etc/
 -rw-r--r--	root/root	etc/inputrc
 drwxr-xr-x	root/root	lib/
+lrwxrwxrwx	root/root	lib/libhistory.so.6 -> libhistory.so.7.0
 lrwxrwxrwx	root/root	lib/libhistory.so.7 -> libhistory.so.7.0
 -r-xr-xr-x	root/root	lib/libhistory.so.7.0
+lrwxrwxrwx	root/root	lib/libreadline.so.6 -> libreadline.so.7.0
 lrwxrwxrwx	root/root	lib/libreadline.so.7 -> libreadline.so.7.0
 -r-xr-xr-x	root/root	lib/libreadline.so.7.0
 drwxr-xr-x	root/root	usr/
