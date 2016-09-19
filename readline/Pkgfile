@@ -4,7 +4,7 @@
 # Depends on:  ncurses
 
 name=readline
-version=7.0-rc2
+version=7.0
 release=1
 source=(http://ftp.gnu.org/gnu/bash/$name-$version.tar.gz \
         inputrc)
