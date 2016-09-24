@@ -446,6 +446,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/rst.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/ruby.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/sass.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/scala.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/scheme.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/screen.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/scss.vim
@@ -583,6 +584,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/rst.vim
 -rw-r--r--	root/root	usr/share/vim/indent/ruby.vim
 -rw-r--r--	root/root	usr/share/vim/indent/sass.vim
+-rw-r--r--	root/root	usr/share/vim/indent/scala.vim
 -rw-r--r--	root/root	usr/share/vim/indent/scheme.vim
 -rw-r--r--	root/root	usr/share/vim/indent/scss.vim
 -rw-r--r--	root/root	usr/share/vim/indent/sdl.vim
@@ -1132,6 +1134,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/sas.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sass.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sather.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/scala.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/scheme.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/scilab.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/screen.vim
