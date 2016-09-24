@@ -4,7 +4,7 @@
 # Depends on:  ncurses acl
 
 name=vim
-version=7.4.2225
+version=8.0.0008
 release=1
 source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
@@ -26,6 +26,7 @@ build () {
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -r $PKG/usr/{share/man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
     rm $PKG/usr/share/vim/*/README.txt
+    rm -rf $PKG/usr/share/{applications,icons}
     ln -sf vim $PKG/usr/bin/evim
     ln -sf /bin/vi $PKG/usr/bin/vi
     ln -sf vim.1.gz $PKG/usr/share/man/man1/ex.1.gz
