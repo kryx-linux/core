@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqgMN7u3na5XR4KIyaMQlG3bidcH97MbnIdV620nhzuKXLmkWBsXR6zLwhn8sZc9xMEIQQm/rWpTaV+ynodapFgQ=
-SHA256 (Pkgfile) = 9af42887525849257402c52962a6fb7202c52862dbf65bdd6fe2cbc611a43bb0
+RWRJc1FUaeVeqnKHrMqDjblUNEEf92robGE3LL3zWTh56gTkb7FhEw9JI9XWKFzzg3JKasVuhtTQ282OrhRBhWeHtZIznqe4Sgc=
+SHA256 (Pkgfile) = e5c0e8e639c7c6f610dc419ae9807a3744b2db60142a0529d92cb206bbb6f0cc
 SHA256 (.footprint) = 62d1731677c27609c38e06e585e6f5bcb2cb58cb251f1bd5c293820b67fab494
-SHA256 (sudo-1.8.17p1.tar.gz) = c690d707fb561b3ecdf6a6de5563bc0b769388eff201c851edbace408bb155cc
+SHA256 (sudo-1.8.18.tar.gz) = 8519e99e97fa51ac50fca2030e76f9aa5195f543ae2d15107753f4e4c4e3be13
