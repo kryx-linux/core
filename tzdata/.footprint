@@ -346,6 +346,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Vientiane
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Vladivostok
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Yakutsk
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Yangon
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Yekaterinburg
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Yerevan
 drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Atlantic/
@@ -957,6 +958,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Vientiane
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Vladivostok
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Yakutsk
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Yangon
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Yekaterinburg
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Yerevan
 drwxr-xr-x	root/root	usr/share/zoneinfo/Atlantic/
