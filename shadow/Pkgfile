@@ -1,16 +1,16 @@
 # Description: Shadow password file utilities
-# URL:         http://pkg-shadow.alioth.debian.org/
+# URL:         https://github.com/shadow-maint/shadow
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  acl
 
 name=shadow
-version=4.2.1
-release=2
-source=(http://pkg-shadow.alioth.debian.org/releases/$name-$version.tar.xz
+version=4.4
+release=1
+source=(http://crux.nu/files/distfiles/$name-$version.tar.xz
         pwck login.defs)
 
 build() {
-    cd $name-$version
+    cd $name-upstream-$version
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
