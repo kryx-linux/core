@@ -2,6 +2,8 @@
 50fce84f0327ee5c100f66594024b5f2  contrib.rsync.inactive
 b8dd0aad383810cad920d6548cd1cb56  core.pub
 faedd8944bd5ecc397f73bf73bd624d4  core.rsync
+0d1f1fde50a9bd743d9cac6b235f038c  opt.pub
 eded5385d3637f1918a82f4409abc64a  opt.rsync
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
+69927e5d0ae5dc3455faeaac916c4db2  xorg.pub
 c24101073a06fc58a02c99bf5d56bea7  xorg.rsync
