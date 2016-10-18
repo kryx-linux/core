@@ -4,11 +4,11 @@
 
 name=ports
 version=1.5
-release=19
+release=20
 
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
         core.pub opt.pub xorg.pub \
-        core.rsync opt.rsync xorg.rsync \
+        core.rsync opt.rsync xorg.rsync compat-32.pub \
         compat-32.rsync.inactive contrib.rsync.inactive)
 
 build () {
@@ -24,4 +24,5 @@ build () {
     install -m 0644 $SRC/core.pub $PKG/etc/ports
     install -m 0644 $SRC/opt.pub $PKG/etc/ports
     install -m 0644 $SRC/xorg.pub $PKG/etc/ports
+    install -m 0644 $SRC/compat-32.pub $PKG/etc/ports
 }
