@@ -4,7 +4,7 @@
 
 name=ports
 version=1.5
-release=20
+release=21
 
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
         core.pub opt.pub xorg.pub \
