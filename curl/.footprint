@@ -176,6 +176,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_IOCTLFUNCTION.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_IPRESOLVE.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ISSUERCERT.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLOPT_KEEP_SENDING_ON_ERROR.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_KEYPASSWD.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_KRBLEVEL.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_LOCALPORT.3.gz
