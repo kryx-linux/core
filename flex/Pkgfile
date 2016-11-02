@@ -1,20 +1,15 @@
 # Description: Fast Lexical Analyzer Generator
-# URL:         http://flex.sourceforge.net/
+# URL:         https://github.com/westes/flex
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=flex
-version=2.6.0
-release=2
-source=(http://downloads.sourceforge.net/project/$name/$name-$version.tar.xz
-        $name-$version-2.patch)
+version=2.6.1
+release=1
+source=(https://github.com/westes/flex/releases/download/v$version/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
     
-    # fix for FS#1284
-    patch -p1 -i $SRC/$name-$version-2.patch
-    touch doc/flex.1
-
     ./configure --prefix=/usr --disable-nls
     
     make
