@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmZ/4fS4UoISawkjeiYHrfBaC6Rn655Du+a4QvyzeKpMe7Q17MyZ1fqizOOaU+FORmVIk2W/8XXWf7x01TrtyAc=
-SHA256 (Pkgfile) = d473d43e82f2a2d8fafbfcc618fc62c6287e68c5a560700d8b2ab908ee17c766
-SHA256 (.footprint) = cfad218c18caa5f896d2e75479ad6d0594238a35a1f8e61d5a6812734c3ce888
-SHA256 (tzdata2016i.tar.gz) = b6966ec982ef64fe48cebec437096b4f57f4287519ed32dde59c86d3a1853845
-SHA256 (tzcode2016i.tar.gz) = 411e8adcb6288b17d6c2624fde65e7d82654ca69b813ae121504ff66f0cfba7b
+RWRJc1FUaeVeqtP+L0lbWSJaWyA42bM7j7ecvHVQ9uz7fAgiy+vJfR549mmwgAqhVUzj7PcMka2+cdfz6LD9tTLdG+ih7kKWuwM=
+SHA256 (Pkgfile) = e7112b83b2a819f9e8c48bfd9680502dd61974911d8ab527f4eda9319ae6e61b
+SHA256 (.footprint) = 242454efe64ad2f75bcdd483ac9d8c32414996a16ac3411537f871b3d352ddf3
+SHA256 (tzdata2016j.tar.gz) = f5ee4e0f115f6c2faee1c4b16193a97338cbd1b503f2cea6c5a768c82ff39dc8
+SHA256 (tzcode2016j.tar.gz) = b9effc4fb4051df4a356cbe5857bf99e2fa32e00d8340f2e8a4d58f0c9ccb0b7
