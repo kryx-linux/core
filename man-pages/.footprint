@@ -542,6 +542,9 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/pipe.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/pipe2.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/pivot_root.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/pkey_alloc.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/pkey_free.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/pkey_mprotect.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/poll.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/posix_fadvise.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ppoll.2.gz
@@ -1613,6 +1616,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/key_gendes.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/key_secretkey_is_set.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/key_setsecret.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/killpg.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/klogctl.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/l64a.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/labs.3.gz
@@ -1844,6 +1848,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/pthread_equal.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_exit.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_getaffinity_np.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_getattr_default_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_getattr_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_getconcurrency.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_getcpuclockid.3.gz
@@ -1856,6 +1861,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/pthread_rwlockattr_setkind_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_self.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_setaffinity_np.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_setattr_default_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_setcancelstate.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_setcanceltype.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_setconcurrency.3.gz
@@ -2095,6 +2101,9 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/strerror_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strfmon.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strfmon_l.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/strfromd.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/strfromf.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/strfroml.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strfry.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/strftime.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/string.3.gz
@@ -3245,6 +3254,7 @@ drwxr-xr-x	root/root	usr/share/man/man4/
 -rw-r--r--	root/root	usr/share/man/man4/dsp56k.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/fd.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/full.4.gz
+-rw-r--r--	root/root	usr/share/man/man4/fuse.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/hd.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/hpsa.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/initrd.4.gz
@@ -3312,6 +3322,7 @@ drwxr-xr-x	root/root	usr/share/man/man5/
 -rw-r--r--	root/root	usr/share/man/man5/shells.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/slabinfo.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/termcap.5.gz
+-rw-r--r--	root/root	usr/share/man/man5/tmpfs.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/ttytype.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/tzfile.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/utmp.5.gz
@@ -3429,9 +3440,11 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/path_resolution.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pid_namespaces.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pipe.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/pkeys.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/posixoptions.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pthreads.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pty.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/random.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/raw.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/regex.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/rtld-audit.7.gz
@@ -3441,6 +3454,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/shm_overview.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/sigevent.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/signal.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/sock_diag.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/socket.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/spufs.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/standards.7.gz
