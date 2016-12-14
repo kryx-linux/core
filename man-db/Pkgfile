@@ -4,17 +4,20 @@
 # Depends on: zlib gdbm libpipeline
 
 name=man-db
-version=2.7.5
-release=2
+version=2.7.6.1
+release=1
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz \
         mandb.cron)
 
 build() {
     cd $name-$version
+
     ./configure --prefix=/usr \
         --libexecdir=/usr/lib/$name \
         --disable-setuid \
+        --disable-cache-owner \
         --disable-nls
+
     make
     make DESTDIR=$PKG install
 
