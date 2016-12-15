@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqruoABWJZiSWsIPJqWTwncjzzjLbrL8EYGI8XzXB8ntREuffDAOQkqp1r4J95j5zARLqnwyHbgHhbB6dG7c5Qgo=
-SHA256 (Pkgfile) = 13d2faea55e967c5826bac967ea7f0de957381ab053be01c54df4cd78360f043
-SHA256 (.footprint) = b583d47129c46515946fb67a07ed81b2b7788f2a220fbef1663bf644869de5cb
-SHA256 (man-db-2.7.5.tar.xz) = 5c4ddd0d67abbbcb408dc5804906f62210f7c863ef791198faca3d75681cca14
+RWRJc1FUaeVeqlcSMYKkRRhu6R2+xiVLJwLPLKZ0AH2Y1BLmzxY+R39hgZSlPku+5clLdwpUE+NfyxTMl1P4wsjrH2Vuu7SlqwM=
+SHA256 (Pkgfile) = 8138079cd148b4b8fe6b119703899a08e2434614dcfaf5e583926db09a8b7f02
+SHA256 (.footprint) = f8915214e9d91a64e38468f4e983f1b3914027cbb46d9841a8778c6495143ffc
+SHA256 (man-db-2.7.6.1.tar.xz) = 08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f
 SHA256 (mandb.cron) = f2e9f1210bf6b7c3335cc6f3a9551651812428109ea8c4adc9cd5cf73461e0f1
