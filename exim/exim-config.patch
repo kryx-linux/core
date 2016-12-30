@@ -1,6 +1,6 @@
-diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
---- exim-4.87.orig/src/EDITME	2016-04-07 14:30:34.113532400 +0200
-+++ exim-4.87/src/EDITME	2016-04-07 14:30:57.046039274 +0200
+diff -Nru exim-4.88.orig/src/EDITME exim-4.88/src/EDITME
+--- exim-4.88.orig/src/EDITME	2016-12-29 18:27:45.679586999 +0100
++++ exim-4.88/src/EDITME	2016-12-29 18:28:11.548657444 +0100
 @@ -72,7 +72,7 @@
  # this would be wanted.
  ###############################################################################
@@ -66,7 +66,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -618,14 +618,14 @@
+@@ -622,14 +622,14 @@
  # included in the Exim binary. You will then need to set up the run time
  # configuration to make use of the mechanism(s) selected.
  
@@ -83,7 +83,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  # AUTH_SPA=yes
  # AUTH_TLS=yes
  
-@@ -730,10 +730,10 @@
+@@ -734,10 +734,10 @@
  # leave these settings commented out.
  
  # This setting is required for any TLS support (either OpenSSL or GnuTLS)
@@ -96,7 +96,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  # TLS_LIBS=-lssl -lcrypto
  
  # Uncomment the first and either the second or the third of these if you
-@@ -812,7 +812,7 @@
+@@ -820,7 +820,7 @@
  # %s. This will be replaced by one of the strings "main", "panic", or "reject"
  # to form the final file names. Some installations may want something like this:
  
@@ -105,7 +105,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  # which results in files with names /var/log/exim_mainlog, etc. The directory
  # in which the log files are placed must exist; Exim does not try to create
-@@ -861,7 +861,7 @@
+@@ -869,7 +869,7 @@
  # files. Both the name of the command and the suffix that it adds to files
  # need to be defined here. See also the EXICYCLOG_MAX configuration.
  
@@ -114,7 +114,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  COMPRESS_SUFFIX=gz
  
  
-@@ -876,7 +876,7 @@
+@@ -884,7 +884,7 @@
  # ZCAT_COMMAND=zcat
  #
  # Or specify the full pathname:
@@ -123,7 +123,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  #------------------------------------------------------------------------------
  # Compiling in support for embedded Perl: If you want to be able to
-@@ -1013,7 +1013,7 @@
+@@ -1021,7 +1021,7 @@
  #
  # USE_TCP_WRAPPERS=yes
  # CFLAGS=-O -I/usr/local/include
@@ -132,7 +132,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  #
  # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
  # as well.
-@@ -1046,7 +1046,7 @@
+@@ -1054,7 +1054,7 @@
  # aliases). The following setting can be changed to specify a different
  # location for the system alias file.
  
@@ -141,7 +141,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -1075,7 +1075,7 @@
+@@ -1083,7 +1083,7 @@
  #------------------------------------------------------------------------------
  # Uncomment this setting to include IPv6 support.
  
@@ -150,7 +150,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  ###############################################################################
  #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
-@@ -1096,13 +1096,13 @@
+@@ -1104,13 +1104,13 @@
  # haven't got Perl, Exim will still build and run; you just won't be able to
  # use those utilities.
  
@@ -171,7 +171,7 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -1304,7 +1304,7 @@
+@@ -1312,7 +1312,7 @@
  # (process id) to a file so that it can easily be identified. The path of the
  # file can be specified here. Some installations may want something like this:
  
@@ -180,9 +180,9 @@ diff -Nru exim-4.87.orig/src/EDITME exim-4.87/src/EDITME
  
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
-diff -Nru exim-4.87.orig/src/configure.default exim-4.87/src/configure.default
---- exim-4.87.orig/src/configure.default	2016-04-07 14:30:34.113532400 +0200
-+++ exim-4.87/src/configure.default	2016-04-07 14:32:40.208988073 +0200
+diff -Nru exim-4.88.orig/src/configure.default exim-4.88/src/configure.default
+--- exim-4.88.orig/src/configure.default	2016-12-29 18:27:45.679586999 +0100
++++ exim-4.88/src/configure.default	2016-12-29 18:28:11.548657444 +0100
 @@ -55,7 +55,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
