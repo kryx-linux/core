@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqm22U8jRnhlrC2XfV1FyzBlLv67UNccpTv7RhKOZ4Tge40LXaTZd0PsaJQzN/PKR6y7QNSOiwIMJZNQteMQYygM=
-SHA256 (Pkgfile) = 35853daf58cec776d5c26d1a7ee984d1598a934c1a3554b2d4e88b051f896c1f
+RWRJc1FUaeVequP4cOxyFEQAZpLMc3Slr84Ec0pQWABXNdAJnpG5/6bzdm4HJ4huIeKmYJrMNy+zLdJFEAWUN8qMdipxpulFrgM=
+SHA256 (Pkgfile) = 6625a667b4766e59616f307c43c8e4c1471d8bb6a2c839548b6d4f63f87965a1
 SHA256 (.footprint) = df3e5db20fdffd0d631f4f88a7956afc05705d2b4ea8dd9714bc0b31000cb78e
 SHA256 (eudev-3.2.1.tar.gz) = 57e3d9e51cfefbdad431848ea0ad8ae1cde04928da42474f44bd200b12f5fe19
 SHA256 (81-crux.rules) = d56da7164599c7d7e7b5377a550de2023e2a1ff2f765d366d2d7cc91688edb7c
