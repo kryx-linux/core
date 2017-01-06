@@ -4,9 +4,9 @@
 # Depends on:  acl
 
 name=sed
-version=4.3
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+version=4.2.2
+release=2
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
