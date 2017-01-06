@@ -15,6 +15,10 @@ build() {
     # needed for static linking, e.g. dmsetup.static 
     sed -i '/^Libs:/s/-ludev/-ludev -lrt/' src/libudev/libudev.pc.in
 
+    # fix for gperf 3.1
+    # https://github.com/gentoo/eudev/commit/5bab4d8de0dcbb8e2e7d4d5125b4aea1652a0d60
+    sed -i '/*keyboard_lookup_key/d' src/udev/udev-builtin-keyboard.c
+
     ./configure --prefix=/usr \
                 --sbindir=/sbin --bindir=/sbin \
                 --sysconfdir=/etc \
