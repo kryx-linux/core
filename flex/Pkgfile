@@ -4,12 +4,16 @@
 
 name=flex
 version=2.6.3
-release=1
-source=(https://github.com/westes/flex/releases/download/v$version/$name-$version.tar.gz)
+release=2
+source=(https://github.com/westes/flex/releases/download/v$version/$name-$version.tar.gz
+        $name-$version-add_defines.patch)
 
 build() {
     cd $name-$version
     
+    patch -p1 -i $SRC/$name-$version-add_defines.patch
+    touch doc/flex.1
+
     ./configure --prefix=/usr --disable-nls
     
     make
