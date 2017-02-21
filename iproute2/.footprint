@@ -31,6 +31,9 @@ lrwxrwxrwx	root/root	sbin/rtstat -> lnstat
 -rwxr-xr-x	root/root	sbin/ss
 -rwxr-xr-x	root/root	sbin/tc
 drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/iproute2/
+-rw-r--r--	root/root	usr/include/iproute2/bpf_elf.h
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/tc/
 -rw-r--r--	root/root	usr/lib/tc/experimental.dist
@@ -57,6 +60,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/devlink-port.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink-sb.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ifstat.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip-address.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip-addrlabel.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip-fou.8.gz
@@ -124,9 +128,11 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/tc-sfq.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-simple.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-skbedit.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tc-skbmod.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-stab.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-tbf.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-tcindex.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tc-tunnel_key.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-u32.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-vlan.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-xt.8.gz
