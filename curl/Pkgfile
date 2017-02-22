@@ -4,13 +4,12 @@
 # Depends on:  openssl, zlib
 
 name=curl
-version=7.52.1
-release=2
-source=(http://curl.haxx.se/download/$name-$version.tar.lzma 0002-vtls-s-SSLEAY-OPENSSL.patch)
+version=7.53.0
+release=1
+source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
 
 build() {
     cd $name-$version
-    patch -p1 -i $SRC/0002-vtls-s-SSLEAY-OPENSSL.patch
     ./configure --prefix=/usr \
                 --enable-ipv6 \
                 --without-libidn \
