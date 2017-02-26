@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqs0lJB7eBLcCqBTRnlYPyG6g2E51VDF1eBiiGXP+Y9cHV9OWl9uOHcMnSmplOY67Wmh2sRH9SFOWxg/141EVJg8=
-SHA256 (Pkgfile) = 430eeea17c78bce05deb3eed2085717bf7fa5849683d4d533f477c241ed4fe6a
-SHA256 (.footprint) = 3b2d0e65d3940b76c4985c167d4cd4c6198dc0dcf8e0eec5f927dddc3594094c
-SHA256 (kmod-23.tar.xz) = d303d5519faec9d69e1132f6b37db2579db17a7fb5c1517da0115d03ba168155
+RWRJc1FUaeVeqvheyMxR+ICPwWhKt6HDNoyfbZlfLjPooxYr4Bat4vWNPq+BrePQcLrVhRdiIpwMYeQ6i3IdkXKqmW4jACRrfQ8=
+SHA256 (Pkgfile) = 1ae66e86dcdff3003fc98d88df729ffeb24055a7e0531c6b356690a082c84cf7
+SHA256 (.footprint) = 882ecc992e46a7078ed33a8162687b7ce2af1815df00b1dce14c84d896397d74
+SHA256 (kmod-24.tar.xz) = 610b8d1df172acc39a4fdf1eaa47a57b04873c82f32152e7a62e29b6ff9cb397
