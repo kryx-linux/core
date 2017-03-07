@@ -5,7 +5,7 @@
 name=mlocate
 version=0.26
 release=2
-source=(https://fedorahosted.org/releases/m/l/$name/$name-$version.tar.xz \
+source=(https://releases.pagure.org/$name/$name-$version.tar.xz \
         mlocate updatedb.conf)
 
 build() {
