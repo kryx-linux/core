@@ -1,9 +1,10 @@
 # Description: GNU database library for C
 # URL:         http://www.gnu.org/software/gdbm/gdbm.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  readline
 
 name=gdbm
-version=1.12
+version=1.13
 release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
 
