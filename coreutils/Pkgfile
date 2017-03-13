@@ -6,7 +6,7 @@
 name=coreutils
 version=8.27
 release=1
-source=(http://ftpmirror.gnu.org/pub/gnu/$name/$name-$version.tar.xz
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
         coreutils-uname.patch)
 
 build() {
