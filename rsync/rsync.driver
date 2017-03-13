@@ -58,23 +58,6 @@ if (-e "$destination/.checkouts")
 	close(FILE);
 }
 
-print "Updating file list from " . $host . "::$collection\n";
-
-# get the remote file list (new .checkouts)
-open(PIPE, 'rsync -crz --no-human-readable ' . $host . '::' . $collection . '|') or error("Couldn't open pipe to rsync");
-while (<PIPE>)
-{
-	chomp;
-
-	next if /^MOTD:/;	# ignore MOTD lines
-	s/^(.{43})//;		# ignore the first 43 characters (mode, date etc...)
-	next if /^.$/;		# ignore the . directory
-
-	$new_checkouts{$_} = 1;
-}
-close(PIPE);
-error("Running rsync failed") unless $? == 0;
-
 print "Updating collection " . basename($destination) . "\n";
 
 # now really run rsync
@@ -100,12 +83,13 @@ while (<PIPE>)
 close(PIPE);
 error("Running rsync failed") unless $? == 0;
 
+open(PIPE, "find $destination -mindepth 1 -printf '%P\n'|") or error("Couldn't open pipe to find");
+map { chomp; $new_checkouts{$_}=1 if $_ ne '.checkouts' } <PIPE>;
+close(PIPE) or error("pipe to find failed");
+
 # save new checkouts into .checkouts
 open(FILE, ">$destination/.checkouts") or error("Couldn't save checkouts to $destination/.checkouts");
-foreach my $checkout (sort keys %new_checkouts)
-{
-	print FILE "$checkout\n";
-}
+print FILE join "\n", keys(%new_checkouts);
 close(FILE);
 
 # use chroot as an additional safety measure when removing files
@@ -113,7 +97,7 @@ chroot($destination) or error("Couldn't chroot into $destination");
 chdir('/');
 
 # iterate through old checkouts, remove obsolete files
-foreach my $checkout (sort keys %old_checkouts)
+foreach my $checkout (keys %old_checkouts)
 {
 	if (!$new_checkouts{$checkout})
 	{
@@ -126,7 +110,7 @@ foreach my $checkout (sort keys %old_checkouts)
 }
 
 # iterate through old checkouts, remove obsolete directories
-foreach my $checkout (sort keys %old_checkouts)
+foreach my $checkout (keys %old_checkouts)
 {
 	if (!$new_checkouts{$checkout})
 	{
