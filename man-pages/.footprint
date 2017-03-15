@@ -443,7 +443,9 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlone.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlonerange.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_fideduperange.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_iflags.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_list.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_ns.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioperm.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/iopl.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioprio_get.2.gz
@@ -1219,6 +1221,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/exp2l.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/expf.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/expl.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/explicit_bzero.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/expm1.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/expm1f.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/expm1l.3.gz
@@ -1381,6 +1384,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/getdelim.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/getdirentries.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/getdtablesize.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/getentropy.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/getenv.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/getfsent.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/getfsfile.3.gz
@@ -3408,6 +3412,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/iso_8859_7.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/iso_8859_8.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/iso_8859_9.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/keyrings.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/koi8-r.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/koi8-u.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/latin1.7.gz
@@ -3438,10 +3443,12 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/operator.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/packet.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/path_resolution.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/persistent-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pid_namespaces.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pipe.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pkeys.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/posixoptions.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/process-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pthreads.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pty.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/random.7.gz
@@ -3451,8 +3458,10 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/rtnetlink.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/sched.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/sem_overview.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/session-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/shm_overview.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/sigevent.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/signal-safety.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/sock_diag.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/socket.7.gz
@@ -3463,6 +3472,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/symlink.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/tcp.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/termio.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/thread-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/time.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/tis-620.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/udp.7.gz
@@ -3473,6 +3483,8 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/uri.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/url.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/urn.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/user-keyring.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/user-session-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/user_namespaces.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/utf-8.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/utf8.7.gz
