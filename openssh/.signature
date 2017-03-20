@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqvqIh9QmY2nnpNsa0lfOW0ylWopxuw68mrvOl2jRaY7jn0Rz6qY87htTZv9zhskyi3NzwqMlHNuea175cPLb9wo=
-SHA256 (Pkgfile) = 38de763bfd7c75fb8a840c9b3b8e6ad170e845488f35313ff28f0bf80908b1a6
+RWRJc1FUaeVeqqQCL0mTP8DV7YWCLDKhSAD2fpVpsuJTy30oWCcB+c/j77Swoin2c1m5ofIcv9Jt94qwtnaYl4mdzGkqDDY+yAs=
+SHA256 (Pkgfile) = 23993c191c8db3eda4657f4e654309b6e0445cfcc2e8cb31bbd96f0c2009a823
 SHA256 (.footprint) = 0e90d0b1cd3c928ad2597c3fd420b2fbd4dbbdba04d1cd11e1c4843c2596f89f
-SHA256 (openssh-7.4p1.tar.gz) = 1b1fc4a14e2024293181924ed24872e6f2e06293f3e8926a376b8aec481f19d1
+SHA256 (openssh-7.5p1.tar.gz) = 9846e3c5fab9f0547400b4d2c017992f914222b3fd1f8eee6c7dc6bc5e59f9f0
 SHA256 (sshd) = 59cb8cff9890e9f5c617c5bd4e5a15e5e4bcc4bf35eb73a80322825db60bbfd4
