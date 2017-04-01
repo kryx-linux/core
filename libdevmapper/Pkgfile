@@ -4,13 +4,14 @@
 # Depends on:  eudev util-linux
 
 name=libdevmapper
-version=1.02.137
+version=1.02.138
 release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.168.tgz)
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.169.tgz)
 
 build() {
-    cd LVM2.2.02.168
+    cd LVM2.2.02.169
 
+    CONFIG_SHELL=/bin/bash \
     ./configure --prefix=/usr \
                 --exec-prefix= \
                 --datarootdir=/usr \
