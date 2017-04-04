@@ -4,18 +4,18 @@
 # Depends on:  ncurses, readline
 
 name=bc
-version=1.07
-release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
+version=1.06
+release=4
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz \
+        $name-$version-compile_fixes.patch $name-$version-fixes-1.patch)
 
 build() { 
     cd $name-$version
-
-    # don't rebuild texinfo docs
-    sed -i '/^SUBDIRS/s/doc//' Makefile.in    
-
-    ./configure --prefix=/usr --with-readline
-    make -j1
+    patch -p1 < ../$name-$version-compile_fixes.patch
+    patch -p1 < ../$name-$version-fixes-1.patch
+    
+    ./configure --prefix=/usr --with-readline --mandir=/usr/share/man
+    make
     make DESTDIR=$PKG install
-    make DESTDIR=$PKG -C doc install-man1
+    rm -rf $PKG/usr/info
 }
