@@ -1,7 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqhbXYWuyZhMkeO6kVJl0wfzifZZoHb1rTdJ4gK10KuLKfy89SxZKwlkdAYK0W2ku3q6by1nIvaIEaFbkz+182wc=
-SHA256 (Pkgfile) = db7d03f11bcfe56e330c9d85d25b364f4aa8ab2a5126fc83c315e298fb7b7ed8
+RWRJc1FUaeVeqg4hEbIZPXoZredg4Y38Ozz1RwR3Th/chVCbE+DNAsDbDKoC0BK8guT6UTyjdfcJsnBAS1dqcxBqaFuUHPQzYwQ=
+SHA256 (Pkgfile) = c34c3262bd9774a07e63e4109aa565ebd5cfb3e0f199f7bcddd447139a465d2d
 SHA256 (.footprint) = 48fbbd05c69339783f65bec1f584899adb78c8a4bf4dcc45ca6273660291af03
-SHA256 (bc-1.06.tar.gz) = 4ef6d9f17c3c0d92d8798e35666175ecd3d8efac4009d6457b5c99cea72c0e33
-SHA256 (bc-1.06-compile_fixes.patch) = c453aedc451ad823f3fcfc09364e232d10945daf85abc2c23a2c5bed0de49541
-SHA256 (bc-1.06-fixes-1.patch) = ec69b952a2c93c840f6d58661741686134993c31cac4033e3a3a8b3574c78cda
+SHA256 (bc-1.07.1.tar.gz) = 62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a
