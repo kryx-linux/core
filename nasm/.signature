@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqkMk+X4kUz9WTBJD7ZK4nTU3/hRiv5X26ZkoEtXqgHDZXCql8QC4xa+rvPEfuS8P81C9LwQERi9w8UtXv/ppDAM=
-SHA256 (Pkgfile) = c0cef2038c9abc3083673a7047cfcfdcb86f272dc4d6b61fd78b8c0b659b1585
+RWRJc1FUaeVequ7JCVDTCBDJr0Pv2CvJJim2A+dNNyBomf1rDQ7XE+tZWH1UoP6znvsILeoJwTwSyiMSv6QojSwRl2rcvWeMYQo=
+SHA256 (Pkgfile) = f724f61ee3907fdbb17ff4bdabc275924d6ec705abdfba166eb76e92e5fdfbd7
 SHA256 (.footprint) = 2f2595d48b1d9747afa0d6b676a290528c98d1151c567954c594803a07fa9255
-SHA256 (nasm-2.13.tar.xz) = ba854c2f02f34f0d6a4611c05e8cb65d9fae8c2b21a4def7fba91a7d67ffde97
+SHA256 (nasm-2.13.01.tar.xz) = aa0213008f0433ecbe07bb628506a5c4be8079be20fc3532a5031fd639db9a5e
