@@ -439,6 +439,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/io_setup.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/io_submit.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_console.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_fat.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlone.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlonerange.2.gz
@@ -446,6 +447,8 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_iflags.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_list.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ns.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_tty.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_userfaultfd.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioperm.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/iopl.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioprio_get.2.gz
@@ -698,6 +701,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/statfs.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/statfs64.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/statvfs.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/statx.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/stime.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/stty.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/subpage_prot.2.gz
@@ -741,6 +745,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/unlinkat.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/unshare.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/uselib.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/userfaultfd.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ustat.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/utime.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/utimensat.2.gz
@@ -1820,6 +1825,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/program_invocation_short_name.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/psiginfo.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/psignal.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_atfork.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_attr_destroy.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_attr_getaffinity_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_attr_getdetachstate.3.gz
@@ -3363,6 +3369,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/hier.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/hostname.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/icmp.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/inode.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/inotify.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/intro.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/ip.7.gz
