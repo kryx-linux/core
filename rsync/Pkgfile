@@ -5,7 +5,7 @@
 
 name=rsync
 version=3.1.2
-release=2
+release=1
 source=(https://rsync.samba.org/ftp/$name/src/$name-$version.tar.gz \
         rsyncd.conf rsyncd rsync.driver)
 
