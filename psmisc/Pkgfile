@@ -4,16 +4,12 @@
 # Depends on:  ncurses
 
 name=psmisc
-version=22.21
-release=3
-source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz \
-    fuseropts.patch)
+version=23.0
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
-
-    # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=740275
-    patch -p1 -i $SRC/fuseropts.patch
 
     ./configure --prefix=/usr --disable-nls
     make
