@@ -4,7 +4,7 @@
 
 name=glibc
 version=2.24
-release=6
+release=7
 source=(http://ftpmirror.gnu.org/gnu/glibc/glibc-2.24.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.9.5.tar.xz \
 	$name-2.20-multilib-dirs.patch \
