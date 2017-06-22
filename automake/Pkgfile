@@ -4,8 +4,8 @@
 # Depends on:  gawk, perl, autoconf
 
 name=automake
-version=1.15
-release=2
+version=1.15.1
+release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build () {
