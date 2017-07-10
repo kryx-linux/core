@@ -4,9 +4,9 @@
 # Depends on:  curl
 
 name=httpup
-version=0.4.0l
-release=2
-source=(http://crux.nu/files/$name-$version.tar.gz httpup)
+version=0.4.0m
+release=1
+source=(http://crux.nu/files/$name-$version.tar.xz httpup)
 
 build() {
     cd $name-$version
