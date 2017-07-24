@@ -444,6 +444,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlone.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ficlonerange.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_fideduperange.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/ioctl_getfsmap.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_iflags.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_list.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/ioctl_ns.2.gz
