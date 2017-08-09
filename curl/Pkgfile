@@ -4,9 +4,9 @@
 # Depends on:  openssl, zlib
 
 name=curl
-version=7.54.1
+version=7.55.0
 release=1
-source=(http://curl.haxx.se/download/$name-$version.tar.lzma)
+source=(http://curl.haxx.se/download/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
@@ -18,4 +18,5 @@ build() {
                 --with-ca-bundle=/etc/ssl/cert.pem
     make
     make DESTDIR=$PKG install
+    make -C docs/libcurl DESTDIR=$PKG install
 }
