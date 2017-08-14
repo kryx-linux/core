@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjt28keFLjaja6bKk0ut0RUOLaPvBwCDnU2t/iTzC+rhE8FtU3GN9ptcIMFqL+zzudDzmE6OPHd8ZnwXTjQY+As=
-SHA256 (Pkgfile) = 384a779412a0df93dc1972ff56060c2f4e4b28c1e63df1b99f41498d3c617d53
+RWRJc1FUaeVeqgjmLu2Dzc/8odoZK0l6BihZOqEzcrz4LvXsvg2YDScfXkRe6WsTqhmVRvN1dfx2QZC4hjiju+ddSxMUP+eIuwg=
+SHA256 (Pkgfile) = caf536649736772aeb93fceea19fe48efeea3d96d77448cff5f97624af279d51
 SHA256 (.footprint) = a24924dba386364cd2326ad6abefd3be01927f37f8f2175b3f56845fc88bfb79
-SHA256 (start-stop-daemon.c) = ecbb666123d68a6adeef178b45782d5a41ff1c58342764d2f4ea263ac9cc40b0
-SHA256 (start-stop-daemon.8) = cf24badb87ed59cd11e1b3bd7ce86ebf7a7ced92fa1c046b727f8fd34cf19c78
-SHA256 (crux-patch.diff) = fe9b1a5f1326482f2e922d519d21beff51065d14f2fe8ca81d90a309f2cdc02b
+SHA256 (start-stop-daemon.c) = 0ff4d860319ff4d8d9c6c1d9fb49fa1d601ad4d86ca4a99c1478e874f6f40d34
+SHA256 (start-stop-daemon.8) = d71c017e5ab698c37c4753ee323e98be9834a94949302f408680d5a42c191ab7
+SHA256 (crux-patch.diff) = 61792169e492420746f56591b8a77c6be2ac0d3b22700ad4e60880408e96a452
 SHA256 (makefile) = 7ce6e34d7473e965a55ccabf195468cf53f0c49a6d344bc41cd545b2ff8a5485
