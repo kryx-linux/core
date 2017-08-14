@@ -1,18 +1,18 @@
 diff --git a/start-stop-daemon/start-stop-daemon.8 b/start-stop-daemon/start-stop-daemon.8
-index deae6c6..28d2de8 100644
+index de2d35c3..de666e65 100644
 --- a/start-stop-daemon/start-stop-daemon.8
 +++ b/start-stop-daemon/start-stop-daemon.8
 @@ -20,7 +20,7 @@
  .\" You should have received a copy of the GNU General Public License
  .\" along with this program.  If not, see <https://www.gnu.org/licenses/>.
  .
--.TH start\-stop\-daemon 8 "2014-03-26" "Debian Project" "dpkg utilities"
-+.TH start\-stop\-daemon 8 "2015-09-21" "CRUX 3.2" "core services"
+-.TH start\-stop\-daemon 8 "2017-07-04" "Debian Project" "dpkg suite"
++.TH start\-stop\-daemon 8 "2017-08-12" "CRUX 3.3" "core services"
+ .nh
  .SH NAME
  start\-stop\-daemon \- start and stop system daemon programs
- .
 diff --git a/start-stop-daemon/start-stop-daemon.c b/start-stop-daemon/start-stop-daemon.c
-index c844f2e..67cd043 100644
+index 81357504..f586fd91 100644
 --- a/start-stop-daemon/start-stop-daemon.c
 +++ b/start-stop-daemon/start-stop-daemon.c
 @@ -20,10 +20,34 @@
@@ -25,8 +25,8 @@ index c844f2e..67cd043 100644
  
  #include <dpkg/macros.h>
 +#else
-+# define VERSION 		"20150921"
-+# define CRUX 			"CRUX 3.2"
++# define VERSION 		"20170812"
++# define CRUX 			"CRUX 3.3"
 +
 +# define HAVE_SYS_PARAM_H
 +# define HAVE_SYS_SYSCALL_H
@@ -48,9 +48,9 @@ index c844f2e..67cd043 100644
 +# include <unistd.h>
 +#endif
  
- #if defined(linux)
- #  define OSLinux
-@@ -142,6 +166,10 @@
+ #if defined(__linux__)
+ #  define OS_Linux
+@@ -159,6 +183,10 @@
  #define HAVE_IOPRIO_SET
  #endif
  
@@ -61,7 +61,7 @@ index c844f2e..67cd043 100644
  #define IOPRIO_CLASS_SHIFT 13
  #define IOPRIO_PRIO_VALUE(class, prio) (((class) << IOPRIO_CLASS_SHIFT) | (prio))
  #define IO_SCHED_PRIO_MIN 0
-@@ -310,8 +338,7 @@ xstrndup(const char *str, size_t n)
+@@ -327,8 +355,7 @@ xstrndup(const char *str, size_t n)
  static void
  timespec_gettime(struct timespec *ts)
  {
@@ -71,7 +71,7 @@ index c844f2e..67cd043 100644
  	if (clock_gettime(CLOCK_MONOTONIC, ts) < 0)
  		fatal("clock_gettime failed");
  #else
-@@ -615,9 +642,9 @@ usage(void)
+@@ -646,9 +673,9 @@ usage(void)
  static void
  do_version(void)
  {
