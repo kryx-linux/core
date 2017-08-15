@@ -34,7 +34,9 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONDITION_UNMET.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONNECT_TIME.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONTENT_LENGTH_DOWNLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONTENT_LENGTH_DOWNLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONTENT_LENGTH_UPLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONTENT_LENGTH_UPLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_CONTENT_TYPE.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_COOKIELIST.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_EFFECTIVE_URL.3.gz
@@ -68,9 +70,13 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_RTSP_SESSION_ID.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SCHEME.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SIZE_DOWNLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SIZE_DOWNLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SIZE_UPLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SIZE_UPLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SPEED_DOWNLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SPEED_DOWNLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SPEED_UPLOAD.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SPEED_UPLOAD_T.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SSL_ENGINES.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_SSL_VERIFYRESULT.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLINFO_STARTTRANSFER_TIME.3.gz
@@ -275,6 +281,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SHARE.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SOCKOPTDATA.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SOCKOPTFUNCTION.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SOCKS5_AUTH.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SOCKS5_GSSAPI_NEC.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SOCKS5_GSSAPI_SERVICE.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_SSH_AUTH_TYPES.3.gz
@@ -385,6 +392,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/curl_slist_append.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/curl_slist_free_all.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/curl_strequal.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/curl_strnequal.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/curl_unescape.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/curl_version.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/curl_version_info.3.gz
