@@ -1,3 +1,5 @@
+drwxr-xr-x	root/root	bin/
+lrwxrwxrwx	root/root	bin/ip -> /sbin/ip
 drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/iproute2/
 -rw-r--r--	root/root	etc/iproute2/bpf_pinning
