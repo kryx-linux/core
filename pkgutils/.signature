@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnpF7FqRepAvC0Y6F+4E20qbFY0c5UFVEvPWCUQMZ5fmLqBaDBSwVMQtsDetgyLr4ysjMAi5umf/0lGUdOlXogg=
-SHA256 (Pkgfile) = 7c7fdb202b23197934bb224fe02d47b5525814d41d1145ce4f16f5f7a908bbf1
+RWRJc1FUaeVeqqNjKRY9K8DtCmm0uY5z51YNCbO2B+3+8ruQCH8j8079AaAJoMZB3O2tysm1VjqpVIc1ZqCuBrhv4FGeUiwzJwU=
+SHA256 (Pkgfile) = 82268fc083d39b03b5095bef0fa46932c4486f8b11be3c24dceecb6d2650e851
 SHA256 (.footprint) = e7d863393a07a29b512a2b627a65f731d8896bf0ee75cf430a9b1423716ae437
-SHA256 (pkgutils-5.40.3.tar.xz) = 55ec9e0b0bd1fcedeedd7dd240fe21ed6e54533b7bfd5f2f4351afe48e53d338
+SHA256 (pkgutils-5.40.4.tar.xz) = becf4bd3e1e4718e0b29a778f1da96c8f9b1b917c4bee04fe2386ad6fe271ab2
