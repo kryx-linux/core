@@ -4,12 +4,14 @@
 # Depends on:  eudev util-linux
 
 name=libdevmapper
-version=1.02.143
-release=2
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.174.tgz)
+version=1.02.144
+release=1
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.175.tgz)
 
 build() {
-    cd LVM2.2.02.174
+    cd LVM2.2.02.175
+
+    autoconf
 
     CONFIG_SHELL=/bin/bash \
     ./configure --prefix=/usr \
@@ -33,7 +35,4 @@ build() {
     
     # pkgconfig insists on /lib one or the other way...
     sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
-    
-    # fix pkg-config
-    sed -i 's/@RT_LIB@/-lrt/' $PKG/usr/lib/pkgconfig/devmapper.pc
 }
