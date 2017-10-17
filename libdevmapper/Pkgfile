@@ -5,7 +5,7 @@
 
 name=libdevmapper
 version=1.02.144
-release=1
+release=2
 source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.175.tgz)
 
 build() {
@@ -29,10 +29,13 @@ build() {
     make device-mapper
     make DESTDIR=$PKG install_device-mapper
     install -m0644 -D udev/12-dm-permissions.rules $PKG/etc/udev/rules.d/12-dm-permissions.rules.example
-    
+
     # symlink dmsetup to dmstats and not dmsetup.static
     ln -sf dmsetup $PKG/sbin/dmstats
-    
+
     # pkgconfig insists on /lib one or the other way...
     sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
+
+    # fix pkg-config
+    sed -i 's/@RT_LIB@/-lrt/' $PKG/usr/lib/pkgconfig/devmapper.pc
 }
