@@ -4,7 +4,7 @@
 # Depends on:  readline libmpfr
 
 name=gawk
-version=4.1.4
+version=4.2.0
 release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -17,6 +17,6 @@ build() {
     make
     make DESTDIR=$PKG install
 
-    rm -r $PKG/usr/share/info
+    rm -r $PKG/usr/{etc,share/info}
     rm $PKG/usr/bin/gawk-$version
 }
