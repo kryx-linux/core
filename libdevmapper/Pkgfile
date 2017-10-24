@@ -1,7 +1,7 @@
 # Description: Device mapper userspace library
 # URL:         http://sourceware.org/lvm2/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  eudev util-linux
+# Depends on:  util-linux
 
 name=libdevmapper
 version=1.02.144
