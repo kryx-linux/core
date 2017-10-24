@@ -1,7 +1,7 @@
 # Description: LInux boot LOader
 # URL:         http://lilo.alioth.debian.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  libdevmapper util-linux
+# Depends on:  libdevmapper
 
 name=lilo
 version=24.2

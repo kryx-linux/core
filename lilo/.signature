@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjW+/yQnUCE9L06LPpySzwLvtOKsY/ZqKt4QNJykI/Upvbf2qP95Jhc2mldEY+sVUrBeYAckjIlcgLgBgFdZ9wE=
-SHA256 (Pkgfile) = 0b543f0285b771d610097f00da0b7fb582782bd434edc02f4a8139d6e17727c9
+RWRJc1FUaeVeqjkCjd5P1O36PRV4zl4FU+i43jBjMfReZgXmJN9zzrkdcX/LbgpgqbHfTTlgD8DihLf2aWUj8cpe0GHQRI1nPgc=
+SHA256 (Pkgfile) = d3a9c9d82466168129e84ee0af8c4208b94ecabc0f84d596e1633f8510bbfc1e
 SHA256 (.footprint) = 0ec118c0155abdcd2374fbf1454e52ff9619bd8e4017e0268345b82a95c3173c
 SHA256 (lilo-24.2.tar.gz) = e158f19de4560c935ebe0507c21b79bff17618b9230d8076fe8c5fff9fdbd5b1
 SHA256 (lilo-config.patch) = ad7d556831938a9d4441b2cd4f3ad9c06210cd1c9f1b27356b2b19c5b042996b
