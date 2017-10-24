@@ -1,7 +1,7 @@
 # Description: An sh-compatible command language interpreter
 # URL:         http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  ncurses readline
+# Depends on:  readline
 
 name=bash
 version=4.4.12
