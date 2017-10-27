@@ -4,9 +4,9 @@
 # Depends on:  openssl
 
 name=wget
-version=1.19.1
+version=1.19.2
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz \
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz \
         wgetrc)
 
 build() {
