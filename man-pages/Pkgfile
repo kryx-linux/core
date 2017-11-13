@@ -4,13 +4,13 @@
 
 name=man-pages
 version=4.13
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz \
         http://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2013-a.tar.xz)
 
 build() {
     cd $name-$version
-    rm man1/time.1 man5/passwd.5 man5/attr.5
+    rm man5/passwd.5 man5/attr.5
     make DESTDIR=$PKG install
 
     cd $SRC/$name-posix-2013-a
