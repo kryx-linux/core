@@ -4,14 +4,13 @@
 
 name=time
 version=1.8
-release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz $name.1)
+release=2
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share/info
-    install -D -m 0644 $SRC/$name.1 $PKG/usr/share/man/man1/$name.1
+    rm -r $PKG/usr/share
 }
