@@ -4,8 +4,8 @@
 # Depends on:  libusb
 
 name=usbutils
-version=008
-release=2
+version=009
+release=1
 source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.xz
         usb.ids.xz)
 
