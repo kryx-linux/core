@@ -1547,7 +1547,6 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/inet_ntoa.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/inet_ntop.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/inet_pton.3.gz
--rw-r--r--	root/root	usr/share/man/man3/infnan.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/initgroups.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/initstate.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/initstate_r.3.gz
@@ -1892,6 +1891,11 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/pthread_setschedprio.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_sigmask.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_sigqueue.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_spin_destroy.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_spin_init.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_spin_lock.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_spin_trylock.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/pthread_spin_unlock.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_testcancel.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_timedjoin_np.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/pthread_tryjoin_np.3.gz
@@ -3298,6 +3302,7 @@ drwxr-xr-x	root/root	usr/share/man/man4/
 -rw-r--r--	root/root	usr/share/man/man4/rtc.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/sd.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/sk98lin.4.gz
+-rw-r--r--	root/root	usr/share/man/man4/smartpqi.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/st.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/tty.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/ttyS.4.gz
@@ -3305,6 +3310,7 @@ drwxr-xr-x	root/root	usr/share/man/man4/
 -rw-r--r--	root/root	usr/share/man/man4/urandom.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/vcs.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/vcsa.4.gz
+-rw-r--r--	root/root	usr/share/man/man4/veth.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/wavelan.4.gz
 -rw-r--r--	root/root	usr/share/man/man4/zero.4.gz
 drwxr-xr-x	root/root	usr/share/man/man5/
