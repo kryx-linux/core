@@ -4,12 +4,12 @@
 # Depends on:  util-linux
 
 name=libdevmapper
-version=1.02.145
+version=1.02.146
 release=1
-source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.176.tgz)
+source=(http://mirrors.kernel.org/sources.redhat.com/lvm2/releases/LVM2.2.02.177.tgz)
 
 build() {
-    cd LVM2.2.02.176
+    cd LVM2.2.02.177
 
     CONFIG_SHELL=/bin/bash \
     ./configure --prefix=/usr \
