@@ -4,7 +4,7 @@
 # Depends on:  eudev
 
 name=dhcpcd
-version=6.11.5
+version=7.0.0
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
 
@@ -15,7 +15,6 @@ build () {
                 --libexecdir=/lib/dhcpcd \
                 --dbdir=/var/lib/dhcpcd \
                 --sysconfdir=/etc/dhcpcd \
-                --os=linux \
                 --with-hooks=
 
     make
