@@ -3,13 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.24
-release=9
-source=(http://ftpmirror.gnu.org/gnu/glibc/glibc-2.24.tar.xz \
+version=2.26
+release=6
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.9.5.tar.xz \
-	$name-2.20-multilib-dirs.patch \
-	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
-	glibc-2.24.8.patch 0001-CVE-2017-15670-glob-Fix-one-byte-overflow-BZ-22320.patch)
+	$name-multilib-dirs.patch glibc-2.26-6.patch \
+	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
@@ -17,9 +16,8 @@ build() {
 	cp -r $SRC/kernel-headers-4.9.5/include $PKG/usr
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/glibc-2.24.8.patch
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-2.20-multilib-dirs.patch
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/0001-CVE-2017-15670-glob-Fix-one-byte-overflow-BZ-22320.patch
+	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-multilib-dirs.patch
+	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/glibc-2.26-6.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
@@ -29,6 +27,8 @@ build() {
 		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--enable-static-nss \
+		--enable-stack-protector=strong \
+		--enable-obsolete-rpc \
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
@@ -42,6 +42,10 @@ build() {
 	install -d $PKG/var/{db,run}/nscd
 
 	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
+
+	# install needed headers
+	install -d $PKG/usr/include/rpcsvc
+	install -m 0644 $SRC/$name-${version:0:4}/nis/rpcsvc/yp* $PKG/usr/include/rpcsvc
 
 	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
 	install -d $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale

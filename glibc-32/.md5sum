@@ -1,5 +1,0 @@
-bcfb2cb7f1cb0b4ecce27fcd5d5d2b21  0001-CVE-2017-15670-glob-Fix-one-byte-overflow-BZ-22320.patch
-cb9c54c9d22b3ab597a69d05420b5e80  glibc-2.24.8.patch
-97dc5517f92016f3d70d83e3162ad318  glibc-2.24.tar.xz
-ac19b5dac0b160aa59a2e265998c3e91  kernel-headers-4.9.5.tar.xz
-a8f4549c716cd37244fbf1ed059497f8  lib32.conf
