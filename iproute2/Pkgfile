@@ -5,15 +5,18 @@
 
 name=iproute2
 version=4.14.1
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
         lo.iproute2 net.iproute2)
 
 build() {
     cd $name-$version
 
+    # don't link against libelf
+    sed -e '/^check_elf$/d' -i configure
+
     ./configure
-    make -j1 HAVE_ELF="n" CCOPTS="$CFLAGS"
+    make -j1 CCOPTS="$CFLAGS"
     make -j1 MANDIR=/usr/share/man DESTDIR=$PKG install
 
     rm -r $PKG/usr/share/doc
