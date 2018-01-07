@@ -5,11 +5,13 @@
 
 name=libmpc
 version=1.0.3
-release=1
-source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz)
+release=2
+source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz \
+	mpc-1.0.3-mpfr-4.0.0.patch)
 
 build() {
     cd mpc-$version
+    patch -p1 -i $SRC/mpc-1.0.3-mpfr-4.0.0.patch
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
