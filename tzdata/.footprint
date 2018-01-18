@@ -1,10 +1,10 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/tzselect
+-rwxr-xr-x	root/root	usr/bin/zdump
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libtz.a
 drwxr-xr-x	root/root	usr/sbin/
--rwxr-xr-x	root/root	usr/sbin/zdump
 -rwxr-xr-x	root/root	usr/sbin/zic
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
@@ -618,7 +618,6 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/US/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/US/Michigan
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/US/Mountain
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/US/Pacific
--rw-r--r--	root/root	usr/share/zoneinfo-leaps/US/Pacific-New
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/US/Samoa
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/UTC
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Universal
@@ -1233,7 +1232,6 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/US/
 -rw-r--r--	root/root	usr/share/zoneinfo/US/Michigan
 -rw-r--r--	root/root	usr/share/zoneinfo/US/Mountain
 -rw-r--r--	root/root	usr/share/zoneinfo/US/Pacific
--rw-r--r--	root/root	usr/share/zoneinfo/US/Pacific-New
 -rw-r--r--	root/root	usr/share/zoneinfo/US/Samoa
 -rw-r--r--	root/root	usr/share/zoneinfo/UTC
 -rw-r--r--	root/root	usr/share/zoneinfo/Universal
@@ -1242,7 +1240,6 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/US/
 -rw-r--r--	root/root	usr/share/zoneinfo/Zulu
 -rw-r--r--	root/root	usr/share/zoneinfo/iso3166.tab
 -rw-r--r--	root/root	usr/share/zoneinfo/leapseconds
--rw-r--r--	root/root	usr/share/zoneinfo/localtime
 -rw-r--r--	root/root	usr/share/zoneinfo/posixrules
 -rw-r--r--	root/root	usr/share/zoneinfo/tzdata.zi
 -rw-r--r--	root/root	usr/share/zoneinfo/zone.tab
