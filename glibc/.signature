@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqgAZOOo9pTZ8Kkhyn33vUDz6ZScBxuUJQ6SeGXgbji+1Hk8NhAeXhzpTxD/z+samesI/MdBUnJ7FWpznMnezQgk=
-SHA256 (Pkgfile) = 5d3c266de36bc04680358a4a7231bd7de49ead7e44da17d6a7edcb2a8d4cc3b5
+RWRJc1FUaeVeqsBKjyM8wdd/C2rlJ/gFfK8cx67MV3xb/bI841ZYrLyS3oFcfaUv3weOhVQjgQpN8ToKwmEykQRHEtqCvlfzgA8=
+SHA256 (Pkgfile) = 4edcaa1db1ba626fa4970327676b6623d925ab76831a5bcaac4ec5a6be4184fc
 SHA256 (.footprint) = 9bfd444359441e61174162207102b96597aa3a7051b4c5d8401d9d0e2713ec81
 SHA256 (glibc-2.24.tar.xz) = 99d4a3e8efd144d71488e478f62587578c0f4e1fa0b4eed47ee3d4975ebeb5d3
 SHA256 (kernel-headers-4.9.5.tar.xz) = 5783ad8f668ee71561fae370fbcdc477aaa6df249bd85635b87a8c204aeb4aa9
@@ -10,5 +10,4 @@ SHA256 (resolv.conf) = 72ccb58768a72a771ec37142bc361a18478a07ec9de6e925a20760794
 SHA256 (nsswitch.conf) = 859b8984e5e90aff3cce8f9779996ae4033b280d2122840e9411e2f44a1c2e61
 SHA256 (host.conf) = 1bffc6575eb6204458758c34656cd44d87e7d89f545055f8857dd8906b7fb277
 SHA256 (ld.so.conf) = 441a37924864b5b063208922ea04a926cd9654e74ed3f160b9d455b56d23387f
-SHA256 (glibc-2.24.8.patch) = 314fe8ec41042a85991e830a002abf2ff0b98dc4467afa238d8bb369d3be7cca
-SHA256 (0001-CVE-2017-15670-glob-Fix-one-byte-overflow-BZ-22320.patch) = 3f634bf301eb8bab57e5ea552de3f694fb063ab45af3cc91990e1bc24f280ddd
+SHA256 (glibc-2.24-10.patch) = 166d8a11ef5e616e65f5f626ad0a47b881712865ceef6e78bb4bc9bdc8af2c55
