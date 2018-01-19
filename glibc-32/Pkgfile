@@ -4,10 +4,10 @@
 
 name=glibc-32
 version=2.26
-release=1
+release=7
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.9.5.tar.xz \
-	glibc-2.25-updates.patch lib32.conf) 
+	glibc-2.26-$release.patch lib32.conf) 
 
 build() {
 	mkdir build
@@ -17,7 +17,7 @@ build() {
 	export CC="${CC:-gcc} -m32"
 	export CFLAGS="$CFLAGS -Wno-error=parentheses"
 
-	#patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.25-updates.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.26-$release.patch
 
 	../glibc-${version:0:4}/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
