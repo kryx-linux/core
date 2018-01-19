@@ -1,9 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjeyptGRCBcjcyr/ot+fF8dm4Kc50exfkG6Dh1ByVtDUMJHkKHGfkRAeiq/6S6qY0oYbewnOS8I7fQ3Vjzj3xw0=
-SHA256 (Pkgfile) = e3f3c583e8e6da48eb296cab0aee6bae04c9def714432f8b81fe749c1b08adec
+RWRJc1FUaeVeqv63VY26UMnegawgY0CQLl5mA57dECmhixK7nB9GmUO6dNFJ7W8/pp+6UjRc8+TY3TNXGKu/T+r/2ohIUUfkrwk=
+SHA256 (Pkgfile) = 034acc49e0f428aaa3d606d58400ff9586c3c11ccff0480fcb0de7b3c30411af
 SHA256 (.footprint) = 0af47db3e8a5ea832d1f971ca56f7718a59167c0214375307a508ff46b327119
 SHA256 (glibc-2.24.tar.xz) = 99d4a3e8efd144d71488e478f62587578c0f4e1fa0b4eed47ee3d4975ebeb5d3
 SHA256 (kernel-headers-4.9.5.tar.xz) = 5783ad8f668ee71561fae370fbcdc477aaa6df249bd85635b87a8c204aeb4aa9
-SHA256 (glibc-2.24.8.patch) = 314fe8ec41042a85991e830a002abf2ff0b98dc4467afa238d8bb369d3be7cca
-SHA256 (0001-CVE-2017-15670-glob-Fix-one-byte-overflow-BZ-22320.patch) = 3f634bf301eb8bab57e5ea552de3f694fb063ab45af3cc91990e1bc24f280ddd
+SHA256 (glibc-2.24-10.patch) = 166d8a11ef5e616e65f5f626ad0a47b881712865ceef6e78bb4bc9bdc8af2c55
 SHA256 (lib32.conf) = 2f174d2bcefe1c29327690514f34d6970fffdd54398320ca23a11b5f1e3c9b2d
