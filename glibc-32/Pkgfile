@@ -6,7 +6,7 @@ name=glibc-32
 version=2.26
 release=7
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-4.9.5.tar.xz \
+	http://crux.nu/files/distfiles/kernel-headers-4.14.14.tar.xz \
 	glibc-2.26-$release.patch lib32.conf) 
 
 build() {
@@ -22,7 +22,7 @@ build() {
 	../glibc-${version:0:4}/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
-		--with-headers=$SRC/kernel-headers-4.9.5/include \
+		--with-headers=$SRC/kernel-headers-4.14.14/include \
 		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
