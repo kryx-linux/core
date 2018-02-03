@@ -3,11 +3,11 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.26
-release=7
+version=2.27
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.14.14.tar.xz \
-	glibc-2.26-$release.patch lib32.conf) 
+	lib32.conf) 
 
 build() {
 	mkdir build
@@ -16,8 +16,6 @@ build() {
 	export libc_cv_slibdir=/lib32
 	export CC="${CC:-gcc} -m32"
 	export CFLAGS="$CFLAGS -Wno-error=parentheses"
-
-	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.26-$release.patch
 
 	../glibc-${version:0:4}/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
@@ -28,7 +26,9 @@ build() {
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
+		--enable-stack-protector=strong \
 		--enable-obsolete-rpc \
+		--enable-obsolete-nsl \
 		--enable-multi-arch \
 		i686-pc-linux-gnu
 
