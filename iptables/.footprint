@@ -63,6 +63,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_ipv6header.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_mh.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_rt.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libip6t_srh.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_CLUSTERIP.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_DNAT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libipt_ECN.so
