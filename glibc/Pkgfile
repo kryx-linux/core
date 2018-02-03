@@ -3,11 +3,11 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.26
-release=7
+version=2.27
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://crux.nu/files/distfiles/kernel-headers-4.14.14.tar.xz \
-	$name-multilib-dirs.patch glibc-2.26-$release.patch \
+	$name-multilib-dirs.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
@@ -17,11 +17,10 @@ build() {
 	chown root:root $PKG/usr
 
 	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-multilib-dirs.patch
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/glibc-2.26-$release.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
-	../$name-${version:0:4}/configure --prefix=/usr \
+	../$name-${version}/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
 		--enable-kernel=3.12 \
@@ -29,6 +28,7 @@ build() {
 		--enable-static-nss \
 		--enable-stack-protector=strong \
 		--enable-obsolete-rpc \
+		--enable-obsolete-nsl \
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
