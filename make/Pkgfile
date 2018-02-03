@@ -4,12 +4,13 @@
 
 name=make
 version=4.2.1
-release=1
+release=2
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    
+
+    sed -i '/make_cv_sys_gnu_glob=/s/no/yes/' configure     
     ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install
