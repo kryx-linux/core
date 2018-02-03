@@ -32,7 +32,6 @@ build() {
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
-		--enable-obsolete-rpc \
 		--enable-multi-arch
 	make 
 	#make check
