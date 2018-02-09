@@ -4,14 +4,15 @@
 
 name=bzip2
 version=1.0.6
-release=2
+release=3
 source=(http://www.bzip.org/$version/$name-$version.tar.gz \
-        $name.patch)
+        $name.patch CVE-2016-3189.patch)
 
 build() {
 	cd $name-$version
 
 	patch -Np1 -i $SRC/$name.patch
+	patch -p1 -i $SRC/CVE-2016-3189.patch
 
 	make
 	make PREFIX=$PKG/usr install
