@@ -4,11 +4,13 @@
 
 name=cpio
 version=2.12
-release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.bz2)
+release=2
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+	CVE-2017-7516.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/CVE-2017-7516.patch
     ./configure --prefix=/usr \
                 --disable-nls
     make
