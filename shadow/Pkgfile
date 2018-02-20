@@ -5,12 +5,16 @@
 
 name=shadow
 version=4.5
-release=1
+release=2
 source=(https://github.com/shadow-maint/shadow/releases/download/$version/shadow-$version.tar.xz
+        CVE-2018-7169.patch
         pwck login.defs)
 
 build() {
     cd $name-$version
+
+    # https://bugs.launchpad.net/ubuntu/+source/shadow/+bug/1729357
+    patch -p1 -i $SRC/CVE-2018-7169.patch
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
