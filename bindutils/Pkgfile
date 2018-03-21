@@ -4,7 +4,7 @@
 # Depends on:  openssl
 
 name=bindutils
-version=9.10.6
+version=9.11.3
 release=1
 source=(https://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
 
