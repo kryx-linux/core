@@ -5,14 +5,15 @@
 
 name=file
 version=5.33
-release=1
+release=2
 source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
                 --enable-fsect-man5 \
-                --enable-static
+                --enable-static \
+                --disable-libseccomp
     make
     make DESTDIR=$PKG install
     rmdir $PKG/usr/share/man/man4
