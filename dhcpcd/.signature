@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqsxmPpCITBTQ2w8HaAdD8OT9RVhTifc2oKy8WYJlyU76CbTkC5F2buBnEH6jupIHx482PEA5VStVIcYGiNBmsg8=
-SHA256 (Pkgfile) = 8552859939ed4454f67c9ce5ad1f005cf1be84c1a033fbedd87bcbd0fb7ed1a6
+RWRJc1FUaeVeqt4tZDMEiRLN9OzDUcEMrGnu5EY4K00B4cjb1L4JYlV7pl5k2Lt+LZfk22EsfcZK5MWK83cxhiNgiCwLr5RnZQE=
+SHA256 (Pkgfile) = 07375cb8a96e1bf257457ea2e905a31754e9c0b18055d7f9454c38becc069b3e
 SHA256 (.footprint) = d9a7aee62c42089e2d24224ba37e4d88502f402e0f94ea92d0a19492ff7afd76
-SHA256 (dhcpcd-7.0.3.tar.xz) = a255d9aecceb1c77a9862f1c0d31a48ba37aab5ef2ca5ad76fc7a907b6ea292e
+SHA256 (dhcpcd-7.0.4.tar.xz) = 1fa414be34383578e2c343dfc8cdcb95e2da74f62121b394c88d60698c889a78
