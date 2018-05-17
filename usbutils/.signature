@@ -1,6 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequFqojkwsL+QvycX3oSJt8VK+fvXD47kujHUl194x6GCX5BdT5rVEbhWRxrmEburjVJ2UZZ58aYsRLMvQp8XXgU=
-SHA256 (Pkgfile) = 42fb6b6320fd9622e4bf3aaad55157801021e8d898d5d2f6ef46209a5bfed073
-SHA256 (.footprint) = 21494efbc2e45e61b623a6971bc947aded879ee933adba115a98e78ad837463b
-SHA256 (usbutils-009.tar.xz) = 8bbff0e54cb5f65a52be4feb9162fc0b022a97eb841b44784f7a89a9ea567160
-SHA256 (usb.ids.xz) = a080110c2068f64db66ff54d1564b261e785fecc4a4ecd9453cca8e35490b7ca
+RWRJc1FUaeVeqkYLGWezT7GX0D2GphQF/qh1QptxjkgNt4RSFznA8ZgMGXDPKy1pYn07kMaZBLYFpqSZrKtJFePqeY6/ig+fsgo=
+SHA256 (Pkgfile) = 58fce641d9bf9e3439e211dce45ac3f95877e403d2146723be3831d69e356000
+SHA256 (.footprint) = f82a9d98226269f143bad33baff4bd73c5473e19c9dea2792382c13d1bc44b34
+SHA256 (usbutils-010.tar.xz) = 61c7364bb4986fb05e5067e4ac5585b1299b664c57f761caecd2e9e724794a19
+SHA256 (lsusb.py.patch) = d509a72aa47445e86722ad8b7419400858af1ff2cc08bce23a9276dd46428f06
+SHA256 (usb.ids.xz) = 270ca62f1df3f30f7c4bdd30d29345cc42dccc1b8a12aff31a6c4e9cda4b1c06
