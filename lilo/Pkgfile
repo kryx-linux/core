@@ -6,7 +6,7 @@
 name=lilo
 version=24.2
 release=1
-source=(http://lilo.alioth.debian.org/ftp/sources/$name-$version.tar.gz \
+source=(https://fossies.org/linux/misc/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
 build() {
