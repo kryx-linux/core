@@ -2,7 +2,7 @@
 #@ Update protocols and services from IANA.
 #@ Taken from ArchLinux script written by Gaetan Bisson.  Adjusted for CRUX.
 
-awk=nawk
+awk=awk
 curl=curl
 url_pn='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml'
 url_snpn="https://www.iana.org/assignments/service-names-port-numbers/\
@@ -58,7 +58,6 @@ update() {
 	mv services.new services
 	[ ${?} -eq 0 ] || exit 41
 	rm -f protocols.xml services.xml
-	md5sum protocols services > .md5sum
 	[ ${?} -eq 0 ] || exit 42
 }
 

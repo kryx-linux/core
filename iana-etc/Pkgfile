@@ -5,7 +5,7 @@
 name=iana-etc
 version=3.4
 release=1
-source=(services protocols)
+source=(services protocols update.sh)
 
 build() {
 	install -d -m 755 $PKG/etc
