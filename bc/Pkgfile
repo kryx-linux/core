@@ -14,7 +14,7 @@ build() {
     ./configure --prefix=/usr --with-readline
     
     # do not regen docs
-    touch doc/*
+    touch doc/*.info doc/*.1 doc/Makefile
 
     make
     make DESTDIR=$PKG install
