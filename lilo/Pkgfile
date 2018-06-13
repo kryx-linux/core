@@ -1,12 +1,12 @@
 # Description: LInux boot LOader
-# URL:         http://lilo.alioth.debian.org/
+# URL:         https://www.joonet.de/lilo/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  libdevmapper
 
 name=lilo
 version=24.2
 release=1
-source=(https://fossies.org/linux/misc/$name-$version.tar.gz \
+source=(https://www.joonet.de/lilo/ftp/sources/$name-$version.tar.gz \
         $name-config.patch lilo.conf)
 
 build() {
