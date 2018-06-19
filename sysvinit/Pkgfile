@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysvinit
-version=2.89
+version=2.90
 release=1
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.bz2)
+source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
