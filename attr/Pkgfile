@@ -3,29 +3,25 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=attr
-version=2.4.47
-release=2
-source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz)
+version=2.4.48
+release=1
+source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
-    export DEBUG=-DNDEBUG
-    export OPTIMIZER=$CFLAGS
-
     ./configure --prefix=/usr \
-                --bindir=/bin \
-                --libexecdir=/usr/lib
+		--bindir=/bin \
+		--sysconfdir=/etc
+
     make
-    make DIST_ROOT=$PKG install install-lib install-dev
+    make DESTDIR=$PKG install
 
     install -d $PKG/lib
     mv $PKG/usr/lib/libattr.so.* $PKG/lib
     rm $PKG/usr/lib/libattr.so
-    ln -s ../../lib/libattr.so.1.1.0 $PKG/usr/lib/libattr.so
+    ln -sf ../../lib/$(readlink $PKG/lib/libattr.so.1) $PKG/usr/lib/libattr.so
 
-    # category 2 manuals are included in core/man-pages
-    rm -r $PKG/usr/share/man/man2
 
     rm -r $PKG/usr/share/{doc,locale}
 }
