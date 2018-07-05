@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqqDqnT5KgRdaTm56+CQ4SncQ88R0CN2VrTng3kAmVd0LVPkrwhyYo/8q8DD3G2pgM3KhEBNJlp7PM2AaGe1H8wM=
-SHA256 (Pkgfile) = 1e6cbc01331b265cf1e27dc97ef7a4b7cb518afe78a2e4c6d66c4ce8bdf2c012
+RWRJc1FUaeVeqvU0phODoHcP3/XasDQVuod62EHh85QY6+C0ULIQifpgNLdMHiuhkZnYb5ST8IaAi8Y7TaP6AXVzEH/zPvwHDAE=
+SHA256 (Pkgfile) = d4aaac984537b58f108b6f38a6a91621649a54086842b9e46b44e5c5e0b920eb
 SHA256 (.footprint) = af07f9e491853b835c5b82dd0f819c01d642cf3a61e6bd49f9b29e27d684fbab
-SHA256 (coreutils-8.29.tar.xz) = 92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e
+SHA256 (coreutils-8.30.tar.xz) = e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057
 SHA256 (coreutils-uname.patch) = 164ad5976c67dd49f1d28d3124a6cb5395d52a23d9a3112a10a795af6069d97d
