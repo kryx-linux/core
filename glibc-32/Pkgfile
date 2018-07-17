@@ -4,14 +4,23 @@
 
 name=glibc-32
 version=2.27
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://crux.nu/files/distfiles/kernel-headers-4.14.14.tar.xz \
-	lib32.conf) 
+	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.14.tar.xz \
+	glibc-2.27-2.patch lib32.conf) 
 
 build() {
-	mkdir build
-	cd build
+        # install kernel headers
+        cd linux-4.14.14
+        make mrproper
+        make headers_check
+        make INSTALL_HDR_PATH=$PKG/usr headers_install
+        chown root:root $PKG/usr
+
+        patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-$release.patch
+
+	mkdir $SRC/build
+	cd $SRC/build
 
 	export libc_cv_slibdir=/lib32
 	export CC="${CC:-gcc} -m32"
@@ -20,7 +29,7 @@ build() {
 	../glibc-${version:0:4}/configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--libexecdir=/usr/lib32 \
-		--with-headers=$SRC/kernel-headers-4.14.14/include \
+		--with-headers=$PKG/usr/include \
 		--enable-kernel=3.12 \
 		--enable-add-ons \
 		--disable-profile \
