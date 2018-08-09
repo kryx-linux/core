@@ -1,6 +1,6 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
-lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/xtables-multi
+lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/xtables-legacy-multi
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libipq.h
 drwxr-xr-x	root/root	usr/include/libiptc/
@@ -39,10 +39,6 @@ drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
 drwxr-xr-x	root/root	usr/lib/xtables/
--rwxr-xr-x	root/root	usr/lib/xtables/libebt_802_3.so
--rwxr-xr-x	root/root	usr/lib/xtables/libebt_ip.so
--rwxr-xr-x	root/root	usr/lib/xtables/libebt_log.so
--rwxr-xr-x	root/root	usr/lib/xtables/libebt_mark_m.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_DNAT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_DNPT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_HL.so
@@ -153,13 +149,19 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_u32.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_udp.so
 drwxr-xr-x	root/root	usr/sbin/
-lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-multi
-lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> xtables-multi
-lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> xtables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables -> xtables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> xtables-multi
-lrwxrwxrwx	root/root	usr/sbin/iptables-save -> xtables-multi
--rwxr-xr-x	root/root	usr/sbin/xtables-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-legacy -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-legacy-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-legacy-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-save -> xtables-legacy-multi
+-rwxr-xr-x	root/root	usr/sbin/xtables-legacy-multi
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
@@ -184,3 +186,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/iptables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-save.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-legacy.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-monitor.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-nft.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-translate.8.gz
