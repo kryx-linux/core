@@ -1,5 +1,5 @@
 # Description: Very high-quality data compression program
-# URL: http://www.bzip.org/
+# URL: https://sourceware.org/bzip2/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=bzip2
