@@ -4,14 +4,14 @@
 # Depends on:  bzip2 xz zlib acl lzo
 
 name=libarchive
-version=3.3.2
+version=3.3.3
 release=1
 source=(http://www.libarchive.org/downloads/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
 
-	# We're passing --without-xml2, --without-expatto and --without-nettle
+	# We're passing --without-xml2, --without-expat and --without-nettle
 	# to avoid linking to libraries which are only available in opt. 
 	# XML support is only needed for the xar format which we can live without.
 	
@@ -19,7 +19,8 @@ build() {
 	            --without-xml2 \
 	            --without-expat \
 	            --without-nettle \
-	            --without-openssl
+	            --without-openssl \
+                --without-zstd
 
 	make
 	make DESTDIR=$PKG install
