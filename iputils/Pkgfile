@@ -12,7 +12,7 @@ source=(https://github.com/iputils/iputils/archive/$version/$name-$version.tar.g
 build() {
     cd $name-$version
 
-    make USE_IDN=no USE_GCRYPT=no USE_GNUTLS=no CCOPTOPT="$CFLAGS"
+    make USE_IDN=no USE_NETTLE=no USE_GCRYPT=no USE_GNUTLS=no CCOPTOPT="$CFLAGS"
 
     install -d $PKG/{{s,}bin,usr/{bin,sbin,share/man/man8}}
     install ping $PKG/bin/
