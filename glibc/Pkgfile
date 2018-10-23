@@ -3,11 +3,11 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.27
-release=2
+version=2.28
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.14.tar.xz \
-	glibc-2.27-2.patch \
+	glibc-2.28-1.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
@@ -18,14 +18,14 @@ build() {
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-$release.patch
+	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-$release.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
 	../$name-${version}/configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
-		--enable-kernel=3.12 \
+		--enable-kernel=4.9 \
 		--enable-add-ons \
 		--enable-static-nss \
 		--enable-stack-protector=strong \
