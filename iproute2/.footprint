@@ -60,6 +60,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/devlink-dev.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink-monitor.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink-port.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/devlink-region.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink-resource.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink-sb.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/devlink.8.gz
@@ -106,6 +107,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/tc-basic.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-bfifo.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-bpf.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tc-cake.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-cbq-details.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-cbq.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-cbs.8.gz
@@ -116,6 +118,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/tc-csum.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-drr.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-ematch.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tc-etf.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-flow.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-flower.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-fq.8.gz
@@ -143,6 +146,7 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/tc-simple.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-skbedit.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-skbmod.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tc-skbprio.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-stab.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-tbf.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/tc-tcindex.8.gz
