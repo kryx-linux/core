@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu 
 
 name=tzdata
-version=2018f
+version=2018g
 release=1
 source=(https://data.iana.org/time-zones/releases/tzdb-$version.tar.lz)
 
