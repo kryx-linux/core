@@ -12,6 +12,7 @@ drwxr-xr-x	root/root	etc/udev/hwdb.d/
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-sdio-vendor-model.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-usb-classes.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/20-usb-vendor-model.hwdb
+-rw-r--r--	root/root	etc/udev/hwdb.d/20-vmbus-class.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/60-evdev.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/60-keyboard.hwdb
 -rw-r--r--	root/root	etc/udev/hwdb.d/60-sensor.hwdb
@@ -38,6 +39,7 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-drm.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-evdev.rules
+-rw-r--r--	root/root	lib/udev/rules.d/60-input-id.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-input.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage-tape.rules
@@ -46,6 +48,7 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/60-sensor.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-serial.rules
 -rw-r--r--	root/root	lib/udev/rules.d/64-btrfs.rules
+-rw-r--r--	root/root	lib/udev/rules.d/70-joystick.rules
 -rw-r--r--	root/root	lib/udev/rules.d/70-mouse.rules
 -rw-r--r--	root/root	lib/udev/rules.d/70-touchpad.rules
 -rw-r--r--	root/root	lib/udev/rules.d/75-net-description.rules
