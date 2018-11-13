@@ -1,6 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqm2Kg/LdsJ2JTplhG8P8jC5MYMCeJn5UCmsOZ/JIAGfGrD5MPct5HZ+MS2NEpMMQquBf2TtzkbHYuwb+tfRQCgs=
-SHA256 (Pkgfile) = 2a100f7379637416ba620df9723a8fc78a0b49cf30f518bbd4f4f26700c6db6e
-SHA256 (.footprint) = 9beb421aa4270bb9793c252c05f4b4f652aaa2b98323af1760ade7731ee148e5
-SHA256 (iptables-1.8.1.tar.bz2) = 8fe4f297cf9c9bbab4972f95527f3e484f60c17c61800c9bff562f06c45461d8
-SHA256 (build_without_libnftnl.patch) = 6335009b134bda21012fadd60e396b9bb649bdebae9b524474d6ac620f78544f
+RWRJc1FUaeVeqp7+AmZ9PsX5dtIkFJB1swqqJm2wkgZcvSEFkK+ueqeOi//Ru39c7AzHMoOSMrYZ2pHHuXTnvhFp8qbu4bIzZg0=
+SHA256 (Pkgfile) = 5e1b53a29a86de674f0d663c9a2a89aea97782d19ec7281f9fbc2521ab8029ae
+SHA256 (.footprint) = a079bff66dea8400cc584a2e64aaaa19eb4536b378a77b4e66d7516557512063
+SHA256 (iptables-1.8.2.tar.bz2) = a3778b50ed1a3256f9ca975de82c2204e508001fc2471238c8c97f3d1c4c12af
