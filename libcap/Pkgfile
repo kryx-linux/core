@@ -4,19 +4,17 @@
 # Depends on:  attr
 
 name=libcap
-version=2.25
-release=2
-source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz
-        $name-$version-gperf.patch)
+version=2.26
+release=1
+source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
 
 build () {
     cd $name-$version
 
-    patch -p1 -i $SRC/$name-$version-gperf.patch
     sed -i "/^CFLAGS/s/-O2/$CFLAGS/" Make.Rules 
 
     make
-    make RAISE_SETFCAP=no DESTDIR=$PKG man_prefix=/usr/share install
+    make RAISE_SETFCAP=no DESTDIR=$PKG install
 
     install -d $PKG/usr/lib
     mv $PKG/lib/libcap.a $PKG/usr/lib
