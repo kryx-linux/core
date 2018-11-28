@@ -4,10 +4,10 @@
 
 name=glibc-32
 version=2.27
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.14.tar.xz \
-	glibc-2.27-2.patch lib32.conf) 
+	glibc-$version-$release.patch lib32.conf) 
 
 build() {
         # install kernel headers
