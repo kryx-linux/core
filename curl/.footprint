@@ -137,6 +137,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_COPYPOSTFIELDS.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_CRLF.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_CRLFILE.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLOPT_CURLU.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_CUSTOMREQUEST.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_DEBUGDATA.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_DEBUGFUNCTION.3.gz
