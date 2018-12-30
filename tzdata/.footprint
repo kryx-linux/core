@@ -322,6 +322,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Pontianak
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Pyongyang
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Qatar
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Qostanay
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Qyzylorda
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Rangoon
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/Asia/Riyadh
@@ -936,6 +937,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Asia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Pontianak
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Pyongyang
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Qatar
+-rw-r--r--	root/root	usr/share/zoneinfo/Asia/Qostanay
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Qyzylorda
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Rangoon
 -rw-r--r--	root/root	usr/share/zoneinfo/Asia/Riyadh
