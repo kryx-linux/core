@@ -6,12 +6,12 @@ name=glibc-32
 version=2.28
 release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.14.tar.xz \
+	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.13.tar.xz \
 	glibc-2.28-1.patch lib32.conf) 
 
 build() {
         # install kernel headers
-        cd linux-4.14.14
+        cd linux-4.19.13
         make mrproper
         make headers_check
         make INSTALL_HDR_PATH=$PKG/usr headers_install
