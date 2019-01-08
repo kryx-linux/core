@@ -29,9 +29,9 @@ lrwxrwxrwx	root/root	usr/lib/libiptc.so -> libiptc.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libiptc.so.0 -> libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.12.0.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.12 -> libxtables.so.12.0.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.12.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.12.2.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.12 -> libxtables.so.12.2.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.12.2.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libip4tc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libip6tc.pc
@@ -122,7 +122,6 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_length.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_limit.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_mac.so
--rwxr-xr-x	root/root	usr/lib/xtables/libxt_mangle.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_mark.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_multiport.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_nfacct.so

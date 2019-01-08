@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysvinit
-version=2.91
+version=2.93
 release=1
 source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
 
@@ -13,10 +13,9 @@ build() {
     make
     make ROOT=$PKG install
 
-    # Provided by util-linux 
+    # Provided by util-linux
     rm $PKG/usr/bin/{last,lastb,mesg,utmpdump,wall}
     rm $PKG/usr/share/man/man1/{last,lastb,mesg,utmpdump,wall}.1
-    rmdir $PKG/usr/bin
 
     # Provided by procps
     rm $PKG/bin/pidof

@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dash
-version=0.5.9.1
+version=0.5.10.2
 release=1
-source=(https://crux.ninja/distfiles/$name-$version.tar.gz)
+source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz)
 
 build() {
     cd $name-$version

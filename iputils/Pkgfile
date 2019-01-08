@@ -5,9 +5,9 @@
 
 name=iputils
 version=s20180629
-release=1
+release=2
 source=(https://github.com/iputils/iputils/archive/$version/$name-$version.tar.gz
-        http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
+        http://crux.nu/files/distfiles/$name-man-$version-1.tar.xz)
 
 build() {
     cd $name-$version

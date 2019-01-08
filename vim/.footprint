@@ -608,6 +608,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/pyrex.vim
 -rw-r--r--	root/root	usr/share/vim/indent/python.vim
 -rw-r--r--	root/root	usr/share/vim/indent/r.vim
+-rw-r--r--	root/root	usr/share/vim/indent/raml.vim
 -rw-r--r--	root/root	usr/share/vim/indent/readline.vim
 -rw-r--r--	root/root	usr/share/vim/indent/rhelp.vim
 -rw-r--r--	root/root	usr/share/vim/indent/rmd.vim
@@ -1154,6 +1155,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/r.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/racc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/radiance.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/raml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ratpoison.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/rc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/rcs.vim

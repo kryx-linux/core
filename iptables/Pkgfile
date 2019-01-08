@@ -3,17 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=iptables
-version=1.8.0
+version=1.8.2
 release=1
 source=(https://netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
-
-    # http://www.linuxfromscratch.org/blfs/view/svn/postlfs/iptables.html
-    sed -e '/libebt_/s/^/#/' \
-        -e '/libarpt_/s/^/#/' \
-        -i extensions/GNUmakefile.in
 
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
