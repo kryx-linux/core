@@ -1,5 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqk2gKGGhKtvWU+O07e614jLTXf/69Z38XTMyYfZnFgjaHhbfPHSk/7U6vGAMukeIjo/Ru3F4s+K08dJOsfFCFQQ=
-SHA256 (Pkgfile) = 695aeab2fe5a7f7f23aa6d9ef1b736a53ce7634abf7b3259e7735e8ee9fb892d
+RWRJc1FUaeVeqhqTa58gKg3Y+rY+pZoJxvIhzBdxrf9lHau5hQCYJGKKu4P8/AWcDfapwdIlwbXmozxf0wIYo8cU0+BS3l3Qvw0=
+SHA256 (Pkgfile) = 057e5e0d5c4072b3a98ff515250e94d3ecaec68c06d8358d00e35f52895b53e5
 SHA256 (.footprint) = d10651884f1a51d1638d4b7f18513cf2cf7e84994a9179220bf60d4bc1ae3586
 SHA256 (findutils-4.6.0.tar.gz) = ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d
+SHA256 (findutils-glibc-2.28.patch) = 84b916c0bf8c51b7e7b28417692f0ad3e7030d1f3c248ba77c42ede5c1c5d11e
+SHA256 (findutils-makedev.patch) = bd9e4e5cc280f9753ae14956c4e4aa17fe7a210f55dd6c84aa60b12d106d47a2
