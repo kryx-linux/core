@@ -1,12 +1,13 @@
 # Description: Sudo (superuser do)
 # URL:         http://www.sudo.ws/sudo/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  zlib
+# Depends on:  zlib linux-pam
 
 name=sudo
 version=1.8.27
-release=1
-source=(https://www.sudo.ws/$name/dist/$name-$version.tar.gz)
+release=2
+source=(https://www.sudo.ws/dist/$name-$version.tar.gz \
+    $name.pam)
 
 build() {
     cd $name-$version
@@ -16,11 +17,14 @@ build() {
                 --with-logfac=auth \
                 --with-vardir=/var/lib/sudo \
                 --with-rundir=/var/run/sudo \
-                --without-pam \
                 --disable-nls
 
     make
     make DESTDIR=$PKG install
+
+    # PAM service file
+    install -D -m 0644 $SRC/$name.pam \
+        $PKG/etc/pam.d/$name
 
     rm -r $PKG/usr/share/doc
 }
