@@ -2036,6 +2036,8 @@ lrwxrwxrwx	root/root	usr/share/man/man3/OCSP_single_get0_status.3ssl.gz -> OCSP_
 lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_INIT_free.3ssl.gz -> OPENSSL_init_crypto.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_INIT_new.3ssl.gz -> OPENSSL_init_crypto.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_INIT_set_config_appname.3ssl.gz -> OPENSSL_init_crypto.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_INIT_set_config_file_flags.3ssl.gz -> OPENSSL_init_crypto.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_INIT_set_config_filename.3ssl.gz -> OPENSSL_init_crypto.3ssl.gz
 -rw-r--r--	root/root	usr/share/man/man3/OPENSSL_LH_COMPFUNC.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_LH_DOALL_FUNC.3ssl.gz -> OPENSSL_LH_COMPFUNC.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/OPENSSL_LH_HASHFUNC.3ssl.gz -> OPENSSL_LH_COMPFUNC.3ssl.gz
