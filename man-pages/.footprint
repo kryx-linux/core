@@ -603,6 +603,7 @@ drwxr-xr-x	root/root	usr/share/man/man2/
 -rw-r--r--	root/root	usr/share/man/man2/rt_sigsuspend.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/rt_sigtimedwait.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/rt_tgsigqueueinfo.2.gz
+-rw-r--r--	root/root	usr/share/man/man2/s390_guarded_storage.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/s390_pci_mmio_read.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/s390_pci_mmio_write.2.gz
 -rw-r--r--	root/root	usr/share/man/man2/s390_runtime_instr.2.gz
@@ -1941,6 +1942,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/readdir.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/readdir_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/realloc.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/reallocarray.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/realpath.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/recno.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/regcomp.3.gz
@@ -3361,6 +3363,7 @@ drwxr-xr-x	root/root	usr/share/man/man5/
 drwxr-xr-x	root/root	usr/share/man/man6/
 -rw-r--r--	root/root	usr/share/man/man6/intro.6.gz
 drwxr-xr-x	root/root	usr/share/man/man7/
+-rw-r--r--	root/root	usr/share/man/man7/address_families.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/aio.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/armscii-8.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/arp.7.gz
@@ -3368,6 +3371,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/attributes.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/boot.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/bootparam.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/bpf-helpers.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/capabilities.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/cgroup_namespaces.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/cgroups.7.gz
@@ -3458,8 +3462,6 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/man-pages.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/man.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/math_error.7.gz
--rw-r--r--	root/root	usr/share/man/man7/mdoc.7.gz
--rw-r--r--	root/root	usr/share/man/man7/mdoc.samples.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/mount_namespaces.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/mq_overview.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/namespaces.7.gz
@@ -3476,6 +3478,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/pipe.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pkeys.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/posixoptions.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/precedence.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/process-keyring.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pthreads.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/pty.7.gz
