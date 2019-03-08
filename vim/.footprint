@@ -311,6 +311,7 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/ftoff.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin.vim
 drwxr-xr-x	root/root	usr/share/vim/ftplugin/
+-rw-r--r--	root/root	usr/share/vim/ftplugin/8th.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/a2ps.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/aap.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/abap.vim
@@ -761,6 +762,7 @@ drwxr-xr-x	root/root	usr/share/vim/spell/
 -rw-r--r--	root/root	usr/share/vim/synmenu.vim
 drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/2html.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/8th.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/a2ps.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/a65.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/aap.vim
