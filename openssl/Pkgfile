@@ -11,9 +11,8 @@ source=(http://www.openssl.org/source/$name-$version.tar.gz \
 build() {
     cd $name-$version
 
-    export MAKEFLAGS="$MAKEFLAGS -j1"
-
     ./config --prefix=/usr \
+             --libdir=lib \
              --openssldir=/etc/ssl \
              shared \
              enable-ec_nistp_64_gcc_128
@@ -21,11 +20,9 @@ build() {
     sed -i "s|-O3|$CFLAGS|" Makefile
 
     make depend
-    make INSTALL_PREFIX=$PKG LIBDIR=lib MANDIR=/usr/share/man MANSUFFIX=ssl DESTDIR=$PKG install
+    make
+    make MANSUFFIX=ssl DESTDIR=$PKG install_sw install_ssldirs install_man_docs
 
     find $PKG -name "*fips*" -delete
-    chmod -R +w $PKG
     install -D -m 755 $SRC/mksslcert.sh $PKG/usr/bin/mksslcert
-    # Purge html docs
-    rm -r $PKG/usr/share/doc
 }
