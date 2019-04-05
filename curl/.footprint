@@ -111,6 +111,8 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ACCEPTTIMEOUT_MS.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ACCEPT_ENCODING.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ADDRESS_SCOPE.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ALTSVC.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/CURLOPT_ALTSVC_CTRL.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_APPEND.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_AUTOREFERER.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/CURLOPT_BUFFERSIZE.3.gz
