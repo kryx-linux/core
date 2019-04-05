@@ -21,6 +21,7 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/ansidecl.h
 -rw-r--r--	root/root	usr/include/bfd.h
+-rw-r--r--	root/root	usr/include/bfd_stdint.h
 -rw-r--r--	root/root	usr/include/bfdlink.h
 -rw-r--r--	root/root	usr/include/diagnostics.h
 -rw-r--r--	root/root	usr/include/dis-asm.h
@@ -174,15 +175,15 @@ drwxr-xr-x	root/root	usr/lib/ldscripts/
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xu
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xw
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xwe
--rwxr-xr-x	root/root	usr/lib/libbfd-2.31.1.so
+-rwxr-xr-x	root/root	usr/lib/libbfd-2.32.so
 -rw-r--r--	root/root	usr/lib/libbfd.a
 -rwxr-xr-x	root/root	usr/lib/libbfd.la
-lrwxrwxrwx	root/root	usr/lib/libbfd.so -> libbfd-2.31.1.so
+lrwxrwxrwx	root/root	usr/lib/libbfd.so -> libbfd-2.32.so
 -rw-r--r--	root/root	usr/lib/libiberty.a
--rwxr-xr-x	root/root	usr/lib/libopcodes-2.31.1.so
+-rwxr-xr-x	root/root	usr/lib/libopcodes-2.32.so
 -rw-r--r--	root/root	usr/lib/libopcodes.a
 -rwxr-xr-x	root/root	usr/lib/libopcodes.la
-lrwxrwxrwx	root/root	usr/lib/libopcodes.so -> libopcodes-2.31.1.so
+lrwxrwxrwx	root/root	usr/lib/libopcodes.so -> libopcodes-2.32.so
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
