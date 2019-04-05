@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjosnn7PntbpawFH5LcxwF9h8ZH754amtZ3P0JQfjNV+C8L1aYc4oQs4a1lpaDy6pEixPs+hFCM/X5Q/m3TwWww=
-SHA256 (Pkgfile) = 372dc3d77fdde0ffde3bc9a17889d5bc7a3e55dd2ab42f0377c75c6cdcbb3e18
+RWRJc1FUaeVeqmfkwhJh8YPw9P4ii0vi1PgsRl7gMO2mUeJxWYcCTOW6AV+mSAbE65X/eyH68e1BTD+JGJ24QQ8D9aOQLKJZ2ws=
+SHA256 (Pkgfile) = 06fbace71bcae4c12962d905a5cc3edfd7ab0045fecd219bdf9adf7f4270ceab
 SHA256 (.footprint) = 6580430c889fd6e30229e19a6a2f07f73b6b0934f354b7302c174b1a166d064b
-SHA256 (wget-1.20.2.tar.lz) = 84d3cbece8c08e130a8da0a72cf6e543a2adf58ca8ecf28726560b06243d4ce6
+SHA256 (wget-1.20.3.tar.lz) = 69607ce8216c2d1126b7a872db594b3f21e511e660e07ca1f81be96650932abb
 SHA256 (wgetrc) = d40a2188590d15e49daa2686b08b76b9725a2fa24f776dd1819fb473d7962a69
