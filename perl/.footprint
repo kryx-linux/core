@@ -9,8 +9,8 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/instmodsh
 -rwxr-xr-x	root/root	usr/bin/json_pp
 -rwxr-xr-x	root/root	usr/bin/libnetcfg
-lrwxrwxrwx	root/root	usr/bin/perl -> perl5.28.1
--rwxr-xr-x	root/root	usr/bin/perl5.28.1
+lrwxrwxrwx	root/root	usr/bin/perl -> perl5.28.2
+-rwxr-xr-x	root/root	usr/bin/perl5.28.2
 -rwxr-xr-x	root/root	usr/bin/perlbug
 -rwxr-xr-x	root/root	usr/bin/perldoc
 -rwxr-xr-x	root/root	usr/bin/perlivp
@@ -1234,8 +1234,10 @@ drwxr-xr-x	root/root	usr/lib/perl5/5.28/pod/
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5260delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5261delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5262delta.pod
+-rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5263delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5280delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5281delta.pod
+-rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl5282delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl561delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl56delta.pod
 -rw-r--r--	root/root	usr/lib/perl5/5.28/pod/perl581delta.pod
@@ -2012,8 +2014,10 @@ drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/perl5260delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl5261delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl5262delta.1pm.gz
+-rw-r--r--	root/root	usr/share/man/man1/perl5263delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl5280delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl5281delta.1pm.gz
+-rw-r--r--	root/root	usr/share/man/man1/perl5282delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl561delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl56delta.1pm.gz
 -rw-r--r--	root/root	usr/share/man/man1/perl581delta.1pm.gz
