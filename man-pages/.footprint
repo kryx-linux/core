@@ -2250,6 +2250,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/ttyname_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/ttyslot.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/twalk.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/twalk_r.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/tzname.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/tzset.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/ualarm.3.gz
