@@ -1,4 +1,5 @@
 drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/e2scrub.conf
 -rw-r--r--	root/root	etc/mke2fs.conf
 drwxr-xr-x	root/root	lib/
 lrwxrwxrwx	root/root	lib/libcom_err.so.2 -> libcom_err.so.2.1
@@ -9,6 +10,9 @@ lrwxrwxrwx	root/root	lib/libext2fs.so.2 -> libext2fs.so.2.4
 -rwxr-xr-x	root/root	lib/libext2fs.so.2.4
 lrwxrwxrwx	root/root	lib/libss.so.2 -> libss.so.2.0
 -rwxr-xr-x	root/root	lib/libss.so.2.0
+drwxr-xr-x	root/root	lib/udev/
+drwxr-xr-x	root/root	lib/udev/rules.d/
+-rw-r--r--	root/root	lib/udev/rules.d/96-e2scrub.rules
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/badblocks
 -rwxr-xr-x	root/root	sbin/debugfs
@@ -17,6 +21,8 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/e2image
 lrwxrwxrwx	root/root	sbin/e2label -> tune2fs
 lrwxrwxrwx	root/root	sbin/e2mmpstatus -> dumpe2fs
+-rwxr-xr-x	root/root	sbin/e2scrub
+-rwxr-xr-x	root/root	sbin/e2scrub_all
 -rwxr-xr-x	root/root	sbin/e2undo
 lrwxrwxrwx	root/root	sbin/fsck.ext2 -> e2fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext3 -> e2fsck
@@ -56,6 +62,8 @@ drwxr-xr-x	root/root	usr/include/ss/
 -rw-r--r--	root/root	usr/include/ss/ss.h
 -rw-r--r--	root/root	usr/include/ss/ss_err.h
 drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/e2fsprogs/
+-rwxr-xr-x	root/root	usr/lib/e2fsprogs/e2scrub_all_cron
 -rw-r--r--	root/root	usr/lib/libcom_err.a
 lrwxrwxrwx	root/root	usr/lib/libcom_err.so -> /lib/libcom_err.so.2
 -rw-r--r--	root/root	usr/lib/libe2p.a
@@ -102,6 +110,8 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/e2image.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e2label.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e2mmpstatus.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/e2scrub.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/e2scrub_all.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e2undo.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e4crypt.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/e4defrag.8.gz
