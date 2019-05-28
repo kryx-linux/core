@@ -13,13 +13,13 @@ drwxr-xr-x	root/root	usr/include/libiptc/
 -rw-r--r--	root/root	usr/include/xtables.h
 drwxr-xr-x	root/root	usr/lib/
 -rwxr-xr-x	root/root	usr/lib/libip4tc.la
-lrwxrwxrwx	root/root	usr/lib/libip4tc.so -> libip4tc.so.0.1.0
-lrwxrwxrwx	root/root	usr/lib/libip4tc.so.0 -> libip4tc.so.0.1.0
--rwxr-xr-x	root/root	usr/lib/libip4tc.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib/libip4tc.so -> libip4tc.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libip4tc.so.2 -> libip4tc.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib/libip4tc.so.2.0.0
 -rwxr-xr-x	root/root	usr/lib/libip6tc.la
-lrwxrwxrwx	root/root	usr/lib/libip6tc.so -> libip6tc.so.0.1.0
-lrwxrwxrwx	root/root	usr/lib/libip6tc.so.0 -> libip6tc.so.0.1.0
--rwxr-xr-x	root/root	usr/lib/libip6tc.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib/libip6tc.so -> libip6tc.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libip6tc.so.2 -> libip6tc.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib/libip6tc.so.2.0.0
 -rwxr-xr-x	root/root	usr/lib/libipq.la
 lrwxrwxrwx	root/root	usr/lib/libipq.so -> libipq.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libipq.so.0 -> libipq.so.0.0.0
@@ -88,7 +88,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_MARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NFLOG.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_NFQUEUE.so
--rwxr-xr-x	root/root	usr/lib/xtables/libxt_NOTRACK.so
+lrwxrwxrwx	root/root	usr/lib/xtables/libxt_NOTRACK.so -> libxt_CT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_RATEEST.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_SECMARK.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_SET.so
@@ -138,7 +138,7 @@ drwxr-xr-x	root/root	usr/lib/xtables/
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_set.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_socket.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_standard.so
--rwxr-xr-x	root/root	usr/lib/xtables/libxt_state.so
+lrwxrwxrwx	root/root	usr/lib/xtables/libxt_state.so -> libxt_conntrack.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_statistic.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_string.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_tcp.so
@@ -180,10 +180,12 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-extensions.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/xtables-legacy.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/xtables-monitor.8.gz
