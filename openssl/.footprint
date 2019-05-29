@@ -1571,6 +1571,7 @@ lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_DSA.3ssl.gz -> EVP_PKEY_se
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_EC_KEY.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_RSA.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_asn1.3ssl.gz -> EVP_PKEY_ASN1_METHOD.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_engine.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_hmac.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_poly1305.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/EVP_PKEY_get0_siphash.3ssl.gz -> EVP_PKEY_set1_RSA.3ssl.gz
@@ -2480,11 +2481,13 @@ lrwxrwxrwx	root/root	usr/share/man/man3/RSA_meth_set_verify.3ssl.gz -> RSA_meth_
 -rw-r--r--	root/root	usr/share/man/man3/RSA_new.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_new_method.3ssl.gz -> RSA_set_method.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_add_PKCS1_OAEP.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_add_PKCS1_OAEP_mgf1.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 -rw-r--r--	root/root	usr/share/man/man3/RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_add_PKCS1_type_2.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_add_SSLv23.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_add_none.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_check_PKCS1_OAEP.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_check_PKCS1_OAEP_mgf1.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_check_PKCS1_type_1.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_check_PKCS1_type_2.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/RSA_padding_check_SSLv23.3ssl.gz -> RSA_padding_add_PKCS1_type_1.3ssl.gz
