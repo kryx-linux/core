@@ -26,9 +26,14 @@ if [ "$PREVLEVEL" != "N" ]; then
 	/bin/sleep 5
 	/sbin/killall5 -9
 
+	if ! /bin/mountpoint -q /proc ; then
+		/bin/mount -n -t proc none /proc
+	fi
+	if ! /bin/mountpoint -q /sys ; then
+		/bin/mount -n -t sysfs none /sys
+	fi
+
 	# Start udev
-	/bin/mount -n -t proc none /proc
-	/bin/mount -n -t sysfs none /sys
 	/sbin/start_udev
   
 	if [ -f /etc/rc.d/$SYSLOG -a -x /etc/rc.d/$SYSLOG ]; then
