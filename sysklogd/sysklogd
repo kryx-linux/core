@@ -22,8 +22,8 @@ print_status() {
 
 case $1 in
 start)
-	$SSD --start --pidfile $SLOG_PID --exec $SLOG
-	$SSD --start --pidfile $KLOG_PID --exec $KLOG -- -s -c4
+	$SSD --start --oknodo --pidfile $SLOG_PID --exec $SLOG
+	$SSD --start --oknodo --pidfile $KLOG_PID --exec $KLOG -- -c4
 	;;
 stop)
 	$SSD --stop --retry 10 --pidfile $SLOG_PID 
