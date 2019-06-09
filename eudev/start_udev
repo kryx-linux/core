@@ -13,8 +13,10 @@ else
 	/bin/mount -n -t devtmpfs -o ${UDEVOPTS} dev /dev
 fi
 
-# mount /run directory
-/bin/mount -n -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
+# mount /run directory if not mounted
+if ! /bin/mountpoint -q /run ; then
+	/bin/mount -n -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
+fi
 
 # copy devcies from /lib/udev/devices
 cp -ar /lib/udev/devices/* /dev
