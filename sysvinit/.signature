@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqplflaJQjPUMu/f6IQlxicnoRhzo1GnYOym+8yQoYgm9mFCWloeEOLljuLnyRGZ997fYHI1iv4V5gVYKPuR9RQE=
-SHA256 (Pkgfile) = 6439a2f6bc12117ed7568d4c068d11b5f26f84d14d50355b4b1eeef50dc4e02b
+RWRJc1FUaeVequltWnTzfPpyj3XT7HHSu4LHKksMaNKohRmu7x1qeAbieVPhw7Bud5UXobhal6WXC33tSQdMNWI7IChBHBrMMAI=
+SHA256 (Pkgfile) = ae20248a746b52b0b2a9dd4b83ab26ba84479a336472bf27f0fad6b82197cabb
 SHA256 (.footprint) = be9ab96641638c54bb18e5756ed3f31b1f659ff9f4477a381cffa22d0bb43df8
-SHA256 (sysvinit-2.94.tar.xz) = 7e09c5641fe5436ad3e158720acd2e6e0d4eba074abb9b53bce3ca989f839a17
+SHA256 (sysvinit-2.95.tar.xz) = c9029cb93f36bbbad8e1ce109f75e6f4d26056d271106e8812cda7159b6f86c8
