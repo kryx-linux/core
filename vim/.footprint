@@ -644,6 +644,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/tf.vim
 -rw-r--r--	root/root	usr/share/vim/indent/tilde.vim
 -rw-r--r--	root/root	usr/share/vim/indent/treetop.vim
+-rw-r--r--	root/root	usr/share/vim/indent/typescript.vim
 -rw-r--r--	root/root	usr/share/vim/indent/vb.vim
 -rw-r--r--	root/root	usr/share/vim/indent/verilog.vim
 -rw-r--r--	root/root	usr/share/vim/indent/vhdl.vim
@@ -1305,6 +1306,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/tt2.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tt2html.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tt2js.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/typescript.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/uc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/udevconf.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/udevperm.vim
