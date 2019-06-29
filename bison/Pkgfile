@@ -4,7 +4,7 @@
 
 name=bison
 version=3.4.1
-release=1
+release=2
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
@@ -13,5 +13,5 @@ build() {
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/share/{doc,info}
-    rm $PKG/usr/share/bison/README.md
+    rm $PKG/usr/share/bison/{README.md,skeletons/README-D.txt}
 }
