@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeql66M33CFcmws52jNlLfJ2NZhGOV1mgy9HNUpqbHcoj8oYGKRgTIY4u8R05pdCI4lc2Y4/pykz5PZFgrG+xkGwE=
-SHA256 (Pkgfile) = 42748aa99094ee2d8f6c446b295dfc6b3f69aebede8a1a7201af01217f792c33
-SHA256 (.footprint) = 18c9769c1f4af50237f4c5ba4d83bf91f4e95ebf22a30ed20748d525dd53aa70
-SHA256 (kbd-2.0.4.tar.xz) = 5fd90af6beb225a9bb9b9fb414c090fba53c9a55793e172f508cd43652e59a88
+RWRJc1FUaeVeqvBmelSaoTm4k8ShMBH8DUWQe8s3hxIY7vnudr2FR/e+gLWEUPkwSNzUKRg6JQRZ18ZLyCMeARgjJ/NSi+7/rQk=
+SHA256 (Pkgfile) = 49e87b1f590efd6445d08eba4634e8aac7074a80e0403e6a52af7ce901606157
+SHA256 (.footprint) = e09e539b0e4723c6c9b0a4378065beb476ed413d78c1c769ec311dfb934da5ec
+SHA256 (kbd-2.1.0.tar.xz) = 6740e896b9fe62b7234ff64e4b41cf5f3e1c3a4032cbd963eefebe04f2457cc1
