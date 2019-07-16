@@ -1,6 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqtSaR8KmQJBQ42ZPq7gG/WKS6ryjPKzIxFJq9Av01uipl02WPyUj6LHeMJqeXPuBoD4OeXawP/19Hlp9crcpBgM=
-SHA256 (Pkgfile) = a58cf0c6522f7ab5bb01380c8171ed5418ff12ad642ece0d7492677aed10d3f0
+RWRJc1FUaeVeqqTTda3lGhoFbfUNfGEvlKA373XqcWhy+jerWp0k5EvFFCXLdS31QrnfCKEuFKSsxvW9V9j25rIHDWJj//3U5gs=
+SHA256 (Pkgfile) = 9434aebdaa725f508aff48752d7cf296b4958be68bb45d1d429119783d3a83ad
 SHA256 (.footprint) = 01ad0142672053f07bc5f2c5e481cb8cde032296c7eb3ff97334d626dce4f45c
 SHA256 (bash-5.0.tar.gz) = b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d
+SHA256 (bash-5.0.7.patch.gz) = 6ac2df15a829dcf4ec492b00caa518e7dd4b2a834a391365d5df725e8f294d2a
 SHA256 (profile) = 10dd02d41a7931a841bdfb5ca7c3fee476a901373b571c4a7c621ef255804ed5
