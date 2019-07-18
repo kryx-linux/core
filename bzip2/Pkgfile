@@ -4,7 +4,7 @@
 
 name=bzip2
 version=1.0.8
-release=1
+release=2
 source=(https://sourceware.org/pub/bzip2/$name-$version.tar.gz)
 
 build() {
@@ -17,7 +17,7 @@ build() {
 
 	install libbz2.so.$version $PKG/usr/lib
 	ln -s libbz2.so.$version $PKG/usr/lib/libbz2.so
-	ln -s libbz2.so.$version $PKG/usr/lib/libbz2.so.1
+	ln -s libbz2.so.$version $PKG/usr/lib/libbz2.so.1.0
 
 	make clean
 	make
