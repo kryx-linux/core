@@ -3332,7 +3332,6 @@ drwxr-xr-x	root/root	usr/share/man/man5/
 -rw-r--r--	root/root	usr/share/man/man5/hosts.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/hosts.equiv.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/intro.5.gz
--rw-r--r--	root/root	usr/share/man/man5/ipc.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/issue.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/locale.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/motd.5.gz
@@ -3502,6 +3501,7 @@ drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/suffixes.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/svipc.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/symlink.7.gz
+-rw-r--r--	root/root	usr/share/man/man7/sysvipc.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/tcp.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/termio.7.gz
 -rw-r--r--	root/root	usr/share/man/man7/thread-keyring.7.gz
