@@ -258,6 +258,7 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/doc/tagsrch.txt
 -rw-r--r--	root/root	usr/share/vim/doc/term.txt
 -rw-r--r--	root/root	usr/share/vim/doc/terminal.txt
+-rw-r--r--	root/root	usr/share/vim/doc/testing.txt
 -rw-r--r--	root/root	usr/share/vim/doc/textprop.txt
 -rw-r--r--	root/root	usr/share/vim/doc/tips.txt
 -rw-r--r--	root/root	usr/share/vim/doc/todo.txt
@@ -364,6 +365,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dosini.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dtd.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dtrace.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/dune.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/eiffel.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/elinks.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/erlang.vim
@@ -906,6 +908,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/dtml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dtrace.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dts.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/dune.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dylan.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dylanintr.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/dylanlid.vim
@@ -981,6 +984,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/hgcommit.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hitest.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hog.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/hollywood.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hostconf.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hostsaccess.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/html.vim
@@ -1335,6 +1339,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/vrml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/vroom.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/vsejcl.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/vue.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/wast.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/wdiff.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/web.vim
