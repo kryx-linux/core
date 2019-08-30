@@ -21,6 +21,7 @@ build() {
                 --with-udev-prefix= \
                 --mandir=/usr/share/man \
                 --disable-readline \
+                --disable-selinux \
                 --enable-pkgconfig \
                 --enable-static_link \
                 --enable-udev_sync \
