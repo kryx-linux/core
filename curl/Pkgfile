@@ -1,12 +1,12 @@
 # Description: A tool for transfering files with URL syntax
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# URL:         http://curl.haxx.se 
+# URL:         https://curl.haxx.se
 # Depends on:  openssl, zlib
 
 name=curl
-version=7.65.3
+version=7.66.0
 release=1
-source=(http://curl.haxx.se/download/$name-$version.tar.xz)
+source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
