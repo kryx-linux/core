@@ -1,6 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqkRVNaDIKJMoDe/Jh69kKy4ow1rZErb45aghcXR7jJADvsDsZS3ZAnPH5jxAEdEOSOWRILmgkU+Aed5jDL/iZAo=
-SHA256 (Pkgfile) = ee5f0427d665184287623c2cdbc55f3e83cccb9e55695a57c38f50c82ce8a136
+RWRJc1FUaeVeqpQgmMxnw+PgKAfnaalvtWMacljY/aRbBRwAWsu0rdI2y5bh6Sb0dcyyFQJtCNNSMB+MrmI6gfx67yGHjEdBhgE=
+SHA256 (Pkgfile) = 6930cf87b8838e8e995318b4e1831452832dd45deff59a07c3ec495bb9df4f0a
 SHA256 (.footprint) = 26cfb1dd44c5356afcdba7aa054685d535b15b4ab96897ad7bd24a6c9a14b9fe
-SHA256 (cpio-2.12.tar.bz2) = 70998c5816ace8407c8b101c9ba1ffd3ebbecba1f5031046893307580ec1296e
-SHA256 (CVE-2017-7516.patch) = 8f65ddc3cd60b1bef5032b1a4bc53f17f1c01f1b2d11c4809f3fd29dd9f3a3fa
+SHA256 (cpio-2.13.tar.bz2) = eab5bdc5ae1df285c59f2a4f140a98fc33678a0bf61bdba67d9436ae26b46f6d
