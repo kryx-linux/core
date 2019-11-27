@@ -4,7 +4,7 @@
 # Depends on: bzip2 xz zlib
 
 name=elfutils
-version=0.177
+version=0.178
 release=1
 source=(https://sourceware.org/$name/ftp/$version/$name-$version.tar.bz2)
 
@@ -14,6 +14,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--program-prefix=eu- \
+		--disable-debuginfod \
 		--disable-nls
 
 	make
