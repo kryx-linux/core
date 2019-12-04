@@ -4,7 +4,7 @@
 # Depends on:  acl linux-pam
 
 name=shadow
-version=4.7
+version=4.8
 release=1
 source=(https://github.com/shadow-maint/$name/releases/download/$version/$name-$version.tar.xz \
         pwck login.defs chfn chsh login groupadd groupdel \
@@ -14,6 +14,8 @@ build() {
     cd $name-$version
 
     ./configure --prefix=/usr \
+                --bindir=/usr/bin \
+                --sbindir=/usr/sbin \
                 --sysconfdir=/etc \
                 --disable-shared \
                 --disable-shadowgrp \
@@ -24,10 +26,14 @@ build() {
     make
     make DESTDIR=$PKG install
 
+    install -d $PKG/{bin,sbin}
+    mv $PKG/usr/bin/login $PKG/bin
+    mv $PKG/usr/sbin/nologin $PKG/sbin
+    chmod -s $PKG/usr/sbin/*
+
     install -d $PKG/etc/cron/daily $PKG/var/log
     install -m 644 $SRC/login.defs $PKG/etc
     install -m 755 $SRC/pwck $PKG/etc/cron/daily
-    mv $PKG/bin/{su,groups} $PKG/usr/bin
     touch $PKG/var/log/{lastlog,faillog}
 
     rm -r $PKG/usr/bin/gpasswd \
