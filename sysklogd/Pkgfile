@@ -1,32 +1,36 @@
 # Description: Kernel and system logging daemons
-# URL:         http://www.infodrom.org/projects/sysklogd/
+# URL:         https://github.com/troglobit/sysklogd
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysklogd
-version=1.5.1
-release=8
-source=(http://www.infodrom.org/projects/$name/download/$name-$version.tar.gz \
-        sysklogd.diff rotatelog syslog syslog.conf sysklogd)
+version=2.0.3
+release=1
+source=(https://github.com/troglobit/sysklogd/releases/download/v$version/$name-$version.tar.gz \
+        rotatelog syslog syslog.conf sysklogd)
 
 build() {
     cd $name-$version
 
-    patch -p1 -i $SRC/sysklogd.diff
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --runstatedir=/var/run \
+        --with-klogd \
+        --without-logger \
 
-    install -d $PKG/usr/sbin \
-               $PKG/etc/{cron/weekly,rc.d} \
-               $PKG/var/log \
-               $PKG/usr/share/man/{man5,man8}
+    make
+    make DESTDIR=$PKG install
 
-    make RPM_OPT_FLAGS="$CFLAGS" all
-    make BINDIR=$PKG/usr/sbin MANDIR=$PKG/usr/share/man install
-
+    install -d $PKG/etc/{cron/weekly,rc.d}
     install -m 755 $SRC/rotatelog $PKG/usr/sbin
     install -m 755 $SRC/syslog $PKG/etc/cron/weekly
     install -m 644 $SRC/syslog.conf $PKG/etc
     install -m 755 $SRC/sysklogd $PKG/etc/rc.d
 
-    chmod -R +w $PKG
+    install -d $PKG/var/log
     touch $PKG/var/log/{messages,auth,mail,cron,kernel,debug}
     chmod 640 $PKG/var/log/{messages,auth,mail,cron,kernel,debug}
+
+    rm -r $PKG/usr/share/doc
 }
