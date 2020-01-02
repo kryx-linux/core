@@ -1,5 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqo6PZUSwHBoKvgHmMItqCb3t+kCeSaKafRjb4P+JXg1pY+kwfz+p5nrvQhrgPIHRueX1spi6tDwzM3NsP+W1/QQ=
-SHA256 (Pkgfile) = 885eb9b9b3f2ac138fba3676f9b1c27d46d890efef4ebb723d66fd0261da31b0
-SHA256 (.footprint) = a4ceb1b3989805702668f9a8701f250507d1d989873ef6e551e03e68ccf78ead
+RWRJc1FUaeVeqjBUHgTEKedjZshhnwNSOaxAYgQQEvnWKBDZbLuMJBBXu6bTZpaKf/E3C36wjz/TIyDCwqmBi1QIVANFb9Qqeg4=
+SHA256 (Pkgfile) = 93d8d0817562261582dacd34fc4e7b2863525e678e0ef614411e0385e5cc3c8e
+SHA256 (.footprint) = b3adda1066793020d872c92cd2bf69122903dc0e0eba916893effb98a1d622e0
 SHA256 (libcap-2.29.tar.xz) = 6c83352c316c40d1d4c8ad704e13dc36840ff05eccc36050aa18e42e7f2aa7f8
+SHA256 (libcap-2.29-libpsx_pkgconfig.patch) = b4b20c4b8b24a2d99347685d77f8b492d9efbac793b6c6ff589cc4b50d261725
