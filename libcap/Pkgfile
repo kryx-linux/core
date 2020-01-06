@@ -5,7 +5,7 @@
 
 name=libcap
 version=2.30
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
 
 build () {
@@ -16,7 +16,9 @@ build () {
     make GOLANG=no RAISE_SETFCAP=no DESTDIR=$PKG install
 
     install -d $PKG/usr/lib
-    mv $PKG/lib/libcap.a $PKG/usr/lib
+    mv $PKG/lib/lib{cap,psx}.a $PKG/usr/lib
     rm $PKG/lib/libcap.so
     ln -s ../../lib/libcap.so.$version $PKG/usr/lib/libcap.so
+
+    sed '/^libdir/s|/lib|/usr/lib|' -i $PKG/usr/lib/pkgconfig/*.pc
 }
