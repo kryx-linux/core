@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysklogd
-version=2.0.3
+version=2.1
 release=1
 source=(https://github.com/troglobit/sysklogd/releases/download/v$version/$name-$version.tar.gz \
         rotatelog syslog syslog.conf sysklogd)
@@ -15,14 +15,12 @@ build() {
         --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --runstatedir=/var/run \
-        --with-klogd \
         --without-logger \
 
     make
     make DESTDIR=$PKG install
 
-    install -d $PKG/etc/{cron/weekly,rc.d}
+    install -d $PKG/etc/{cron/weekly,rc.d,syslog.d}
     install -m 755 $SRC/rotatelog $PKG/usr/sbin
     install -m 755 $SRC/syslog $PKG/etc/cron/weekly
     install -m 644 $SRC/syslog.conf $PKG/etc
