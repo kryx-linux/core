@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqtNIvsBCf1LhMcQ6WV6fG5hvP20aSWHIYvK9T5Ypw7moAjSUiQaaxunKXlGf/kiq24kF0FlH60NrbixHHy3g7wQ=
-SHA256 (Pkgfile) = c7db7fef88b1857e50f6d3d43d65a193ea77175097dab29dc97237d5f21373c1
+RWRJc1FUaeVeqtJ3rnvTXvoFXrqrs9p4GQFXJ7hWlM04SxS4Byx2TDPa3UmlGDRkK9knBxrIXj38/iRkHsRCki5LMj/bjtLqBg8=
+SHA256 (Pkgfile) = 620b6b05a1a03eb725a0bed56d938cd306e0845bc403a8b08eff81d5ae42b1fa
 SHA256 (.footprint) = 3e5fe8471a7a9057c0c7486c016ea2ed1dc5ebd72adc13c23f432ef468d2fc5d
-SHA256 (exim-4.93.0.3.tar.xz) = 8156bbe67fa72c0a297207ca0c3bb99f230df08d38d95df91f1c284b0a12983f
+SHA256 (exim-4.93.0.4.tar.xz) = 537d366ee18ed357656f54f255f8f9e11bde9684fcaaecaaa56f84cdbcd3e405
 SHA256 (exim) = 850f72cb4d069dc8d15ce138623e6b6a7fe33f5daebe37fbf93c7801fa2d6134
 SHA256 (exim-config.patch) = 3e4371b27625223496c17cec91194c4ab1e39181c3b939cc3554f484f9a88bc9
