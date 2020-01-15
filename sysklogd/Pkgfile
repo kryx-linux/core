@@ -17,7 +17,7 @@ build() {
         --localstatedir=/var \
         --without-logger \
 
-    make
+    make -j1
     make DESTDIR=$PKG install
 
     install -d $PKG/etc/{cron/weekly,rc.d,syslog.d}
