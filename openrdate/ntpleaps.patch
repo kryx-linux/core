@@ -1,7 +1,6 @@
-diff -rupN openrdate-1.2-orig/src/ntpleaps.c openrdate-1.2/src/ntpleaps.c
---- openrdate-1.2-orig/src/ntpleaps.c	2008-03-19 19:21:29.000000000 +0100
-+++ openrdate-1.2/src/ntpleaps.c	2017-08-27 14:41:55.618929195 +0200
-@@ -125,7 +125,7 @@ ntpleaps_read(void)
+--- ntpleaps.c.orig	2020-03-12 15:12:33.299103455 +0100
++++ ntpleaps.c	2020-03-12 15:13:28.044382840 +0100
+@@ -124,7 +124,7 @@
  	u_int64_t s;
  	u_int64_t *l;
  
