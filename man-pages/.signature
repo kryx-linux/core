@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqi86iT2VDZy5//0iXMdUImD+QEr0qsvvWUDuyqCqmGZdkUoZGlbcW12Jl4PJu1hT2RY3upw2nyxclMtYBGXkZQA=
-SHA256 (Pkgfile) = 886da8cf39063c93842df85146cb58b7df31d2fbb646e997b5f31b41c54dbcc8
-SHA256 (.footprint) = fd7cd7602d8a58231f42a5e02aaf5c5885a2d38ab8d03e1a63cc5bd581149fb2
-SHA256 (man-pages-5.05.tar.xz) = d5b135b1196d9258138610dbc47190d8b9ac9dee7f8ee6d9196f7fc6a036eb47
+RWRJc1FUaeVeqv9dJKKbmJki40FPtAnf0Ws1AvzRMaLqLZTUsL96+U/Cx7YgIMtjZEb1CkCr/aPldK0CleWT0WAXw/I6Ip9xqwk=
+SHA256 (Pkgfile) = 5bcd1b30fa822741f9bec3f8517861f1798adcc71310124ba4467d6ba5ef869a
+SHA256 (.footprint) = 6859cca1d3fa1f985df1431b05624d26734d39a928d3c1e7bc5fe49dfb314d48
+SHA256 (man-pages-5.06.tar.xz) = 70b8a902a9daa0a596188c1925373199dbad590eb06d7c0e505c4b33e8bbfe50
 SHA256 (man-pages-posix-2013-a.tar.xz) = 19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808
