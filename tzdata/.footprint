@@ -193,6 +193,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo-leaps/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/North_Dakota/Beulah
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/North_Dakota/Center
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/North_Dakota/New_Salem
+-rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/Nuuk
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/Ojinaga
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/Panama
 -rw-r--r--	root/root	usr/share/zoneinfo-leaps/America/Pangnirtung
@@ -808,6 +809,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/North_Dakota/Beulah
 -rw-r--r--	root/root	usr/share/zoneinfo/America/North_Dakota/Center
 -rw-r--r--	root/root	usr/share/zoneinfo/America/North_Dakota/New_Salem
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Nuuk
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Ojinaga
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Panama
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Pangnirtung
