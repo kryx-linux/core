@@ -4,12 +4,13 @@
 # Depends on:  zlib flex
 
 name=binutils
-version=2.32
+version=2.34
 release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in 
+    sed -i '/^SUBDIRS/s/doc//' $name-$version/binutils/Makefile.in
 
     mkdir build
     cd build
@@ -23,10 +24,10 @@ build() {
                                 --enable-install-libiberty \
                                 --disable-werror
 
-    make tooldir=/usr
+    make -j1 tooldir=/usr
     make tooldir=/usr DESTDIR=$PKG install
 
     rm -r $PKG/usr/share/info
-    rm $PKG/usr/share/man/man1/{dlltool,windres,windmc}.1
+    #rm $PKG/usr/share/man/man1/{dlltool,windres,windmc}.1
     sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,opcodes}.la
 }
