@@ -218,6 +218,7 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/doc/os_amiga.txt
 -rw-r--r--	root/root	usr/share/vim/doc/os_beos.txt
 -rw-r--r--	root/root	usr/share/vim/doc/os_dos.txt
+-rw-r--r--	root/root	usr/share/vim/doc/os_haiku.txt
 -rw-r--r--	root/root	usr/share/vim/doc/os_mac.txt
 -rw-r--r--	root/root	usr/share/vim/doc/os_mint.txt
 -rw-r--r--	root/root	usr/share/vim/doc/os_msdos.txt
@@ -826,6 +827,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/bib.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bindzone.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/blank.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/bsdl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bst.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/btm.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bzl.vim
