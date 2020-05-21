@@ -4,15 +4,15 @@
 
 name=glibc
 version=2.31
-release=1
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz \
+release=2
+source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.42.tar.xz \
 	glibc-$version-1.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.5
+	cd linux-5.4.42
 	make mrproper
 	make headers_check
 	make INSTALL_HDR_PATH=$PKG/usr headers_install

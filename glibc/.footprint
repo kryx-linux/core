@@ -1306,6 +1306,7 @@ drwxr-xr-x	root/root	usr/include/protocols/
 -rw-r--r--	root/root	usr/include/pwd.h
 drwxr-xr-x	root/root	usr/include/rdma/
 -rw-r--r--	root/root	usr/include/rdma/bnxt_re-abi.h
+-rw-r--r--	root/root	usr/include/rdma/cxgb3-abi.h
 -rw-r--r--	root/root	usr/include/rdma/cxgb4-abi.h
 -rw-r--r--	root/root	usr/include/rdma/efa-abi.h
 drwxr-xr-x	root/root	usr/include/rdma/hfi/
