@@ -11,6 +11,7 @@ source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
+                --enable-{shared,static} \
                 --disable-{csharp,java,nls} \
                 --without-{emacs,git} \
                 --with-included-{glib,libcroco,libxml}
