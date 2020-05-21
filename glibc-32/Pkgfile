@@ -3,21 +3,21 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.28
-release=2
+version=2.31
+release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.24.tar.xz \
-	glibc-2.28-1.patch lib32.conf) 
+	http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.42.tar.xz \
+	glibc-$version-1.patch lib32.conf) 
 
 build() {
-        # install kernel headers
-        cd linux-4.19.24
-        make mrproper
-        make headers_check
-        make INSTALL_HDR_PATH=$PKG/usr headers_install
-        chown root:root $PKG/usr
+	# install kernel headers
+	cd linux-5.4.42
+	make mrproper
+	make headers_check
+	make INSTALL_HDR_PATH=$PKG/usr headers_install
+	chown root:root $PKG/usr
 
-        patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-1.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-1.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
