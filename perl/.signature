@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpd21oa4HPa1dDX0zfSEHimvOAM3DOohUTJ3/fB2TuJ5bVCY1PaHO98VxwPcW0DnN1G6bARIl2opZlwc8rbt8QA=
-SHA256 (Pkgfile) = eb4a7b2649a7d2415eee0df701ed25c44d44d827e1e54c5c3580bdcaef8133e8
-SHA256 (.footprint) = 4ede749d395ec062cae5775db28ebd94a67e9cafd666433cce2715962f260f0e
-SHA256 (perl-5.28.2.tar.xz) = 0b0189bfa4b2da20e899b4bdd746ac402e8f746a58e4fcf5516484157f2aab07
+RWRJc1FUaeVeqhMG6iXDeEjm6nrJaeOo8VfsmuP0bCQpGm+AST1yIMByo6S7gfOvpCKKtTdXC9fHABDh6b2l1Snza57Icp7fbAY=
+SHA256 (Pkgfile) = ba3172d774a980d0baca97425a77fec9d0131c235ce1204bc24033a3c03bcc74
+SHA256 (.footprint) = 03c1d232ab16c3f87ca985f522c233061e123d14184d78412240cc9ede6c28d8
+SHA256 (perl-5.30.2.tar.xz) = a1aa88bd6fbbdc2e82938afbb76c408b0ea847317737b712dc196cc7907a5259
