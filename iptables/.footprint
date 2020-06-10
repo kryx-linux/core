@@ -25,9 +25,9 @@ lrwxrwxrwx	root/root	usr/lib/libipq.so -> libipq.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libipq.so.0 -> libipq.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libipq.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.12.2.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.12 -> libxtables.so.12.2.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.12.2.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.12.3.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.12 -> libxtables.so.12.3.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.12.3.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libip4tc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libip6tc.pc
@@ -145,6 +145,7 @@ lrwxrwxrwx	root/root	usr/lib/xtables/libxt_state.so -> libxt_conntrack.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_udp.so
 drwxr-xr-x	root/root	usr/sbin/
 lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-apply -> iptables-apply
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-restore -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-save -> xtables-legacy-multi
@@ -174,9 +175,11 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/ipq_set_verdict.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/libipq.3.gz
 drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-apply.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-save.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-apply.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-extensions.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-save.8.gz
