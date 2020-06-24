@@ -1,5 +1,5 @@
 # Description: Control the creation and termination of system-level processes
-# URL:         http://man7.org/linux/man-pages/man8/start-stop-daemon.8.html
+# URL:         https://man7.org/linux/man-pages/man8/start-stop-daemon.8.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=start-stop-daemon
