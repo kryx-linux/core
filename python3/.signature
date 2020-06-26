@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqjy3qcdcu7kIzvfmNee28R0vJ/oPwtjzlb1p4hJ05dzhq56aR6WBDjKju5JJR4vjQqbti8YsMwWFY5dK7PMftQA=
+SHA256 (Pkgfile) = 588d05364ff0ccb47350917b7f11a72686e6da24647a78f7613d185add3a7150
+SHA256 (.footprint) = 761444f44ccb4a90a3bf843156f8f5af7d51678c4f3de3a3c10b2d79da39aae4
+SHA256 (Python-3.8.3.tar.xz) = dfab5ec723c218082fe3d5d7ae17ecbdebffa9a1aea4d64aa3a2ecdd2e795864
