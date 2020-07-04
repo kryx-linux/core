@@ -5,8 +5,9 @@
 
 name=dhcpcd
 version=9.1.4
-release=1
-source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz)
+release=2
+source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
+        rc.dhcpcd)
 
 build () {
     cd $name-$version
@@ -22,6 +23,7 @@ build () {
     make DESTDIR=$PKG install
 
     install -d -o dhcpcd -g dhcpcd $PKG/var/lib/dhcpcd
+    install -D -m 0755 $SRC/rc.dhcpcd $PKG/etc/rc.d/dhcpcd
 
     chmod -R u+w $PKG
 }
