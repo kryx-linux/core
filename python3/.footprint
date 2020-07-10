@@ -7,7 +7,7 @@ lrwxrwxrwx	root/root	usr/bin/idle3 -> idle3.8
 lrwxrwxrwx	root/root	usr/bin/pydoc3 -> pydoc3.8
 -rwxr-xr-x	root/root	usr/bin/pydoc3.8
 lrwxrwxrwx	root/root	usr/bin/python3 -> python3.8
-lrwxrwxrwx	root/root	usr/bin/python3-config -> python3.8m-config
+lrwxrwxrwx	root/root	usr/bin/python3-config -> python3.8-config
 -rwxr-xr-x	root/root	usr/bin/python3.8
 -rwxr-xr-x	root/root	usr/bin/python3.8-config
 drwxr-xr-x	root/root	usr/include/
@@ -129,7 +129,6 @@ drwxr-xr-x	root/root	usr/include/python3.8/internal/
 -rw-r--r--	root/root	usr/include/python3.8/pystrcmp.h
 -rw-r--r--	root/root	usr/include/python3.8/pystrhex.h
 -rw-r--r--	root/root	usr/include/python3.8/pystrtod.h
-lrwxrwxrwx	root/root	usr/include/python3.8/python3.8m -> python3.8m
 -rw-r--r--	root/root	usr/include/python3.8/pythonrun.h
 -rw-r--r--	root/root	usr/include/python3.8/pythread.h
 -rw-r--r--	root/root	usr/include/python3.8/pytime.h
