@@ -1,7 +1,7 @@
 # Description: The GNU Compiler Collection
 # URL:         http://gcc.gnu.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  zlib libmpc
+# Depends on:  zlib libmpc zstd
 
 name=gcc
 version=10.1.0
