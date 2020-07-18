@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequDzRTGv9synxAEfRYpHF3aE08R/ir4WkAtfHfMFeNDYlmH9++Q+4CJO7DswzsJ2T2xV4LiVVj/fC5cMGpWMEgM=
-SHA256 (Pkgfile) = dc277920bd46737ea31bcd532977dde87a7cf78aaefe2319f902cf9cdb0f75d5
+RWRJc1FUaeVeqr9HPQJdr6+Ue7GKQFWZARuK8ST6a9y5cSqduqoIiMfWPasTogZUMZqFT4z05oI+nwhz4Ixde7b+w/LckW+NFAo=
+SHA256 (Pkgfile) = 1cde000f59e63c88aa33166c527046f6fd438a6a6769a24c1f8f7c6a3ee2f93e
 SHA256 (.footprint) = 79491872e3f3d7fcf8b9bb31cccdf16a41987da60df1d6d451d9b62f0335d7d5
 SHA256 (outils-0.9.tar.gz) = b7afdf1a0d11b9d5a0e1ea165ad2841e32b21245ec573170cb6498a13bf43b73
 SHA256 (ntpleaps.patch) = 057258ba8907bf4cda09d30d84a4500b4faa213f959d0cd98a87321637c86d25
