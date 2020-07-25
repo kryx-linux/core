@@ -4,8 +4,8 @@
 # Depends on:  zlib flex
 
 name=binutils
-version=2.34
-release=3
+version=2.35
+release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
@@ -25,7 +25,7 @@ build() {
                                 --disable-werror \
                                 --with-system-zlib
 
-    make -j1 tooldir=/usr
+    make tooldir=/usr
     make tooldir=/usr DESTDIR=$PKG install
 
     rm -r $PKG/usr/share/info
