@@ -26,7 +26,6 @@ build() {
 		--enable-ipv6 \
 		--enable-loadable-sqlite-extensions \
 		--with-computed-gotos \
-		--with-threads \
 		--with-system-expat \
 		--with-system-ffi \
 		--with-system-libmpdec \
