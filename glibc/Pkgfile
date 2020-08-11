@@ -3,16 +3,16 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.31
-release=2
+version=2.32
+release=1
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.42.tar.xz \
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.57.tar.xz \
 	glibc-$version-1.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.4.42
+	cd linux-5.4.57
 	make mrproper
 	make headers_check
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
@@ -29,8 +29,6 @@ build() {
 		--enable-add-ons \
 		--enable-static-nss \
 		--enable-stack-protector=strong \
-		--enable-obsolete-rpc \
-		--enable-obsolete-nsl \
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
@@ -43,10 +41,6 @@ build() {
 	install -d $PKG/var/{db,run}/nscd
 
 	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
-
-	# install needed headers
-	install -d $PKG/usr/include/rpcsvc
-	install -m 0644 $SRC/$name-${version:0:4}/nis/rpcsvc/yp* $PKG/usr/include/rpcsvc
 
 	ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
 	install -d $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
