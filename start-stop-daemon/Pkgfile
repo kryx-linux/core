@@ -4,15 +4,13 @@
 
 name=start-stop-daemon
 version=20190310
-release=1
+release=2
 source=(start-stop-daemon.c start-stop-daemon.8 crux-patch.diff makefile)
 
 build () {
-    patch -p1 -i crux-patch.diff
-
-    make
-
-    install -d $PKG/{sbin,usr/share/man/man8}
-    install -m 755 $name $PKG/sbin/
-    install -m 644 $name.8 $PKG/usr/share/man/man8/
+	patch -p0 -i crux-patch.diff
+	make
+	install -d $PKG/{sbin,usr/share/man/man8}
+	install -m 755 $name $PKG/sbin/
+	install -m 644 $name.8 $PKG/usr/share/man/man8/
 }
