@@ -5,13 +5,15 @@
 
 name=libcap
 version=2.42
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
 
 build () {
 	cd $name-$version
 
 	sed -i "/^CFLAGS/s/-O2/$CFLAGS/" Make.Rules 
+	sed -i "/^install:/c\
+		install: install-static install-shared" libcap/Makefile
 
 	make install \
 		GOLANG=no \
