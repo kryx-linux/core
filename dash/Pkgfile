@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dash
-version=0.5.11.1
+version=0.5.11.2
 release=1
 source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz)
 
