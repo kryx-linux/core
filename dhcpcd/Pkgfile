@@ -4,8 +4,8 @@
 # Depends on:  eudev
 
 name=dhcpcd
-version=9.1.4
-release=2
+version=9.2.0
+release=1
 source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
         rc.dhcpcd)
 
