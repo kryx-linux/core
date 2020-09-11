@@ -1,7 +1,7 @@
 # Description: A tool for transfering files with URL syntax
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # URL:         https://curl.haxx.se
-# Depends on:  openssl, zlib
+# Depends on:  openssl zlib zstd
 
 name=curl
 version=7.72.0
