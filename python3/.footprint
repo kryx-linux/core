@@ -177,6 +177,7 @@ lrwxrwxrwx	root/root	usr/lib/libpython3.9.so -> libpython3.9.so.1.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/python-3.9-embed.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/python-3.9.pc
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/python3-embed.pc -> python-3.9-embed.pc
 lrwxrwxrwx	root/root	usr/lib/pkgconfig/python3.pc -> python-3.9.pc
 lrwxrwxrwx	root/root	usr/lib/python3 -> python3.9
 drwxr-xr-x	root/root	usr/lib/python3.9/
