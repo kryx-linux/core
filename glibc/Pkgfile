@@ -4,21 +4,21 @@
 
 name=glibc
 version=2.32
-release=1
+release=2
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.57.tar.xz \
-	glibc-$version-1.patch \
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.72.tar.xz \
+	glibc-$version-2.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.4.57
+	cd linux-5.4.72
 	make mrproper
 	make headers_check
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-1.patch
+	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-2.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
