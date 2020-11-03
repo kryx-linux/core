@@ -4,7 +4,7 @@
 
 name=iptables
 version=1.8.6
-release=1
+release=2
 source=(https://netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 
 build () {
