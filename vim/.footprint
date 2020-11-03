@@ -109,6 +109,13 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/cs.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/csslint.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/cucumber.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dart.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dart2js.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dart2native.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dartanalyser.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dartdevc.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dartdoc.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/dartfmt.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/decada.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/dot.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/erlang.vim
@@ -157,6 +164,7 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/pylint.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/pyunit.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rake.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/rhino.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rspec.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rst.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rubocop.vim
@@ -165,6 +173,7 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/rustc.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/sass.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/se.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/shellcheck.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/splint.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/stack.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/standard.vim
