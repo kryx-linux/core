@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=linux-pam
-version=1.4.0
+version=1.5.0
 release=1
 source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz \
     common-account common-auth common-password common-session \
@@ -11,6 +11,7 @@ source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$
 
 build() {
     cd Linux-PAM-$version
+
     CONFIG_SHELL=/bin/bash ./configure \
         --prefix=/usr \
         --libdir=/lib \
