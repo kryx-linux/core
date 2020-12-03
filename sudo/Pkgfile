@@ -17,6 +17,7 @@ build() {
                 --with-logfac=auth \
                 --with-vardir=/var/lib/sudo \
                 --with-rundir=/var/run/sudo \
+                --with-sendmail=/usr/sbin/sendmail \
                 --disable-nls
 
     make
