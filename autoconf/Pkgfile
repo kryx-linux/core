@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=autoconf
-version=2.69
-release=2
+version=2.70
+release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build () {
@@ -12,5 +12,5 @@ build () {
     ./configure --prefix=/usr
     make
     make prefix=$PKG/usr install
-    rm -r $PKG/usr/share/info 
+    rm -r $PKG/usr/share/info
 }
