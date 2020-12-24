@@ -4,14 +4,14 @@
 # Depends on:  readline
 
 name=gdbm
-version=1.18.1
-release=2
+version=1.19
+release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
-    export CFLAGS="$CFLAGS -fcommon"
+    #export CFLAGS="$CFLAGS -fcommon"
 
     ./configure --prefix=/usr --enable-libgdbm-compat
 
