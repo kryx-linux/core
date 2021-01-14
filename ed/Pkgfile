@@ -3,17 +3,14 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=ed
-version=1.16
+version=1.17
 release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.lz)
 
 build() {
-    cd $name-$version
-
-    ./configure --prefix=/usr \
-                --exec-prefix=/ \
-                CFLAGS+="$CFLAGS"
-
-    make
-    make DESTDIR=$PKG install-bin install-man
+	cd $name-$version
+	sed "/^CFLAGS/s/-O2/$CFLAGS/" -i configure
+	./configure --prefix=/usr --exec-prefix=/
+	make
+	make DESTDIR=$PKG install-bin install-man
 }
