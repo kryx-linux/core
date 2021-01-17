@@ -3,9 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=iptables
-version=1.8.6
-release=2
-source=(https://netfilter.org/projects/$name/files/$name-$version.tar.bz2)
+version=1.8.7
+release=1
+source=(https://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
