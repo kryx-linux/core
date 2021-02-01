@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpGZ3gL09z3ELB4KUrvoon8a1qXk7JuSduJOCqzMENJbS1y0uJgKctm0AThMASZN9UNfK79GOixZEYDdYpAEFAg=
-SHA256 (Pkgfile) = 2b314b427642753b9ab4f8a677e815e054ff03a1b5cd8fe652ecf118fa8ef583
-SHA256 (.footprint) = 6b3a2d7fc531dfc6a94f99915942061efad826ec4c234ed6809fa24bd3fb9c21
-SHA256 (mpdecimal-2.5.1.tar.gz) = 9f9cd4c041f99b5c49ffb7b59d9f12d95b683d88585608aa56a6307667b2b21f
+RWRJc1FUaeVeqvNjYf9WQR0XyyB9F7A32Xyp+5SAxf5Q2sgtoJzpVG56be3UzJdGcQQnPkGTKYCh5rAfFfAOnCexVLHFdv+/cQo=
+SHA256 (Pkgfile) = 48ab4487fb6751de3362bcc1a35b3458bea85ba8bb5c3302d1ebbe77f71f6e5e
+SHA256 (.footprint) = e8b59c90985a1c161774ffbad35cca00004b2a5a6289551a0b83193e108d9638
+SHA256 (mpdecimal-2.5.0.tar.gz) = 15417edc8e12a57d1d9d75fa7e3f22b158a3b98f44db9d694cfd2acde8dfa0ca
