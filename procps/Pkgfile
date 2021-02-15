@@ -4,13 +4,15 @@
 # Depends on:  ncurses
 
 name=procps
-version=3.3.16
+version=3.3.17
 release=1
 source=(http://downloads.sourceforge.net/project/procps-ng/Production/$name-ng-$version.tar.xz
         sysctl.conf)
 
 build() {
-    cd $name-ng-$version
+    cd $name-$version
+
+    export LINGUAS=' '
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin \
