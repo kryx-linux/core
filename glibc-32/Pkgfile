@@ -1,13 +1,13 @@
 # Description: The C library used in the GNU system
-# URL:         http://www.gnu.org/software/libc/
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: http://www.gnu.org/software/libc/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
 version=2.32
-release=2
+release=3
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
 	http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.72.tar.xz \
-	glibc-$version-2.patch lib32.conf) 
+	glibc-$version-3.patch lib32.conf) 
 
 build() {
 	# install kernel headers
@@ -17,7 +17,7 @@ build() {
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-2.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-3.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
