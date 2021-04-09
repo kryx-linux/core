@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqiH50ltcFUBL1uMuW+Fi8rKg43US+wnJ3kr9pQGqZZDNeUwgCvNqoREj2NHeTHfHn0kBI3j/HR6miYwtzxyvXws=
-SHA256 (Pkgfile) = 3f6a37be60adf62f8113a7c5582843c877fa33629947507eb632d432c167f47e
-SHA256 (.footprint) = 89f34b238db57bc6c17393f572610deab6f881bb16877859bf99bfba073954e1
-SHA256 (gcc-10.2.0.tar.xz) = b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
+RWRJc1FUaeVeqqgjsJUC4lChIzSFru1iE8fJ5EKqr7zVZWVkYVNjbsJQVx/f+EMtIIJ9gbaabiHC/qycnSOahmsYgZk5Ri4pQgw=
+SHA256 (Pkgfile) = 9ab3e3a74da685a2539e021d2443a7f282ff4e47504a7ff9b86a75bcea311327
+SHA256 (.footprint) = 9eb4640415822db0988891e34f931e78f7366abcda21339cdea2e03b98879561
+SHA256 (gcc-10.3.0.tar.xz) = 64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344
 SHA256 (gcc-nocheck-fixincludes.patch) = 850a71d2c64b9f2bec31821bd972bf89c2d57764faf64948100eaf474fd63bbb
 SHA256 (gcc-4.7.3-multilib-dirs.patch) = 149b151999d0afad909ca0d1eaf1f9a81c9cd6499e56989ec4fc574d108eeef6
