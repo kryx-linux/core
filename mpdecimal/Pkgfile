@@ -1,5 +1,5 @@
 # Description: Package for correctly-rounded arbitrary precision decimal floating point arithmetic.
-# URL:         http://www.bytereef.org/mpdecimal/index.html
+# URL:         https://www.bytereef.org/mpdecimal/index.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=mpdecimal
