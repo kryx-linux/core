@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequGRXMKn3IHt+jElM2Scjp0iCyZXQJ0TDBiVDM2NdAMpOTmVNHvA+TVDVfll+dVLmaPyQ50vx3Z5h54ezqFYPAs=
-SHA256 (Pkgfile) = b055a4bff01aff8f32e16d15ed7731b66cdf81303ed15fe4d31a54a70329c60e
+RWRJc1FUaeVequXUZ0Ab+cTO643pSQ/uiEZez4JTVLeAJapkmAo1TkDE0gR6U+XkQxtwJrIgXpXFFPoi7xc76jgaXGDCfPJrCAg=
+SHA256 (Pkgfile) = 9e264fa0ac1a217f37df81c4fd95bc9a1b16cb88096243b97b8e42d433628e0a
 SHA256 (.footprint) = 82bbf65a54e82668b25ad4da7dc8428d743a05f7e9121d90d0788087a35ff464
-SHA256 (sudo-1.9.6p1.tar.gz) = a9e9cdc058fafeb9cd3ebfb864c81755e524d98aa022152763f25bce8ca3ca90
+SHA256 (sudo-1.9.7.tar.gz) = 2bbe7c2d6699b84d950ef9a43f09d4d967b8bc244b73bc095c4202068ddbe549
 SHA256 (sudo.pam) = d56499ea47e4c654032b278923ebee0caba4ca5b0fd242ea9c47204afc8a09e1
