@@ -4,7 +4,7 @@
 # Depends on: openssl zlib zstd
 
 name=curl
-version=7.76.1
+version=7.77.0
 release=1
 source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
@@ -14,6 +14,7 @@ build() {
 		--prefix=/usr \
 		--enable-ipv6 \
 		--without-libidn2 \
+		--with-openssl \
 		--without-cyassl \
 		--enable-threaded-resolver \
 		--with-ca-bundle=/etc/ssl/cert.pem
