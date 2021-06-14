@@ -5,7 +5,7 @@
 
 name=vim
 version=8.2.2953
-release=1
+release=2
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz)
 
 build() {
@@ -21,6 +21,7 @@ build() {
 		--enable-multibyte \
 		--enable-cscope \
 		--disable-gpm \
+		--disable-canberra \
 		--disable-nls
 
 	make VIMRTDIR= 
