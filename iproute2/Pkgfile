@@ -1,19 +1,16 @@
 # Description: A collection of utilites for controlling TCP/IP networking and traffic in Linux
 # URL: http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: db iptables libcap
+# Depends on: db iptables libcap elfutils
 
 name=iproute2
-version=5.12.0
+version=5.13.0
 release=1
 source=(https://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz \
 	lo.iproute2 net.iproute2)
 
 build() {
 	cd $name-$version
-
-	# don't link against libelf
-	sed -e 's/^check_elf$/echo "no"/' -i configure
 
 	./configure
 	make CCOPTS="$CFLAGS"
