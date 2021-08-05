@@ -4,13 +4,14 @@
 
 name=bzip2
 version=1.0.8
-release=2
-source=(https://sourceware.org/pub/bzip2/$name-$version.tar.gz)
+release=3
+source=(https://sourceware.org/pub/bzip2/$name-$version.tar.gz
+	bzip2.pc.in)
 
 build() {
 	cd $name-$version
 
-	install -d $PKG/usr/{bin,lib,include,share/man/man1}
+	install -d $PKG/usr/{bin,lib/pkgconfig,include,share/man/man1}
 	sed "/^CFLAGS/s/-O2/$CFLAGS/" -i Makefile Makefile-libbz2_so
 
 	make -f Makefile-libbz2_so
@@ -33,4 +34,6 @@ build() {
 	install -m 0644 libbz2.a $PKG/usr/lib
 	install -m 0644 bzlib.h $PKG/usr/include
 	install -m 0644 *.1 $PKG/usr/share/man/man1
+
+	sed "s/@VERSION@/$version/" $SRC/bzip2.pc.in > $PKG/usr/lib/pkgconfig/bzip2.pc
 }

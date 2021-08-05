@@ -1,5 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqoPkHuNb91U53Uj38BArO1VOBPs1cH5viF3yds0L5v6EapLMo0c8F+5m4c3X7JKS39i012u1opeg+BZzblUzhAI=
-SHA256 (Pkgfile) = 44c4b62f391736923b6433f2a96b4c1cee218dc7d4dfc812eef38c243f9ae9f3
-SHA256 (.footprint) = e5910c495a4558c4ff528c84fbc9e08e964210c1b2cba5aedb3830b1c07bc748
+RWRJc1FUaeVeqkzfJmg9z5eTgdzqmi1wdcIcbOXOitesEXVUz9vxARy1pxKXjQcu+TEuVslKz8Y6tg/3jfpvCzApL/W1aknduww=
+SHA256 (Pkgfile) = 9804f42feb61a129ed4b822ae13af1f0b8d297c46d118d3938393f5e08620d26
+SHA256 (.footprint) = 950dc248b8578bc6b786259d250d13c8a736bb2f48997ea9684dddfed94f8361
 SHA256 (bzip2-1.0.8.tar.gz) = ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269
+SHA256 (bzip2.pc.in) = eca9d8cd6376df1fb5442667c603032023fb21d8d183684550da0b96ade39654
