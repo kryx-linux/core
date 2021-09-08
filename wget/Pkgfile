@@ -4,7 +4,7 @@
 # Depends on:  libpcre openssl util-linux zlib
 
 name=wget
-version=1.21.1
+version=1.21.2
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.lz \
         wgetrc)
@@ -19,7 +19,7 @@ build() {
                 --with-ssl=openssl
 
     make
-    make DESTDIR=$PKG install 
+    make DESTDIR=$PKG install
     install -D -m 644 $SRC/wgetrc $PKG/etc/wgetrc
 
     rm -r $PKG/usr/share/info
