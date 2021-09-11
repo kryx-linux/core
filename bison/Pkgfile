@@ -4,7 +4,7 @@
 # Depends on: gettext
 
 name=bison
-version=3.7.6
+version=3.8.1
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -14,5 +14,5 @@ build() {
 	make
 	make DESTDIR=$PKG install
 	rm -r $PKG/usr/share/{doc,info}
-	rm $PKG/usr/share/bison/{README.md,skeletons/README-D.txt}
+	rm $PKG/usr/share/bison/README.md
 }
