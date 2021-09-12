@@ -1,11 +1,11 @@
 # Description: Highly configurable text editor
-# URL: http://www.vim.org/
+# URL: https://www.vim.org/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: ncurses acl
 
 name=vim
-version=8.2.3231
-release=2
+version=8.2.3429
+release=1
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz)
 
 build() {
@@ -24,7 +24,7 @@ build() {
 		--disable-canberra \
 		--disable-nls
 
-	make VIMRTDIR= 
+	make VIMRTDIR=
 	make -j1 VIMRTDIR= DESTDIR=$PKG install
 
 	mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
