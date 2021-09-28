@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqi1Cxixtop8P0uihqvvcbt9lqRYquUVUV4GbOghYhIl1yr2W+1qB4VivaHEKQDiygaYBhHrvabu/BqLxp3DESQM=
-SHA256 (Pkgfile) = e02588e73b5393ee43a089027e1aad3389ac46621e7349c9848e3aba6262b263
-SHA256 (.footprint) = 25742e4d30e3413ff3a1a0e8393de3e7b7c2672b57b4ed4fe7b297b0196a0c75
-SHA256 (libcap-2.58.tar.xz) = 41399a7d77497d348d20475dc9b2046f53e6b9755bf858ec78cc235101a11d4b
+RWRJc1FUaeVeqmUelKxeQ6qIxudC3q94276KJFrFKzDwuHu8j8zngeKPgiWcKXTbVCwQgQFCYXjj6T6cfSP2KMj6z7w/UpkMDwo=
+SHA256 (Pkgfile) = d1c551bf6e44ea6d8c8f74cf7edaa44306d4e73ad1dee2a1d675cc98eb63d37f
+SHA256 (.footprint) = f1691d67ade7dedf66ac04d5f7e5ef97bcefbfd5e40702ccb5c94548d9de5eeb
+SHA256 (libcap-2.59.tar.xz) = 49f64ae40b113e53cbc161e22af7094e3bb4a0611fa33ef5a4257b011779f034
