@@ -1,5 +1,5 @@
 # Description: Sources for Time Zone and Daylight Saving Time Data
-# URL: ftp://ftp.iana.org/tz/code/tz-link.htm
+# URL: https://data.iana.org/time-zones/tz-link.html
 # Maintainer: CRUX System Team, core-ports at crux dot nu 
 
 name=tzdata
