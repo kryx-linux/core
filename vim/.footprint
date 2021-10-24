@@ -495,6 +495,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/nanorc.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/neomuttrc.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/netrc.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/nginx.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/nroff.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/nsis.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/objc.vim
@@ -570,6 +571,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/text.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tidy.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tmux.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/toml.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/treetop.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tt2html.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/typescript.vim
@@ -673,6 +675,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/mf.vim
 -rw-r--r--	root/root	usr/share/vim/indent/mma.vim
 -rw-r--r--	root/root	usr/share/vim/indent/mp.vim
+-rw-r--r--	root/root	usr/share/vim/indent/nginx.vim
 -rw-r--r--	root/root	usr/share/vim/indent/nsis.vim
 -rw-r--r--	root/root	usr/share/vim/indent/objc.vim
 -rw-r--r--	root/root	usr/share/vim/indent/ocaml.vim
@@ -1198,6 +1201,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/neomuttrc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/netrc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/netrw.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/nginx.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ninja.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/nosyntax.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/nqc.vim
@@ -1403,6 +1407,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/tilde.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tli.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tmux.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/toml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tpp.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/trasys.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/treetop.vim
