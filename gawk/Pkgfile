@@ -11,6 +11,8 @@ source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 build() {
 	cd $name-$version
 
+	export ac_cv_libsigsegv=no
+
 	./configure --prefix=/usr \
 		--libexecdir=/usr/lib \
 		--disable-nls
