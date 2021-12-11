@@ -4,30 +4,39 @@
 # Depends on:  zlib flex
 
 name=binutils
-version=2.35.2
+version=2.37
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+	binutils-2.37-upstream_fix-1.patch)
 
 build() {
-    sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in 
-    sed -i '/^SUBDIRS/s/doc//' $name-$version/binutils/Makefile.in
+	patch -Np1 -d $name-$version -i $SRC/binutils-2.37-upstream_fix-1.patch
 
-    mkdir build
-    cd build
+	# fix empty manpages
+	sed -i '63d' $name-$version/etc/texi2pod.pl
+	find -name \*.1 -delete
 
-    ../$name-$version/configure --prefix=/usr \
-                                --enable-shared \
-                                --disable-nls \
-                                --enable-ld=default \
-                                --enable-gold=yes \
-                                --enable-plugins \
-                                --enable-install-libiberty \
-                                --disable-werror \
-                                --with-system-zlib
+	sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in
+	sed -i '/^SUBDIRS/s/doc//' $name-$version/binutils/Makefile.in
 
-    make tooldir=/usr
-    make tooldir=/usr DESTDIR=$PKG install
+	mkdir build
+	cd build
 
-    rm -r $PKG/usr/share/info
-    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.la
+	../$name-$version/configure --prefix=/usr \
+		--enable-shared \
+		--disable-nls \
+		--enable-ld=default \
+		--enable-gold=yes \
+		--enable-lto \
+		--enable-plugins \
+		--enable-install-libiberty \
+		--disable-werror \
+		--with-system-zlib \
+		--with-bugurl=https://crux.nu/bugs/
+
+	make tooldir=/usr
+	make tooldir=/usr DESTDIR=$PKG install
+
+	rm -r $PKG/usr/share/info
+	sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.la
 }
