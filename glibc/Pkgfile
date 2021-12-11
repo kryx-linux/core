@@ -1,44 +1,60 @@
 # Description: The C library used in the GNU system
-# URL:         http://www.gnu.org/software/libc/
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: http://www.gnu.org/software/libc/
+# Maintainer:
 
 name=glibc
-version=2.32
-release=5
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.72.tar.xz \
-	glibc-$version-5.patch \
-	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
+version=2.34
+release=1
+source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
+  https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+  bz27343.patch glibc-python3.patch
+  glibc-c-utf8-locale-1.patch glibc-c-utf8-locale-2.patch
+  hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.4.72
-	make mrproper
-	make headers_check
-	make INSTALL_HDR_PATH=$PKG/usr headers_install
+	#cd linux-5.10
+	make -C $SRC/linux-5.10 mrproper
+	make -C $SRC/linux-5.10 headers_check
+	make -C $SRC/linux-5.10 INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-5.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-python3.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-c-utf8-locale-1.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-c-utf8-locale-2.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
-	../$name-${version}/configure \
+
+	echo "slibdir=/lib" >> configparms
+	echo "rtlddir=/lib" >> configparms
+	echo "sbindir=/usr/sbin" >> configparms
+	echo "rootsbindir=/sbin" >> configparms
+
+	$SRC/$name-${version}/configure \
 		--prefix=/usr \
+		--libdir=/usr/lib \
 		--libexecdir=/usr/lib \
 		--with-headers=$PKG/usr/include \
+		--with-pkgversion="$version-$release" \
+		--with-bugurl='https://crux.nu/bugs' \
 		--enable-kernel=4.9 \
 		--enable-add-ons \
-		--enable-static-nss \
+		--enable-lock-elision \
+		--enable-bind-now \
+		--enable-static-pie \
 		--enable-stack-protector=strong \
+		--enable-stackguard-randomization \
+		--enable-multi-arch \
+		--without-gd \
 		--disable-profile \
 		--disable-werror \
-		--without-gd \
-		--enable-multi-arch
-	make 
+		libc_cv_slibdir=/lib
+	make
 	#make check
 	make install_root=$PKG install
 
-	install -m 0644 $SRC/$name-${version:0:4}/nscd/nscd.conf $PKG/etc 
+	install -m 0644 $SRC/$name-${version:0:4}/nscd/nscd.conf $PKG/etc
 	install -d $PKG/var/{db,run}/nscd
 
 	install -m 0644 $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
@@ -47,9 +63,13 @@ build() {
 	install -d $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
 	touch $PKG/etc/ld.so.cache
 
+	# to be used with pkgmk
+	$PKG/usr/bin/localedef --prefix "$PKG" -i C -f UTF-8 C.UTF-8
+
 	rm -rf $PKG/usr/share/{info,locale} \
 		$PKG/usr/bin/tzselect \
 		$PKG/usr/sbin/z{dump,ic}
 	find $PKG -name "*install.cmd" -delete
 	find $PKG -name ".\install" -delete
+	rm -r $PKG/usr/bin/zdump
 }
