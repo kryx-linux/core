@@ -5,12 +5,14 @@
 
 name=exim
 version=4.95
-release=1
+release=2
 source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz \
-	$name $name-config.patch)
+	$name $name-config.patch exim-4.95-openssl30-build-fix.patch)
 
 build() {
 	cd $name-$version
+
+	patch -Np1 -i $SRC/exim-4.95-openssl30-build-fix.patch
 
 	sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
 	cp src/EDITME Local/Makefile
