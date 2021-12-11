@@ -1,7 +1,120 @@
-diff -pruN glibc-2.32.orig/debug/Makefile glibc-2.32/debug/Makefile
---- glibc-2.32.orig/debug/Makefile	2021-09-18 21:02:32.642182626 +1000
-+++ glibc-2.32/debug/Makefile	2021-09-18 21:03:05.310302219 +1000
-@@ -51,7 +51,7 @@ routines  = backtrace backtracesyms back
+diff --git a/NEWS b/NEWS
+index 485b8ddffa..b29826f4f5 100644
+--- a/NEWS
++++ b/NEWS
+@@ -5,6 +5,27 @@ See the end for copying conditions.
+ Please send GNU C library bug reports via <https://sourceware.org/bugzilla/>
+ using `glibc' in the "product" field.
+ 
++The following bugs are resolved with this release:
++
++  [20019] NULL pointer dereference in libc.so.6 IFUNC due to uninitialized GOT
++  [26224] iconv hangs when converting some invalid inputs from several IBM
++    character sets (CVE-2020-27618)
++  [26534] libm.so 2.32 SIGILL in pow() due to FMA4 instruction on non-FMA4
++    system
++  [26555] string: strerrorname_np does not return the documented value
++  [26600] Transaction ID collisions cause slow DNS lookups in getaddrinfo
++  [26636] libc: 32-bit shmctl(IPC_INFO) crashes when shminfo struct is
++    at the end of a memory mapping
++  [26637] libc: semctl SEM_STAT_ANY fails to pass the buffer specified
++    by the caller to the kernel
++  [26639] libc: msgctl IPC_INFO and MSG_INFO return garbage
++  [26853] aarch64: Missing unwind information in statically linked startup code
++  [26932] libc: sh: Multiple floating point functions defined as stubs only
++  [27130] "rep movsb" performance issue
++  [27177] GLIBC_TUNABLES=glibc.cpu.x86_ibt=on:glibc.cpu.x86_shstk=on doesn't work
++  [28524] Conversion from ISO-2022-JP-3 with iconv may emit spurious NULs
++  [28607] Masked signals are delivered on thread exit
++
+ Version 2.32
+ 
+ Major new features:
+@@ -185,6 +206,14 @@ Security related changes:
+   Dytrych of the Cisco Security Assessment and Penetration Team (See
+   TALOS-2020-1019).
+ 
++  CVE-2020-27618: An infinite loop has been fixed in the iconv program when
++  invoked with input containing redundant shift sequences in the IBM1364,
++  IBM1371, IBM1388, IBM1390, or IBM1399 character sets.
++
++  CVE-2021-33574: The mq_notify function has a potential use-after-free
++  issue when using a notification type of SIGEV_THREAD and a thread
++  attribute with a non-default affinity mask.
++
+ The following bugs are resolved with this release:
+ 
+   [9809] localedata: ckb_IQ: new Kurdish Sorani locale
+diff --git a/Rules b/Rules
+index 8b771f6095..beab969fde 100644
+--- a/Rules
++++ b/Rules
+@@ -155,6 +155,7 @@ xtests: tests $(xtests-special)
+ else
+ tests: $(tests:%=$(objpfx)%.out) $(tests-internal:%=$(objpfx)%.out) \
+        $(tests-container:%=$(objpfx)%.out) \
++       $(tests-mcheck:%=$(objpfx)%-mcheck.out) \
+        $(tests-special) $(tests-printers-out)
+ xtests: tests $(xtests:%=$(objpfx)%.out) $(xtests-special)
+ endif
+@@ -165,7 +166,7 @@ ifeq ($(run-built-tests),no)
+ tests-expected =
+ else
+ tests-expected = $(tests) $(tests-internal) $(tests-printers) \
+-	$(tests-container)
++	$(tests-container) $(tests-mcheck:%=%-mcheck)
+ endif
+ tests:
+ 	$(..)scripts/merge-test-results.sh -s $(objpfx) $(subdir) \
+@@ -191,6 +192,7 @@ else
+ binaries-pie-tests =
+ binaries-pie-notests =
+ endif
++binaries-mcheck-tests = $(tests-mcheck:%=%-mcheck)
+ else
+ binaries-all-notests =
+ binaries-all-tests = $(tests) $(tests-internal) $(xtests) $(test-srcs)
+@@ -200,6 +202,7 @@ binaries-static-tests =
+ binaries-static =
+ binaries-pie-tests =
+ binaries-pie-notests =
++binaries-mcheck-tests =
+ endif
+ 
+ binaries-pie = $(binaries-pie-tests) $(binaries-pie-notests)
+@@ -223,6 +226,14 @@ $(addprefix $(objpfx),$(binaries-shared-tests)): %: %.o \
+ 	$(+link-tests)
+ endif
+ 
++ifneq "$(strip $(binaries-mcheck-tests))" ""
++$(addprefix $(objpfx),$(binaries-mcheck-tests)): %-mcheck: %.o \
++  $(link-extra-libs-tests) \
++  $(sort $(filter $(common-objpfx)lib%,$(link-libc))) \
++  $(addprefix $(csu-objpfx),start.o) $(+preinit) $(+postinit)
++	$(+link-tests)
++endif
++
+ ifneq "$(strip $(binaries-pie-tests))" ""
+ $(addprefix $(objpfx),$(binaries-pie-tests)): %: %.o \
+   $(link-extra-libs-tests) \
+@@ -253,6 +264,12 @@ $(addprefix $(objpfx),$(binaries-static-tests)): %: %.o \
+ 	$(+link-static-tests)
+ endif
+ 
++# All mcheck tests will be run with MALLOC_CHECK_=3
++define mcheck-ENVS
++$(1)-mcheck-ENV = MALLOC_CHECK_=3
++endef
++$(foreach t,$(tests-mcheck),$(eval $(call mcheck-ENVS,$(t))))
++
+ ifneq "$(strip $(tests) $(tests-internal) $(xtests) $(test-srcs))" ""
+ # These are the implicit rules for making test outputs
+ # from the test programs and whatever input files are present.
+diff --git a/debug/Makefile b/debug/Makefile
+index 3a60d7af7a..0036edd187 100644
+--- a/debug/Makefile
++++ b/debug/Makefile
+@@ -51,7 +51,7 @@ routines  = backtrace backtracesyms backtracesymsfd noophooks \
  	    explicit_bzero_chk \
  	    stack_chk_fail fortify_fail \
  	    $(static-only-routines)
@@ -10,9 +123,11 @@ diff -pruN glibc-2.32.orig/debug/Makefile glibc-2.32/debug/Makefile
  
  # Don't add stack_chk_fail_local.o to libc.a since __stack_chk_fail_local
  # is an alias of __stack_chk_fail in stack_chk_fail.o.
-diff -pruN glibc-2.32.orig/debug/warning-nop.c glibc-2.32/debug/warning-nop.c
---- glibc-2.32.orig/debug/warning-nop.c	2021-09-18 21:02:32.642182626 +1000
-+++ glibc-2.32/debug/warning-nop.c	1970-01-01 10:00:00.000000000 +1000
+diff --git a/debug/warning-nop.c b/debug/warning-nop.c
+deleted file mode 100644
+index 4ab7e182b7..0000000000
+--- a/debug/warning-nop.c
++++ /dev/null
 @@ -1,70 +0,0 @@
 -/* Dummy nop functions to elicit link-time warnings.
 -   Copyright (C) 2005-2020 Free Software Foundation, Inc.
@@ -84,10 +199,33 @@ diff -pruN glibc-2.32.orig/debug/warning-nop.c glibc-2.32/debug/warning-nop.c
 -#define __builtin_object_size(bos, level) 0
 -
 -#include <string.h>
-diff -pruN glibc-2.32.orig/elf/dl-load.c glibc-2.32/elf/dl-load.c
---- glibc-2.32.orig/elf/dl-load.c	2021-09-18 21:02:32.643182660 +1000
-+++ glibc-2.32/elf/dl-load.c	2021-09-18 21:03:05.311302253 +1000
-@@ -855,10 +855,12 @@ lose (int code, int fd, const char *name
+diff --git a/elf/Makefile b/elf/Makefile
+index 0b78721848..3ba7f4ecfc 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -1381,6 +1381,8 @@ CFLAGS-ifuncmain7pie.c += $(pie-ccflag)
+ CFLAGS-ifuncmain9pie.c += $(pie-ccflag)
+ CFLAGS-tst-ifunc-textrel.c += $(pic-ccflag)
+ 
++LDFLAGS-ifuncmain6pie = -Wl,-z,lazy
++
+ $(objpfx)ifuncmain1pie: $(objpfx)ifuncmod1.so
+ $(objpfx)ifuncmain1staticpie: $(objpfx)ifuncdep1pic.o
+ $(objpfx)ifuncmain1vispie: $(objpfx)ifuncmod1.so
+@@ -1630,8 +1632,6 @@ $(objpfx)tst-nodelete-dlclose.out: $(objpfx)tst-nodelete-dlclose-dso.so \
+ 
+ tst-env-setuid-ENV = MALLOC_CHECK_=2 MALLOC_MMAP_THRESHOLD_=4096 \
+ 		     LD_HWCAP_MASK=0x1
+-tst-env-setuid-tunables-ENV = \
+-	GLIBC_TUNABLES=glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096
+ 
+ $(objpfx)tst-debug1: $(libdl)
+ $(objpfx)tst-debug1.out: $(objpfx)tst-debug1mod1.so
+diff --git a/elf/dl-load.c b/elf/dl-load.c
+index e39980fb19..71867e7c1a 100644
+--- a/elf/dl-load.c
++++ b/elf/dl-load.c
+@@ -855,10 +855,12 @@ lose (int code, int fd, const char *name, char *realname, struct link_map *l,
  
  /* Process PT_GNU_PROPERTY program header PH in module L after
     PT_LOAD segments are mapped.  Only one NT_GNU_PROPERTY_TYPE_0
@@ -102,7 +240,7 @@ diff -pruN glibc-2.32.orig/elf/dl-load.c glibc-2.32/elf/dl-load.c
  {
    const ElfW(Nhdr) *note = (const void *) (ph->p_vaddr + l->l_addr);
    const ElfW(Addr) size = ph->p_memsz;
-@@ -905,7 +907,7 @@ _dl_process_pt_gnu_property (struct link
+@@ -905,7 +907,7 @@ _dl_process_pt_gnu_property (struct link_map *l, const ElfW(Phdr) *ph)
  	      last_type = type;
  
  	      /* Target specific property processing.  */
@@ -111,7 +249,7 @@ diff -pruN glibc-2.32.orig/elf/dl-load.c glibc-2.32/elf/dl-load.c
  		return;
  
  	      /* Check the next property item.  */
-@@ -1251,21 +1253,6 @@ _dl_map_object_from_fd (const char *name
+@@ -1251,21 +1253,6 @@ _dl_map_object_from_fd (const char *name, const char *origname, int fd,
  				  maplength, has_holes, loader);
      if (__glibc_unlikely (errstring != NULL))
        goto call_lose;
@@ -133,7 +271,7 @@ diff -pruN glibc-2.32.orig/elf/dl-load.c glibc-2.32/elf/dl-load.c
    }
  
    if (l->l_ld == 0)
-@@ -1377,6 +1364,21 @@ cannot enable executable stack as shared
+@@ -1377,6 +1364,21 @@ cannot enable executable stack as shared object requires");
    if (l->l_tls_initimage != NULL)
      l->l_tls_initimage = (char *) l->l_tls_initimage + l->l_addr;
  
@@ -155,10 +293,24 @@ diff -pruN glibc-2.32.orig/elf/dl-load.c glibc-2.32/elf/dl-load.c
    /* We are done mapping in the file.  We no longer need the descriptor.  */
    if (__glibc_unlikely (__close_nocancel (fd) != 0))
      {
-diff -pruN glibc-2.32.orig/elf/dl-tunables.c glibc-2.32/elf/dl-tunables.c
---- glibc-2.32.orig/elf/dl-tunables.c	2021-09-18 21:02:32.643182660 +1000
-+++ glibc-2.32/elf/dl-tunables.c	2021-09-18 21:03:05.311302253 +1000
-@@ -177,6 +177,7 @@ parse_tunables (char *tunestr, char *val
+diff --git a/elf/dl-open.c b/elf/dl-open.c
+index 8769e47051..55b39e1bbe 100644
+--- a/elf/dl-open.c
++++ b/elf/dl-open.c
+@@ -887,7 +887,7 @@ no more namespaces available for dlmopen()"));
+       /* Avoid keeping around a dangling reference to the libc.so link
+ 	 map in case it has been cached in libc_map.  */
+       if (!args.libc_already_loaded)
+-	GL(dl_ns)[nsid].libc_map = NULL;
++	GL(dl_ns)[args.nsid].libc_map = NULL;
+ 
+       /* Remove the object from memory.  It may be in an inconsistent
+ 	 state if relocation failed, for example.  */
+diff --git a/elf/dl-tunables.c b/elf/dl-tunables.c
+index 26e6e26612..15b29bcb90 100644
+--- a/elf/dl-tunables.c
++++ b/elf/dl-tunables.c
+@@ -177,6 +177,7 @@ parse_tunables (char *tunestr, char *valstring)
      return;
  
    char *p = tunestr;
@@ -166,7 +318,7 @@ diff -pruN glibc-2.32.orig/elf/dl-tunables.c glibc-2.32/elf/dl-tunables.c
  
    while (true)
      {
-@@ -190,7 +191,11 @@ parse_tunables (char *tunestr, char *val
+@@ -190,7 +191,11 @@ parse_tunables (char *tunestr, char *valstring)
        /* If we reach the end of the string before getting a valid name-value
  	 pair, bail out.  */
        if (p[len] == '\0')
@@ -179,7 +331,7 @@ diff -pruN glibc-2.32.orig/elf/dl-tunables.c glibc-2.32/elf/dl-tunables.c
  
        /* We did not find a valid name-value pair before encountering the
  	 colon.  */
-@@ -216,35 +221,28 @@ parse_tunables (char *tunestr, char *val
+@@ -216,35 +221,28 @@ parse_tunables (char *tunestr, char *valstring)
  
  	  if (tunable_is_name (cur->name, name))
  	    {
@@ -234,7 +386,7 @@ diff -pruN glibc-2.32.orig/elf/dl-tunables.c glibc-2.32/elf/dl-tunables.c
  		    }
  
  		  if (cur->security_level != TUNABLE_SECLEVEL_NONE)
-@@ -257,9 +255,7 @@ parse_tunables (char *tunestr, char *val
+@@ -257,9 +255,7 @@ parse_tunables (char *tunestr, char *valstring)
  	    }
  	}
  
@@ -245,9 +397,10 @@ diff -pruN glibc-2.32.orig/elf/dl-tunables.c glibc-2.32/elf/dl-tunables.c
  	p += len + 1;
      }
  }
-diff -pruN glibc-2.32.orig/elf/ifuncmain6pie.c glibc-2.32/elf/ifuncmain6pie.c
---- glibc-2.32.orig/elf/ifuncmain6pie.c	2021-09-18 21:02:32.643182660 +1000
-+++ glibc-2.32/elf/ifuncmain6pie.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/elf/ifuncmain6pie.c b/elf/ifuncmain6pie.c
+index 04faeb86ef..4a01906836 100644
+--- a/elf/ifuncmain6pie.c
++++ b/elf/ifuncmain6pie.c
 @@ -9,7 +9,6 @@
  #include "ifunc-sel.h"
  
@@ -293,9 +446,10 @@ diff -pruN glibc-2.32.orig/elf/ifuncmain6pie.c glibc-2.32/elf/ifuncmain6pie.c
    if (foo () != -30)
      abort ();
  
-diff -pruN glibc-2.32.orig/elf/ifuncmod6.c glibc-2.32/elf/ifuncmod6.c
---- glibc-2.32.orig/elf/ifuncmod6.c	2021-09-18 21:02:32.643182660 +1000
-+++ glibc-2.32/elf/ifuncmod6.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/elf/ifuncmod6.c b/elf/ifuncmod6.c
+index 2e16c1d06d..2f6d0715e6 100644
+--- a/elf/ifuncmod6.c
++++ b/elf/ifuncmod6.c
 @@ -4,7 +4,7 @@ extern int foo (void);
  
  typedef int (*foo_p) (void);
@@ -317,31 +471,11 @@ diff -pruN glibc-2.32.orig/elf/ifuncmod6.c glibc-2.32/elf/ifuncmod6.c
 -  return foo;
 +  return foo ();
  }
-diff -pruN glibc-2.32.orig/elf/Makefile glibc-2.32/elf/Makefile
---- glibc-2.32.orig/elf/Makefile	2021-09-18 21:02:32.643182660 +1000
-+++ glibc-2.32/elf/Makefile	2021-09-18 21:03:05.311302253 +1000
-@@ -1381,6 +1381,8 @@ CFLAGS-ifuncmain7pie.c += $(pie-ccflag)
- CFLAGS-ifuncmain9pie.c += $(pie-ccflag)
- CFLAGS-tst-ifunc-textrel.c += $(pic-ccflag)
- 
-+LDFLAGS-ifuncmain6pie = -Wl,-z,lazy
-+
- $(objpfx)ifuncmain1pie: $(objpfx)ifuncmod1.so
- $(objpfx)ifuncmain1staticpie: $(objpfx)ifuncdep1pic.o
- $(objpfx)ifuncmain1vispie: $(objpfx)ifuncmod1.so
-@@ -1630,8 +1632,6 @@ $(objpfx)tst-nodelete-dlclose.out: $(obj
- 
- tst-env-setuid-ENV = MALLOC_CHECK_=2 MALLOC_MMAP_THRESHOLD_=4096 \
- 		     LD_HWCAP_MASK=0x1
--tst-env-setuid-tunables-ENV = \
--	GLIBC_TUNABLES=glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096
- 
- $(objpfx)tst-debug1: $(libdl)
- $(objpfx)tst-debug1.out: $(objpfx)tst-debug1mod1.so
-diff -pruN glibc-2.32.orig/elf/rtld.c glibc-2.32/elf/rtld.c
---- glibc-2.32.orig/elf/rtld.c	2021-09-18 21:02:32.644182694 +1000
-+++ glibc-2.32/elf/rtld.c	2021-09-18 21:03:05.311302253 +1000
-@@ -1534,10 +1534,10 @@ of this helper program; chances are you
+diff --git a/elf/rtld.c b/elf/rtld.c
+index 5b882163fa..14a42ed00a 100644
+--- a/elf/rtld.c
++++ b/elf/rtld.c
+@@ -1534,10 +1534,10 @@ of this helper program; chances are you did not intend to run this program.\n\
      switch (ph[-1].p_type)
        {
        case PT_NOTE:
@@ -354,9 +488,162 @@ diff -pruN glibc-2.32.orig/elf/rtld.c glibc-2.32/elf/rtld.c
  	break;
        }
  
-diff -pruN glibc-2.32.orig/elf/tst-env-setuid.c glibc-2.32/elf/tst-env-setuid.c
---- glibc-2.32.orig/elf/tst-env-setuid.c	2021-09-18 21:02:32.644182694 +1000
-+++ glibc-2.32/elf/tst-env-setuid.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/elf/tst-env-setuid-tunables.c b/elf/tst-env-setuid-tunables.c
+index 971d5892b1..ca0c8c245c 100644
+--- a/elf/tst-env-setuid-tunables.c
++++ b/elf/tst-env-setuid-tunables.c
+@@ -25,35 +25,76 @@
+ #include "config.h"
+ #undef _LIBC
+ 
+-#define test_parent test_parent_tunables
+-#define test_child test_child_tunables
+-
+-static int test_child_tunables (void);
+-static int test_parent_tunables (void);
+-
+-#include "tst-env-setuid.c"
+-
+-#define CHILD_VALSTRING_VALUE "glibc.malloc.mmap_threshold=4096"
+-#define PARENT_VALSTRING_VALUE \
+-  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096"
++#include <errno.h>
++#include <fcntl.h>
++#include <stdlib.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++#include <sys/stat.h>
++#include <sys/wait.h>
++#include <unistd.h>
++#include <intprops.h>
++#include <array_length.h>
++
++#include <support/check.h>
++#include <support/support.h>
++#include <support/test-driver.h>
++#include <support/capture_subprocess.h>
++
++const char *teststrings[] =
++{
++  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.check=2:glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096:glibc.malloc.check=2",
++  "glibc.malloc.perturb=0x800",
++  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.perturb=0x800:not_valid.malloc.check=2:glibc.malloc.mmap_threshold=4096",
++  "glibc.not_valid.check=2:glibc.malloc.mmap_threshold=4096",
++  "not_valid.malloc.check=2:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.garbage=2:glibc.maoc.mmap_threshold=4096:glibc.malloc.check=2",
++  "glibc.malloc.check=4:glibc.malloc.garbage=2:glibc.maoc.mmap_threshold=4096",
++  ":glibc.malloc.garbage=2:glibc.malloc.check=1",
++  "glibc.malloc.check=1:glibc.malloc.check=2",
++  "not_valid.malloc.check=2",
++  "glibc.not_valid.check=2",
++};
++
++const char *resultstrings[] =
++{
++  "glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.perturb=0x800",
++  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.mmap_threshold=4096",
++  "glibc.malloc.mmap_threshold=4096",
++  "",
++  "",
++  "",
++  "",
++  "",
++  "",
++};
+ 
+ static int
+-test_child_tunables (void)
++test_child (int off)
+ {
+   const char *val = getenv ("GLIBC_TUNABLES");
+ 
+ #if HAVE_TUNABLES
+-  if (val != NULL && strcmp (val, CHILD_VALSTRING_VALUE) == 0)
++  if (val != NULL && strcmp (val, resultstrings[off]) == 0)
+     return 0;
+ 
+   if (val != NULL)
+-    printf ("Unexpected GLIBC_TUNABLES VALUE %s\n", val);
++    printf ("[%d] Unexpected GLIBC_TUNABLES VALUE %s\n", off, val);
+ 
+   return 1;
+ #else
+   if (val != NULL)
+     {
+-      printf ("GLIBC_TUNABLES not cleared\n");
++      printf ("[%d] GLIBC_TUNABLES not cleared\n", off);
+       return 1;
+     }
+   return 0;
+@@ -61,15 +102,48 @@ test_child_tunables (void)
+ }
+ 
+ static int
+-test_parent_tunables (void)
++do_test (int argc, char **argv)
+ {
+-  const char *val = getenv ("GLIBC_TUNABLES");
++  /* Setgid child process.  */
++  if (argc == 2)
++    {
++      if (getgid () == getegid ())
++	/* This can happen if the file system is mounted nosuid.  */
++	FAIL_UNSUPPORTED ("SGID failed: GID and EGID match (%jd)\n",
++			  (intmax_t) getgid ());
+ 
+-  if (val != NULL && strcmp (val, PARENT_VALSTRING_VALUE) == 0)
+-    return 0;
++      int ret = test_child (atoi (argv[1]));
+ 
+-  if (val != NULL)
+-    printf ("Unexpected GLIBC_TUNABLES VALUE %s\n", val);
++      if (ret != 0)
++	exit (1);
+ 
+-  return 1;
++      exit (EXIT_SUCCESS);
++    }
++  else
++    {
++      int ret = 0;
++
++      /* Spawn tests.  */
++      for (int i = 0; i < array_length (teststrings); i++)
++	{
++	  char buf[INT_BUFSIZE_BOUND (int)];
++
++	  printf ("Spawned test for %s (%d)\n", teststrings[i], i);
++	  snprintf (buf, sizeof (buf), "%d\n", i);
++	  if (setenv ("GLIBC_TUNABLES", teststrings[i], 1) != 0)
++	    exit (1);
++
++	  int status = support_capture_subprogram_self_sgid (buf);
++
++	  /* Bail out early if unsupported.  */
++	  if (WEXITSTATUS (status) == EXIT_UNSUPPORTED)
++	    return EXIT_UNSUPPORTED;
++
++	  ret |= status;
++	}
++      return ret;
++    }
+ }
++
++#define TEST_FUNCTION_ARGV do_test
++#include <support/test-driver.c>
+diff --git a/elf/tst-env-setuid.c b/elf/tst-env-setuid.c
+index 41dc79e83a..2dbccdb69e 100644
+--- a/elf/tst-env-setuid.c
++++ b/elf/tst-env-setuid.c
 @@ -29,173 +29,12 @@
  #include <sys/wait.h>
  #include <unistd.h>
@@ -586,158 +873,25 @@ diff -pruN glibc-2.32.orig/elf/tst-env-setuid.c glibc-2.32/elf/tst-env-setuid.c
  }
  
  #define TEST_FUNCTION_ARGV do_test
-diff -pruN glibc-2.32.orig/elf/tst-env-setuid-tunables.c glibc-2.32/elf/tst-env-setuid-tunables.c
---- glibc-2.32.orig/elf/tst-env-setuid-tunables.c	2021-09-18 21:02:32.644182694 +1000
-+++ glibc-2.32/elf/tst-env-setuid-tunables.c	2021-09-18 21:03:05.311302253 +1000
-@@ -25,35 +25,76 @@
- #include "config.h"
- #undef _LIBC
- 
--#define test_parent test_parent_tunables
--#define test_child test_child_tunables
-+#include <errno.h>
-+#include <fcntl.h>
-+#include <stdlib.h>
-+#include <stdint.h>
-+#include <stdio.h>
-+#include <string.h>
-+#include <sys/stat.h>
-+#include <sys/wait.h>
-+#include <unistd.h>
-+#include <intprops.h>
-+#include <array_length.h>
+diff --git a/iconv/Versions b/iconv/Versions
+index 8a5f4cf780..d51af52fa3 100644
+--- a/iconv/Versions
++++ b/iconv/Versions
+@@ -6,7 +6,9 @@ libc {
+   GLIBC_PRIVATE {
+     # functions shared with iconv program
+     __gconv_get_alias_db; __gconv_get_cache; __gconv_get_modules_db;
+-    __gconv_open; __gconv_create_spec;
 +
-+#include <support/check.h>
-+#include <support/support.h>
-+#include <support/test-driver.h>
-+#include <support/capture_subprocess.h>
++    # functions used elsewhere in glibc
++    __gconv_open; __gconv_create_spec; __gconv_destroy_spec;
  
--static int test_child_tunables (void);
--static int test_parent_tunables (void);
--
--#include "tst-env-setuid.c"
-+const char *teststrings[] =
-+{
-+  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.check=2:glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096:glibc.malloc.check=2",
-+  "glibc.malloc.perturb=0x800",
-+  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.perturb=0x800:not_valid.malloc.check=2:glibc.malloc.mmap_threshold=4096",
-+  "glibc.not_valid.check=2:glibc.malloc.mmap_threshold=4096",
-+  "not_valid.malloc.check=2:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.garbage=2:glibc.maoc.mmap_threshold=4096:glibc.malloc.check=2",
-+  "glibc.malloc.check=4:glibc.malloc.garbage=2:glibc.maoc.mmap_threshold=4096",
-+  ":glibc.malloc.garbage=2:glibc.malloc.check=1",
-+  "glibc.malloc.check=1:glibc.malloc.check=2",
-+  "not_valid.malloc.check=2",
-+  "glibc.not_valid.check=2",
-+};
- 
--#define CHILD_VALSTRING_VALUE "glibc.malloc.mmap_threshold=4096"
--#define PARENT_VALSTRING_VALUE \
--  "glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096"
-+const char *resultstrings[] =
-+{
-+  "glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.perturb=0x800",
-+  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.perturb=0x800:glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.mmap_threshold=4096",
-+  "glibc.malloc.mmap_threshold=4096",
-+  "",
-+  "",
-+  "",
-+  "",
-+  "",
-+  "",
-+};
- 
- static int
--test_child_tunables (void)
-+test_child (int off)
- {
-   const char *val = getenv ("GLIBC_TUNABLES");
- 
- #if HAVE_TUNABLES
--  if (val != NULL && strcmp (val, CHILD_VALSTRING_VALUE) == 0)
-+  if (val != NULL && strcmp (val, resultstrings[off]) == 0)
-     return 0;
- 
-   if (val != NULL)
--    printf ("Unexpected GLIBC_TUNABLES VALUE %s\n", val);
-+    printf ("[%d] Unexpected GLIBC_TUNABLES VALUE %s\n", off, val);
- 
-   return 1;
- #else
-   if (val != NULL)
-     {
--      printf ("GLIBC_TUNABLES not cleared\n");
-+      printf ("[%d] GLIBC_TUNABLES not cleared\n", off);
-       return 1;
-     }
-   return 0;
-@@ -61,15 +102,48 @@ test_child_tunables (void)
- }
- 
- static int
--test_parent_tunables (void)
-+do_test (int argc, char **argv)
- {
--  const char *val = getenv ("GLIBC_TUNABLES");
-+  /* Setgid child process.  */
-+  if (argc == 2)
-+    {
-+      if (getgid () == getegid ())
-+	/* This can happen if the file system is mounted nosuid.  */
-+	FAIL_UNSUPPORTED ("SGID failed: GID and EGID match (%jd)\n",
-+			  (intmax_t) getgid ());
- 
--  if (val != NULL && strcmp (val, PARENT_VALSTRING_VALUE) == 0)
--    return 0;
-+      int ret = test_child (atoi (argv[1]));
- 
--  if (val != NULL)
--    printf ("Unexpected GLIBC_TUNABLES VALUE %s\n", val);
-+      if (ret != 0)
-+	exit (1);
- 
--  return 1;
-+      exit (EXIT_SUCCESS);
-+    }
-+  else
-+    {
-+      int ret = 0;
-+
-+      /* Spawn tests.  */
-+      for (int i = 0; i < array_length (teststrings); i++)
-+	{
-+	  char buf[INT_BUFSIZE_BOUND (int)];
-+
-+	  printf ("Spawned test for %s (%d)\n", teststrings[i], i);
-+	  snprintf (buf, sizeof (buf), "%d\n", i);
-+	  if (setenv ("GLIBC_TUNABLES", teststrings[i], 1) != 0)
-+	    exit (1);
-+
-+	  int status = support_capture_subprogram_self_sgid (buf);
-+
-+	  /* Bail out early if unsupported.  */
-+	  if (WEXITSTATUS (status) == EXIT_UNSUPPORTED)
-+	    return EXIT_UNSUPPORTED;
-+
-+	  ret |= status;
-+	}
-+      return ret;
-+    }
- }
-+
-+#define TEST_FUNCTION_ARGV do_test
-+#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/iconv/gconv_charset.c glibc-2.32/iconv/gconv_charset.c
---- glibc-2.32.orig/iconv/gconv_charset.c	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/gconv_charset.c	2021-09-18 21:03:05.311302253 +1000
+     # function used by the gconv modules
+     __gconv_transliterate;
+diff --git a/iconv/gconv_charset.c b/iconv/gconv_charset.c
+index 6ccd0773cc..4ba0aa99f5 100644
+--- a/iconv/gconv_charset.c
++++ b/iconv/gconv_charset.c
 @@ -216,3 +216,13 @@ out:
    return ret;
  }
@@ -752,9 +906,10 @@ diff -pruN glibc-2.32.orig/iconv/gconv_charset.c glibc-2.32/iconv/gconv_charset.
 +  return;
 +}
 +libc_hidden_def (__gconv_destroy_spec)
-diff -pruN glibc-2.32.orig/iconv/gconv_charset.h glibc-2.32/iconv/gconv_charset.h
---- glibc-2.32.orig/iconv/gconv_charset.h	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/gconv_charset.h	2021-09-18 21:03:05.311302253 +1000
+diff --git a/iconv/gconv_charset.h b/iconv/gconv_charset.h
+index b39b09aea1..e9c122cf7e 100644
+--- a/iconv/gconv_charset.h
++++ b/iconv/gconv_charset.h
 @@ -48,33 +48,6 @@
  #define GCONV_IGNORE_ERRORS_SUFFIX "IGNORE"
  
@@ -789,10 +944,11 @@ diff -pruN glibc-2.32.orig/iconv/gconv_charset.h glibc-2.32/iconv/gconv_charset.
  /* This function copies in-order, characters from the source 's' that are
     either alpha-numeric or one in one of these: "_-.,:/" - into the destination
     'wp' while dropping all other characters.  In the process, it converts all
-diff -pruN glibc-2.32.orig/iconv/gconv_int.h glibc-2.32/iconv/gconv_int.h
---- glibc-2.32.orig/iconv/gconv_int.h	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/gconv_int.h	2021-09-18 21:03:05.311302253 +1000
-@@ -152,6 +152,27 @@ extern int __gconv_open (struct gconv_sp
+diff --git a/iconv/gconv_int.h b/iconv/gconv_int.h
+index e86938dae7..f721ce30ff 100644
+--- a/iconv/gconv_int.h
++++ b/iconv/gconv_int.h
+@@ -152,6 +152,27 @@ extern int __gconv_open (struct gconv_spec *conv_spec,
                           __gconv_t *handle, int flags);
  libc_hidden_proto (__gconv_open)
  
@@ -820,10 +976,11 @@ diff -pruN glibc-2.32.orig/iconv/gconv_int.h glibc-2.32/iconv/gconv_int.h
  /* Free resources associated with transformation descriptor CD.  */
  extern int __gconv_close (__gconv_t cd)
       attribute_hidden;
-diff -pruN glibc-2.32.orig/iconv/iconv_open.c glibc-2.32/iconv/iconv_open.c
---- glibc-2.32.orig/iconv/iconv_open.c	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/iconv_open.c	2021-09-18 21:03:05.311302253 +1000
-@@ -39,7 +39,7 @@ iconv_open (const char *tocode, const ch
+diff --git a/iconv/iconv_open.c b/iconv/iconv_open.c
+index dd54bc12e0..5b30055c04 100644
+--- a/iconv/iconv_open.c
++++ b/iconv/iconv_open.c
+@@ -39,7 +39,7 @@ iconv_open (const char *tocode, const char *fromcode)
  
    int res = __gconv_open (&conv_spec, &cd, 0);
  
@@ -832,9 +989,10 @@ diff -pruN glibc-2.32.orig/iconv/iconv_open.c glibc-2.32/iconv/iconv_open.c
  
    if (__builtin_expect (res, __GCONV_OK) != __GCONV_OK)
      {
-diff -pruN glibc-2.32.orig/iconv/iconv_prog.c glibc-2.32/iconv/iconv_prog.c
---- glibc-2.32.orig/iconv/iconv_prog.c	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/iconv_prog.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/iconv/iconv_prog.c b/iconv/iconv_prog.c
+index b4334faa57..d59979759c 100644
+--- a/iconv/iconv_prog.c
++++ b/iconv/iconv_prog.c
 @@ -184,7 +184,7 @@ main (int argc, char *argv[])
        /* Let's see whether we have these coded character sets.  */
        res = __gconv_open (&conv_spec, &cd, 0);
@@ -844,9 +1002,10 @@ diff -pruN glibc-2.32.orig/iconv/iconv_prog.c glibc-2.32/iconv/iconv_prog.c
  
        if (res != __GCONV_OK)
  	{
-diff -pruN glibc-2.32.orig/iconv/tst-iconv_prog.sh glibc-2.32/iconv/tst-iconv_prog.sh
---- glibc-2.32.orig/iconv/tst-iconv_prog.sh	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/tst-iconv_prog.sh	2021-09-18 21:03:05.311302253 +1000
+diff --git a/iconv/tst-iconv_prog.sh b/iconv/tst-iconv_prog.sh
+index 8298136b7f..d8db7b335c 100644
+--- a/iconv/tst-iconv_prog.sh
++++ b/iconv/tst-iconv_prog.sh
 @@ -102,12 +102,16 @@ hangarray=(
  "\x00\x80;-c;IBM1161;UTF-8//TRANSLIT//IGNORE"
  "\x00\xdb;-c;IBM1162;UTF-8//TRANSLIT//IGNORE"
@@ -870,23 +1029,42 @@ diff -pruN glibc-2.32.orig/iconv/tst-iconv_prog.sh glibc-2.32/iconv/tst-iconv_pr
  "\x00\x53;-c;IBM16804;UTF-8//TRANSLIT//IGNORE"
  "\x00\x41;-c;IBM274;UTF-8//TRANSLIT//IGNORE"
  "\x00\x41;-c;IBM275;UTF-8//TRANSLIT//IGNORE"
-diff -pruN glibc-2.32.orig/iconv/Versions glibc-2.32/iconv/Versions
---- glibc-2.32.orig/iconv/Versions	2021-09-18 21:02:32.646182763 +1000
-+++ glibc-2.32/iconv/Versions	2021-09-18 21:03:05.311302253 +1000
-@@ -6,7 +6,9 @@ libc {
-   GLIBC_PRIVATE {
-     # functions shared with iconv program
-     __gconv_get_alias_db; __gconv_get_cache; __gconv_get_modules_db;
--    __gconv_open; __gconv_create_spec;
-+
-+    # functions used elsewhere in glibc
-+    __gconv_open; __gconv_create_spec; __gconv_destroy_spec;
+diff --git a/iconvdata/Makefile b/iconvdata/Makefile
+index 4ec2741cdc..b67b4feeb4 100644
+--- a/iconvdata/Makefile
++++ b/iconvdata/Makefile
+@@ -1,4 +1,5 @@
+ # Copyright (C) 1997-2020 Free Software Foundation, Inc.
++# Copyright (C) The GNU Toolchain Authors.
+ # This file is part of the GNU C Library.
  
-     # function used by the gconv modules
-     __gconv_transliterate;
-diff -pruN glibc-2.32.orig/iconvdata/bug-iconv13.c glibc-2.32/iconvdata/bug-iconv13.c
---- glibc-2.32.orig/iconvdata/bug-iconv13.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/iconvdata/bug-iconv13.c	2021-09-18 21:03:05.311302253 +1000
+ # The GNU C Library is free software; you can redistribute it and/or
+@@ -73,7 +74,8 @@ modules.so := $(addsuffix .so, $(modules))
+ ifeq (yes,$(build-shared))
+ tests = bug-iconv1 bug-iconv2 tst-loading tst-e2big tst-iconv4 bug-iconv4 \
+ 	tst-iconv6 bug-iconv5 bug-iconv6 tst-iconv7 bug-iconv8 bug-iconv9 \
+-	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4
++	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4 \
++	bug-iconv13 bug-iconv14 bug-iconv15
+ ifeq ($(have-thread-library),yes)
+ tests += bug-iconv3
+ endif
+@@ -321,6 +323,10 @@ $(objpfx)bug-iconv10.out: $(objpfx)gconv-modules \
+ 			  $(addprefix $(objpfx),$(modules.so))
+ $(objpfx)bug-iconv12.out: $(objpfx)gconv-modules \
+ 			  $(addprefix $(objpfx),$(modules.so))
++$(objpfx)bug-iconv14.out: $(objpfx)gconv-modules \
++			  $(addprefix $(objpfx),$(modules.so))
++$(objpfx)bug-iconv15.out: $(addprefix $(objpfx), $(gconv-modules)) \
++			  $(addprefix $(objpfx),$(modules.so))
+ 
+ $(objpfx)iconv-test.out: run-iconv-test.sh $(objpfx)gconv-modules \
+ 			 $(addprefix $(objpfx),$(modules.so)) \
+diff --git a/iconvdata/bug-iconv13.c b/iconvdata/bug-iconv13.c
+new file mode 100644
+index 0000000000..87aaff398e
+--- /dev/null
++++ b/iconvdata/bug-iconv13.c
 @@ -0,0 +1,53 @@
 +/* bug 24973: Test EUC-KR module
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -941,9 +1119,11 @@ diff -pruN glibc-2.32.orig/iconvdata/bug-iconv13.c glibc-2.32/iconvdata/bug-icon
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/iconvdata/bug-iconv14.c glibc-2.32/iconvdata/bug-iconv14.c
---- glibc-2.32.orig/iconvdata/bug-iconv14.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/iconvdata/bug-iconv14.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/iconvdata/bug-iconv14.c b/iconvdata/bug-iconv14.c
+new file mode 100644
+index 0000000000..902f140fa9
+--- /dev/null
++++ b/iconvdata/bug-iconv14.c
 @@ -0,0 +1,127 @@
 +/* Assertion in ISO-2022-JP-3 due to two-character sequence (bug 27256).
 +   Copyright (C) 2021 Free Software Foundation, Inc.
@@ -1072,10 +1252,77 @@ diff -pruN glibc-2.32.orig/iconvdata/bug-iconv14.c glibc-2.32/iconvdata/bug-icon
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/iconvdata/euc-kr.c glibc-2.32/iconvdata/euc-kr.c
---- glibc-2.32.orig/iconvdata/euc-kr.c	2021-09-18 21:02:32.648182831 +1000
-+++ glibc-2.32/iconvdata/euc-kr.c	2021-09-18 21:03:05.311302253 +1000
-@@ -80,11 +80,7 @@ euckr_from_ucs4 (uint32_t ch, unsigned c
+diff --git a/iconvdata/bug-iconv15.c b/iconvdata/bug-iconv15.c
+new file mode 100644
+index 0000000000..cc04bd0313
+--- /dev/null
++++ b/iconvdata/bug-iconv15.c
+@@ -0,0 +1,60 @@
++/* Bug 28524: Conversion from ISO-2022-JP-3 with iconv
++   may emit spurious NUL character on state reset.
++   Copyright (C) The GNU Toolchain Authors.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <stddef.h>
++#include <iconv.h>
++#include <support/check.h>
++
++static int
++do_test (void)
++{
++  char in[] = "\x1b(I";
++  char *inbuf = in;
++  size_t inleft = sizeof (in) - 1;
++  char out[1];
++  char *outbuf = out;
++  size_t outleft = sizeof (out);
++  iconv_t cd;
++
++  cd = iconv_open ("UTF8", "ISO-2022-JP-3");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++
++  /* First call to iconv should alter internal state.
++     Now, JISX0201_Kana_set is selected and
++     state value != ASCII_set.  */
++  TEST_VERIFY (iconv (cd, &inbuf, &inleft, &outbuf, &outleft) != (size_t) -1);
++
++  /* No bytes should have been added to
++     the output buffer at this point.  */
++  TEST_VERIFY (outbuf == out);
++  TEST_VERIFY (outleft == sizeof (out));
++
++  /* Second call shall emit spurious NUL character in unpatched glibc.  */
++  TEST_VERIFY (iconv (cd, NULL, NULL, &outbuf, &outleft) != (size_t) -1);
++
++  /* No characters are expected to be produced.  */
++  TEST_VERIFY (outbuf == out);
++  TEST_VERIFY (outleft == sizeof (out));
++
++  TEST_VERIFY_EXIT (iconv_close (cd) != -1);
++
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/iconvdata/euc-kr.c b/iconvdata/euc-kr.c
+index b0d56cf3ee..1045bae926 100644
+--- a/iconvdata/euc-kr.c
++++ b/iconvdata/euc-kr.c
+@@ -80,11 +80,7 @@ euckr_from_ucs4 (uint32_t ch, unsigned char *cp)
  									      \
      if (ch <= 0x9f)							      \
        ++inptr;								      \
@@ -1088,9 +1335,10 @@ diff -pruN glibc-2.32.orig/iconvdata/euc-kr.c glibc-2.32/iconvdata/euc-kr.c
        {									      \
  	/* This is illegal.  */						      \
  	STANDARD_FROM_LOOP_ERR_HANDLER (1);				      \
-diff -pruN glibc-2.32.orig/iconvdata/ibm1364.c glibc-2.32/iconvdata/ibm1364.c
---- glibc-2.32.orig/iconvdata/ibm1364.c	2021-09-18 21:02:32.649182866 +1000
-+++ glibc-2.32/iconvdata/ibm1364.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/iconvdata/ibm1364.c b/iconvdata/ibm1364.c
+index 49e7267ab4..521f0825b7 100644
+--- a/iconvdata/ibm1364.c
++++ b/iconvdata/ibm1364.c
 @@ -158,24 +158,14 @@ enum
  									      \
      if (__builtin_expect (ch, 0) == SO)					      \
@@ -1118,10 +1366,18 @@ diff -pruN glibc-2.32.orig/iconvdata/ibm1364.c glibc-2.32/iconvdata/ibm1364.c
  	curcs = sb;							      \
  	++inptr;							      \
  	continue;							      \
-diff -pruN glibc-2.32.orig/iconvdata/iso-2022-jp-3.c glibc-2.32/iconvdata/iso-2022-jp-3.c
---- glibc-2.32.orig/iconvdata/iso-2022-jp-3.c	2021-09-18 21:02:32.651182934 +1000
-+++ glibc-2.32/iconvdata/iso-2022-jp-3.c	2021-09-18 21:03:05.311302253 +1000
-@@ -67,23 +67,34 @@ enum
+diff --git a/iconvdata/iso-2022-jp-3.c b/iconvdata/iso-2022-jp-3.c
+index 8c3b7e627e..c7b470db61 100644
+--- a/iconvdata/iso-2022-jp-3.c
++++ b/iconvdata/iso-2022-jp-3.c
+@@ -1,5 +1,6 @@
+ /* Conversion module for ISO-2022-JP-3.
+    Copyright (C) 1998-2020 Free Software Foundation, Inc.
++   Copyright (C) The GNU Toolchain Authors.
+    This file is part of the GNU C Library.
+    Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998,
+    and Bruno Haible <bruno@clisp.org>, 2002.
+@@ -67,10 +68,15 @@ enum
    CURRENT_SEL_MASK = 7 << 3
  };
  
@@ -1141,10 +1397,7 @@ diff -pruN glibc-2.32.orig/iconvdata/iso-2022-jp-3.c glibc-2.32/iconvdata/iso-20
  
  /* Since this is a stateful encoding we have to provide code which resets
     the output state to the initial state.  This has to be done during the
-    flushing.  */
- #define EMIT_SHIFT_TO_INIT \
--  if ((data->__statep->__count & ~7) != ASCII_set)			      \
-+  if (data->__statep->__count != ASCII_set)			      \
+@@ -80,10 +86,27 @@ enum
      {									      \
        if (FROM_DIRECTION)						      \
  	{								      \
@@ -1152,20 +1405,31 @@ diff -pruN glibc-2.32.orig/iconvdata/iso-2022-jp-3.c glibc-2.32/iconvdata/iso-20
 -	     state for the input.  */					      \
 -	  data->__statep->__count &= 7;					      \
 -	  data->__statep->__count |= ASCII_set;				      \
-+	  if (__glibc_likely (outbuf + 4 <= outend))			      \
++	  uint32_t ch = data->__statep->__count >> 6;			      \
++									      \
++	  if (__glibc_unlikely (ch != 0))				      \
 +	    {								      \
-+	      /* Write out the last character.  */			      \
-+	      *((uint32_t *) outbuf) = data->__statep->__count >> 6;	      \
-+	      outbuf += sizeof (uint32_t);				      \
-+	      data->__statep->__count = ASCII_set;			\
++	      if (__glibc_likely (outbuf + 4 <= outend))		      \
++		{							      \
++		  /* Write out the last character.  */			      \
++		  put32u (outbuf, ch);					      \
++		  outbuf += 4;						      \
++		  data->__statep->__count &= 7;				      \
++		  data->__statep->__count |= ASCII_set;			      \
++		}							      \
++	      else							      \
++		/* We don't have enough room in the output buffer.  */	      \
++		status = __GCONV_FULL_OUTPUT;				      \
 +	    }								      \
 +	  else								      \
-+	    /* We don't have enough room in the output buffer.  */	      \
-+	    status = __GCONV_FULL_OUTPUT;				      \
++	    {								      \
++	      data->__statep->__count &= 7;				      \
++	      data->__statep->__count |= ASCII_set;			      \
++	    }								      \
  	}								      \
        else								      \
  	{								      \
-@@ -151,7 +162,21 @@ enum
+@@ -151,7 +174,21 @@ enum
  #define LOOPFCT			FROM_LOOP
  #define BODY \
    {									      \
@@ -1188,7 +1452,7 @@ diff -pruN glibc-2.32.orig/iconvdata/iso-2022-jp-3.c glibc-2.32/iconvdata/iso-20
  									      \
      /* Recognize escape sequences.  */					      \
      if (__glibc_unlikely (ch == ESC))					      \
-@@ -297,21 +322,25 @@ enum
+@@ -297,21 +334,25 @@ enum
  	    uint32_t u1 = __jisx0213_to_ucs_combining[ch - 1][0];	      \
  	    uint32_t u2 = __jisx0213_to_ucs_combining[ch - 1][1];	      \
  									      \
@@ -1223,10 +1487,11 @@ diff -pruN glibc-2.32.orig/iconvdata/iso-2022-jp-3.c glibc-2.32/iconvdata/iso-20
  	  }								      \
  									      \
  	inptr += 2;							      \
-diff -pruN glibc-2.32.orig/iconvdata/ksc5601.h glibc-2.32/iconvdata/ksc5601.h
---- glibc-2.32.orig/iconvdata/ksc5601.h	2021-09-18 21:02:32.652182968 +1000
-+++ glibc-2.32/iconvdata/ksc5601.h	2021-09-18 21:03:05.311302253 +1000
-@@ -50,15 +50,15 @@ ksc5601_to_ucs4 (const unsigned char **s
+diff --git a/iconvdata/ksc5601.h b/iconvdata/ksc5601.h
+index d3eb3a4ff8..f5cdc72797 100644
+--- a/iconvdata/ksc5601.h
++++ b/iconvdata/ksc5601.h
+@@ -50,15 +50,15 @@ ksc5601_to_ucs4 (const unsigned char **s, size_t avail, unsigned char offset)
    unsigned char ch2;
    int idx;
  
@@ -1245,32 +1510,11 @@ diff -pruN glibc-2.32.orig/iconvdata/ksc5601.h glibc-2.32/iconvdata/ksc5601.h
    ch2 = (*s)[1];
    if (ch2 < offset || (ch2 - offset) <= 0x20 || (ch2 - offset) >= 0x7f)
      return __UNKNOWN_10646_CHAR;
-diff -pruN glibc-2.32.orig/iconvdata/Makefile glibc-2.32/iconvdata/Makefile
---- glibc-2.32.orig/iconvdata/Makefile	2021-09-18 21:02:32.647182797 +1000
-+++ glibc-2.32/iconvdata/Makefile	2021-09-18 21:03:05.311302253 +1000
-@@ -73,7 +73,8 @@ modules.so := $(addsuffix .so, $(modules
- ifeq (yes,$(build-shared))
- tests = bug-iconv1 bug-iconv2 tst-loading tst-e2big tst-iconv4 bug-iconv4 \
- 	tst-iconv6 bug-iconv5 bug-iconv6 tst-iconv7 bug-iconv8 bug-iconv9 \
--	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4
-+	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4 \
-+	bug-iconv13 bug-iconv14
- ifeq ($(have-thread-library),yes)
- tests += bug-iconv3
- endif
-@@ -321,6 +322,8 @@ $(objpfx)bug-iconv10.out: $(objpfx)gconv
- 			  $(addprefix $(objpfx),$(modules.so))
- $(objpfx)bug-iconv12.out: $(objpfx)gconv-modules \
- 			  $(addprefix $(objpfx),$(modules.so))
-+$(objpfx)bug-iconv14.out: $(objpfx)gconv-modules \
-+			  $(addprefix $(objpfx),$(modules.so))
- 
- $(objpfx)iconv-test.out: run-iconv-test.sh $(objpfx)gconv-modules \
- 			 $(addprefix $(objpfx),$(modules.so)) \
-diff -pruN glibc-2.32.orig/intl/dcigettext.c glibc-2.32/intl/dcigettext.c
---- glibc-2.32.orig/intl/dcigettext.c	2021-09-18 21:02:32.656183106 +1000
-+++ glibc-2.32/intl/dcigettext.c	2021-09-18 21:03:05.311302253 +1000
-@@ -1120,15 +1120,18 @@ _nl_find_msg (struct loaded_l10nfile *do
+diff --git a/intl/dcigettext.c b/intl/dcigettext.c
+index 2e7c662bc7..bd332e71da 100644
+--- a/intl/dcigettext.c
++++ b/intl/dcigettext.c
+@@ -1120,15 +1120,18 @@ _nl_find_msg (struct loaded_l10nfile *domain_file,
  
  # ifdef _LIBC
  
@@ -1296,9 +1540,10 @@ diff -pruN glibc-2.32.orig/intl/dcigettext.c glibc-2.32/intl/dcigettext.c
  		      if (__builtin_expect (r != __GCONV_OK, 0))
  			{
  			  /* If the output encoding is the same there is
-diff -pruN glibc-2.32.orig/intl/tst-codeset.c glibc-2.32/intl/tst-codeset.c
---- glibc-2.32.orig/intl/tst-codeset.c	2021-09-18 21:02:32.656183106 +1000
-+++ glibc-2.32/intl/tst-codeset.c	2021-09-18 21:03:05.311302253 +1000
+diff --git a/intl/tst-codeset.c b/intl/tst-codeset.c
+index fd70432eca..e9f6e5e09f 100644
+--- a/intl/tst-codeset.c
++++ b/intl/tst-codeset.c
 @@ -22,13 +22,11 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -1337,6 +1582,8 @@ diff -pruN glibc-2.32.orig/intl/tst-codeset.c glibc-2.32/intl/tst-codeset.c
 -      printf ("call 2 returned: %s\n", s);
 -      result = 1;
 -    }
+-
+-  return result;
 +  /* `a with umlaut' is transliterated to `ae'.  */
 +  bind_textdomain_codeset ("codeset", "ASCII//TRANSLIT");
 +  TEST_COMPARE_STRING (gettext ("cheese"), "Kaese");
@@ -1344,17 +1591,17 @@ diff -pruN glibc-2.32.orig/intl/tst-codeset.c glibc-2.32/intl/tst-codeset.c
 +  /* Transliteration also works by default even if not set.  */
 +  bind_textdomain_codeset ("codeset", "ASCII");
 +  TEST_COMPARE_STRING (gettext ("cheese"), "Kaese");
- 
--  return result;
++
 +  return 0;
  }
  
 -#define TEST_FUNCTION do_test ()
 -#include "../test-skeleton.c"
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/malloc/Makefile glibc-2.32/malloc/Makefile
---- glibc-2.32.orig/malloc/Makefile	2021-09-18 21:02:32.670183585 +1000
-+++ glibc-2.32/malloc/Makefile	2021-09-18 21:03:05.312302287 +1000
+diff --git a/malloc/Makefile b/malloc/Makefile
+index e22cbde22d..5093e8730e 100644
+--- a/malloc/Makefile
++++ b/malloc/Makefile
 @@ -62,6 +62,16 @@ endif
  tests += $(tests-static)
  test-srcs = tst-mtrace
@@ -1372,7 +1619,7 @@ diff -pruN glibc-2.32.orig/malloc/Makefile glibc-2.32/malloc/Makefile
  routines = malloc morecore mcheck mtrace obstack reallocarray \
    scratch_buffer_grow scratch_buffer_grow_preserve \
    scratch_buffer_set_array_size \
-@@ -100,6 +110,11 @@ $(objpfx)tst-malloc-thread-exit: $(share
+@@ -100,6 +110,11 @@ $(objpfx)tst-malloc-thread-exit: $(shared-thread-library)
  $(objpfx)tst-malloc-thread-fail: $(shared-thread-library)
  $(objpfx)tst-malloc-fork-deadlock: $(shared-thread-library)
  $(objpfx)tst-malloc-stats-cancellation: $(shared-thread-library)
@@ -1384,7 +1631,7 @@ diff -pruN glibc-2.32.orig/malloc/Makefile glibc-2.32/malloc/Makefile
  
  # Export the __malloc_initialize_hook variable to libc.so.
  LDFLAGS-tst-mallocstate = -rdynamic
-@@ -239,6 +254,8 @@ $(tests:%=$(objpfx)%.o): CPPFLAGS += -DT
+@@ -239,6 +254,8 @@ $(tests:%=$(objpfx)%.o): CPPFLAGS += -DTEST_NO_MALLOPT
  $(objpfx)tst-interpose-nothread: $(objpfx)tst-interpose-aux-nothread.o
  $(objpfx)tst-interpose-thread: \
    $(objpfx)tst-interpose-aux-thread.o $(shared-thread-library)
@@ -1393,17 +1640,18 @@ diff -pruN glibc-2.32.orig/malloc/Makefile glibc-2.32/malloc/Makefile
  $(objpfx)tst-interpose-static-nothread: $(objpfx)tst-interpose-aux-nothread.o
  $(objpfx)tst-interpose-static-thread: \
    $(objpfx)tst-interpose-aux-thread.o $(static-thread-library)
-@@ -256,3 +273,6 @@ $(objpfx)tst-dynarray-fail-mem.out: $(ob
+@@ -256,3 +273,6 @@ $(objpfx)tst-dynarray-fail-mem.out: $(objpfx)tst-dynarray-fail.out
  $(objpfx)tst-malloc-tcache-leak: $(shared-thread-library)
  $(objpfx)tst-malloc_info: $(shared-thread-library)
  $(objpfx)tst-mallocfork2: $(shared-thread-library)
 +$(objpfx)tst-malloc-tcache-leak-mcheck: $(shared-thread-library)
 +$(objpfx)tst-malloc_info-mcheck: $(shared-thread-library)
 +$(objpfx)tst-mallocfork2-mcheck: $(shared-thread-library)
-diff -pruN glibc-2.32.orig/manual/tunables.texi glibc-2.32/manual/tunables.texi
---- glibc-2.32.orig/manual/tunables.texi	2021-09-18 21:02:32.672183654 +1000
-+++ glibc-2.32/manual/tunables.texi	2021-09-18 21:03:05.312302287 +1000
-@@ -432,7 +432,11 @@ set shared cache size in bytes for use i
+diff --git a/manual/tunables.texi b/manual/tunables.texi
+index 23ef0d40e7..d72d7a5ec0 100644
+--- a/manual/tunables.texi
++++ b/manual/tunables.texi
+@@ -432,7 +432,11 @@ set shared cache size in bytes for use in memory and string routines.
  
  @deftp Tunable glibc.cpu.x86_non_temporal_threshold
  The @code{glibc.cpu.x86_non_temporal_threshold} tunable allows the user
@@ -1416,9 +1664,10 @@ diff -pruN glibc-2.32.orig/manual/tunables.texi glibc-2.32/manual/tunables.texi
  
  This tunable is specific to i386 and x86-64.
  @end deftp
-diff -pruN glibc-2.32.orig/misc/sys/cdefs.h glibc-2.32/misc/sys/cdefs.h
---- glibc-2.32.orig/misc/sys/cdefs.h	2021-09-18 21:02:32.690184271 +1000
-+++ glibc-2.32/misc/sys/cdefs.h	2021-09-18 21:03:05.312302287 +1000
+diff --git a/misc/sys/cdefs.h b/misc/sys/cdefs.h
+index 19d9cc5cfe..38221d0b2a 100644
+--- a/misc/sys/cdefs.h
++++ b/misc/sys/cdefs.h
 @@ -124,13 +124,10 @@
  #define __bos0(ptr) __builtin_object_size (ptr, 0)
  
@@ -1433,62 +1682,33 @@ diff -pruN glibc-2.32.orig/misc/sys/cdefs.h glibc-2.32/misc/sys/cdefs.h
  # define __warnattr(msg)
  # define __errordecl(name, msg) extern void name (void)
  #endif
-diff -pruN glibc-2.32.orig/NEWS glibc-2.32/NEWS
---- glibc-2.32.orig/NEWS	2021-09-18 21:02:32.639182523 +1000
-+++ glibc-2.32/NEWS	2021-09-18 21:30:11.284117111 +1000
-@@ -5,6 +5,33 @@ See the end for copying conditions.
- Please send GNU C library bug reports via <https://sourceware.org/bugzilla/>
- using `glibc' in the "product" field.
- 
-+The following bugs are resolved with this release:
-+
-+  [20019] NULL pointer dereference in libc.so.6 IFUNC due to uninitialized GOT
-+  [25399] Remove __warn_memset_zero_len
-+  [26224] iconv hangs when converting some invalid inputs from several IBM
-+    character sets (CVE-2020-27618)
-+  [26534] libm.so 2.32 SIGILL in pow() due to FMA4 instruction on non-FMA4
-+    system
-+  [26555] string: strerrorname_np does not return the documented value
-+  [26600] Transaction ID collisions cause slow DNS lookups in getaddrinfo
-+  [26636] libc: 32-bit shmctl(IPC_INFO) crashes when shminfo struct is
-+    at the end of a memory mapping
-+  [26637] libc: semctl SEM_STAT_ANY fails to pass the buffer specified
-+    by the caller to the kernel
-+  [26639] libc: msgctl IPC_INFO and MSG_INFO return garbage
-+  [26690] __vfscanf_internal: fix aliasing violation
-+  [26853] aarch64: Missing unwind information in statically linked startup code
-+  [26932] libc: sh: Multiple floating point functions defined as stubs only
-+  [27024] posix: Correct attribute access mode on readlinkat
-+  [27130] "rep movsb" performance issue
-+  [27177] GLIBC_TUNABLES=glibc.cpu.x86_ibt=on:glibc.cpu.x86_shstk=on doesn't work
-+  [27256] gconv: Fix assertion failure in ISO-2022-JP-3 module
-+  [27462] nscd: Fix double free in netgroupcache
-+  [27471] Fix SXID_ERASE behavior in setuid programs
-+  [27896] Use __pthread_attr_copy in mq_notify (CVE-2021-33574)
-+  [28213] librt: fix NULL pointer dereference
-+
- Version 2.32
+diff --git a/nptl/pthread_create.c b/nptl/pthread_create.c
+index 2cba3da38c..c217cda608 100644
+--- a/nptl/pthread_create.c
++++ b/nptl/pthread_create.c
+@@ -416,8 +416,6 @@ START_THREAD_DEFN
+   unwind_buf.priv.data.prev = NULL;
+   unwind_buf.priv.data.cleanup = NULL;
  
- Major new features:
-@@ -185,6 +212,14 @@ Security related changes:
-   Dytrych of the Cisco Security Assessment and Penetration Team (See
-   TALOS-2020-1019).
+-  __libc_signal_restore_set (&pd->sigmask);
+-
+   /* Allow setxid from now onwards.  */
+   if (__glibc_unlikely (atomic_exchange_acq (&pd->setxid_futex, 0) == -2))
+     futex_wake (&pd->setxid_futex, 1, FUTEX_PRIVATE);
+@@ -427,6 +425,8 @@ START_THREAD_DEFN
+       /* Store the new cleanup handler info.  */
+       THREAD_SETMEM (pd, cleanup_jmp_buf, &unwind_buf);
  
-+  CVE-2020-27618: An infinite loop has been fixed in the iconv program when
-+  invoked with input containing redundant shift sequences in the IBM1364,
-+  IBM1371, IBM1388, IBM1390, or IBM1399 character sets.
++      __libc_signal_restore_set (&pd->sigmask);
 +
-+  CVE-2021-33574: The mq_notify function has a potential use-after-free
-+  issue when using a notification type of SIGEV_THREAD and a thread
-+  attribute with a non-default affinity mask.
-+
- The following bugs are resolved with this release:
- 
-   [9809] localedata: ckb_IQ: new Kurdish Sorani locale
-diff -pruN glibc-2.32.orig/nscd/netgroupcache.c glibc-2.32/nscd/netgroupcache.c
---- glibc-2.32.orig/nscd/netgroupcache.c	2021-09-18 21:02:32.692184339 +1000
-+++ glibc-2.32/nscd/netgroupcache.c	2021-09-18 21:03:05.312302287 +1000
-@@ -248,7 +248,7 @@ addgetnetgrentX (struct database_dyn *db
+       /* We are either in (a) or (b), and in either case we either own
+          PD already (2) or are about to own PD (1), and so our only
+ 	 restriction would be that we can't free PD until we know we
+diff --git a/nscd/netgroupcache.c b/nscd/netgroupcache.c
+index 88c69d1e9c..381aa721ef 100644
+--- a/nscd/netgroupcache.c
++++ b/nscd/netgroupcache.c
+@@ -248,7 +248,7 @@ addgetnetgrentX (struct database_dyn *db, int fd, request_header *req,
  					     : NULL);
  				    ndomain = (ndomain ? newbuf + ndomaindiff
  					       : NULL);
@@ -1497,7 +1717,7 @@ diff -pruN glibc-2.32.orig/nscd/netgroupcache.c glibc-2.32/nscd/netgroupcache.c
  				  }
  
  				nhost = memcpy (buffer + bufused,
-@@ -319,7 +319,7 @@ addgetnetgrentX (struct database_dyn *db
+@@ -319,7 +319,7 @@ addgetnetgrentX (struct database_dyn *db, int fd, request_header *req,
  		    else if (status == NSS_STATUS_TRYAGAIN && e == ERANGE)
  		      {
  			buflen *= 2;
@@ -1506,10 +1726,45 @@ diff -pruN glibc-2.32.orig/nscd/netgroupcache.c glibc-2.32/nscd/netgroupcache.c
  		      }
  		    else if (status == NSS_STATUS_RETURN
  			     || status == NSS_STATUS_NOTFOUND
-diff -pruN glibc-2.32.orig/posix/unistd.h glibc-2.32/posix/unistd.h
---- glibc-2.32.orig/posix/unistd.h	2021-09-18 21:02:32.696184476 +1000
-+++ glibc-2.32/posix/unistd.h	2021-09-18 21:04:13.411636170 +1000
-@@ -831,7 +831,7 @@ extern int symlinkat (const char *__from
+diff --git a/nss/tst-nss-files-hosts-long.root/etc/nsswitch.conf b/nss/tst-nss-files-hosts-long.root/etc/nsswitch.conf
+new file mode 100644
+index 0000000000..5b0c6a4199
+--- /dev/null
++++ b/nss/tst-nss-files-hosts-long.root/etc/nsswitch.conf
+@@ -0,0 +1 @@
++hosts: files
+diff --git a/posix/bits/unistd.h b/posix/bits/unistd.h
+index 725a83eb0d..7e5bb6fb1e 100644
+--- a/posix/bits/unistd.h
++++ b/posix/bits/unistd.h
+@@ -193,10 +193,9 @@ __NTH (readlinkat (int __fd, const char *__restrict __path,
+ #endif
+ 
+ extern char *__getcwd_chk (char *__buf, size_t __size, size_t __buflen)
+-     __THROW __wur __attr_access ((__write_only__, 1, 2));
++     __THROW __wur;
+ extern char *__REDIRECT_NTH (__getcwd_alias,
+-			     (char *__buf, size_t __size), getcwd)
+-  __wur __attr_access ((__write_only__, 1, 2));
++			     (char *__buf, size_t __size), getcwd) __wur;
+ extern char *__REDIRECT_NTH (__getcwd_chk_warn,
+ 			     (char *__buf, size_t __size, size_t __buflen),
+ 			     __getcwd_chk)
+diff --git a/posix/unistd.h b/posix/unistd.h
+index 32b8161619..acf9ee7e79 100644
+--- a/posix/unistd.h
++++ b/posix/unistd.h
+@@ -517,8 +517,7 @@ extern int fchdir (int __fd) __THROW __wur;
+    an array is allocated with `malloc'; the array is SIZE
+    bytes long, unless SIZE == 0, in which case it is as
+    big as necessary.  */
+-extern char *getcwd (char *__buf, size_t __size) __THROW __wur
+-    __attr_access ((__write_only__, 1, 2));
++extern char *getcwd (char *__buf, size_t __size) __THROW __wur;
+ 
+ #ifdef	__USE_GNU
+ /* Return a malloc'd string containing the current directory name.
+@@ -831,7 +830,7 @@ extern int symlinkat (const char *__from, int __tofd,
  /* Like readlink but a relative PATH is interpreted relative to FD.  */
  extern ssize_t readlinkat (int __fd, const char *__restrict __path,
  			   char *__restrict __buf, size_t __len)
@@ -1518,9 +1773,22 @@ diff -pruN glibc-2.32.orig/posix/unistd.h glibc-2.32/posix/unistd.h
  #endif
  
  /* Remove the link NAME.  */
-diff -pruN glibc-2.32.orig/posix/wordexp.c glibc-2.32/posix/wordexp.c
---- glibc-2.32.orig/posix/wordexp.c	2021-09-18 21:02:32.696184476 +1000
-+++ glibc-2.32/posix/wordexp.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/posix/wordexp-test.c b/posix/wordexp-test.c
+index ed1b22308e..cb3f989cba 100644
+--- a/posix/wordexp-test.c
++++ b/posix/wordexp-test.c
+@@ -183,6 +183,7 @@ struct test_case_struct
+     { 0, NULL, "$var", 0, 0, { NULL, }, IFS },
+     { 0, NULL, "\"\\n\"", 0, 1, { "\\n", }, IFS },
+     { 0, NULL, "", 0, 0, { NULL, }, IFS },
++    { 0, NULL, "${1234567890123456789012}", 0, 0, { NULL, }, IFS },
+ 
+     /* Flags not already covered (testit() has special handling for these) */
+     { 0, NULL, "one two", WRDE_DOOFFS, 2, { "one", "two", }, IFS },
+diff --git a/posix/wordexp.c b/posix/wordexp.c
+index e082d94895..56289503a1 100644
+--- a/posix/wordexp.c
++++ b/posix/wordexp.c
 @@ -1399,7 +1399,7 @@ envsubst:
    /* Is it a numeric parameter? */
    else if (isdigit (env[0]))
@@ -1530,20 +1798,10 @@ diff -pruN glibc-2.32.orig/posix/wordexp.c glibc-2.32/posix/wordexp.c
  
        if (n >= __libc_argc)
  	/* Substitute NULL. */
-diff -pruN glibc-2.32.orig/posix/wordexp-test.c glibc-2.32/posix/wordexp-test.c
---- glibc-2.32.orig/posix/wordexp-test.c	2021-09-18 21:02:32.696184476 +1000
-+++ glibc-2.32/posix/wordexp-test.c	2021-09-18 21:03:05.312302287 +1000
-@@ -183,6 +183,7 @@ struct test_case_struct
-     { 0, NULL, "$var", 0, 0, { NULL, }, IFS },
-     { 0, NULL, "\"\\n\"", 0, 1, { "\\n", }, IFS },
-     { 0, NULL, "", 0, 0, { NULL, }, IFS },
-+    { 0, NULL, "${1234567890123456789012}", 0, 0, { NULL, }, IFS },
- 
-     /* Flags not already covered (testit() has special handling for these) */
-     { 0, NULL, "one two", WRDE_DOOFFS, 2, { "one", "two", }, IFS },
-diff -pruN glibc-2.32.orig/resolv/Makefile glibc-2.32/resolv/Makefile
---- glibc-2.32.orig/resolv/Makefile	2021-09-18 21:02:32.696184476 +1000
-+++ glibc-2.32/resolv/Makefile	2021-09-18 21:03:05.312302287 +1000
+diff --git a/resolv/Makefile b/resolv/Makefile
+index b61c0c3e0c..dbd8f8bf4f 100644
+--- a/resolv/Makefile
++++ b/resolv/Makefile
 @@ -61,6 +61,11 @@ tests += \
    tst-resolv-search \
    tst-resolv-trailing \
@@ -1556,7 +1814,7 @@ diff -pruN glibc-2.32.orig/resolv/Makefile glibc-2.32/resolv/Makefile
  # These tests need libdl.
  ifeq (yes,$(build-shared))
  tests += \
-@@ -191,6 +196,8 @@ $(objpfx)tst-resolv-search: $(objpfx)lib
+@@ -191,6 +196,8 @@ $(objpfx)tst-resolv-search: $(objpfx)libresolv.so $(shared-thread-library)
  $(objpfx)tst-resolv-trailing: $(objpfx)libresolv.so $(shared-thread-library)
  $(objpfx)tst-resolv-threads: \
    $(libdl) $(objpfx)libresolv.so $(shared-thread-library)
@@ -1565,9 +1823,10 @@ diff -pruN glibc-2.32.orig/resolv/Makefile glibc-2.32/resolv/Makefile
  $(objpfx)tst-resolv-canonname: \
    $(libdl) $(objpfx)libresolv.so $(shared-thread-library)
  $(objpfx)tst-resolv-trustad: $(objpfx)libresolv.so $(shared-thread-library)
-diff -pruN glibc-2.32.orig/resolv/res_send.c glibc-2.32/resolv/res_send.c
---- glibc-2.32.orig/resolv/res_send.c	2021-09-18 21:02:32.696184476 +1000
-+++ glibc-2.32/resolv/res_send.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/resolv/res_send.c b/resolv/res_send.c
+index 7e5fec6646..70e5066031 100644
+--- a/resolv/res_send.c
++++ b/resolv/res_send.c
 @@ -1342,15 +1342,6 @@ send_dg(res_state statp,
  			*terrno = EMSGSIZE;
  			return close_and_return_error (statp, resplen2);
@@ -1636,9 +1895,11 @@ diff -pruN glibc-2.32.orig/resolv/res_send.c glibc-2.32/resolv/res_send.c
  			recvresp1 = 1;
  		else
  			recvresp2 = 1;
-diff -pruN glibc-2.32.orig/resolv/tst-resolv-txnid-collision.c glibc-2.32/resolv/tst-resolv-txnid-collision.c
---- glibc-2.32.orig/resolv/tst-resolv-txnid-collision.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/resolv/tst-resolv-txnid-collision.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/resolv/tst-resolv-txnid-collision.c b/resolv/tst-resolv-txnid-collision.c
+new file mode 100644
+index 0000000000..189b76f126
+--- /dev/null
++++ b/resolv/tst-resolv-txnid-collision.c
 @@ -0,0 +1,334 @@
 +/* Test parallel queries with transaction ID collisions.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -1974,73 +2235,143 @@ diff -pruN glibc-2.32.orig/resolv/tst-resolv-txnid-collision.c glibc-2.32/resolv
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/Rules glibc-2.32/Rules
---- glibc-2.32.orig/Rules	2021-09-18 21:02:32.639182523 +1000
-+++ glibc-2.32/Rules	2021-09-18 21:03:05.310302219 +1000
-@@ -155,6 +155,7 @@ xtests: tests $(xtests-special)
- else
- tests: $(tests:%=$(objpfx)%.out) $(tests-internal:%=$(objpfx)%.out) \
-        $(tests-container:%=$(objpfx)%.out) \
-+       $(tests-mcheck:%=$(objpfx)%-mcheck.out) \
-        $(tests-special) $(tests-printers-out)
- xtests: tests $(xtests:%=$(objpfx)%.out) $(xtests-special)
- endif
-@@ -165,7 +166,7 @@ ifeq ($(run-built-tests),no)
- tests-expected =
- else
- tests-expected = $(tests) $(tests-internal) $(tests-printers) \
--	$(tests-container)
-+	$(tests-container) $(tests-mcheck:%=%-mcheck)
- endif
- tests:
- 	$(..)scripts/merge-test-results.sh -s $(objpfx) $(subdir) \
-@@ -191,6 +192,7 @@ else
- binaries-pie-tests =
- binaries-pie-notests =
- endif
-+binaries-mcheck-tests = $(tests-mcheck:%=%-mcheck)
- else
- binaries-all-notests =
- binaries-all-tests = $(tests) $(tests-internal) $(xtests) $(test-srcs)
-@@ -200,6 +202,7 @@ binaries-static-tests =
- binaries-static =
- binaries-pie-tests =
- binaries-pie-notests =
-+binaries-mcheck-tests =
- endif
- 
- binaries-pie = $(binaries-pie-tests) $(binaries-pie-notests)
-@@ -223,6 +226,14 @@ $(addprefix $(objpfx),$(binaries-shared-
- 	$(+link-tests)
- endif
- 
-+ifneq "$(strip $(binaries-mcheck-tests))" ""
-+$(addprefix $(objpfx),$(binaries-mcheck-tests)): %-mcheck: %.o \
-+  $(link-extra-libs-tests) \
-+  $(sort $(filter $(common-objpfx)lib%,$(link-libc))) \
-+  $(addprefix $(csu-objpfx),start.o) $(+preinit) $(+postinit)
-+	$(+link-tests)
-+endif
+diff --git a/rt/Makefile b/rt/Makefile
+index dab5d62a57..93502cfaa7 100644
+--- a/rt/Makefile
++++ b/rt/Makefile
+@@ -44,6 +44,7 @@ tests := tst-shm tst-timer tst-timer2 \
+ 	 tst-aio7 tst-aio8 tst-aio9 tst-aio10 \
+ 	 tst-mqueue1 tst-mqueue2 tst-mqueue3 tst-mqueue4 \
+ 	 tst-mqueue5 tst-mqueue6 tst-mqueue7 tst-mqueue8 tst-mqueue9 \
++	 tst-bz28213 \
+ 	 tst-timer3 tst-timer4 tst-timer5 \
+ 	 tst-cpuclock2 tst-cputimer1 tst-cputimer2 tst-cputimer3 \
+ 	 tst-shm-cancel
+diff --git a/rt/tst-bz28213.c b/rt/tst-bz28213.c
+new file mode 100644
+index 0000000000..0c096b5a0a
+--- /dev/null
++++ b/rt/tst-bz28213.c
+@@ -0,0 +1,101 @@
++/* Bug 28213: test for NULL pointer dereference in mq_notify.
++   Copyright (C) The GNU Toolchain Authors.
++   This file is part of the GNU C Library.
 +
- ifneq "$(strip $(binaries-pie-tests))" ""
- $(addprefix $(objpfx),$(binaries-pie-tests)): %: %.o \
-   $(link-extra-libs-tests) \
-@@ -253,6 +264,12 @@ $(addprefix $(objpfx),$(binaries-static-
- 	$(+link-static-tests)
- endif
- 
-+# All mcheck tests will be run with MALLOC_CHECK_=3
-+define mcheck-ENVS
-+$(1)-mcheck-ENV = MALLOC_CHECK_=3
-+endef
-+$(foreach t,$(tests-mcheck),$(eval $(call mcheck-ENVS,$(t))))
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
 +
- ifneq "$(strip $(tests) $(tests-internal) $(xtests) $(test-srcs))" ""
- # These are the implicit rules for making test outputs
- # from the test programs and whatever input files are present.
-diff -pruN glibc-2.32.orig/stdio-common/errlist.c glibc-2.32/stdio-common/errlist.c
---- glibc-2.32.orig/stdio-common/errlist.c	2021-09-18 21:02:32.698184545 +1000
-+++ glibc-2.32/stdio-common/errlist.c	2021-09-18 21:03:05.312302287 +1000
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <errno.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <unistd.h>
++#include <mqueue.h>
++#include <signal.h>
++#include <stdlib.h>
++#include <string.h>
++#include <support/check.h>
++
++static mqd_t m = -1;
++static const char msg[] = "hello";
++
++static void
++check_bz28213_cb (union sigval sv)
++{
++  char buf[sizeof (msg)];
++
++  (void) sv;
++
++  TEST_VERIFY_EXIT ((size_t) mq_receive (m, buf, sizeof (buf), NULL)
++		    == sizeof (buf));
++  TEST_VERIFY_EXIT (memcmp (buf, msg, sizeof (buf)) == 0);
++
++  exit (0);
++}
++
++static void
++check_bz28213 (void)
++{
++  struct sigevent sev;
++
++  memset (&sev, '\0', sizeof (sev));
++  sev.sigev_notify = SIGEV_THREAD;
++  sev.sigev_notify_function = check_bz28213_cb;
++
++  /* Step 1: Register & unregister notifier.
++     Helper thread should receive NOTIFY_REMOVED notification.
++     In a vulnerable version of glibc, NULL pointer dereference follows. */
++  TEST_VERIFY_EXIT (mq_notify (m, &sev) == 0);
++  TEST_VERIFY_EXIT (mq_notify (m, NULL) == 0);
++
++  /* Step 2: Once again, register notification.
++     Try to send one message.
++     Test is considered successful, if the callback does exit (0). */
++  TEST_VERIFY_EXIT (mq_notify (m, &sev) == 0);
++  TEST_VERIFY_EXIT (mq_send (m, msg, sizeof (msg), 1) == 0);
++
++  /* Wait... */
++  pause ();
++}
++
++static int
++do_test (void)
++{
++  static const char m_name[] = "/bz28213_queue";
++  struct mq_attr m_attr;
++
++  memset (&m_attr, '\0', sizeof (m_attr));
++  m_attr.mq_maxmsg = 1;
++  m_attr.mq_msgsize = sizeof (msg);
++
++  m = mq_open (m_name,
++               O_RDWR | O_CREAT | O_EXCL,
++               0600,
++               &m_attr);
++
++  if (m < 0)
++    {
++      if (errno == ENOSYS)
++        FAIL_UNSUPPORTED ("POSIX message queues are not implemented\n");
++      FAIL_EXIT1 ("Failed to create POSIX message queue: %m\n");
++    }
++
++  TEST_VERIFY_EXIT (mq_unlink (m_name) == 0);
++
++  check_bz28213 ();
++
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/stdio-common/Makefile b/stdio-common/Makefile
+index 8475fd1f09..eff0c98d82 100644
+--- a/stdio-common/Makefile
++++ b/stdio-common/Makefile
+@@ -69,7 +69,8 @@ tests := tstscanf test_rdwr test-popen tstgetln test-fseek \
+ 	 tst-printf-bz25691 \
+ 	 tst-vfprintf-width-prec-alloc \
+ 	 tst-printf-fp-free \
+-	 tst-printf-fp-leak
++	 tst-printf-fp-leak \
++	 test-strerr
+ 
+ 
+ test-srcs = tst-unbputc tst-printf tst-printfsz-islongdouble
+diff --git a/stdio-common/errlist.c b/stdio-common/errlist.c
+index d15f13a22a..2ecf121674 100644
+--- a/stdio-common/errlist.c
++++ b/stdio-common/errlist.c
 @@ -20,9 +20,13 @@
  #include <libintl.h>
  #include <array_length.h>
@@ -2081,22 +2412,10 @@ diff -pruN glibc-2.32.orig/stdio-common/errlist.c glibc-2.32/stdio-common/errlis
  #include <errlist.h>
  #undef _S
  };
-diff -pruN glibc-2.32.orig/stdio-common/Makefile glibc-2.32/stdio-common/Makefile
---- glibc-2.32.orig/stdio-common/Makefile	2021-09-18 21:02:32.698184545 +1000
-+++ glibc-2.32/stdio-common/Makefile	2021-09-18 21:03:05.312302287 +1000
-@@ -69,7 +69,8 @@ tests := tstscanf test_rdwr test-popen t
- 	 tst-printf-bz25691 \
- 	 tst-vfprintf-width-prec-alloc \
- 	 tst-printf-fp-free \
--	 tst-printf-fp-leak
-+	 tst-printf-fp-leak \
-+	 test-strerr
- 
- 
- test-srcs = tst-unbputc tst-printf tst-printfsz-islongdouble
-diff -pruN glibc-2.32.orig/stdio-common/test-strerr.c glibc-2.32/stdio-common/test-strerr.c
---- glibc-2.32.orig/stdio-common/test-strerr.c	2021-09-18 21:02:32.698184545 +1000
-+++ glibc-2.32/stdio-common/test-strerr.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/stdio-common/test-strerr.c b/stdio-common/test-strerr.c
+index fded208118..d77b81d507 100644
+--- a/stdio-common/test-strerr.c
++++ b/stdio-common/test-strerr.c
 @@ -18,46 +18,672 @@
  
  #include <string.h>
@@ -2802,10 +3121,11 @@ diff -pruN glibc-2.32.orig/stdio-common/test-strerr.c glibc-2.32/stdio-common/te
  
    return 0;
  }
-diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-common/vfscanf-internal.c
---- glibc-2.32.orig/stdio-common/vfscanf-internal.c	2021-09-18 21:02:32.699184579 +1000
-+++ glibc-2.32/stdio-common/vfscanf-internal.c	2021-09-18 21:03:05.312302287 +1000
-@@ -277,7 +277,7 @@ __vfscanf_internal (FILE *s, const char
+diff --git a/stdio-common/vfscanf-internal.c b/stdio-common/vfscanf-internal.c
+index 95b46dcbeb..3a323547f9 100644
+--- a/stdio-common/vfscanf-internal.c
++++ b/stdio-common/vfscanf-internal.c
+@@ -277,7 +277,7 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
  #endif
  {
    va_list arg;
@@ -2814,7 +3134,7 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
    UCHAR_T fc;	/* Current character of the format.  */
    WINT_T done = 0;	/* Assignments done.  */
    size_t read_in = 0;	/* Chars read in.  */
-@@ -415,10 +415,11 @@ __vfscanf_internal (FILE *s, const char
+@@ -415,10 +415,11 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
  #endif
  
  #ifndef COMPILE_WSCANF
@@ -2828,7 +3148,7 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
  	  if (len > 0)
  	    {
  	      do
-@@ -426,7 +427,7 @@ __vfscanf_internal (FILE *s, const char
+@@ -426,7 +427,7 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
  		  c = inchar ();
  		  if (__glibc_unlikely (c == EOF))
  		    input_error ();
@@ -2837,7 +3157,7 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
  		    {
  		      ungetc_not_eof (c, s);
  		      conv_error ();
-@@ -484,9 +485,9 @@ __vfscanf_internal (FILE *s, const char
+@@ -484,9 +485,9 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
        char_buffer_rewind (&charbuf);
  
        /* Check for a positional parameter specification.  */
@@ -2849,7 +3169,7 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
  	  if (*f == L_('$'))
  	    ++f;
  	  else
-@@ -521,8 +522,8 @@ __vfscanf_internal (FILE *s, const char
+@@ -521,8 +522,8 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
  
        /* Find the maximum field width.  */
        width = 0;
@@ -2860,7 +3180,7 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
      got_width:
        if (width == 0)
  	width = -1;
-@@ -2522,12 +2523,11 @@ __vfscanf_internal (FILE *s, const char
+@@ -2522,12 +2523,11 @@ __vfscanf_internal (FILE *s, const char *format, va_list argptr,
  	    }
  
  	  while ((fc = *f++) != '\0' && fc != ']')
@@ -2875,9 +3195,10 @@ diff -pruN glibc-2.32.orig/stdio-common/vfscanf-internal.c glibc-2.32/stdio-comm
  		  ((char *)charbuf.scratch.data)[fc] = 1;
  	      }
  	    else
-diff -pruN glibc-2.32.orig/stdlib/tst-secure-getenv.c glibc-2.32/stdlib/tst-secure-getenv.c
---- glibc-2.32.orig/stdlib/tst-secure-getenv.c	2021-09-18 21:02:32.700184614 +1000
-+++ glibc-2.32/stdlib/tst-secure-getenv.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/stdlib/tst-secure-getenv.c b/stdlib/tst-secure-getenv.c
+index 3cfe9a05c3..d4b1139c5e 100644
+--- a/stdlib/tst-secure-getenv.c
++++ b/stdlib/tst-secure-getenv.c
 @@ -30,167 +30,12 @@
  #include <sys/wait.h>
  #include <unistd.h>
@@ -3104,9 +3425,10 @@ diff -pruN glibc-2.32.orig/stdlib/tst-secure-getenv.c glibc-2.32/stdlib/tst-secu
      }
  }
  
-diff -pruN glibc-2.32.orig/string/bits/string_fortified.h glibc-2.32/string/bits/string_fortified.h
---- glibc-2.32.orig/string/bits/string_fortified.h	2021-09-18 21:02:32.700184614 +1000
-+++ glibc-2.32/string/bits/string_fortified.h	2021-09-18 21:03:05.312302287 +1000
+diff --git a/string/bits/string_fortified.h b/string/bits/string_fortified.h
+index 309d0f39b2..c8d3051af8 100644
+--- a/string/bits/string_fortified.h
++++ b/string/bits/string_fortified.h
 @@ -22,11 +22,6 @@
  # error "Never use <bits/string_fortified.h> directly; include <string.h> instead."
  #endif
@@ -3119,7 +3441,7 @@ diff -pruN glibc-2.32.orig/string/bits/string_fortified.h glibc-2.32/string/bits
  __fortify_function void *
  __NTH (memcpy (void *__restrict __dest, const void *__restrict __src,
  	       size_t __len))
-@@ -58,16 +53,6 @@ __NTH (mempcpy (void *__restrict __dest,
+@@ -58,16 +53,6 @@ __NTH (mempcpy (void *__restrict __dest, const void *__restrict __src,
  __fortify_function void *
  __NTH (memset (void *__dest, int __ch, size_t __len))
  {
@@ -3136,10 +3458,32 @@ diff -pruN glibc-2.32.orig/string/bits/string_fortified.h glibc-2.32/string/bits
    return __builtin___memset_chk (__dest, __ch, __len, __bos0 (__dest));
  }
  
-diff -pruN glibc-2.32.orig/support/capture_subprocess.h glibc-2.32/support/capture_subprocess.h
---- glibc-2.32.orig/support/capture_subprocess.h	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/capture_subprocess.h	2021-09-18 21:03:05.312302287 +1000
-@@ -41,6 +41,12 @@ struct support_capture_subprocess suppor
+diff --git a/support/Makefile b/support/Makefile
+index 93faafddf9..3d3aff5ff9 100644
+--- a/support/Makefile
++++ b/support/Makefile
+@@ -35,6 +35,8 @@ libsupport-routines = \
+   ignore_stderr \
+   next_to_fault \
+   oom_error \
++  resolv_response_context_duplicate \
++  resolv_response_context_free \
+   resolv_test \
+   set_fortify_handler \
+   support-xfstat \
+@@ -133,6 +135,7 @@ libsupport-routines = \
+   xpthread_join \
+   xpthread_key_create \
+   xpthread_key_delete \
++  xpthread_kill \
+   xpthread_mutex_consistent \
+   xpthread_mutex_destroy \
+   xpthread_mutex_init \
+diff --git a/support/capture_subprocess.h b/support/capture_subprocess.h
+index 9808750f80..421f657678 100644
+--- a/support/capture_subprocess.h
++++ b/support/capture_subprocess.h
+@@ -41,6 +41,12 @@ struct support_capture_subprocess support_capture_subprocess
  struct support_capture_subprocess support_capture_subprogram
    (const char *file, char *const argv[]);
  
@@ -3152,21 +3496,11 @@ diff -pruN glibc-2.32.orig/support/capture_subprocess.h glibc-2.32/support/captu
  /* Deallocate the subprocess data captured by
     support_capture_subprocess.  */
  void support_capture_subprocess_free (struct support_capture_subprocess *);
-diff -pruN glibc-2.32.orig/support/Makefile glibc-2.32/support/Makefile
---- glibc-2.32.orig/support/Makefile	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/Makefile	2021-09-18 21:03:05.312302287 +1000
-@@ -35,6 +35,8 @@ libsupport-routines = \
-   ignore_stderr \
-   next_to_fault \
-   oom_error \
-+  resolv_response_context_duplicate \
-+  resolv_response_context_free \
-   resolv_test \
-   set_fortify_handler \
-   support-xfstat \
-diff -pruN glibc-2.32.orig/support/resolv_response_context_duplicate.c glibc-2.32/support/resolv_response_context_duplicate.c
---- glibc-2.32.orig/support/resolv_response_context_duplicate.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/support/resolv_response_context_duplicate.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/support/resolv_response_context_duplicate.c b/support/resolv_response_context_duplicate.c
+new file mode 100644
+index 0000000000..f9c5c3462a
+--- /dev/null
++++ b/support/resolv_response_context_duplicate.c
 @@ -0,0 +1,37 @@
 +/* Duplicate a response context used in DNS resolver tests.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -3205,9 +3539,11 @@ diff -pruN glibc-2.32.orig/support/resolv_response_context_duplicate.c glibc-2.3
 +  memcpy (result->query_buffer, ctx->query_buffer, result->query_length);
 +  return result;
 +}
-diff -pruN glibc-2.32.orig/support/resolv_response_context_free.c glibc-2.32/support/resolv_response_context_free.c
---- glibc-2.32.orig/support/resolv_response_context_free.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/support/resolv_response_context_free.c	2021-09-18 21:03:05.312302287 +1000
+diff --git a/support/resolv_response_context_free.c b/support/resolv_response_context_free.c
+new file mode 100644
+index 0000000000..b88c05ffd4
+--- /dev/null
++++ b/support/resolv_response_context_free.c
 @@ -0,0 +1,28 @@
 +/* Free a response context used in DNS resolver tests.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -3237,10 +3573,11 @@ diff -pruN glibc-2.32.orig/support/resolv_response_context_free.c glibc-2.32/sup
 +  free (ctx->client_address);
 +  free (ctx);
 +}
-diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.c
---- glibc-2.32.orig/support/resolv_test.c	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/resolv_test.c	2021-09-18 21:03:05.312302287 +1000
-@@ -181,7 +181,9 @@ resolv_response_init (struct resolv_resp
+diff --git a/support/resolv_test.c b/support/resolv_test.c
+index 53b7fc41ab..9878a040a3 100644
+--- a/support/resolv_test.c
++++ b/support/resolv_test.c
+@@ -181,7 +181,9 @@ resolv_response_init (struct resolv_response_builder *b,
    b->buffer[2] |= b->query_buffer[2] & 0x01; /* Copy the RD bit.  */
    if (flags.tc)
      b->buffer[2] |= 0x02;
@@ -3251,7 +3588,7 @@ diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.
    if (flags.ad)
      b->buffer[3] |= 0x20;
  
-@@ -434,9 +436,9 @@ resolv_response_buffer (const struct res
+@@ -434,9 +436,9 @@ resolv_response_buffer (const struct resolv_response_builder *b)
    return result;
  }
  
@@ -3275,7 +3612,7 @@ diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.
  {
    tdestroy (b->compression_offsets, free);
    free (b);
-@@ -661,13 +663,17 @@ server_thread_udp_process_one (struct re
+@@ -661,13 +663,17 @@ server_thread_udp_process_one (struct resolv_test *obj, int server_index)
  
    struct resolv_response_context ctx =
      {
@@ -3294,7 +3631,7 @@ diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.
    obj->config.response_callback
      (&ctx, b, qinfo.qname, qinfo.qclass, qinfo.qtype);
  
-@@ -684,7 +690,7 @@ server_thread_udp_process_one (struct re
+@@ -684,7 +690,7 @@ server_thread_udp_process_one (struct resolv_test *obj, int server_index)
            if (b->offset >= 12)
              printf ("info: UDP server %d: sending response:"
                      " %zu bytes, RCODE %d (for %s/%u/%u)\n",
@@ -3303,7 +3640,7 @@ diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.
                      qinfo.qname, qinfo.qclass, qinfo.qtype);
            else
              printf ("info: UDP server %d: sending response: %zu bytes"
-@@ -694,23 +700,31 @@ server_thread_udp_process_one (struct re
+@@ -694,23 +700,31 @@ server_thread_udp_process_one (struct resolv_test *obj, int server_index)
            if (b->truncate_bytes > 0)
              printf ("info:    truncated by %u bytes\n", b->truncate_bytes);
          }
@@ -3375,9 +3712,10 @@ diff -pruN glibc-2.32.orig/support/resolv_test.c glibc-2.32/support/resolv_test.
        free (query_buffer);
        if (close_flag)
          break;
-diff -pruN glibc-2.32.orig/support/resolv_test.h glibc-2.32/support/resolv_test.h
---- glibc-2.32.orig/support/resolv_test.h	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/resolv_test.h	2021-09-18 21:03:05.312302287 +1000
+diff --git a/support/resolv_test.h b/support/resolv_test.h
+index 67819469a0..31a5c1c3e7 100644
+--- a/support/resolv_test.h
++++ b/support/resolv_test.h
 @@ -35,25 +35,36 @@ struct resolv_edns_info
    uint16_t payload_size;
  };
@@ -3431,7 +3769,7 @@ diff -pruN glibc-2.32.orig/support/resolv_test.h glibc-2.32/support/resolv_test.
    /* Initial section count values.  Can be used to artificially
       increase the counts, for malformed packet testing.*/
    unsigned short qdcount;
-@@ -188,6 +203,22 @@ void resolv_response_close (struct resol
+@@ -188,6 +203,22 @@ void resolv_response_close (struct resolv_response_builder *);
  /* The size of the response packet built so far.  */
  size_t resolv_response_length (const struct resolv_response_builder *);
  
@@ -3454,10 +3792,11 @@ diff -pruN glibc-2.32.orig/support/resolv_test.h glibc-2.32/support/resolv_test.
  __END_DECLS
  
  #endif /* SUPPORT_RESOLV_TEST_H */
-diff -pruN glibc-2.32.orig/support/subprocess.h glibc-2.32/support/subprocess.h
---- glibc-2.32.orig/support/subprocess.h	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/subprocess.h	2021-09-18 21:03:05.312302287 +1000
-@@ -38,6 +38,11 @@ struct support_subprocess support_subpro
+diff --git a/support/subprocess.h b/support/subprocess.h
+index 8b442fd5c0..34ffd02e8e 100644
+--- a/support/subprocess.h
++++ b/support/subprocess.h
+@@ -38,6 +38,11 @@ struct support_subprocess support_subprocess
  struct support_subprocess support_subprogram
    (const char *file, char *const argv[]);
  
@@ -3469,9 +3808,10 @@ diff -pruN glibc-2.32.orig/support/subprocess.h glibc-2.32/support/subprocess.h
  /* Wait for the subprocess indicated by PROC::PID.  Return the status
     indicate by waitpid call.  */
  int support_process_wait (struct support_subprocess *proc);
-diff -pruN glibc-2.32.orig/support/support_capture_subprocess.c glibc-2.32/support/support_capture_subprocess.c
---- glibc-2.32.orig/support/support_capture_subprocess.c	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/support_capture_subprocess.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/support/support_capture_subprocess.c b/support/support_capture_subprocess.c
+index eeed676e3d..28a37df67f 100644
+--- a/support/support_capture_subprocess.c
++++ b/support/support_capture_subprocess.c
 @@ -20,11 +20,14 @@
  #include <support/capture_subprocess.h>
  
@@ -3487,7 +3827,7 @@ diff -pruN glibc-2.32.orig/support/support_capture_subprocess.c glibc-2.32/suppo
  
  static void
  transfer (const char *what, struct pollfd *pfd, struct xmemstream *stream)
-@@ -36,7 +39,7 @@ transfer (const char *what, struct pollf
+@@ -36,7 +39,7 @@ transfer (const char *what, struct pollfd *pfd, struct xmemstream *stream)
        if (ret < 0)
          {
            support_record_failure ();
@@ -3496,7 +3836,7 @@ diff -pruN glibc-2.32.orig/support/support_capture_subprocess.c glibc-2.32/suppo
            pfd->events = 0;
            pfd->revents = 0;
          }
-@@ -102,6 +105,129 @@ support_capture_subprogram (const char *
+@@ -102,6 +105,129 @@ support_capture_subprogram (const char *file, char *const argv[])
    return result;
  }
  
@@ -3626,9 +3966,10 @@ diff -pruN glibc-2.32.orig/support/support_capture_subprocess.c glibc-2.32/suppo
  void
  support_capture_subprocess_free (struct support_capture_subprocess *p)
  {
-diff -pruN glibc-2.32.orig/support/support_subprocess.c glibc-2.32/support/support_subprocess.c
---- glibc-2.32.orig/support/support_subprocess.c	2021-09-18 21:02:32.701184648 +1000
-+++ glibc-2.32/support/support_subprocess.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/support/support_subprocess.c b/support/support_subprocess.c
+index 36e3a77af2..4a25828111 100644
+--- a/support/support_subprocess.c
++++ b/support/support_subprocess.c
 @@ -27,7 +27,7 @@
  #include <support/subprocess.h>
  
@@ -3647,7 +3988,7 @@ diff -pruN glibc-2.32.orig/support/support_subprocess.c glibc-2.32/support/suppo
  
    result.pid = xfork ();
    if (result.pid == 0)
-@@ -71,7 +71,7 @@ support_subprocess (void (*callback) (vo
+@@ -71,7 +71,7 @@ support_subprocess (void (*callback) (void *), void *closure)
  struct support_subprocess
  support_subprogram (const char *file, char *const argv[])
  {
@@ -3656,7 +3997,7 @@ diff -pruN glibc-2.32.orig/support/support_subprocess.c glibc-2.32/support/suppo
  
    posix_spawn_file_actions_t fa;
    /* posix_spawn_file_actions_init does not fail.  */
-@@ -84,7 +84,7 @@ support_subprogram (const char *file, ch
+@@ -84,7 +84,7 @@ support_subprogram (const char *file, char *const argv[])
    xposix_spawn_file_actions_addclose (&fa, result.stdout_pipe[1]);
    xposix_spawn_file_actions_addclose (&fa, result.stderr_pipe[1]);
  
@@ -3665,10 +4006,11 @@ diff -pruN glibc-2.32.orig/support/support_subprocess.c glibc-2.32/support/suppo
  
    xclose (result.stdout_pipe[1]);
    xclose (result.stderr_pipe[1]);
-@@ -93,6 +93,19 @@ support_subprogram (const char *file, ch
+@@ -92,6 +92,19 @@ support_subprogram (const char *file, char *const argv[])
+   return result;
  }
  
- int
++int
 +support_subprogram_wait (const char *file, char *const argv[])
 +{
 +  posix_spawn_file_actions_t fa;
@@ -3681,13 +4023,58 @@ diff -pruN glibc-2.32.orig/support/support_subprocess.c glibc-2.32/support/suppo
 +  return support_process_wait (&res);
 +}
 +
-+int
+ int
  support_process_wait (struct support_subprocess *proc)
  {
-   xclose (proc->stdout_pipe[0]);
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-bti.c glibc-2.32/sysdeps/aarch64/dl-bti.c
---- glibc-2.32.orig/sysdeps/aarch64/dl-bti.c	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/dl-bti.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/support/xpthread_kill.c b/support/xpthread_kill.c
+new file mode 100644
+index 0000000000..111a75d85e
+--- /dev/null
++++ b/support/xpthread_kill.c
+@@ -0,0 +1,26 @@
++/* pthread_kill with error checking.
++   Copyright (C) 2021 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <signal.h>
++#include <support/xthread.h>
++
++void
++xpthread_kill (pthread_t thr, int signo)
++{
++  xpthread_check_return ("pthread_kill", pthread_kill (thr, signo));
++}
+diff --git a/support/xthread.h b/support/xthread.h
+index 05f8d4a7d9..cb1fc30da0 100644
+--- a/support/xthread.h
++++ b/support/xthread.h
+@@ -75,6 +75,8 @@ void xpthread_attr_setstacksize (pthread_attr_t *attr,
+ void xpthread_attr_setguardsize (pthread_attr_t *attr,
+ 				 size_t guardsize);
+ 
++void xpthread_kill (pthread_t thr, int signo);
++
+ /* Set the stack size in ATTR to a small value, but still large enough
+    to cover most internal glibc stack usage.  */
+ void support_set_small_thread_stack_size (pthread_attr_t *attr);
+diff --git a/sysdeps/aarch64/dl-bti.c b/sysdeps/aarch64/dl-bti.c
+index 196e462520..cf7624aaa2 100644
+--- a/sysdeps/aarch64/dl-bti.c
++++ b/sysdeps/aarch64/dl-bti.c
 @@ -19,43 +19,76 @@
  #include <errno.h>
  #include <libintl.h>
@@ -3784,10 +4171,11 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-bti.c glibc-2.32/sysdeps/aarch64/d
 +	bti_failed (dep, program);
 +    }
  }
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-machine.h glibc-2.32/sysdeps/aarch64/dl-machine.h
---- glibc-2.32.orig/sysdeps/aarch64/dl-machine.h	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/dl-machine.h	2021-09-18 21:03:05.313302322 +1000
-@@ -395,13 +395,6 @@ elf_machine_lazy_rel (struct link_map *m
+diff --git a/sysdeps/aarch64/dl-machine.h b/sysdeps/aarch64/dl-machine.h
+index 70b9ed3925..fde7cfd9e2 100644
+--- a/sysdeps/aarch64/dl-machine.h
++++ b/sysdeps/aarch64/dl-machine.h
+@@ -395,13 +395,6 @@ elf_machine_lazy_rel (struct link_map *map,
    /* Check for unexpected PLT reloc type.  */
    if (__builtin_expect (r_type == AARCH64_R(JUMP_SLOT), 1))
      {
@@ -3801,7 +4189,7 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-machine.h glibc-2.32/sysdeps/aarch
        if (__glibc_unlikely (map->l_info[DT_AARCH64 (VARIANT_PCS)] != NULL))
  	{
  	  /* Check the symbol table for variant PCS symbols.  */
-@@ -425,7 +418,10 @@ elf_machine_lazy_rel (struct link_map *m
+@@ -425,7 +418,10 @@ elf_machine_lazy_rel (struct link_map *map,
  	    }
  	}
  
@@ -3813,9 +4201,10 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-machine.h glibc-2.32/sysdeps/aarch
      }
    else if (__builtin_expect (r_type == AARCH64_R(TLSDESC), 1))
      {
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-prop.h glibc-2.32/sysdeps/aarch64/dl-prop.h
---- glibc-2.32.orig/sysdeps/aarch64/dl-prop.h	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/dl-prop.h	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/aarch64/dl-prop.h b/sysdeps/aarch64/dl-prop.h
+index b0785bda83..e926e54984 100644
+--- a/sysdeps/aarch64/dl-prop.h
++++ b/sysdeps/aarch64/dl-prop.h
 @@ -19,6 +19,8 @@
  #ifndef _DL_PROP_H
  #define _DL_PROP_H
@@ -3847,7 +4236,7 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-prop.h glibc-2.32/sysdeps/aarch64/
    if (type == GNU_PROPERTY_AARCH64_FEATURE_1_AND)
      {
        /* Stop if the property note is ill-formed.  */
-@@ -51,7 +57,7 @@ _dl_process_gnu_property (struct link_ma
+@@ -51,7 +57,7 @@ _dl_process_gnu_property (struct link_map *l, uint32_t type, uint32_t datasz,
  
        unsigned int feature_1 = *(unsigned int *) data;
        if (feature_1 & GNU_PROPERTY_AARCH64_FEATURE_1_BTI)
@@ -3856,9 +4245,10 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/dl-prop.h glibc-2.32/sysdeps/aarch64/
  
        /* Stop if we processed the property note.  */
        return 0;
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/linkmap.h glibc-2.32/sysdeps/aarch64/linkmap.h
---- glibc-2.32.orig/sysdeps/aarch64/linkmap.h	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/linkmap.h	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/aarch64/linkmap.h b/sysdeps/aarch64/linkmap.h
+index 847a03ace2..b3f7663b07 100644
+--- a/sysdeps/aarch64/linkmap.h
++++ b/sysdeps/aarch64/linkmap.h
 @@ -22,5 +22,5 @@ struct link_map_machine
  {
    ElfW(Addr) plt;	  /* Address of .plt */
@@ -3866,9 +4256,24 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/linkmap.h glibc-2.32/sysdeps/aarch64/
 -  bool bti;		  /* Branch Target Identification is enabled.  */
 +  bool bti_fail;	  /* Failed to enable Branch Target Identification.  */
  };
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/multiarch/memcpy_advsimd.S glibc-2.32/sysdeps/aarch64/multiarch/memcpy_advsimd.S
---- glibc-2.32.orig/sysdeps/aarch64/multiarch/memcpy_advsimd.S	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/multiarch/memcpy_advsimd.S	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/aarch64/multiarch/memcpy.c b/sysdeps/aarch64/multiarch/memcpy.c
+index 7cf5f033e8..799d60c98c 100644
+--- a/sysdeps/aarch64/multiarch/memcpy.c
++++ b/sysdeps/aarch64/multiarch/memcpy.c
+@@ -41,7 +41,8 @@ libc_ifunc (__libc_memcpy,
+ 		? __memcpy_falkor
+ 		: (IS_THUNDERX2 (midr) || IS_THUNDERX2PA (midr)
+ 		  ? __memcpy_thunderx2
+-		  : (IS_NEOVERSE_N1 (midr)
++		  : (IS_NEOVERSE_N1 (midr) || IS_NEOVERSE_N2 (midr)
++		     || IS_NEOVERSE_V1 (midr)
+ 		     ? __memcpy_simd
+ 		     : __memcpy_generic)))));
+ 
+diff --git a/sysdeps/aarch64/multiarch/memcpy_advsimd.S b/sysdeps/aarch64/multiarch/memcpy_advsimd.S
+index d4ba747777..48bb6d7ca4 100644
+--- a/sysdeps/aarch64/multiarch/memcpy_advsimd.S
++++ b/sysdeps/aarch64/multiarch/memcpy_advsimd.S
 @@ -223,12 +223,13 @@ L(copy_long_backwards):
  	b.ls	L(copy64_from_start)
  
@@ -3886,22 +4291,10 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/multiarch/memcpy_advsimd.S glibc-2.32
  	subs	count, count, 64
  	b.hi	L(loop64_backwards)
  
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/multiarch/memcpy.c glibc-2.32/sysdeps/aarch64/multiarch/memcpy.c
---- glibc-2.32.orig/sysdeps/aarch64/multiarch/memcpy.c	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/multiarch/memcpy.c	2021-09-18 21:03:05.313302322 +1000
-@@ -41,7 +41,8 @@ libc_ifunc (__libc_memcpy,
- 		? __memcpy_falkor
- 		: (IS_THUNDERX2 (midr) || IS_THUNDERX2PA (midr)
- 		  ? __memcpy_thunderx2
--		  : (IS_NEOVERSE_N1 (midr)
-+		  : (IS_NEOVERSE_N1 (midr) || IS_NEOVERSE_N2 (midr)
-+		     || IS_NEOVERSE_V1 (midr)
- 		     ? __memcpy_simd
- 		     : __memcpy_generic)))));
- 
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/multiarch/memmove.c glibc-2.32/sysdeps/aarch64/multiarch/memmove.c
---- glibc-2.32.orig/sysdeps/aarch64/multiarch/memmove.c	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/multiarch/memmove.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/aarch64/multiarch/memmove.c b/sysdeps/aarch64/multiarch/memmove.c
+index ad10aa8ac6..46a4cb3a54 100644
+--- a/sysdeps/aarch64/multiarch/memmove.c
++++ b/sysdeps/aarch64/multiarch/memmove.c
 @@ -41,7 +41,8 @@ libc_ifunc (__libc_memmove,
  		? __memmove_falkor
  		: (IS_THUNDERX2 (midr) || IS_THUNDERX2PA (midr)
@@ -3912,9 +4305,10 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/multiarch/memmove.c glibc-2.32/sysdep
  		     ? __memmove_simd
  		     : __memmove_generic)))));
  
-diff -pruN glibc-2.32.orig/sysdeps/aarch64/start.S glibc-2.32/sysdeps/aarch64/start.S
---- glibc-2.32.orig/sysdeps/aarch64/start.S	2021-09-18 21:02:32.702184682 +1000
-+++ glibc-2.32/sysdeps/aarch64/start.S	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/aarch64/start.S b/sysdeps/aarch64/start.S
+index 75393e1c18..1998ea95d4 100644
+--- a/sysdeps/aarch64/start.S
++++ b/sysdeps/aarch64/start.S
 @@ -43,11 +43,9 @@
   */
  
@@ -3940,9 +4334,10 @@ diff -pruN glibc-2.32.orig/sysdeps/aarch64/start.S glibc-2.32/sysdeps/aarch64/st
  
  	/* Define a symbol for the first piece of initialized data.  */
  	.data
-diff -pruN glibc-2.32.orig/sysdeps/generic/dl-prop.h glibc-2.32/sysdeps/generic/dl-prop.h
---- glibc-2.32.orig/sysdeps/generic/dl-prop.h	2021-09-18 21:02:32.705184785 +1000
-+++ glibc-2.32/sysdeps/generic/dl-prop.h	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/generic/dl-prop.h b/sysdeps/generic/dl-prop.h
+index f1cf576fe3..df27ff8e6a 100644
+--- a/sysdeps/generic/dl-prop.h
++++ b/sysdeps/generic/dl-prop.h
 @@ -37,15 +37,15 @@ _dl_open_check (struct link_map *m)
  }
  
@@ -3962,10 +4357,11 @@ diff -pruN glibc-2.32.orig/sysdeps/generic/dl-prop.h glibc-2.32/sysdeps/generic/
  {
    return 0;
  }
-diff -pruN glibc-2.32.orig/sysdeps/generic/ldsodefs.h glibc-2.32/sysdeps/generic/ldsodefs.h
---- glibc-2.32.orig/sysdeps/generic/ldsodefs.h	2021-09-18 21:02:32.705184785 +1000
-+++ glibc-2.32/sysdeps/generic/ldsodefs.h	2021-09-18 21:03:05.313302322 +1000
-@@ -919,8 +919,9 @@ extern void _dl_rtld_di_serinfo (struct
+diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
+index ba114ab4b1..62ac40d81b 100644
+--- a/sysdeps/generic/ldsodefs.h
++++ b/sysdeps/generic/ldsodefs.h
+@@ -919,8 +919,9 @@ extern void _dl_rtld_di_serinfo (struct link_map *loader,
  				 Dl_serinfo *si, bool counting);
  
  /* Process PT_GNU_PROPERTY program header PH in module L after
@@ -3977,10 +4373,11 @@ diff -pruN glibc-2.32.orig/sysdeps/generic/ldsodefs.h glibc-2.32/sysdeps/generic
  
  
  /* Search loaded objects' symbol tables for a definition of the symbol
-diff -pruN glibc-2.32.orig/sysdeps/generic/unwind.h glibc-2.32/sysdeps/generic/unwind.h
---- glibc-2.32.orig/sysdeps/generic/unwind.h	2021-09-18 21:02:32.706184819 +1000
-+++ glibc-2.32/sysdeps/generic/unwind.h	2021-09-18 21:03:05.313302322 +1000
-@@ -75,15 +75,21 @@ typedef void (*_Unwind_Exception_Cleanup
+diff --git a/sysdeps/generic/unwind.h b/sysdeps/generic/unwind.h
+index b667a5b652..c229603af3 100644
+--- a/sysdeps/generic/unwind.h
++++ b/sysdeps/generic/unwind.h
+@@ -75,15 +75,21 @@ typedef void (*_Unwind_Exception_Cleanup_Fn) (_Unwind_Reason_Code,
  
  struct _Unwind_Exception
  {
@@ -3988,6 +4385,11 @@ diff -pruN glibc-2.32.orig/sysdeps/generic/unwind.h glibc-2.32/sysdeps/generic/u
 -  _Unwind_Exception_Cleanup_Fn exception_cleanup;
 -  _Unwind_Word private_1;
 -  _Unwind_Word private_2;
+-
+-  /* @@@ The IA-64 ABI says that this structure must be double-word aligned.
+-     Taking that literally does not make much sense generically.  Instead we
+-     provide the maximum alignment required by any type for the machine.  */
+-} __attribute__((__aligned__));
 +  union
 +  {
 +    struct
@@ -3997,11 +4399,7 @@ diff -pruN glibc-2.32.orig/sysdeps/generic/unwind.h glibc-2.32/sysdeps/generic/u
 +      _Unwind_Word private_1;
 +      _Unwind_Word private_2;
 +    };
- 
--  /* @@@ The IA-64 ABI says that this structure must be double-word aligned.
--     Taking that literally does not make much sense generically.  Instead we
--     provide the maximum alignment required by any type for the machine.  */
--} __attribute__((__aligned__));
++
 +    /* The IA-64 ABI says that this structure must be double-word aligned.  */
 +    _Unwind_Word unwind_exception_align[2]
 +      __attribute__ ((__aligned__ (2 * sizeof (_Unwind_Word))));
@@ -4010,9 +4408,10 @@ diff -pruN glibc-2.32.orig/sysdeps/generic/unwind.h glibc-2.32/sysdeps/generic/u
  
  
  /* The ACTIONS argument to the personality routine is a bitwise OR of one
-diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.h
---- glibc-2.32.orig/sysdeps/gnu/errlist.h	2021-09-18 21:02:32.706184819 +1000
-+++ glibc-2.32/sysdeps/gnu/errlist.h	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/gnu/errlist.h b/sysdeps/gnu/errlist.h
+index 5d11ed723d..6329e5f393 100644
+--- a/sysdeps/gnu/errlist.h
++++ b/sysdeps/gnu/errlist.h
 @@ -1,24 +1,21 @@
 -#ifndef ERR_MAP
 -#define ERR_MAP(value) value
@@ -4057,7 +4456,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ENXIO
  /*
-@@ -43,7 +40,7 @@ TRANS represented by a file you specifie
+@@ -43,7 +40,7 @@ TRANS represented by a file you specified, and it couldn't find the device.
  TRANS This can mean that the device file was installed incorrectly, or that
  TRANS the physical device is missing or not correctly attached to the
  TRANS computer. */
@@ -4066,7 +4465,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef E2BIG
  /*
-@@ -51,27 +48,27 @@ TRANS Used when the arguments passed to
+@@ -51,27 +48,27 @@ TRANS Used when the arguments passed to a new program
  TRANS being executed with one of the @code{exec} functions (@pxref{Executing a
  TRANS File}) occupy too much memory space.  This condition never arises on
  TRANS @gnuhurdsystems{}. */
@@ -4098,7 +4497,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EDEADLK
  /*
-@@ -79,74 +76,74 @@ TRANS Allocating a system resource would
+@@ -79,74 +76,74 @@ TRANS Allocating a system resource would have resulted in a
  TRANS deadlock situation.  The system does not guarantee that it will notice
  TRANS all such situations.  This error means you got lucky and the system
  TRANS noticed; it might just hang.  @xref{File Locks}, for an example. */
@@ -4185,7 +4584,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EMFILE
  /*
-@@ -157,20 +154,20 @@ TRANS In BSD and GNU, the number of open
+@@ -157,20 +154,20 @@ TRANS In BSD and GNU, the number of open files is controlled by a resource
  TRANS limit that can usually be increased.  If you get this error, you might
  TRANS want to increase the @code{RLIMIT_NOFILE} limit or make it unlimited;
  TRANS @pxref{Limits on Resources}. */
@@ -4209,7 +4608,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ETXTBSY
  /*
-@@ -179,35 +176,35 @@ TRANS write to a file that is currently
+@@ -179,35 +176,35 @@ TRANS write to a file that is currently being executed.  Often using a
  TRANS debugger to run a program is considered having it open for writing and
  TRANS will cause this error.  (The name stands for ``text file busy''.)  This
  TRANS is not an error on @gnuhurdsystems{}; the text is copied as necessary. */
@@ -4251,7 +4650,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EPIPE
  /*
-@@ -216,19 +213,19 @@ TRANS Every library function that return
+@@ -216,19 +213,19 @@ TRANS Every library function that returns this error code also generates a
  TRANS @code{SIGPIPE} signal; this signal terminates the program if not handled
  TRANS or blocked.  Thus, your program will never actually see @code{EPIPE}
  TRANS unless it has handled or blocked @code{SIGPIPE}. */
@@ -4274,7 +4673,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EAGAIN
  /*
-@@ -261,7 +258,7 @@ TRANS Such shortages are usually fairly
+@@ -261,7 +258,7 @@ TRANS Such shortages are usually fairly serious and affect the whole system,
  TRANS so usually an interactive program should report the error to the user
  TRANS and return to its command loop.
  TRANS @end itemize */
@@ -4283,7 +4682,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EINPROGRESS
  /*
-@@ -273,47 +270,47 @@ TRANS the operation has begun and will t
+@@ -273,47 +270,47 @@ TRANS the operation has begun and will take some time.  Attempts to manipulate
  TRANS the object before the call completes return @code{EALREADY}.  You can
  TRANS use the @code{select} function to find out when the pending operation
  TRANS has completed; @pxref{Waiting for I/O}. */
@@ -4339,7 +4738,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EOPNOTSUPP
  /*
-@@ -323,71 +320,71 @@ TRANS implemented for all communications
+@@ -323,71 +320,71 @@ TRANS implemented for all communications protocols.  On @gnuhurdsystems{}, this
  TRANS error can happen for many calls when the object does not support the
  TRANS particular operation; it is a generic indication that the server knows
  TRANS nothing to do for that call. */
@@ -4423,7 +4822,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ENOTCONN
  /*
-@@ -395,74 +392,74 @@ TRANS The socket is not connected to any
+@@ -395,74 +392,74 @@ TRANS The socket is not connected to anything.  You get this error when you
  TRANS try to transmit data over a socket, without first specifying a
  TRANS destination for the data.  For a connectionless socket (for datagram
  TRANS protocols, such as UDP), you get @code{EDESTADDRREQ} instead. */
@@ -4511,7 +4910,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ESTALE
  /*
-@@ -471,7 +468,7 @@ TRANS file system which is due to file s
+@@ -471,7 +468,7 @@ TRANS file system which is due to file system rearrangements on the server host
  TRANS for NFS file systems or corruption in other file systems.
  TRANS Repairing this condition usually requires unmounting, possibly repairing
  TRANS and remounting the file system. */
@@ -4520,7 +4919,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EREMOTE
  /*
-@@ -479,7 +476,7 @@ TRANS An attempt was made to NFS-mount a
+@@ -479,7 +476,7 @@ TRANS An attempt was made to NFS-mount a remote file system with a file name tha
  TRANS already specifies an NFS-mounted file.
  TRANS (This is an error on some operating systems, but we expect it to work
  TRANS properly on @gnuhurdsystems{}, making this error code impossible.) */
@@ -4529,7 +4928,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ENOLCK
  /*
-@@ -487,7 +484,7 @@ TRANS This is used by the file locking f
+@@ -487,7 +484,7 @@ TRANS This is used by the file locking facilities; see
  TRANS @ref{File Locks}.  This error is never generated by @gnuhurdsystems{}, but
  TRANS it can result from an operation to an NFS server running another
  TRANS operating system. */
@@ -4538,7 +4937,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ENOSYS
  /*
-@@ -496,46 +493,46 @@ TRANS not implemented at all, either in
+@@ -496,46 +493,46 @@ TRANS not implemented at all, either in the C library itself or in the
  TRANS operating system.  When you get this error, you can be sure that this
  TRANS particular function will always fail with @code{ENOSYS} unless you
  TRANS install a new version of the C library or the operating system. */
@@ -4598,7 +4997,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef ECANCELED
  /*
-@@ -543,148 +540,148 @@ TRANS An asynchronous operation was canc
+@@ -543,148 +540,148 @@ TRANS An asynchronous operation was canceled before it
  TRANS completed.  @xref{Asynchronous I/O}.  When you call @code{aio_cancel},
  TRANS the normal result is for the operations affected to complete with this
  TRANS error; @pxref{Cancel AIO Operations}. */
@@ -4795,7 +5194,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EFTYPE
  /*
-@@ -693,40 +690,40 @@ TRANS operation, or a data file had the
+@@ -693,40 +690,40 @@ TRANS operation, or a data file had the wrong format.
  TRANS
  TRANS On some systems @code{chmod} returns this error if you try to set the
  TRANS sticky bit on a non-directory file; @pxref{Setting Permissions}. */
@@ -4857,7 +5256,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EBACKGROUND
  /*
-@@ -755,7 +752,7 @@ TRANS foreground process group of the te
+@@ -755,7 +752,7 @@ TRANS foreground process group of the terminal.  Users do not usually see this
  TRANS error because functions such as @code{read} and @code{write} translate
  TRANS it into a @code{SIGTTIN} or @code{SIGTTOU} signal.  @xref{Job Control},
  TRANS for information on process groups and these signals. */
@@ -4866,7 +5265,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #ifdef EIEIO
  /*
-@@ -773,7 +770,7 @@ TRANS @c "bought the farm" means "died".
+@@ -773,7 +770,7 @@ TRANS @c "bought the farm" means "died".  -jtobey
  TRANS @c
  TRANS @c Translators, please do not translate this litteraly, translate it into
  TRANS @c an idiomatic funny way of saying that the computer died. */
@@ -4875,7 +5274,7 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
  #endif
  #if defined (EWOULDBLOCK) && EWOULDBLOCK != EAGAIN
  /*
-@@ -782,18 +779,18 @@ TRANS The values are always the same, on
+@@ -782,18 +779,18 @@ TRANS The values are always the same, on every operating system.
  TRANS
  TRANS C libraries in many older Unix systems have @code{EWOULDBLOCK} as a
  TRANS separate error code. */
@@ -4898,10 +5297,11 @@ diff -pruN glibc-2.32.orig/sysdeps/gnu/errlist.h glibc-2.32/sysdeps/gnu/errlist.
 -_S(ERR_MAP(EPROGUNAVAIL), N_("RPC program not available"))
 +_S(EPROGUNAVAIL, N_("RPC program not available"))
  #endif
-diff -pruN glibc-2.32.orig/sysdeps/i386/dl-machine.h glibc-2.32/sysdeps/i386/dl-machine.h
---- glibc-2.32.orig/sysdeps/i386/dl-machine.h	2021-09-18 21:02:32.707184853 +1000
-+++ glibc-2.32/sysdeps/i386/dl-machine.h	2021-09-18 21:03:05.313302322 +1000
-@@ -338,16 +338,22 @@ elf_machine_rel (struct link_map *map, c
+diff --git a/sysdeps/i386/dl-machine.h b/sysdeps/i386/dl-machine.h
+index 0f08079e48..672d8f27ce 100644
+--- a/sysdeps/i386/dl-machine.h
++++ b/sysdeps/i386/dl-machine.h
+@@ -338,16 +338,22 @@ elf_machine_rel (struct link_map *map, const Elf32_Rel *reloc,
  	{
  # ifndef RTLD_BOOTSTRAP
  	  if (sym_map != map
@@ -4929,9 +5329,10 @@ diff -pruN glibc-2.32.orig/sysdeps/i386/dl-machine.h glibc-2.32/sysdeps/i386/dl-
  	    }
  # endif
  	  value = ((Elf32_Addr (*) (void)) value) ();
-diff -pruN glibc-2.32.orig/sysdeps/powerpc/powerpc64/backtrace.c glibc-2.32/sysdeps/powerpc/powerpc64/backtrace.c
---- glibc-2.32.orig/sysdeps/powerpc/powerpc64/backtrace.c	2021-09-18 21:02:32.723185402 +1000
-+++ glibc-2.32/sysdeps/powerpc/powerpc64/backtrace.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/powerpc/powerpc64/backtrace.c b/sysdeps/powerpc/powerpc64/backtrace.c
+index 8a53a1088f..362a2b713c 100644
+--- a/sysdeps/powerpc/powerpc64/backtrace.c
++++ b/sysdeps/powerpc/powerpc64/backtrace.c
 @@ -54,11 +54,22 @@ struct signal_frame_64 {
    /* We don't care about the rest, since the IP value is at 'uc' field.  */
  };
@@ -4956,9 +5357,73 @@ diff -pruN glibc-2.32.orig/sysdeps/powerpc/powerpc64/backtrace.c glibc-2.32/sysd
      return true;
  #endif
    return false;
-diff -pruN glibc-2.32.orig/sysdeps/s390/configure glibc-2.32/sysdeps/s390/configure
---- glibc-2.32.orig/sysdeps/s390/configure	2021-09-18 21:02:32.727185539 +1000
-+++ glibc-2.32/sysdeps/s390/configure	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/pthread/Makefile b/sysdeps/pthread/Makefile
+index 920d875420..bf9b7f7223 100644
+--- a/sysdeps/pthread/Makefile
++++ b/sysdeps/pthread/Makefile
+@@ -107,6 +107,7 @@ tests += tst-cnd-basic tst-mtx-trylock tst-cnd-broadcast \
+ 	 tst-unload \
+ 	 tst-unwind-thread \
+ 	 tst-pt-vfork1 tst-pt-vfork2 tst-vfork1x tst-vfork2x \
++	 tst-pthread-exit-signal \
+ 
+ 
+ # Files which must not be linked with libpthread.
+diff --git a/sysdeps/pthread/tst-pthread-exit-signal.c b/sysdeps/pthread/tst-pthread-exit-signal.c
+new file mode 100644
+index 0000000000..b4526fe663
+--- /dev/null
++++ b/sysdeps/pthread/tst-pthread-exit-signal.c
+@@ -0,0 +1,45 @@
++/* Test that pending signals are not delivered on thread exit (bug 28607).
++   Copyright (C) 2021 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++/* Due to bug 28607, pthread_kill (or pthread_cancel) restored the
++   signal mask during during thread exit, triggering the delivery of a
++   blocked pending signal (SIGUSR1 in this test).  */
++
++#include <support/xthread.h>
++#include <support/xsignal.h>
++
++static void *
++threadfunc (void *closure)
++{
++  sigset_t sigmask;
++  sigfillset (&sigmask);
++  xpthread_sigmask (SIG_SETMASK, &sigmask, NULL);
++  xpthread_kill (pthread_self (), SIGUSR1);
++  pthread_exit (NULL);
++  return NULL;
++}
++
++static int
++do_test (void)
++{
++  pthread_t thr = xpthread_create (NULL, threadfunc, NULL);
++  xpthread_join (thr);
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/sysdeps/s390/configure b/sysdeps/s390/configure
+index fa46e9e351..e7f576338d 100644
+--- a/sysdeps/s390/configure
++++ b/sysdeps/s390/configure
 @@ -123,7 +123,9 @@ void testinsn (char *buf)
      __asm__ (".machine \"arch13\" \n\t"
  	     ".machinemode \"zarch_nohighgprs\" \n\t"
@@ -4981,9 +5446,10 @@ diff -pruN glibc-2.32.orig/sysdeps/s390/configure glibc-2.32/sysdeps/s390/config
  }
  EOF
  if { ac_try='${CC-cc} $CFLAGS $CPPFLAGS $LDFLAGS --shared conftest.c
-diff -pruN glibc-2.32.orig/sysdeps/s390/configure.ac glibc-2.32/sysdeps/s390/configure.ac
---- glibc-2.32.orig/sysdeps/s390/configure.ac	2021-09-18 21:02:32.727185539 +1000
-+++ glibc-2.32/sysdeps/s390/configure.ac	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/s390/configure.ac b/sysdeps/s390/configure.ac
+index 3ed5a8ef87..5c3479e8cf 100644
+--- a/sysdeps/s390/configure.ac
++++ b/sysdeps/s390/configure.ac
 @@ -88,7 +88,9 @@ void testinsn (char *buf)
      __asm__ (".machine \"arch13\" \n\t"
  	     ".machinemode \"zarch_nohighgprs\" \n\t"
@@ -5006,10 +5472,11 @@ diff -pruN glibc-2.32.orig/sysdeps/s390/configure.ac glibc-2.32/sysdeps/s390/con
  }
  EOF
  dnl test, if assembler supports S390 arch13 zarch instructions as default
-diff -pruN glibc-2.32.orig/sysdeps/s390/memmove.c glibc-2.32/sysdeps/s390/memmove.c
---- glibc-2.32.orig/sysdeps/s390/memmove.c	2021-09-18 21:02:32.727185539 +1000
-+++ glibc-2.32/sysdeps/s390/memmove.c	2021-09-18 21:03:05.313302322 +1000
-@@ -43,7 +43,7 @@ extern __typeof (__redirect_memmove) MEM
+diff --git a/sysdeps/s390/memmove.c b/sysdeps/s390/memmove.c
+index 5fc85e129f..ee59b5de14 100644
+--- a/sysdeps/s390/memmove.c
++++ b/sysdeps/s390/memmove.c
+@@ -43,7 +43,7 @@ extern __typeof (__redirect_memmove) MEMMOVE_ARCH13 attribute_hidden;
  s390_libc_ifunc_expr (__redirect_memmove, memmove,
  		      ({
  			s390_libc_ifunc_expr_stfle_init ();
@@ -5018,10 +5485,11 @@ diff -pruN glibc-2.32.orig/sysdeps/s390/memmove.c glibc-2.32/sysdeps/s390/memmov
  			 && S390_IS_ARCH13_MIE3 (stfle_bits))
  			  ? MEMMOVE_ARCH13
  			  : (HAVE_MEMMOVE_Z13 && (hwcap & HWCAP_S390_VX))
-diff -pruN glibc-2.32.orig/sysdeps/s390/multiarch/ifunc-impl-list.c glibc-2.32/sysdeps/s390/multiarch/ifunc-impl-list.c
---- glibc-2.32.orig/sysdeps/s390/multiarch/ifunc-impl-list.c	2021-09-18 21:02:32.727185539 +1000
-+++ glibc-2.32/sysdeps/s390/multiarch/ifunc-impl-list.c	2021-09-18 21:03:05.313302322 +1000
-@@ -171,7 +171,8 @@ __libc_ifunc_impl_list (const char *name
+diff --git a/sysdeps/s390/multiarch/ifunc-impl-list.c b/sysdeps/s390/multiarch/ifunc-impl-list.c
+index e6195c6e26..17c0cc3952 100644
+--- a/sysdeps/s390/multiarch/ifunc-impl-list.c
++++ b/sysdeps/s390/multiarch/ifunc-impl-list.c
+@@ -171,7 +171,8 @@ __libc_ifunc_impl_list (const char *name, struct libc_ifunc_impl *array,
      IFUNC_IMPL (i, name, memmove,
  # if HAVE_MEMMOVE_ARCH13
  		IFUNC_IMPL_ADD (array, i, memmove,
@@ -5031,19 +5499,37 @@ diff -pruN glibc-2.32.orig/sysdeps/s390/multiarch/ifunc-impl-list.c glibc-2.32/s
  				MEMMOVE_ARCH13)
  # endif
  # if HAVE_MEMMOVE_Z13
-diff -pruN glibc-2.32.orig/sysdeps/sh/be/sh4/fpu/Implies glibc-2.32/sysdeps/sh/be/sh4/fpu/Implies
---- glibc-2.32.orig/sysdeps/sh/be/sh4/fpu/Implies	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/sh/be/sh4/fpu/Implies	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/sh/be/sh4/fpu/Implies b/sysdeps/sh/be/sh4/fpu/Implies
+new file mode 100644
+index 0000000000..71b28ee1a4
+--- /dev/null
++++ b/sysdeps/sh/be/sh4/fpu/Implies
 @@ -0,0 +1 @@
 +sh/sh4/fpu
-diff -pruN glibc-2.32.orig/sysdeps/sh/le/sh4/fpu/Implies glibc-2.32/sysdeps/sh/le/sh4/fpu/Implies
---- glibc-2.32.orig/sysdeps/sh/le/sh4/fpu/Implies	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/sh/le/sh4/fpu/Implies	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/sh/le/sh4/fpu/Implies b/sysdeps/sh/le/sh4/fpu/Implies
+new file mode 100644
+index 0000000000..71b28ee1a4
+--- /dev/null
++++ b/sysdeps/sh/le/sh4/fpu/Implies
 @@ -0,0 +1 @@
 +sh/sh4/fpu
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/aarch64/cpu-features.h glibc-2.32/sysdeps/unix/sysv/linux/aarch64/cpu-features.h
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/aarch64/cpu-features.h	2021-09-18 21:02:32.731185676 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/aarch64/cpu-features.h	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/unix/sysv/linux/Makefile b/sysdeps/unix/sysv/linux/Makefile
+index 9b2a253032..34748ffcd1 100644
+--- a/sysdeps/unix/sysv/linux/Makefile
++++ b/sysdeps/unix/sysv/linux/Makefile
+@@ -100,7 +100,7 @@ tests += tst-clone tst-clone2 tst-clone3 tst-fanotify tst-personality \
+ 	 tst-quota tst-sync_file_range tst-sysconf-iov_max tst-ttyname \
+ 	 test-errno-linux tst-memfd_create tst-mlock2 tst-pkey \
+ 	 tst-rlimit-infinity tst-ofdlocks tst-gettid tst-gettid-kill \
+-	 tst-tgkill
++	 tst-tgkill tst-sysvsem-linux tst-sysvmsg-linux tst-sysvshm-linux
+ tests-internal += tst-ofdlocks-compat tst-sigcontext-get_pc
+ 
+ CFLAGS-tst-sigcontext-get_pc.c = -fasynchronous-unwind-tables
+diff --git a/sysdeps/unix/sysv/linux/aarch64/cpu-features.h b/sysdeps/unix/sysv/linux/aarch64/cpu-features.h
+index fc688450ee..00a4d0c8e7 100644
+--- a/sysdeps/unix/sysv/linux/aarch64/cpu-features.h
++++ b/sysdeps/unix/sysv/linux/aarch64/cpu-features.h
 @@ -54,6 +54,10 @@
                          && MIDR_PARTNUM(midr) == 0x000)
  #define IS_NEOVERSE_N1(midr) (MIDR_IMPLEMENTOR(midr) == 'A'		      \
@@ -5055,21 +5541,10 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/aarch64/cpu-features.h glibc-
  
  #define IS_EMAG(midr) (MIDR_IMPLEMENTOR(midr) == 'P'			      \
                         && MIDR_PARTNUM(midr) == 0x000)
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/Makefile glibc-2.32/sysdeps/unix/sysv/linux/Makefile
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/Makefile	2021-09-18 21:02:32.731185676 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/Makefile	2021-09-18 21:03:05.313302322 +1000
-@@ -100,7 +100,7 @@ tests += tst-clone tst-clone2 tst-clone3
- 	 tst-quota tst-sync_file_range tst-sysconf-iov_max tst-ttyname \
- 	 test-errno-linux tst-memfd_create tst-mlock2 tst-pkey \
- 	 tst-rlimit-infinity tst-ofdlocks tst-gettid tst-gettid-kill \
--	 tst-tgkill
-+	 tst-tgkill tst-sysvsem-linux tst-sysvmsg-linux tst-sysvshm-linux
- tests-internal += tst-ofdlocks-compat tst-sigcontext-get_pc
- 
- CFLAGS-tst-sigcontext-get_pc.c = -fasynchronous-unwind-tables
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/mq_notify.c glibc-2.32/sysdeps/unix/sysv/linux/mq_notify.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/mq_notify.c	2021-09-18 21:02:32.736185847 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/mq_notify.c	2021-09-18 21:09:50.680196980 +1000
+diff --git a/sysdeps/unix/sysv/linux/mq_notify.c b/sysdeps/unix/sysv/linux/mq_notify.c
+index 61bbb03b64..2bb98172c8 100644
+--- a/sysdeps/unix/sysv/linux/mq_notify.c
++++ b/sysdeps/unix/sysv/linux/mq_notify.c
 @@ -132,9 +132,12 @@ helper_thread (void *arg)
  	       to wait until it is done with it.  */
  	    (void) __pthread_barrier_wait (&notify_barrier);
@@ -5086,7 +5561,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/mq_notify.c glibc-2.32/sysdep
      }
    return NULL;
  }
-@@ -255,8 +258,14 @@ mq_notify (mqd_t mqdes, const struct sig
+@@ -255,8 +258,14 @@ mq_notify (mqd_t mqdes, const struct sigevent *notification)
        if (data.attr == NULL)
  	return -1;
  
@@ -5103,7 +5578,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/mq_notify.c glibc-2.32/sysdep
      }
  
    /* Construct the new request.  */
-@@ -269,8 +278,11 @@ mq_notify (mqd_t mqdes, const struct sig
+@@ -269,8 +278,11 @@ mq_notify (mqd_t mqdes, const struct sigevent *notification)
    int retval = INLINE_SYSCALL (mq_notify, 2, mqdes, &se);
  
    /* If it failed, free the allocated memory.  */
@@ -5117,10 +5592,11 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/mq_notify.c glibc-2.32/sysdep
  
    return retval;
  }
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/msgctl.c glibc-2.32/sysdeps/unix/sysv/linux/msgctl.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/msgctl.c	2021-09-18 21:02:32.736185847 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/msgctl.c	2021-09-18 21:03:05.313302322 +1000
-@@ -90,8 +90,15 @@ __msgctl64 (int msqid, int cmd, struct _
+diff --git a/sysdeps/unix/sysv/linux/msgctl.c b/sysdeps/unix/sysv/linux/msgctl.c
+index 0776472d5e..a1f24ab242 100644
+--- a/sysdeps/unix/sysv/linux/msgctl.c
++++ b/sysdeps/unix/sysv/linux/msgctl.c
+@@ -90,8 +90,15 @@ __msgctl64 (int msqid, int cmd, struct __msqid64_ds *buf)
    struct kernel_msqid64_ds ksemid, *arg = NULL;
    if (buf != NULL)
      {
@@ -5138,7 +5614,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/msgctl.c glibc-2.32/sysdeps/u
      }
  # ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
    if (cmd == IPC_SET)
-@@ -169,8 +176,15 @@ __msgctl (int msqid, int cmd, struct msq
+@@ -169,8 +176,15 @@ __msgctl (int msqid, int cmd, struct msqid_ds *buf)
    struct __msqid64_ds msqid64, *buf64 = NULL;
    if (buf != NULL)
      {
@@ -5156,10 +5632,11 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/msgctl.c glibc-2.32/sysdeps/u
      }
  
    int ret = __msgctl64 (msqid, cmd, buf64);
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/unix/sysv/linux/semctl.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c	2021-09-18 21:02:32.739185950 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/semctl.c	2021-09-18 21:03:05.313302322 +1000
-@@ -102,6 +102,7 @@ semun64_to_ksemun64 (int cmd, union semu
+diff --git a/sysdeps/unix/sysv/linux/semctl.c b/sysdeps/unix/sysv/linux/semctl.c
+index f131a26fc7..1cdabde8f2 100644
+--- a/sysdeps/unix/sysv/linux/semctl.c
++++ b/sysdeps/unix/sysv/linux/semctl.c
+@@ -102,6 +102,7 @@ semun64_to_ksemun64 (int cmd, union semun64 semun64,
        r.array = semun64.array;
        break;
      case SEM_STAT:
@@ -5167,7 +5644,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_STAT:
      case IPC_SET:
        r.buf = buf;
-@@ -150,6 +151,7 @@ __semctl64 (int semid, int semnum, int c
+@@ -150,6 +151,7 @@ __semctl64 (int semid, int semnum, int cmd, ...)
      case IPC_STAT:      /* arg.buf */
      case IPC_SET:
      case SEM_STAT:
@@ -5175,7 +5652,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_INFO:      /* arg.__buf */
      case SEM_INFO:
        va_start (ap, cmd);
-@@ -238,6 +240,7 @@ semun_to_semun64 (int cmd, union semun s
+@@ -238,6 +240,7 @@ semun_to_semun64 (int cmd, union semun semun, struct __semid64_ds *semid64)
        r.array = semun.array;
        break;
      case SEM_STAT:
@@ -5183,7 +5660,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_STAT:
      case IPC_SET:
        r.buf = semid64;
-@@ -267,6 +270,7 @@ __semctl (int semid, int semnum, int cmd
+@@ -267,6 +270,7 @@ __semctl (int semid, int semnum, int cmd, ...)
      case IPC_STAT:      /* arg.buf */
      case IPC_SET:
      case SEM_STAT:
@@ -5191,7 +5668,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_INFO:      /* arg.__buf */
      case SEM_INFO:
        va_start (ap, cmd);
-@@ -321,6 +325,7 @@ __semctl_mode16 (int semid, int semnum,
+@@ -321,6 +325,7 @@ __semctl_mode16 (int semid, int semnum, int cmd, ...)
      case IPC_STAT:      /* arg.buf */
      case IPC_SET:
      case SEM_STAT:
@@ -5199,7 +5676,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_INFO:      /* arg.__buf */
      case SEM_INFO:
        va_start (ap, cmd);
-@@ -354,6 +359,7 @@ __old_semctl (int semid, int semnum, int
+@@ -354,6 +359,7 @@ __old_semctl (int semid, int semnum, int cmd, ...)
      case IPC_STAT:      /* arg.buf */
      case IPC_SET:
      case SEM_STAT:
@@ -5207,20 +5684,25 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/semctl.c glibc-2.32/sysdeps/u
      case IPC_INFO:      /* arg.__buf */
      case SEM_INFO:
        va_start (ap, cmd);
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies glibc-2.32/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies b/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies
+new file mode 100644
+index 0000000000..7eeaf15a5a
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/sh/be/sh4/fpu/Implies
 @@ -0,0 +1 @@
 +unix/sysv/linux/sh/sh4/fpu
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies glibc-2.32/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies b/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies
+new file mode 100644
+index 0000000000..7eeaf15a5a
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/sh/le/sh4/fpu/Implies
 @@ -0,0 +1 @@
 +unix/sysv/linux/sh/sh4/fpu
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c glibc-2.32/sysdeps/unix/sysv/linux/shmctl.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c	2021-09-18 21:02:32.740185984 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/shmctl.c	2021-09-18 21:03:05.313302322 +1000
-@@ -90,8 +90,15 @@ __shmctl64 (int shmid, int cmd, struct _
+diff --git a/sysdeps/unix/sysv/linux/shmctl.c b/sysdeps/unix/sysv/linux/shmctl.c
+index 76d88441f1..1d19a798b1 100644
+--- a/sysdeps/unix/sysv/linux/shmctl.c
++++ b/sysdeps/unix/sysv/linux/shmctl.c
+@@ -90,8 +90,15 @@ __shmctl64 (int shmid, int cmd, struct __shmid64_ds *buf)
    struct kernel_shmid64_ds kshmid, *arg = NULL;
    if (buf != NULL)
      {
@@ -5238,7 +5720,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c glibc-2.32/sysdeps/u
      }
  # ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
    if (cmd == IPC_SET)
-@@ -107,7 +114,6 @@ __shmctl64 (int shmid, int cmd, struct _
+@@ -107,7 +114,6 @@ __shmctl64 (int shmid, int cmd, struct __shmid64_ds *buf)
  
    switch (cmd)
      {
@@ -5246,7 +5728,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c glibc-2.32/sysdeps/u
        case IPC_STAT:
        case SHM_STAT:
        case SHM_STAT_ANY:
-@@ -168,8 +174,15 @@ __shmctl (int shmid, int cmd, struct shm
+@@ -168,8 +174,15 @@ __shmctl (int shmid, int cmd, struct shmid_ds *buf)
    struct __shmid64_ds shmid64, *buf64 = NULL;
    if (buf != NULL)
      {
@@ -5264,7 +5746,7 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c glibc-2.32/sysdeps/u
      }
  
    int ret = __shmctl64 (shmid, cmd, buf64);
-@@ -178,7 +191,6 @@ __shmctl (int shmid, int cmd, struct shm
+@@ -178,7 +191,6 @@ __shmctl (int shmid, int cmd, struct shmid_ds *buf)
  
    switch (cmd)
      {
@@ -5272,9 +5754,11 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/shmctl.c glibc-2.32/sysdeps/u
        case IPC_STAT:
        case SHM_STAT:
        case SHM_STAT_ANY:
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c	2021-09-18 21:03:05.313302322 +1000
+diff --git a/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c b/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c
+new file mode 100644
+index 0000000000..630f4f792c
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c
 @@ -0,0 +1,177 @@
 +/* Basic tests for Linux SYSV message queue extensions.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -5453,9 +5937,11 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvmsg-linux.c glibc-2.3
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c	2021-09-18 21:03:05.314302356 +1000
+diff --git a/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c b/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c
+new file mode 100644
+index 0000000000..45f19e2d37
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c
 @@ -0,0 +1,184 @@
 +/* Basic tests for Linux SYSV semaphore extensions.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
@@ -5641,10 +6127,12 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvsem-linux.c glibc-2.3
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c	2021-09-18 21:03:05.314302356 +1000
-@@ -0,0 +1,185 @@
+diff --git a/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c b/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c
+new file mode 100644
+index 0000000000..bb154592a6
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c
+@@ -0,0 +1,188 @@
 +/* Basic tests for Linux SYSV shared memory extensions.
 +   Copyright (C) 2020 Free Software Foundation, Inc.
 +   This file is part of the GNU C Library.
@@ -5701,9 +6189,9 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c glibc-2.3
 +
 +struct test_shminfo
 +{
-+  unsigned long int shmall;
-+  unsigned long int shmmax;
-+  unsigned long int shmmni;
++  __syscall_ulong_t shmall;
++  __syscall_ulong_t shmmax;
++  __syscall_ulong_t shmmni;
 +};
 +
 +/* It tries to obtain some system-wide SysV shared memory information from
@@ -5769,17 +6257,21 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c glibc-2.3
 +  if (shmid == -1)
 +    FAIL_EXIT1 ("shmget failed: %m");
 +
++  /* It does not check shmmax because kernel clamp its value to INT_MAX for:
++
++     1. Compat symbols with IPC_64, i.e, 32-bit binaries running on 64-bit
++        kernels.
++
++     2. Default symbol without IPC_64 (defined as IPC_OLD within Linux) and
++        glibc always use IPC_64 for 32-bit ABIs (to support 64-bit time_t).
++        It means that 32-bit binaries running on 32-bit kernels will not see
++        shmmax being clamped.
++
++     And finding out whether the compat symbol is used would require checking
++     the underlying kernel against the current ABI.  The shmall and shmmni
++     already provided enough coverage.  */
++
 +  struct test_shminfo tipcinfo;
-+  {
-+    uint64_t v = read_proc_file ("/proc/sys/kernel/shmmax");
-+#if LONG_MAX == INT_MAX
-+    /* Kernel explicit clamp the value for shmmax on compat symbol (32-bit
-+       binaries running on 64-bit kernels).  */
-+    if (v > INT_MAX)
-+      v = INT_MAX;
-+#endif
-+    tipcinfo.shmmax = v;
-+  }
 +  tipcinfo.shmall = read_proc_file ("/proc/sys/kernel/shmall");
 +  tipcinfo.shmmni = read_proc_file ("/proc/sys/kernel/shmmni");
 +
@@ -5798,7 +6290,6 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c glibc-2.3
 +      FAIL_EXIT1 ("shmctl with IPC_INFO failed: %m");
 +
 +    TEST_COMPARE (ipcinfo.shmall, tipcinfo.shmall);
-+    TEST_COMPARE (ipcinfo.shmmax, tipcinfo.shmmax);
 +    TEST_COMPARE (ipcinfo.shmmni, tipcinfo.shmmni);
 +  }
 +
@@ -5830,41 +6321,27 @@ diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/tst-sysvshm-linux.c glibc-2.3
 +}
 +
 +#include <support/test-driver.c>
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/64/configure glibc-2.32/sysdeps/unix/sysv/linux/x86_64/64/configure
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/64/configure	2021-09-18 21:02:32.741186019 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/x86_64/64/configure	2021-09-18 21:03:05.314302356 +1000
-@@ -4,10 +4,10 @@
- test -n "$libc_cv_slibdir" ||
- case "$prefix" in
- /usr | /usr/)
--  libc_cv_slibdir='/lib64'
--  libc_cv_rtlddir='/lib64'
-+  libc_cv_slibdir='/lib'
-+  libc_cv_rtlddir='/lib'
-   if test "$libdir" = '${exec_prefix}/lib'; then
--    libdir='${exec_prefix}/lib64';
-+    libdir='${exec_prefix}/lib';
-     # Locale data can be shared between 32-bit and 64-bit libraries.
-     libc_cv_complocaledir='${exec_prefix}/lib/locale'
-   fi
-diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/ldconfig.h glibc-2.32/sysdeps/unix/sysv/linux/x86_64/ldconfig.h
---- glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/ldconfig.h	2021-09-18 21:02:32.742186053 +1000
-+++ glibc-2.32/sysdeps/unix/sysv/linux/x86_64/ldconfig.h	2021-09-18 21:03:05.314302356 +1000
-@@ -18,9 +18,9 @@
- #include <sysdeps/generic/ldconfig.h>
+diff --git a/sysdeps/x86/Makefile b/sysdeps/x86/Makefile
+index a6736aef25..9736a13e7b 100644
+--- a/sysdeps/x86/Makefile
++++ b/sysdeps/x86/Makefile
+@@ -12,6 +12,12 @@ endif
+ ifeq ($(subdir),setjmp)
+ gen-as-const-headers += jmp_buf-ssp.sym
+ sysdep_routines += __longjmp_cancel
++ifneq ($(enable-cet),no)
++ifneq ($(have-tunables),no)
++tests += tst-setjmp-cet
++tst-setjmp-cet-ENV = GLIBC_TUNABLES=glibc.cpu.x86_ibt=on:glibc.cpu.x86_shstk=on
++endif
++endif
+ endif
  
- #define SYSDEP_KNOWN_INTERPRETER_NAMES \
--  { "/lib/ld-linux.so.2", FLAG_ELF_LIBC6 }, \
-+  { "/lib32/ld-linux.so.2", FLAG_ELF_LIBC6 }, \
-   { "/libx32/ld-linux-x32.so.2", FLAG_ELF_LIBC6 }, \
--  { "/lib64/ld-linux-x86-64.so.2", FLAG_ELF_LIBC6 },
-+  { "/lib/ld-linux-x86-64.so.2", FLAG_ELF_LIBC6 },
- #define SYSDEP_KNOWN_LIBRARY_NAMES \
-   { "libc.so.6", FLAG_ELF_LIBC6 },	\
-   { "libm.so.6", FLAG_ELF_LIBC6 },
-diff -pruN glibc-2.32.orig/sysdeps/x86/cacheinfo.c glibc-2.32/sysdeps/x86/cacheinfo.c
---- glibc-2.32.orig/sysdeps/x86/cacheinfo.c	2021-09-18 21:02:32.742186053 +1000
-+++ glibc-2.32/sysdeps/x86/cacheinfo.c	2021-09-18 21:03:05.314302356 +1000
+ ifeq ($(subdir),string)
+diff --git a/sysdeps/x86/cacheinfo.c b/sysdeps/x86/cacheinfo.c
+index 217c21c34f..3fb4a028d8 100644
+--- a/sysdeps/x86/cacheinfo.c
++++ b/sysdeps/x86/cacheinfo.c
 @@ -808,7 +808,7 @@ init_cacheinfo (void)
  	      threads = 1 << ((ecx >> 12) & 0x0f);
  	    }
@@ -5925,10 +6402,11 @@ diff -pruN glibc-2.32.orig/sysdeps/x86/cacheinfo.c glibc-2.32/sysdeps/x86/cachei
  
    /* NB: The REP MOVSB threshold must be greater than VEC_SIZE * 8.  */
    unsigned int minimum_rep_movsb_threshold;
-diff -pruN glibc-2.32.orig/sysdeps/x86/dl-cet.c glibc-2.32/sysdeps/x86/dl-cet.c
---- glibc-2.32.orig/sysdeps/x86/dl-cet.c	2021-09-18 21:02:32.742186053 +1000
-+++ glibc-2.32/sysdeps/x86/dl-cet.c	2021-09-18 21:03:05.314302356 +1000
-@@ -47,7 +47,10 @@ dl_cet_check (struct link_map *m, const
+diff --git a/sysdeps/x86/dl-cet.c b/sysdeps/x86/dl-cet.c
+index 03572f7af6..3cc54a8d53 100644
+--- a/sysdeps/x86/dl-cet.c
++++ b/sysdeps/x86/dl-cet.c
+@@ -47,7 +47,10 @@ dl_cet_check (struct link_map *m, const char *program)
    /* No legacy object check if both IBT and SHSTK are always on.  */
    if (enable_ibt_type == cet_always_on
        && enable_shstk_type == cet_always_on)
@@ -5940,10 +6418,11 @@ diff -pruN glibc-2.32.orig/sysdeps/x86/dl-cet.c glibc-2.32/sysdeps/x86/dl-cet.c
  
    /* Check if IBT is enabled by kernel.  */
    bool ibt_enabled
-diff -pruN glibc-2.32.orig/sysdeps/x86/dl-prop.h glibc-2.32/sysdeps/x86/dl-prop.h
---- glibc-2.32.orig/sysdeps/x86/dl-prop.h	2021-09-18 21:02:32.742186053 +1000
-+++ glibc-2.32/sysdeps/x86/dl-prop.h	2021-09-18 21:03:05.314302356 +1000
-@@ -145,15 +145,15 @@ _dl_process_cet_property_note (struct li
+diff --git a/sysdeps/x86/dl-prop.h b/sysdeps/x86/dl-prop.h
+index 89911e19e2..4eb3b85a7b 100644
+--- a/sysdeps/x86/dl-prop.h
++++ b/sysdeps/x86/dl-prop.h
+@@ -145,15 +145,15 @@ _dl_process_cet_property_note (struct link_map *l,
  }
  
  static inline void __attribute__ ((unused))
@@ -5962,31 +6441,20 @@ diff -pruN glibc-2.32.orig/sysdeps/x86/dl-prop.h glibc-2.32/sysdeps/x86/dl-prop.
  {
    return 0;
  }
-diff -pruN glibc-2.32.orig/sysdeps/x86/Makefile glibc-2.32/sysdeps/x86/Makefile
---- glibc-2.32.orig/sysdeps/x86/Makefile	2021-09-18 21:02:32.742186053 +1000
-+++ glibc-2.32/sysdeps/x86/Makefile	2021-09-18 21:03:05.314302356 +1000
-@@ -12,6 +12,12 @@ endif
- ifeq ($(subdir),setjmp)
- gen-as-const-headers += jmp_buf-ssp.sym
- sysdep_routines += __longjmp_cancel
-+ifneq ($(enable-cet),no)
-+ifneq ($(have-tunables),no)
-+tests += tst-setjmp-cet
-+tst-setjmp-cet-ENV = GLIBC_TUNABLES=glibc.cpu.x86_ibt=on:glibc.cpu.x86_shstk=on
-+endif
-+endif
- endif
- 
- ifeq ($(subdir),string)
-diff -pruN glibc-2.32.orig/sysdeps/x86/tst-setjmp-cet.c glibc-2.32/sysdeps/x86/tst-setjmp-cet.c
---- glibc-2.32.orig/sysdeps/x86/tst-setjmp-cet.c	1970-01-01 10:00:00.000000000 +1000
-+++ glibc-2.32/sysdeps/x86/tst-setjmp-cet.c	2021-09-18 21:03:05.314302356 +1000
+diff --git a/sysdeps/x86/tst-setjmp-cet.c b/sysdeps/x86/tst-setjmp-cet.c
+new file mode 100644
+index 0000000000..42c795d2a8
+--- /dev/null
++++ b/sysdeps/x86/tst-setjmp-cet.c
 @@ -0,0 +1 @@
 +#include <setjmp/tst-setjmp.c>
-diff -pruN glibc-2.32.orig/sysdeps/x86_64/configure glibc-2.32/sysdeps/x86_64/configure
---- glibc-2.32.orig/sysdeps/x86_64/configure	2021-09-18 21:02:32.743186087 +1000
-+++ glibc-2.32/sysdeps/x86_64/configure	2021-09-18 21:03:05.314302356 +1000
-@@ -107,39 +107,6 @@ if test x"$build_mathvec" = xnotset; the
+diff --git a/sysdeps/x86_64/configure b/sysdeps/x86_64/configure
+old mode 100644
+new mode 100755
+index 84f82c2406..fc1840e23f
+--- a/sysdeps/x86_64/configure
++++ b/sysdeps/x86_64/configure
+@@ -107,39 +107,6 @@ if test x"$build_mathvec" = xnotset; then
    build_mathvec=yes
  fi
  
@@ -6026,10 +6494,11 @@ diff -pruN glibc-2.32.orig/sysdeps/x86_64/configure glibc-2.32/sysdeps/x86_64/co
  $as_echo "#define PI_STATIC_AND_HIDDEN 1" >>confdefs.h
  
  
-diff -pruN glibc-2.32.orig/sysdeps/x86_64/configure.ac glibc-2.32/sysdeps/x86_64/configure.ac
---- glibc-2.32.orig/sysdeps/x86_64/configure.ac	2021-09-18 21:02:32.743186087 +1000
-+++ glibc-2.32/sysdeps/x86_64/configure.ac	2021-09-18 21:03:05.314302356 +1000
-@@ -53,31 +53,6 @@ if test x"$build_mathvec" = xnotset; the
+diff --git a/sysdeps/x86_64/configure.ac b/sysdeps/x86_64/configure.ac
+index cdaba0c075..611a7d9ba3 100644
+--- a/sysdeps/x86_64/configure.ac
++++ b/sysdeps/x86_64/configure.ac
+@@ -53,31 +53,6 @@ if test x"$build_mathvec" = xnotset; then
    build_mathvec=yes
  fi
  
@@ -6061,10 +6530,11 @@ diff -pruN glibc-2.32.orig/sysdeps/x86_64/configure.ac glibc-2.32/sysdeps/x86_64
  dnl It is always possible to access static and hidden symbols in an
  dnl position independent way.
  AC_DEFINE(PI_STATIC_AND_HIDDEN)
-diff -pruN glibc-2.32.orig/sysdeps/x86_64/dl-machine.h glibc-2.32/sysdeps/x86_64/dl-machine.h
---- glibc-2.32.orig/sysdeps/x86_64/dl-machine.h	2021-09-18 21:02:32.743186087 +1000
-+++ glibc-2.32/sysdeps/x86_64/dl-machine.h	2021-09-18 21:03:05.314302356 +1000
-@@ -315,16 +315,22 @@ elf_machine_rela (struct link_map *map,
+diff --git a/sysdeps/x86_64/dl-machine.h b/sysdeps/x86_64/dl-machine.h
+index ca73d8fef9..363a749cb2 100644
+--- a/sysdeps/x86_64/dl-machine.h
++++ b/sysdeps/x86_64/dl-machine.h
+@@ -315,16 +315,22 @@ elf_machine_rela (struct link_map *map, const ElfW(Rela) *reloc,
  	{
  # ifndef RTLD_BOOTSTRAP
  	  if (sym_map != map
@@ -6092,9 +6562,10 @@ diff -pruN glibc-2.32.orig/sysdeps/x86_64/dl-machine.h glibc-2.32/sysdeps/x86_64
  	    }
  # endif
  	  value = ((ElfW(Addr) (*) (void)) value) ();
-diff -pruN glibc-2.32.orig/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h glibc-2.32/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h
---- glibc-2.32.orig/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h	2021-09-18 21:02:32.743186087 +1000
-+++ glibc-2.32/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h	2021-09-18 21:03:05.314302356 +1000
+diff --git a/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h b/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h
+index 7659758972..e5fd5ac9cb 100644
+--- a/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h
++++ b/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h
 @@ -32,7 +32,7 @@ IFUNC_SELECTOR (void)
        && CPU_FEATURE_USABLE_P (cpu_features, AVX2))
      return OPTIMIZE (fma);
@@ -6104,9 +6575,10 @@ diff -pruN glibc-2.32.orig/sysdeps/x86_64/fpu/multiarch/ifunc-fma4.h glibc-2.32/
      return OPTIMIZE (fma4);
  
    return OPTIMIZE (sse2);
-diff -pruN glibc-2.32.orig/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S glibc-2.32/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
---- glibc-2.32.orig/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S	2021-09-18 21:02:32.745186156 +1000
-+++ glibc-2.32/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S	2021-09-18 21:03:05.314302356 +1000
+diff --git a/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S b/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+index bd5dc1a3f3..092f364bb6 100644
+--- a/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
++++ b/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
 @@ -56,6 +56,13 @@
  # endif
  #endif
@@ -6143,9 +6615,10 @@ diff -pruN glibc-2.32.orig/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
  	mov	%RDX_LP, %RCX_LP
  	rep movsb
  L(nop):
-diff -pruN glibc-2.32.orig/sysvipc/test-sysvsem.c glibc-2.32/sysvipc/test-sysvsem.c
---- glibc-2.32.orig/sysvipc/test-sysvsem.c	2021-09-18 21:02:32.746186190 +1000
-+++ glibc-2.32/sysvipc/test-sysvsem.c	2021-09-18 21:03:05.314302356 +1000
+diff --git a/sysvipc/test-sysvsem.c b/sysvipc/test-sysvsem.c
+index 01dbff343a..b7284e0b48 100644
+--- a/sysvipc/test-sysvsem.c
++++ b/sysvipc/test-sysvsem.c
 @@ -20,6 +20,7 @@
  #include <stdlib.h>
  #include <errno.h>
@@ -6154,12 +6627,45 @@ diff -pruN glibc-2.32.orig/sysvipc/test-sysvsem.c glibc-2.32/sysvipc/test-sysvse
  #include <sys/types.h>
  #include <sys/ipc.h>
  #include <sys/sem.h>
-diff -pruN glibc-2.32.orig/version.h glibc-2.32/version.h
---- glibc-2.32.orig/version.h	2021-09-18 21:02:32.746186190 +1000
-+++ glibc-2.32/version.h	2021-09-18 21:03:05.314302356 +1000
+diff --git a/version.h b/version.h
+index 83cd196798..e6ca7a8857 100644
+--- a/version.h
++++ b/version.h
 @@ -1,4 +1,4 @@
  /* This file just defines the current version number of libc.  */
  
 -#define RELEASE "release"
 +#define RELEASE "stable"
  #define VERSION "2.32"
+diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/64/configure glibc-2.32/sysdeps/unix/sysv/linux/x86_64/64/configure
+--- glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/64/configure	2021-09-18 21:02:32.741186019 +1000
++++ glibc-2.32/sysdeps/unix/sysv/linux/x86_64/64/configure	2021-09-18 21:03:05.314302356 +1000
+@@ -4,10 +4,10 @@
+ test -n "$libc_cv_slibdir" ||
+ case "$prefix" in
+ /usr | /usr/)
+-  libc_cv_slibdir='/lib64'
+-  libc_cv_rtlddir='/lib64'
++  libc_cv_slibdir='/lib'
++  libc_cv_rtlddir='/lib'
+   if test "$libdir" = '${exec_prefix}/lib'; then
+-    libdir='${exec_prefix}/lib64';
++    libdir='${exec_prefix}/lib';
+     # Locale data can be shared between 32-bit and 64-bit libraries.
+     libc_cv_complocaledir='${exec_prefix}/lib/locale'
+   fi
+diff -pruN glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/ldconfig.h glibc-2.32/sysdeps/unix/sysv/linux/x86_64/ldconfig.h
+--- glibc-2.32.orig/sysdeps/unix/sysv/linux/x86_64/ldconfig.h	2021-09-18 21:02:32.742186053 +1000
++++ glibc-2.32/sysdeps/unix/sysv/linux/x86_64/ldconfig.h	2021-09-18 21:03:05.314302356 +1000
+@@ -18,9 +18,9 @@
+ #include <sysdeps/generic/ldconfig.h>
+ 
+ #define SYSDEP_KNOWN_INTERPRETER_NAMES \
+-  { "/lib/ld-linux.so.2", FLAG_ELF_LIBC6 }, \
++  { "/lib32/ld-linux.so.2", FLAG_ELF_LIBC6 }, \
+   { "/libx32/ld-linux-x32.so.2", FLAG_ELF_LIBC6 }, \
+-  { "/lib64/ld-linux-x86-64.so.2", FLAG_ELF_LIBC6 },
++  { "/lib/ld-linux-x86-64.so.2", FLAG_ELF_LIBC6 },
+ #define SYSDEP_KNOWN_LIBRARY_NAMES \
+   { "libc.so.6", FLAG_ELF_LIBC6 },	\
+   { "libm.so.6", FLAG_ELF_LIBC6 },
