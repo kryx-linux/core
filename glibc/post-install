@@ -2,3 +2,5 @@
 
 /sbin/telinit U
 
+# provide this new locale by default
+/usr/bin/localedef -i C -f UTF-8 C.UTF-8
