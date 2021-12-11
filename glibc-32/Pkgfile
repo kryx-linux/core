@@ -4,11 +4,11 @@
 
 name=glibc-32
 version=2.34
-release=1
+release=2
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
 	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	glibc-c-utf8-locale-1.patch glibc-c-utf8-locale-2.patch
-	glibc-python3.patch
+	glibc-python3.patch glibc-2.34-upstream-fixes.patch
 	lib32.conf)
 
 build() {
@@ -18,6 +18,7 @@ build() {
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.34-upstream-fixes.patch
 	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-python3.patch
 	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-c-utf8-locale-1.patch
 	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-c-utf8-locale-2.patch
