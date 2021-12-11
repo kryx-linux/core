@@ -1369,6 +1369,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/sqloracle.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqr.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/squid.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/squirrel.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/srec.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sshconfig.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sshdconfig.vim
