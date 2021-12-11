@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=ca-certificates
-version=20210923
-#Thu, 23 Sep 2021 18:00:50 +0000
+version=20211026
+# Tue, 26 Oct 2021 00:04:18 +0000
 release=1
 source=(cacert.pem)
 
