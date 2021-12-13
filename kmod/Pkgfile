@@ -1,5 +1,5 @@
 # Description: Kernel module utilities and library
-# URL: http://git.kernel.org/?p=utils/kernel/kmod/kmod.git
+# URL: https://git.kernel.org/?p=utils/kernel/kmod/kmod.git
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=kmod
