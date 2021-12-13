@@ -1,5 +1,5 @@
 # Description: Transport Independent RPC library
-# URL: http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary
+# URL: https://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=libtirpc
