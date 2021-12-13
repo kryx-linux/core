@@ -1,11 +1,11 @@
 # Description: Package for correctly-rounded arbitrary precision decimal floating point arithmetic.
-# URL:         https://www.bytereef.org/mpdecimal/index.html
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: https://www.bytereef.org/mpdecimal/index.html
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=mpdecimal
 version=2.5.1
 release=1
-source=(http://www.bytereef.org/software/$name/releases/$name-$version.tar.gz)
+source=(https://www.bytereef.org/software/$name/releases/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
