@@ -1,12 +1,12 @@
 # Description: A terminal based program for viewing text files
-# URL: http://www.greenwoodsoftware.com/less/
+# URL: https://www.greenwoodsoftware.com/less/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: ncurses libpcre
+# Depends on: libpcre ncurses
 
 name=less
 version=590
 release=1
-source=(http://www.greenwoodsoftware.com/less/$name-$version.tar.gz \
+source=(https://www.greenwoodsoftware.com/less/$name-$version.tar.gz
 	filter)
 
 build() {
