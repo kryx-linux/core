@@ -1,6 +1,6 @@
 # Description: Public client interface library for NIS(YP) and NIS+ from glibc
-# URL:         https://github.com/thkukuk/libnsl
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: https://github.com/thkukuk/libnsl
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=libnsl
 version=2.0.0
