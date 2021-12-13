@@ -1,12 +1,12 @@
 # Description: A collection of core GNU utilities
-# URL: http://www.gnu.org/software/coreutils/
+# URL: https://www.gnu.org/software/coreutils/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: libgmp acl libcap
+# Depends on: acl libcap libgmp
 
 name=coreutils
 version=9.0
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
 	coreutils-uname.patch
 	chmod.c.patch)
 
@@ -26,7 +26,7 @@ build() {
 		--disable-assert \
 		--enable-no-install-program=uptime,kill,chcon,runcon,groups
 	make
-	make DESTDIR=$PKG install 
+	make DESTDIR=$PKG install
 
 	install -d $PKG/bin
 	mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
