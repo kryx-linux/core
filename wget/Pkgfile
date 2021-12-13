@@ -1,12 +1,12 @@
 # Description: A network utility for downloading content from the Web
-# URL:         http://www.gnu.org/software/wget/
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  libpcre2 openssl util-linux zlib
+# URL: https://www.gnu.org/software/wget/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
+# Depends on: libpcre2 openssl util-linux zlib
 
 name=wget
 version=2.0.0
 release=1
-source=(http://ftp.gnu.org/gnu/$name/${name}2-$version.tar.lz \
+source=(https://ftp.gnu.org/gnu/$name/${name}2-$version.tar.lz
 	wgetrc)
 
 build() {
