@@ -1,16 +1,15 @@
 # Description: Elliptic curve based signing and verification tool
-# URL:         https://github.com/leahneukirchen/outils
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: https://github.com/leahneukirchen/outils
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=signify
-version=20200707
-gitversion=1f93b1027c4be9f27f3a4b8dabb2ae3132e1cb6a
+version=0.10
 release=1
-source=(https://github.com/leahneukirchen/outils/archive/$gitversion/outils-$version.tar.gz 
-        cruxify.patch)
+source=(https://github.com/leahneukirchen/outils/archive/v$version/outils-$version.tar.gz
+	cruxify.patch)
 
 build() {
-	cd outils-$gitversion
+	cd outils-$version
 
 	patch -p0 -i $SRC/cruxify.patch
 
