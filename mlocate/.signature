@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqgvxT+XGQW+cVhO3T0AnLeF9mRG69XKQigVmESv/lx3tdC5REECq/g06yDB5/msaee0+CbsU2Ienj9FeE2WBVwY=
-SHA256 (Pkgfile) = 9cc4818ecb7cf69383f300d5b9acbd6444db09f14a9d865b9930fe50f6fc103b
+RWRJc1FUaeVeqrKvDvDMBRy4wlRzM4aOrdsklhTuVHkGBJ8lK63xrMSFwow+0lHk07ifLUh1sj3mdhRTOP3Ealp8kQ2IgyBzqwY=
+SHA256 (Pkgfile) = 8102addba9631d44b8db4718258004c51dbcc8d24d5289aedf35d70bf9a4ede0
 SHA256 (.footprint) = bba6afc106f6bb2d4b38c82dd83599abd594b6683feaa1d220d5bf9b6c3f726f
 SHA256 (mlocate-0.26.tar.xz) = 3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e
 SHA256 (mlocate) = def6b64ba85946c724192e282459b12ebcbd37fc4fd19cab7493b5bb25a86885
