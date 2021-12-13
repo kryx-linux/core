@@ -1,12 +1,12 @@
 # Description: A pattern scanning and processing language
-# URL: http://www.gnu.org/software/gawk/gawk.html
+# URL: https://www.gnu.org/software/gawk/gawk.html
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: readline libmpfr
+# Depends on: libmpfr readline
 
 name=gawk
 version=5.1.1
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
