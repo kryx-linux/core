@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqr9HPQJdr6+Ue7GKQFWZARuK8ST6a9y5cSqduqoIiMfWPasTogZUMZqFT4z05oI+nwhz4Ixde7b+w/LckW+NFAo=
-SHA256 (Pkgfile) = 1cde000f59e63c88aa33166c527046f6fd438a6a6769a24c1f8f7c6a3ee2f93e
+RWRJc1FUaeVeqkcajSrTJ/E1Mgh+AWmtbXdzrq1V2besVq1z/s8VLrF+2b3FSD1KjrJFfVfRkRjwfg3LM5X0RrGA1eCOTQGxFAc=
+SHA256 (Pkgfile) = dadf1dad1a7fc049af2b72acf011099be3b0bb2492294dc9a7c379f17f2f9bb2
 SHA256 (.footprint) = 79491872e3f3d7fcf8b9bb31cccdf16a41987da60df1d6d451d9b62f0335d7d5
-SHA256 (outils-0.9.tar.gz) = b7afdf1a0d11b9d5a0e1ea165ad2841e32b21245ec573170cb6498a13bf43b73
+SHA256 (outils-0.10.tar.gz) = 6b5101e805c1baa8ca7111b4df8260bfa1b2b7b8670ed341af7233a9971706d4
 SHA256 (ntpleaps.patch) = 057258ba8907bf4cda09d30d84a4500b4faa213f959d0cd98a87321637c86d25
 SHA256 (rdate) = b050a5e063a5b0b8ce6dde657729335ce7dc3eb02e002fb35f37aa0ef71d3aa1
