@@ -1,11 +1,11 @@
 # Description: GNU tar
-# URL: http://www.gnu.org/software/tar/tar.html
+# URL: https://www.gnu.org/software/tar/tar.html
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=tar
 version=1.34
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
