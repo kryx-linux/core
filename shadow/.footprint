@@ -18,6 +18,9 @@ drwxr-xr-x	root/root	etc/pam.d/
 -rw-r--r--	root/root	etc/pam.d/useradd
 -rw-r--r--	root/root	etc/pam.d/userdel
 -rw-r--r--	root/root	etc/pam.d/usermod
+drwxr-xr-x	root/root	lib/
+-rw-r--r--	root/root	lib/libsubid.a
+-rwxr-xr-x	root/root	lib/libsubid.la
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/nologin
 drwxr-xr-x	root/root	usr/
@@ -27,6 +30,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwsr-xr-x	root/root	usr/bin/chsh
 -rwsr-xr-x	root/root	usr/bin/expiry
 -rwxr-xr-x	root/root	usr/bin/faillog
+-rwxr-xr-x	root/root	usr/bin/getsubids
 -rwxr-xr-x	root/root	usr/bin/groups
 -rwxr-xr-x	root/root	usr/bin/lastlog
 -rwsr-xr-x	root/root	usr/bin/newgidmap
@@ -35,6 +39,9 @@ drwxr-xr-x	root/root	usr/bin/
 -rwsr-xr-x	root/root	usr/bin/passwd
 lrwxrwxrwx	root/root	usr/bin/sg -> newgrp
 -rwsr-xr-x	root/root	usr/bin/su
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/shadow/
+-rw-r--r--	root/root	usr/include/shadow/subid.h
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/chgpasswd
 -rwxr-xr-x	root/root	usr/sbin/groupadd
@@ -55,6 +62,7 @@ drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/chfn.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/chsh.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/expiry.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/getsubids.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/groups.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/login.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/newgidmap.1.gz
