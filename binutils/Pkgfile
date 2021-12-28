@@ -6,9 +6,12 @@
 name=binutils
 version=2.37
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+	CVE-2021-45078.patch)
 
 build() {
+	patch -p1 -d $name-$version -i $SRC/CVE-2021-45078.patch
+
 	sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in 
 	sed -i '/^SUBDIRS/s/doc//' $name-$version/binutils/Makefile.in
 
