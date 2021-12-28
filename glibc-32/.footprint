@@ -4,45 +4,28 @@ drwxr-xr-x	root/root	etc/ld.so.conf.d/
 drwxr-xr-x	root/root	lib/
 lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> /lib32/ld-linux.so.2
 drwxr-xr-x	root/root	lib32/
--rwxr-xr-x	root/root	lib32/ld-2.32.so
-lrwxrwxrwx	root/root	lib32/ld-linux.so.2 -> ld-2.32.so
--rwxr-xr-x	root/root	lib32/libBrokenLocale-2.32.so
-lrwxrwxrwx	root/root	lib32/libBrokenLocale.so.1 -> libBrokenLocale-2.32.so
+-rwxr-xr-x	root/root	lib32/ld-linux.so.2
+-rwxr-xr-x	root/root	lib32/libBrokenLocale.so.1
 -rwxr-xr-x	root/root	lib32/libSegFault.so
--rwxr-xr-x	root/root	lib32/libanl-2.32.so
-lrwxrwxrwx	root/root	lib32/libanl.so.1 -> libanl-2.32.so
--rwxr-xr-x	root/root	lib32/libc-2.32.so
-lrwxrwxrwx	root/root	lib32/libc.so.6 -> libc-2.32.so
--rwxr-xr-x	root/root	lib32/libcrypt-2.32.so
-lrwxrwxrwx	root/root	lib32/libcrypt.so.1 -> libcrypt-2.32.so
--rwxr-xr-x	root/root	lib32/libdl-2.32.so
-lrwxrwxrwx	root/root	lib32/libdl.so.2 -> libdl-2.32.so
--rwxr-xr-x	root/root	lib32/libm-2.32.so
-lrwxrwxrwx	root/root	lib32/libm.so.6 -> libm-2.32.so
+-rwxr-xr-x	root/root	lib32/libanl.so.1
+-rwxr-xr-x	root/root	lib32/libc.so.6
+-rwxr-xr-x	root/root	lib32/libc_malloc_debug.so.0
+-rwxr-xr-x	root/root	lib32/libcrypt.so.1
+-rwxr-xr-x	root/root	lib32/libdl.so.2
+-rwxr-xr-x	root/root	lib32/libm.so.6
 -rwxr-xr-x	root/root	lib32/libmemusage.so
--rwxr-xr-x	root/root	lib32/libnsl-2.32.so
-lrwxrwxrwx	root/root	lib32/libnsl.so.1 -> libnsl-2.32.so
--rwxr-xr-x	root/root	lib32/libnss_compat-2.32.so
-lrwxrwxrwx	root/root	lib32/libnss_compat.so.2 -> libnss_compat-2.32.so
--rwxr-xr-x	root/root	lib32/libnss_db-2.32.so
-lrwxrwxrwx	root/root	lib32/libnss_db.so.2 -> libnss_db-2.32.so
--rwxr-xr-x	root/root	lib32/libnss_dns-2.32.so
-lrwxrwxrwx	root/root	lib32/libnss_dns.so.2 -> libnss_dns-2.32.so
--rwxr-xr-x	root/root	lib32/libnss_files-2.32.so
-lrwxrwxrwx	root/root	lib32/libnss_files.so.2 -> libnss_files-2.32.so
--rwxr-xr-x	root/root	lib32/libnss_hesiod-2.32.so
-lrwxrwxrwx	root/root	lib32/libnss_hesiod.so.2 -> libnss_hesiod-2.32.so
+-rwxr-xr-x	root/root	lib32/libnsl.so.1
+-rwxr-xr-x	root/root	lib32/libnss_compat.so.2
+-rwxr-xr-x	root/root	lib32/libnss_db.so.2
+-rwxr-xr-x	root/root	lib32/libnss_dns.so.2
+-rwxr-xr-x	root/root	lib32/libnss_files.so.2
+-rwxr-xr-x	root/root	lib32/libnss_hesiod.so.2
 -rwxr-xr-x	root/root	lib32/libpcprofile.so
--rwxr-xr-x	root/root	lib32/libpthread-2.32.so
-lrwxrwxrwx	root/root	lib32/libpthread.so.0 -> libpthread-2.32.so
--rwxr-xr-x	root/root	lib32/libresolv-2.32.so
-lrwxrwxrwx	root/root	lib32/libresolv.so.2 -> libresolv-2.32.so
--rwxr-xr-x	root/root	lib32/librt-2.32.so
-lrwxrwxrwx	root/root	lib32/librt.so.1 -> librt-2.32.so
--rwxr-xr-x	root/root	lib32/libthread_db-1.0.so
-lrwxrwxrwx	root/root	lib32/libthread_db.so.1 -> libthread_db-1.0.so
--rwxr-xr-x	root/root	lib32/libutil-2.32.so
-lrwxrwxrwx	root/root	lib32/libutil.so.1 -> libutil-2.32.so
+-rwxr-xr-x	root/root	lib32/libpthread.so.0
+-rwxr-xr-x	root/root	lib32/libresolv.so.2
+-rwxr-xr-x	root/root	lib32/librt.so.1
+-rwxr-xr-x	root/root	lib32/libthread_db.so.1
+-rwxr-xr-x	root/root	lib32/libutil.so.1
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/gnu/
@@ -304,6 +287,8 @@ drwxr-xr-x	root/root	usr/lib32/gconv/
 -rwxr-xr-x	root/root	usr/lib32/gconv/UTF-7.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/VISCII.so
 -rw-r--r--	root/root	usr/lib32/gconv/gconv-modules
+drwxr-xr-x	root/root	usr/lib32/gconv/gconv-modules.d/
+-rw-r--r--	root/root	usr/lib32/gconv/gconv-modules.d/gconv-modules-extra.conf
 -rwxr-xr-x	root/root	usr/lib32/gconv/libCNS.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/libGB.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/libISOIR165.so
@@ -324,26 +309,21 @@ lrwxrwxrwx	root/root	usr/lib32/libBrokenLocale.so -> ../../lib32/libBrokenLocale
 lrwxrwxrwx	root/root	usr/lib32/libanl.so -> ../../lib32/libanl.so.1
 -rw-r--r--	root/root	usr/lib32/libc.a
 -rw-r--r--	root/root	usr/lib32/libc.so
+lrwxrwxrwx	root/root	usr/lib32/libc_malloc_debug.so -> ../../lib32/libc_malloc_debug.so.0
 -rw-r--r--	root/root	usr/lib32/libc_nonshared.a
 -rw-r--r--	root/root	usr/lib32/libcrypt.a
 lrwxrwxrwx	root/root	usr/lib32/libcrypt.so -> ../../lib32/libcrypt.so.1
 -rw-r--r--	root/root	usr/lib32/libdl.a
-lrwxrwxrwx	root/root	usr/lib32/libdl.so -> ../../lib32/libdl.so.2
 -rw-r--r--	root/root	usr/lib32/libg.a
 -rw-r--r--	root/root	usr/lib32/libm.a
 lrwxrwxrwx	root/root	usr/lib32/libm.so -> ../../lib32/libm.so.6
 -rw-r--r--	root/root	usr/lib32/libmcheck.a
 lrwxrwxrwx	root/root	usr/lib32/libnss_compat.so -> ../../lib32/libnss_compat.so.2
 lrwxrwxrwx	root/root	usr/lib32/libnss_db.so -> ../../lib32/libnss_db.so.2
-lrwxrwxrwx	root/root	usr/lib32/libnss_dns.so -> ../../lib32/libnss_dns.so.2
-lrwxrwxrwx	root/root	usr/lib32/libnss_files.so -> ../../lib32/libnss_files.so.2
 lrwxrwxrwx	root/root	usr/lib32/libnss_hesiod.so -> ../../lib32/libnss_hesiod.so.2
 -rw-r--r--	root/root	usr/lib32/libpthread.a
-lrwxrwxrwx	root/root	usr/lib32/libpthread.so -> ../../lib32/libpthread.so.0
 -rw-r--r--	root/root	usr/lib32/libresolv.a
 lrwxrwxrwx	root/root	usr/lib32/libresolv.so -> ../../lib32/libresolv.so.2
 -rw-r--r--	root/root	usr/lib32/librt.a
-lrwxrwxrwx	root/root	usr/lib32/librt.so -> ../../lib32/librt.so.1
 lrwxrwxrwx	root/root	usr/lib32/libthread_db.so -> ../../lib32/libthread_db.so.1
 -rw-r--r--	root/root	usr/lib32/libutil.a
-lrwxrwxrwx	root/root	usr/lib32/libutil.so -> ../../lib32/libutil.so.1
