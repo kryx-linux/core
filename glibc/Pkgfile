@@ -1,24 +1,24 @@
 # Description: The C library used in the GNU system
-# URL:         http://www.gnu.org/software/libc/
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: http://www.gnu.org/software/libc/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.32
-release=6
+version=2.34
+release=1
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.72.tar.xz \
-	glibc-$version-6.patch \
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.11.tar.xz \
+	glibc-$version-1.patch \
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.4.72
+	cd linux-5.15.11
 	make mrproper
 	make headers_check
 	make INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-6.patch
+	patch -p1 -d $SRC/$name-${version:0:4} -i $SRC/$name-$version-1.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
@@ -28,7 +28,6 @@ build() {
 		--with-headers=$PKG/usr/include \
 		--enable-kernel=4.9 \
 		--enable-add-ons \
-		--enable-static-nss \
 		--enable-stack-protector=strong \
 		--disable-profile \
 		--disable-werror \
@@ -47,9 +46,11 @@ build() {
 	install -d $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale
 	touch $PKG/etc/ld.so.cache
 
-	rm -rf $PKG/usr/share/{info,locale} \
-		$PKG/usr/bin/tzselect \
-		$PKG/usr/sbin/z{dump,ic}
+	localedef -i POSIX -f UTF-8 $PKG/usr/lib/locale/C.UTF-8 2> /dev/null || true
+
+	rm -r $PKG/usr/share/locale \
+		$PKG/usr/bin/{tzselect,zdump} \
+		$PKG/usr/sbin/zic
 	find $PKG -name "*install.cmd" -delete
 	find $PKG -name ".\install" -delete
 }
