@@ -1,11 +1,11 @@
 # Description: Extented attributes library
-# URL: http://savannah.nongnu.org/projects/attr/
+# URL: https://savannah.nongnu.org/projects/attr/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=attr
 version=2.5.1
 release=1
-source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+source=(https://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version

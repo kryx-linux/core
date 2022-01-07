@@ -9,7 +9,6 @@ release=1
 source=(cacert.pem)
 
 build() {
-
 	# see http://curl.haxx.se/docs/mk-ca-bundle.html how
 	# to create the bundle from Mozillas data:
 	# mk-ca-bundle.pl -p ALL:TRUSTED_DELEGATOR cacert.pem

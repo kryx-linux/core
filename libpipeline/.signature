@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmzv5ci+9I/lfA12EC1G7U7VU5Swve7AVr+VhepcNKmp/j5HLxuBML/SbyzEuKeMPE31KchUKJB3DNKzErMipgs=
-SHA256 (Pkgfile) = 23f3f0e310be6c1d615fb4c1de161fd911b3ea08baf8f6ecd7bf714b60bfc3e0
+RWRJc1FUaeVeqjegKBIv6PjBJkzGWmPTkB0d5lW5HMeXo20mOZuyxC98uEpquLPDVb1VtBHzILknpkFH7dlQM6odKMrAIPS9MgM=
+SHA256 (Pkgfile) = 1f71a7c8fdde15eb44a598692214dc061ba64c9598311ce410d67ebe942df57b
 SHA256 (.footprint) = ed5e9fe9fc261b242d13fefbedb03179fb06d177a87b88d97c7b2e9c01154d2b
 SHA256 (libpipeline-1.5.5.tar.gz) = 0c8367f8b82bb721b50647a647115b6e62a37e3b2e954a9685e4d933f30c00cc

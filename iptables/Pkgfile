@@ -1,20 +1,21 @@
 # Description: A Linux kernel packet filter control tool
-# URL:         http://www.iptables.org/
-# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# URL: https://www.iptables.org/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=iptables
 version=1.8.7
-release=1
+release=2
 source=(https://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 
 build () {
-    cd $name-$version
+	cd $name-$version
 
-    ./configure --prefix=/usr \
-                --libexecdir=/usr/lib \
-                --enable-libipq \
-                --disable-nftables
+	prt-get isinst nftables || PKGMK_IPTABLES="--disable-nftables"
 
-    make
-    make DESTDIR=$PKG install
+	./configure --prefix=/usr $PKGMK_IPTABLES \
+		--libexecdir=/usr/lib \
+		--enable-libipq
+
+	make
+	make DESTDIR=$PKG install
 }

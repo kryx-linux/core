@@ -1,16 +1,18 @@
 # Description: Mail transfer agent
-# URL: http://www.exim.org
+# URL: https://www.exim.org
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: db openssl libpcre
+# Depends on: db libpcre openssl
 
 name=exim
 version=4.95
-release=1
-source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz \
-	$name $name-config.patch)
+release=2
+source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz
+	$name $name-config.patch exim-4.95-openssl30-build-fix.patch)
 
 build() {
 	cd $name-$version
+
+	patch -Np1 -i $SRC/exim-4.95-openssl30-build-fix.patch
 
 	sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
 	cp src/EDITME Local/Makefile

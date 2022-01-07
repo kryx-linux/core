@@ -30,8 +30,8 @@ build() {
 
 	# linker scripts and .pc files for non-wide ncurses
 	for LIB in ncurses form panel menu ; do
-	   echo "INPUT(-l${LIB}w)" > $PKG/usr/lib/lib${LIB}.so
-	   ln -s ${LIB}w.pc $PKG/usr/lib/pkgconfig/${LIB}.pc
+		echo "INPUT(-l${LIB}w)" > $PKG/usr/lib/lib${LIB}.so
+		ln -s ${LIB}w.pc $PKG/usr/lib/pkgconfig/${LIB}.pc
 	done
 
 	# provided by contrib/foot-terminfo

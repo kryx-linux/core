@@ -896,7 +896,6 @@ drwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/32/
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/32/libgcc_eh.a
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/32/libgcov.a
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/cc1
--rwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/cc1obj
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/collect2
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o
@@ -979,17 +978,6 @@ drwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/movdirintrin.h
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/mwaitxintrin.h
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/nmmintrin.h
-drwxr-xr-x	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/NXConstStr.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/Object.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/Protocol.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/message.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/objc-decls.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/objc-exception.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/objc-sync.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/objc.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/runtime.h
--rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/objc/thr.h
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/omp.h
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/openacc.h
 -rw-r--r--	root/root	usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/pconfigintrin.h
@@ -1566,11 +1554,6 @@ lrwxrwxrwx	root/root	usr/lib/liblsan.so -> liblsan.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/liblsan.so.0 -> liblsan.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/liblsan.so.0.0.0
 -rw-r--r--	root/root	usr/lib/liblsan_preinit.o
--rw-r--r--	root/root	usr/lib/libobjc.a
--rwxr-xr-x	root/root	usr/lib/libobjc.la
-lrwxrwxrwx	root/root	usr/lib/libobjc.so -> libobjc.so.4.0.0
-lrwxrwxrwx	root/root	usr/lib/libobjc.so.4 -> libobjc.so.4.0.0
--rwxr-xr-x	root/root	usr/lib/libobjc.so.4.0.0
 -rw-r--r--	root/root	usr/lib/libquadmath.a
 -rwxr-xr-x	root/root	usr/lib/libquadmath.la
 lrwxrwxrwx	root/root	usr/lib/libquadmath.so -> libquadmath.so.0.0.0
@@ -1630,11 +1613,6 @@ lrwxrwxrwx	root/root	usr/lib32/libitm.so -> libitm.so.1.0.0
 lrwxrwxrwx	root/root	usr/lib32/libitm.so.1 -> libitm.so.1.0.0
 -rwxr-xr-x	root/root	usr/lib32/libitm.so.1.0.0
 -rw-r--r--	root/root	usr/lib32/libitm.spec
--rw-r--r--	root/root	usr/lib32/libobjc.a
--rwxr-xr-x	root/root	usr/lib32/libobjc.la
-lrwxrwxrwx	root/root	usr/lib32/libobjc.so -> libobjc.so.4.0.0
-lrwxrwxrwx	root/root	usr/lib32/libobjc.so.4 -> libobjc.so.4.0.0
--rwxr-xr-x	root/root	usr/lib32/libobjc.so.4.0.0
 -rw-r--r--	root/root	usr/lib32/libquadmath.a
 -rwxr-xr-x	root/root	usr/lib32/libquadmath.la
 lrwxrwxrwx	root/root	usr/lib32/libquadmath.so -> libquadmath.so.0.0.0

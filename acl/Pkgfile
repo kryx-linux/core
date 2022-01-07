@@ -1,12 +1,12 @@
 # Description: Access Control Lists library
-# URL: http://savannah.nongnu.org/projects/acl
+# URL: https://savannah.nongnu.org/projects/acl
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: attr
 
 name=acl
 version=2.3.1
 release=1
-source=(http://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+source=(https://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version

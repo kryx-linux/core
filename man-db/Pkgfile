@@ -1,12 +1,12 @@
 # Description: An implementation of the standard Unix documentation system accessed using the man command
-# URL: http://man-db.nongnu.org/
+# URL: https://man-db.nongnu.org/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: zlib gdbm libpipeline
 
 name=man-db
 version=2.9.4
 release=1
-source=(http://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz \
+source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz
 	mandb.cron)
 
 build() {

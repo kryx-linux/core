@@ -1,15 +1,16 @@
 # Description: File type identification utility
-# URL: http://www.darwinsys.com/file/
+# URL: https://www.darwinsys.com/file/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: zlib
 
 name=file
 version=5.41
 release=1
-source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
+source=(https://github.com/file/file/archive/refs/tags/FILE${version/./_}.tar.gz)
 
 build() {
-	cd $name-$version
+	cd $name-FILE${version/./_}
+	autoreconf -vfi
 	./configure \
 		--prefix=/usr \
 		--enable-fsect-man5 \

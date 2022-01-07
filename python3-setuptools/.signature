@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqnU4PWE/90YSDGfDBrGPw+9cCtkmg1FoDlR8L/OexIPP46gk8Z2jfo5oVWdxLmakynnLWgGvWYwAR6DrFvG+HAo=
+SHA256 (Pkgfile) = 24e542d29f88898c5d46252c230e3d4072a3aa564b2b5fd0a556294d3bd2576b
+SHA256 (.footprint) = f3532adc5bfcb3f432b0b48b12ec058d00ffb7acb51f6e8ad3e234c497ad8687
+SHA256 (setuptools-58.2.0.tar.gz) = 2c55bdb85d5bb460bd2e3b12052b677879cffcf46c0c688f2e5bf51d36001145

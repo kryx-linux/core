@@ -4,15 +4,23 @@
 # Depends on: bzip2 expat gdbm libffi libnsl libtirpc mpdecimal sqlite3 xz
 
 name=python3
-version=3.9.9
+version=3.10.1
 release=1
-source=(https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz
-	mpdecimal-2.5.1.patch)
+source=(https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz)
 
 build() {
 	cd Python-$version
 
-	patch -p1 -i $SRC/mpdecimal-2.5.1.patch
+	# PGO and LTO make python go brrrrr
+	sed -i -e "s|-flto |-flto=4 |g" configure configure.ac
+	CFLAGS="${CFLAGS/-O2/-O3}"
+	local _pgojobs=$(nproc)
+	export PROFILE_TASK="-m test -j${_pgojobs} --pgo-extended -x test_gdb -u-network"
+	PROFILE_TASK+=" -x test_socket -x test_asyncio -x test_httpservers -x test_logging -x test_multiprocessing_fork -x test_xmlrpc"
+	local -x LC_ALL=C.utf8
+	export SETUPTOOLS_USE_DISTUTILS=stdlib
+	local -x COLUMNS=80
+	local -x PYTHONDONTWRITEBYTECODE=
 
 	# Ensure that we are using the system copy of various libraries
 	rm -r Modules/expat
@@ -26,16 +34,19 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--enable-shared \
+		--enable-optimizations \
 		--enable-ipv6 \
 		--enable-loadable-sqlite-extensions \
 		--with-computed-gotos \
+		--with-lto \
 		--with-system-expat \
 		--with-system-ffi \
 		--with-system-libmpdec \
+		--with-tzpath=/usr/share/zoneinfo \
 		--without-ensurepip
 
-	make
-	make -j1 DESTDIR=$PKG altinstall maninstall
+	make EXTRA_CFLAGS="$CFLAGS"
+	make -j1 EXTRA_CFLAGS="$CFLAGS" DESTDIR=$PKG altinstall maninstall
 
 	ln -s 2to3-${version%.*}            $PKG/usr/bin/2to3
 	ln -s python${version%.*}           $PKG/usr/bin/python3

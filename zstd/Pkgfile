@@ -1,7 +1,7 @@
 # Description: Real-time compression algorithm with high compression ratios
 # URL: https://facebook.github.io/zstd/
 # Maintainer: CRUX system team, core-ports at crux dot nu
-# Depends on: zlib xz
+# Depends on: xz zlib
 
 name=zstd
 version=1.5.1

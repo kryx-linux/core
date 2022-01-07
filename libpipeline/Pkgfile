@@ -1,5 +1,5 @@
 # Description: A C library for manipulating pipelines of subprocesses in a flexible and convenient way
-# URL: http://libpipeline.nongnu.org/
+# URL: https://libpipeline.nongnu.org/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=libpipeline

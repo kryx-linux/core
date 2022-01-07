@@ -303,6 +303,7 @@ drwxr-xr-x	root/root	usr/lib32/getconf/
 -rwxr-xr-x	root/root	usr/lib32/getconf/POSIX_V7_ILP32_OFFBIG
 -rwxr-xr-x	root/root	usr/lib32/getconf/XBS5_ILP32_OFF32
 -rwxr-xr-x	root/root	usr/lib32/getconf/XBS5_ILP32_OFFBIG
+-rw-r--r--	root/root	usr/lib32/grcrt1.o
 -rw-r--r--	root/root	usr/lib32/libBrokenLocale.a
 lrwxrwxrwx	root/root	usr/lib32/libBrokenLocale.so -> ../../lib32/libBrokenLocale.so.1
 -rw-r--r--	root/root	usr/lib32/libanl.a
@@ -327,3 +328,4 @@ lrwxrwxrwx	root/root	usr/lib32/libresolv.so -> ../../lib32/libresolv.so.2
 -rw-r--r--	root/root	usr/lib32/librt.a
 lrwxrwxrwx	root/root	usr/lib32/libthread_db.so -> ../../lib32/libthread_db.so.1
 -rw-r--r--	root/root	usr/lib32/libutil.a
+-rw-r--r--	root/root	usr/lib32/rcrt1.o

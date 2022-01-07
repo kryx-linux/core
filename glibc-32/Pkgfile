@@ -5,16 +5,17 @@
 name=glibc-32
 version=2.34
 release=1
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.11.tar.xz \
+_kernel_version=5.15.11
+
+source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_kernel_version.tar.xz
 	glibc-$version-1.patch lib32.conf)
 
 build() {
 	# install kernel headers
-	cd linux-5.15.11
-	make mrproper
-	make headers_check
-	make INSTALL_HDR_PATH=$PKG/usr headers_install
+	make -C $SRC/linux-$_kernel_version mrproper
+	make -C $SRC/linux-$_kernel_version headers_check
+	make -C $SRC/linux-$_kernel_version INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
 	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-1.patch
@@ -32,14 +33,17 @@ build() {
 		--with-headers=$PKG/usr/include \
 		--enable-kernel=4.9 \
 		--enable-add-ons \
+		--enable-stack-protector=strong \
+		--enable-static-pie \
+		--enable-bind-now \
+		--enable-multi-arch \
 		--disable-profile \
 		--disable-werror \
 		--without-gd \
-		--enable-stack-protector=strong \
 		--enable-multi-arch \
 		i686-pc-linux-gnu
 
-	make 
+	make
 	#make check
 	make install_root=$PKG install
 

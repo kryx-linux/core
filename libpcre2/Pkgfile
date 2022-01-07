@@ -1,5 +1,5 @@
 # Description: Perl Compatible Regular Expressions
-# URL: http://www.pcre.org
+# URL: https://www.pcre.org
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=libpcre2

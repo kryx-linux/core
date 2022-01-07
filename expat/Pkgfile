@@ -5,7 +5,7 @@
 name=expat
 version=2.4.2
 release=1
-source=(http://download.sourceforge.net/$name/$name-$version.tar.xz)
+source=(https://download.sourceforge.net/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
