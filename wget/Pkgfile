@@ -15,6 +15,7 @@ build() {
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--with-openssl \
+		--with-ssl=openssl \
 		--enable-fuzzing \
 		--disable-debug \
 		--disable-nls \
