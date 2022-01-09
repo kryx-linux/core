@@ -1,6 +1,8 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/xtables-legacy-multi
+drwxr-xr-x	root/root	usr/etc/
+-rw-r--r--	root/root	usr/etc/ethertypes
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libipq.h
 drwxr-xr-x	root/root	usr/include/libiptc/
@@ -35,6 +37,23 @@ drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
 drwxr-xr-x	root/root	usr/lib/xtables/
+-rwxr-xr-x	root/root	usr/lib/xtables/libarpt_mangle.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_802_3.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_among.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_arp.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_arpreply.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_dnat.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_ip.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_ip6.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_log.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_mark.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_mark_m.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_nflog.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_pkttype.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_redirect.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_snat.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_stp.so
+-rwxr-xr-x	root/root	usr/lib/xtables/libebt_vlan.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_DNAT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_DNPT.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libip6t_HL.so
@@ -144,21 +163,45 @@ lrwxrwxrwx	root/root	usr/lib/xtables/libxt_state.so -> libxt_conntrack.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_u32.so
 -rwxr-xr-x	root/root	usr/lib/xtables/libxt_udp.so
 drwxr-xr-x	root/root	usr/sbin/
+lrwxrwxrwx	root/root	usr/sbin/arptables -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/arptables-nft -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/arptables-nft-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/arptables-nft-save -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/arptables-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/arptables-save -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables-nft -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables-nft-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables-nft-save -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ebtables-save -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-apply -> iptables-apply
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-restore -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-legacy-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-nft -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-nft-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-nft-save -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore-translate -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-translate -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables -> xtables-legacy-multi
 -rwxr-xr-x	root/root	usr/sbin/iptables-apply
 lrwxrwxrwx	root/root	usr/sbin/iptables-legacy -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-legacy-restore -> xtables-legacy-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-legacy-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-nft -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-nft-restore -> xtables-nft-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-nft-save -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-restore-translate -> xtables-nft-multi
 lrwxrwxrwx	root/root	usr/sbin/iptables-save -> xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-translate -> xtables-nft-multi
 -rwxr-xr-x	root/root	usr/sbin/xtables-legacy-multi
+lrwxrwxrwx	root/root	usr/sbin/xtables-monitor -> xtables-nft-multi
+-rwxr-xr-x	root/root	usr/sbin/xtables-nft-multi
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
@@ -176,12 +219,24 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/ipq_set_verdict.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/libipq.3.gz
 drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/arptables-nft-restore.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/arptables-nft-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/arptables-nft.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ebtables-nft.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-apply.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-restore-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/ip6tables-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/ip6tables.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-apply.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-extensions.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-restore-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-restore.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables-save.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/iptables-translate.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/iptables.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-legacy.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-monitor.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-nft.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/xtables-translate.8.gz
