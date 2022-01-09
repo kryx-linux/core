@@ -5,7 +5,7 @@
 
 name=util-linux
 version=2.37.2
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz
 	$name-man-$version.tar.xz)
 
@@ -14,21 +14,22 @@ build() {
 
 	./configure \
 		--prefix=/usr \
+		--enable-{write,kill} \
 		--disable-nls \
 		--disable-asciidoc \
-		--disable-{login,su,sulogin,nologin,runuser} \
+		--disable-{login,su,sulogin,nologin,runuser,raw} \
 		--disable-chfn-chsh \
-		--enable-{write,raw,kill} \
 		--without-python
 
 	make
 	make DESTDIR=$PKG install
 
-	install -d $PKG/{etc,var/{lib/libuuid,run/uuidd}}
+	install -d $PKG/{etc,var/lib/libuuid}
 	touch $PKG/etc/adjtime
 	cp -r $SRC/man $PKG/usr/share
 
-	rm -r $PKG/usr/share/{doc,bash-completion}
+	prt-get isinst bash-completion || rm -r $PKG/usr/share/bash-completion
+	rm -r $PKG/usr/share/doc
 	rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
 	rm $PKG/usr/share/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }
