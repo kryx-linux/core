@@ -18,7 +18,8 @@ build() {
 		--sysconfdir=/usr/share \
 		--with-json \
 		--with-cli=readline \
-		--disable-debug
+		--disable-debug \
+		--with-python-bin=/usr/bin/python3
 	make
 	make DESTDIR=$PKG install
 
