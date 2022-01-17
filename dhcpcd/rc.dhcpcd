@@ -5,7 +5,7 @@
 
 SSD=/sbin/start-stop-daemon
 PROG=/sbin/dhcpcd
-PID=/var/run/dhcpcd/pid
+PID=/run/dhcpcd/pid
 OPTS=""
 
 case $1 in

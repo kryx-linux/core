@@ -5,7 +5,7 @@
 
 name=dhcpcd
 version=9.4.1
-release=1
+release=2
 source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
 	rc.dhcpcd)
 
@@ -17,6 +17,7 @@ build() {
 		--libexecdir=/lib/dhcpcd \
 		--dbdir=/var/lib/dhcpcd \
 		--sysconfdir=/etc/dhcpcd \
+		--rundir=/run/dhcpcd \
 		--enable-privsep \
 		--privsepuser=dhcpcd
 
