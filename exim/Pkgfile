@@ -5,7 +5,7 @@
 
 name=exim
 version=4.95
-release=2
+release=3
 source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz
 	$name $name-config.patch exim-4.95-openssl30-build-fix.patch)
 
