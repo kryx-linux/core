@@ -5,7 +5,7 @@
 
 name=openssh
 version=8.8p1
-release=1
+release=2
 source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
 	sshd.rc sshd.pam)
 
@@ -18,6 +18,7 @@ build() {
 		--sysconfdir=/etc/ssh \
 		--with-mantype=man \
 		--mandir=/usr/share/man \
+		--with-pid-dir=/run \
 		--with-md5-passwords \
 		--with-pam \
 		--with-privsep-user=nobody \
