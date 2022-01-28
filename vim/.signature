@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqo6n6BJGvzhiR6WmI8Ffa5zS5M/mkkN0isRthg4aPnEOvhKyPQhUNss1Y7UpiyiS+1Q8djj8MIhYsIMNWKYvdgI=
-SHA256 (Pkgfile) = 0c60d3360d0bed43ceabbfe72c9a5a98923c9addaf5f055043cc117180150fc5
+RWRJc1FUaeVeqgixwQdWoyGYf3SLXM6YDKFBVYhWgxAhZctWKFAxnsrr6PtIEO82U71tEvXb9NY+DCBb+cETMVSah+CHBdyZ9gM=
+SHA256 (Pkgfile) = 02ee72226dd9b96d4eaecb79171dd3517b7d36e17c99e54b5f96b2c25a84ab22
 SHA256 (.footprint) = cc692d867f971f7346fac21960575dff0514318cc22bbd46a67b1b968c942ee5
-SHA256 (vim-8.2.4135.tar.gz) = 84a3909312b738a740a38f65dff12236a50582e14c7608bfef82a3e48fa00adf
+SHA256 (vim-8.2.4236.tar.gz) = 86370dd20b086d6d1e3d78c6fd1ff806fd2b2fc67bcfb06e5907a5a5a6d1b681
