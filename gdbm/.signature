@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmhlerawi/VEY4fPBB+cYWj7qoJ1PwixdnhA2GGCVGrzCrgS/8f92o8VHJv3+rxBAZ1g9/+skYmHXa7G1sfMVwE=
-SHA256 (Pkgfile) = 3feeb7810ca478b28696f2a6f88e0153a7c2280a37440b71aafaec67018ba317
+RWRJc1FUaeVeqvzSfzXWChiiifmZ5Oioz49A4OEKAa21ePrGUI9FnMMmmZyQrbOyX27R0ShQFcQBCEIE48EzQsxyJiMvBpr8KAc=
+SHA256 (Pkgfile) = 42255d20db20994f0826f106c7a3edbccd09cc5ff272b65aeb2e5bd872582c72
 SHA256 (.footprint) = f07686f63bde21a8d8eef3ffcf57514cd270dd1c4765e3981c5c6ec755ff4acf
-SHA256 (gdbm-1.22.tar.gz) = f366c823a6724af313b6bbe975b2809f9a157e5f6a43612a72949138d161d762
+SHA256 (gdbm-1.23.tar.gz) = 74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd
