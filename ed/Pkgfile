@@ -3,9 +3,9 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=ed
-version=1.17
+version=1.18
 release=1
-source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.lz)
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.lz)
 
 build() {
 	cd $name-$version

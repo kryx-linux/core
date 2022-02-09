@@ -4,13 +4,15 @@
 # Depends on: zlib gdbm libpipeline
 
 name=man-db
-version=2.9.4
+version=2.10.0
 release=1
 source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz
-	mandb.cron)
+	$name-$version-fix-build-clang.patch mandb.cron)
 
 build() {
 	cd $name-$version
+
+	patch -p1 -i $SRC/$name-$version-fix-build-clang.patch
 
 	./configure \
 		--prefix=/usr \
