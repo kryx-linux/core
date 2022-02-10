@@ -6,7 +6,6 @@ lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> /lib32/ld-linux.so.2
 drwxr-xr-x	root/root	lib32/
 -rwxr-xr-x	root/root	lib32/ld-linux.so.2
 -rwxr-xr-x	root/root	lib32/libBrokenLocale.so.1
--rwxr-xr-x	root/root	lib32/libSegFault.so
 -rwxr-xr-x	root/root	lib32/libanl.so.1
 -rwxr-xr-x	root/root	lib32/libc.so.6
 -rwxr-xr-x	root/root	lib32/libc_malloc_debug.so.0
