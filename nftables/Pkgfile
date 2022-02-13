@@ -9,9 +9,10 @@ release=1
 source=(https://www.netfilter.org/pub/nftables/nftables-$version.tar.bz2)
 
 build() {
-  ls
 	cd $name-$version
 
+	PYTHON_VERSION=$(python3 -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+	PYTHON_PATH=/usr/lib/python${PYTHON_VERSION}/site-packages/ \
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
