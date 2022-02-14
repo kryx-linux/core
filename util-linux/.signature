@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmU5Mj85/f20URNAHZ7x3qGcAZFdFdQx6eL2cLVLKaryUAYjWGUfGYKd+Ba/95RRVreWZywv+usHdzcMphLeTQo=
-SHA256 (Pkgfile) = 27c5433c4b7e9acd3f3a2c9492f278fe759a8fa063fff2b49a2c251ed3ab2efa
+RWRJc1FUaeVeqjTzqPXQ9zGN36z6p/sd6F3liCTMhtLk5jrnF61RzhbirrPKEXdxZPJBQD91qx3GU5nlh19Q2AIggzsT5mTu7Qw=
+SHA256 (Pkgfile) = cda82d19b581039b2fa8d6bbfd033cb4740497d9fbebdcca0b344c9dc7a96231
 SHA256 (.footprint) = 0215b6634c6c33870c8541ea0327e0f7537999a50e236ad5f0f745ceb554fea8
-SHA256 (util-linux-2.37.3.tar.xz) = 590c592e58cd6bf38519cb467af05ce6a1ab18040e3e3418f24bcfb2f55f9776
-SHA256 (util-linux-man-2.37.3.tar.xz) = 484f3df077df75b955afd696d5cec43987ea17dec908c25667c0f36a16637a30
+SHA256 (util-linux-2.37.4.tar.xz) = 634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83
+SHA256 (util-linux-man-2.37.4.tar.xz) = 484f3df077df75b955afd696d5cec43987ea17dec908c25667c0f36a16637a30
