@@ -5,7 +5,7 @@
 
 name=sudo
 version=1.9.9
-release=1
+release=2
 source=(https://www.sudo.ws/dist/$name-$version.tar.gz
 	$name.pam)
 
@@ -17,7 +17,7 @@ build() {
 		--libexecdir=/usr/lib \
 		--with-logfac=auth \
 		--with-vardir=/var/lib/sudo \
-		--with-rundir=/var/run/sudo \
+		--with-rundir=/run/sudo \
 		--with-sendmail=/usr/sbin/sendmail \
 		--disable-nls
 
@@ -27,5 +27,5 @@ build() {
 	# PAM service file
 	install -D -m 0644 $SRC/$name.pam $PKG/etc/pam.d/$name
 
-	rm -r $PKG/usr/share/doc
+	rm -r $PKG/usr/share/doc $PKG/run
 }

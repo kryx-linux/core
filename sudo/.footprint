@@ -60,5 +60,3 @@ drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/lib/
 drwx--x--x	root/root	var/lib/sudo/
 drwx------	root/root	var/lib/sudo/lectured/
-drwxr-xr-x	root/root	var/run/
-drwx--x--x	root/root	var/run/sudo/
