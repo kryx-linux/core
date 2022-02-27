@@ -8,7 +8,7 @@
 
 # Run fixes startup file
 if [ -x /etc/rc.fix ]; then
-        /etc/rc.fix
+	/etc/rc.fix
 fi
 
 # Start services
@@ -20,8 +20,8 @@ if [ "$SYSLOG" -o "${SERVICES[*]}" ]; then
 	fi
 	for service in ${SERVICES[@]}; do
 		echo -n " $service"
-		/etc/rc.d/$service start &> /tmp/rc.$$ || echo -n "[ERROR]"
-		/usr/bin/logger -t $service -f /tmp/rc.$$
+		/etc/rc.d/"$service" start &> /tmp/rc.$$ || echo -n "[ERROR]"
+		/usr/bin/logger -t "$service" -f /tmp/rc.$$
 		/bin/rm -f /tmp/rc.$$
 	done
 	echo

@@ -52,16 +52,19 @@ fi
 /bin/mount -o remount,rw /
 /bin/mount -a -O no_netdev
 
+# Create user dir in /run
+/bin/mkdir /run/user
+/bin/chmod 0755 /run/user
+
 # Activate swap
 /sbin/swapon -a
 
 # Clean up misc files
-: > /var/run/utmp
+: > /run/utmp
 /bin/rm -rf /forcefsck /fastboot /etc/nologin /etc/shutdownpid
-(cd /var/run && /usr/bin/find . -name "*.pid" -delete)
 (cd /var/lock && /usr/bin/find . ! -type d -delete)
 (cd /tmp && /usr/bin/find . ! -name . -delete)
-/bin/mkdir -m 1777 /tmp/.ICE-unix
+/bin/mkdir -m 1777 /tmp/.ICE-unix /tmp/.X11-unix
 
 # Set kernel variables
 /sbin/sysctl -p > /dev/null
@@ -72,7 +75,7 @@ fi
 # Configure host name
 if [ "$HOSTNAME" ]; then
 	echo "hostname: $HOSTNAME"
-	/bin/hostname $HOSTNAME
+	/bin/hostname "$HOSTNAME"
 fi
 
 # Load random seed
@@ -80,20 +83,20 @@ fi
 
 # Configure system clock
 if [ "$TIMEZONE" ]; then
-	/bin/ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+	/bin/ln -snf /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
 fi
 /sbin/hwclock --hctosys
 
 # Load console font
 if [ "$FONT" ]; then
 	echo "font: $FONT"
-	/usr/bin/setfont $FONT
+	/usr/bin/setfont "$FONT"
 fi
 
 # Load console keymap
 if [ "$KEYMAP" ]; then
 	echo "keyboard: $KEYMAP"
-	/usr/bin/loadkeys -q $KEYMAP
+	/usr/bin/loadkeys -q "$KEYMAP"
 fi
 
 # Screen blanks after 15 minutes idle time
