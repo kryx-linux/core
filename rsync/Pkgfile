@@ -13,6 +13,7 @@ build () {
 	cd $name-$version
 
 	./configure --prefix=/usr \
+		--runstatedir=/run \
 		--with-rsh=ssh \
 		--with-included-zlib=no \
 		--with-included-popt=yes \
