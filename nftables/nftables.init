@@ -11,7 +11,7 @@ RESETRULES="flush ruleset"
 
 _store() {
 	umask 022
-	NFTABLES_STORE=${2:-'/etc/nftables'}
+	NFTABLES_STORE=${1:-$CONF}
 	tmp_save="${NFTABLES_STORE}.tmp"
 	$PROG $SHOWOPTS > "$tmp_save"
 	retval=$?
