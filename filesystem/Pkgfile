@@ -54,8 +54,8 @@ build() {
 	install -d -m 1777 $PKG/dev/shm
 
 	# /dev
-	#mknod $PKG/dev/console c 5 1
-	#chmod 0600 $PKG/dev/console
+	mknod $PKG/dev/console c 5 1
+	chmod 0600 $PKG/dev/console
 
 	# /etc
 	install -m 0644 issue $PKG/etc
