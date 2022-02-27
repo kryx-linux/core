@@ -4,9 +4,10 @@
 # Depends on: jansson libedit libgmp libnftnl python3
 
 name=nftables
-version=1.0.1
+version=1.0.2
 release=1
-source=(https://www.netfilter.org/pub/nftables/nftables-$version.tar.bz2)
+source=(https://www.netfilter.org/pub/nftables/nftables-$version.tar.bz2
+	nftables.conf nftables.init)
 
 build() {
 	cd $name-$version
@@ -19,13 +20,16 @@ build() {
 		--sysconfdir=/usr/share \
 		--with-json \
 		--with-cli=readline \
-		--disable-debug \
-		--with-python-bin=/usr/bin/python3
+		--with-python-bin=/usr/bin/python3 \
+		--disable-debug
 	make
 	make DESTDIR=$PKG install
 
 	/usr/bin/python3 -m compileall -d / $PKG/usr/lib
 	/usr/bin/python3 -O -m compileall -d / $PKG/usr/lib
+
+	install -D -m 755 $SRC/nftables.init $PKG/etc/rc.d/nftables
+	install -D -m 600 $SRC/nftables.conf $PKG/etc/nftables
 
 	rm -r $PKG/usr/share/doc
 }
