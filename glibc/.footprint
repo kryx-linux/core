@@ -2462,5 +2462,3 @@ drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/db/
 -rw-r--r--	root/root	var/db/Makefile
 drwxr-xr-x	root/root	var/db/nscd/
-drwxr-xr-x	root/root	var/run/
-drwxr-xr-x	root/root	var/run/nscd/
