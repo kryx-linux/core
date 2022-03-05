@@ -4,12 +4,16 @@
 
 name=sysklogd
 version=2.3.0
-release=1
+release=2
 source=(https://github.com/troglobit/sysklogd/releases/download/v$version/$name-$version.tar.gz \
+	kmsg.patch
 	rotatelog syslog syslog.conf sysklogd)
 
 build() {
 	cd $name-$version
+
+	# https://github.com/troglobit/sysklogd/issues/48
+	patch -Np1 -i $SRC/kmsg.patch
 
 	./configure \
 		--prefix=/usr \
