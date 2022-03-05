@@ -1,0 +1,283 @@
+diff --git a/configure.ac b/configure.ac
+index 4648eea..d6898c7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,7 +25,7 @@
+ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ # SUCH DAMAGE.
+ 
+-AC_INIT([sysklogd], [2.3.0], [https://github.com/troglobit/sysklogd/issues],,
++AC_INIT([sysklogd], [2.4.0-dev], [https://github.com/troglobit/sysklogd/issues],,
+ 	[https://github.com/troglobit/sysklogd])
+ AC_CONFIG_AUX_DIR(aux)
+ AM_INIT_AUTOMAKE([1.11 foreign subdir-objects])
+diff --git a/man/syslog.conf.5 b/man/syslog.conf.5
+index cdc131e..41fb86e 100644
+--- a/man/syslog.conf.5
++++ b/man/syslog.conf.5
+@@ -527,7 +527,7 @@ including the main file itself and compressed files kept.  The size
+ argument takes the same modifiers as the
+ .Xr syslogd 8
+ command line option,
+-.Fl R .
++.Fl r .
+ .Bd -literal -offset indent
+ # Log all messages, including kernel, to the messages file rotate it
+ # every 100 kiB and keep up to 10 aged out, and compressed, files.
+diff --git a/man/syslogd.8 b/man/syslogd.8
+index 78517cd..8bb3863 100644
+--- a/man/syslogd.8
++++ b/man/syslogd.8
+@@ -38,7 +38,7 @@
+ .Nd log systems messages
+ .Sh SYNOPSIS
+ .Nm
+-.Op Fl ?46AdFHKknsTv
++.Op Fl ?46AdFHKknsTtv
+ .Op Fl a Ar addr[/len][:port]
+ .Op Fl a Ar name[:port]
+ .Op Fl b Ar addr[:port]
+@@ -256,23 +256,8 @@ and wants to monitor when and how it exits.
+ When logging remote messages use hostname from the message (if supplied)
+ instead of using address from which the message was received.
+ .It Fl K
+-Keep (trust) kernel timestamp.
+-.Pp
+-On Linux systems the
+-.Pa /dev/kmsg
+-timestamp is a monotonic clock, in microseconds, relative to the boot of
+-the system.  This timestamp is, among other things,
+-.Sy not
+-adjusted for suspend/resume cycles, meaning the kernel logs can start to
+-go out of sync with the rest of the system.  This in turn can make it
+-really hard to correlate events.
+-.Pp
+-.Nm
+-by default only trusts the kernel timestamp when starting up the first
+-time.  As soon as the the kernel ring buffer has been emptied,
+-.Nm
+-uses its own current time for each received kernel log message.  This
+-option disables that behavior.
++Disable kernel logging.  Useful in container use-cases where kernel logs
++har handled by the host system.
+ .It Fl k
+ Disable the translation of
+ messages received with facility
+@@ -336,6 +321,24 @@ Always use the local time and date for messages received from the network,
+ instead of the timestamp field supplied in the message by the remote host.
+ This is useful if some of the originating hosts cannot keep time properly
+ or are unable to generate a correct timestamp.
++.It Fl t
++Keep (trust) kernel timestamp.
++.Pp
++On Linux systems the
++.Pa /dev/kmsg
++timestamp is a monotonic clock, in microseconds, relative to the boot of
++the system.  This timestamp is, among other things,
++.Sy not
++adjusted for suspend/resume cycles, meaning the kernel logs can start to
++go out of sync with the rest of the system.  This in turn can make it
++really hard to correlate events.
++.Pp
++.Nm
++by default only trusts the kernel timestamp when starting up the first
++time.  As soon as the the kernel ring buffer has been emptied,
++.Nm
++uses its own current time for each received kernel log message.  This
++option disables that behavior.
+ .It Fl v
+ Show program version and exit.
+ .El
+diff --git a/src/syslogd.c b/src/syslogd.c
+index fa4303f..02d0718 100644
+--- a/src/syslogd.c
++++ b/src/syslogd.c
+@@ -140,6 +140,7 @@ static int	  SecureMode;		  /* when true, receive only unix domain socks */
+ static int	  RemoteAddDate;	  /* Always set the date on remote messages */
+ static int	  RemoteHostname;	  /* Log remote hostname from the message */
+ 
++static int	  KernLog = 1;		  /* Track kernel logs by default */
+ static int	  KeepKernFac;		  /* Keep remotely logged kernel facility */
+ static int	  KeepKernTime;		  /* Keep kernel timestamp, evern after initial read */
+ 
+@@ -188,6 +189,40 @@ static int	waitdaemon(int);
+ static void	timedout(int);
+ 
+ 
++/*
++ * Very basic, and incomplete, check if we're running in a container.
++ * If so, we probably want to disable kernel logging.
++ */
++static int in_container(void)
++{
++	const char *files[] = {
++		"/run/.containerenv",
++		"/.dockerenv"
++	};
++	const char *containers[] = {
++		"lxc",
++		"docker",
++		"kubepod"
++	};
++	size_t i;
++	char *c;
++
++	c = getenv("container");
++	if (c) {
++		for (i = 0; i < NELEMS(containers); i++) {
++			if (!strcmp(containers[i], c))
++				return 1;
++		}
++	}
++
++	for (i = 0; i < NELEMS(files); i++) {
++		if (!access(files[i], F_OK))
++			return 1;
++	}
++
++	return 0;
++}
++
+ static int addpeer(struct peer *pe0)
+ {
+ 	struct peer *pe;
+@@ -255,8 +290,8 @@ static void sys_seqno_save(void)
+ int usage(int code)
+ {
+ 	printf("Usage:\n"
+-	       "  syslogd [-46AdFKknsTv?] [-a PEER] [-b NAME] [-f FILE] [-m INTERVAL]\n"
+-	       "                          [-P PID_FILE] [-p SOCK_PATH] [-r SIZE[:NUM]]\n"
++	       "  syslogd [-46AdFKknsTtv?] [-a PEER] [-b NAME] [-f FILE] [-m INTERVAL]\n"
++	       "                           [-P PID_FILE] [-p SOCK_PATH] [-r SIZE[:NUM]]\n"
+ 	       "Options:\n"
+ 	       "  -4        Force IPv4 only\n"
+ 	       "  -6        Force IPv6 only\n"
+@@ -285,8 +320,8 @@ int usage(int code)
+ 	       "  -d        Enable debug mode, implicitly enables -F to prevent backgrounding\n"
+ 	       "  -F        Run in foreground, required when monitored by init(1)\n"
+ 	       "  -f FILE   Alternate .conf file, default: %s\n"
++	       "  -K        Disable kernel logging, useful in container use-cases\n"
+ 	       "  -k        Allow logging with facility 'kernel', otherwise remapped to 'user'\n"
+-	       "  -K        Keep kernel timestamp, even after initial ring buffer emptying\n"
+ 	       "  -m MINS   Interval between MARK messages, 0 to disable, default: 20 min\n"
+ 	       "  -n        Disable DNS query for every request\n"
+ 	       "  -P FILE   File to store the process ID, default: %s\n"
+@@ -298,6 +333,7 @@ int usage(int code)
+ 	       "  -s        Operate in secure mode, do not log messages from remote machines.\n"
+ 	       "            If specified twice, no socket at all will be opened, which also\n"
+ 	       "            disables support for logging to remote machines.\n"
++	       "  -t        Keep kernel timestamp, even after initial ring buffer emptying\n"
+ 	       "  -T        Use local time and date for messages received from remote hosts\n"
+ 	       "  -?        Show this help text\n"
+ 	       "  -v        Show program version and exit\n"
+@@ -314,11 +350,13 @@ int usage(int code)
+ int main(int argc, char *argv[])
+ {
+ 	pid_t ppid = 1;
++	int no_sys = 0;
++	int pflag = 0;
++	int bflag = 0;
+ 	char *ptr;
+-	int pflag = 0, bflag = 0;
+ 	int ch;
+ 
+-	while ((ch = getopt(argc, argv, "46Aa:b:C:dHFf:Kkm:nP:p:r:sTv?")) != EOF) {
++	while ((ch = getopt(argc, argv, "46Aa:b:C:dHFf:Kkm:nP:p:r:sTtv?")) != EOF) {
+ 		switch ((char)ch) {
+ 		case '4':
+ 			family = PF_INET;
+@@ -369,12 +407,12 @@ int main(int argc, char *argv[])
+ 			RemoteHostname = 1;
+ 			break;
+ 
+-		case 'k':		/* keep remote kern fac */
+-			KeepKernFac = 1;
++		case 'K':
++			KernLog = 0;
+ 			break;
+ 
+-		case 'K':	/* keep/trust kernel timestamp always */
+-			KeepKernTime = 1;
++		case 'k':		/* keep remote kern fac */
++			KeepKernFac = 1;
+ 			break;
+ 
+ 		case 'm': /* mark interval */
+@@ -414,6 +452,10 @@ int main(int argc, char *argv[])
+ 			RemoteAddDate = 1;
+ 			break;
+ 
++		case 't':	/* keep/trust kernel timestamp always */
++			KeepKernTime = 1;
++			break;
++
+ 		case 'v':
+ 			printf("syslogd v%s\n", VERSION);
+ 			exit(0);
+@@ -457,15 +499,24 @@ int main(int argc, char *argv[])
+ 	 * /dev/kmsg and fall back to _PROC_KLOG, which on GLIBC
+ 	 * systems is /proc/kmsg, and /dev/klog on *BSD.
+ 	 */
+-	sys_seqno_load();
+-	if (opensys("/dev/kmsg")) {
+-		if (opensys(_PATH_KLOG))
+-			warn("Kernel logging disabled, failed opening %s", _PATH_KLOG);
+-		else
+-			kern_console_off();
+-	} else
+-		kern_console_off();
++	if (KernLog) {
++		if (in_container()) {
++			KernLog = 0;
++			no_sys = 1;
++			goto no_klogd;
++		}
+ 
++		sys_seqno_load();
++		if (opensys("/dev/kmsg")) {
++			if (opensys(_PATH_KLOG))
++				warn("Kernel logging disabled, failed opening %s",
++				     _PATH_KLOG);
++			else
++				kern_console_off();
++		} else
++			kern_console_off();
++	}
++no_klogd:
+ 	consfile.f_type = F_CONSOLE;
+ 	strlcpy(consfile.f_un.f_fname, ctty, sizeof(consfile.f_un.f_fname));
+ 
+@@ -504,6 +555,10 @@ int main(int argc, char *argv[])
+ 	if (ppid != 1)
+ 		kill(ppid, SIGALRM);
+ 
++	/* Log if we disabled klogd */
++	if (no_sys)
++		NOTE("Running in a container, disabling klogd.");
++
+ 	/* Main loop begins here. */
+ 	for (;;) {
+ 		int rc;
+@@ -523,7 +578,8 @@ int main(int argc, char *argv[])
+ 		if (rc < 0 && errno != EINTR)
+ 			ERR("select()");
+ 
+-		sys_seqno_save();
++		if (KernLog)
++			sys_seqno_save();
+ 	}
+ }
+ 
+@@ -584,8 +640,12 @@ static void kernel_cb(int fd, void *arg)
+ 
+ static int opensys(const char *file)
+ {
++	struct stat st;
+ 	int fd;
+ 
++	if (stat(file, &st) || !S_ISCHR(st.st_mode))
++		return 1;
++
+ 	fd = open(file, O_RDONLY | O_NONBLOCK | O_CLOEXEC, 0);
+ 	if (fd < 0)
+ 		return 1;
