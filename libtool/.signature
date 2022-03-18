@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjtreS25tMc3WBpAqxdnImH27dw1PXzDIqR1dcb0501FusOPYQONxY7ncRLPGMd7q/NAj4baNlXrj7nBEFdObQg=
-SHA256 (Pkgfile) = 39b8eadc68c625ebeaf03788fa8ab5ba282976245f55a8a13301c460963363c1
-SHA256 (.footprint) = 5963d5621fbbc3e2a2ec26617728a002b0f6bc60578295f329e8f363ced0f3cb
-SHA256 (libtool-2.4.6.tar.xz) = 7c87a8c2c8c0fc9cd5019e402bed4292462d00a718a7cd5f11218153bf28b26f
+RWRJc1FUaeVeqi807pImlNatGW3KFLn0XKg95PS39Mluj7SWbBZLqAIQEiLEKMThAi73Q0K32/xoadm5gmeZyDjWB8tSn4EpPgs=
+SHA256 (Pkgfile) = 60147c5a3dddb89f0abb9fc7dbcfea7ff1a281dfcdff6b6881871a7a12692ea4
+SHA256 (.footprint) = 0bf0fab010648b4c6d2e1f547beb5f9aa7e9c3d0847c10b6c4832364d0eac940
+SHA256 (libtool-2.4.7.tar.xz) = 4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d
