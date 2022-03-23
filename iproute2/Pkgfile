@@ -1,7 +1,7 @@
 # Description: A collection of utilites for controlling TCP/IP networking and traffic in Linux
 # URL: https://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: db elfutils iptables libcap
+# Depends on: db elfutils iptables libcap libmnl
 
 name=iproute2
 version=5.17.0
