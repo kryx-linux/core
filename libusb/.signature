@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnrYUvXLYtdjeWkJ8YNVs5LSDkywDq5ll4qt29wdGtrT5sM2OaaO03ZcfdE/6vWteWUKrYz1xLKJXHR3lBVvlAQ=
-SHA256 (Pkgfile) = 6854d953343a46b6d5d9aa4058540b2513fc560eef938bec0159a8c48d56ccde
+RWRJc1FUaeVeqlDBB4PfgV2C4K0Jm0XLz3CsoYqAvXdxv3YIqJzZGESZauV5DIC/cpvTTDiA80uBrW/4GIFH7+RSE7NOcYbg5gA=
+SHA256 (Pkgfile) = 6f9744547edfaeacb12f4fd04c1a20b5beff5cdddb32ab950201e1bddeb29bf3
 SHA256 (.footprint) = 3785e93a3e0db3d8a9078ab4491a7876f90891976df0466fcd3cec030ae29103
-SHA256 (libusb-1.0.25.tar.bz2) = 8a28ef197a797ebac2702f095e81975e2b02b2eeff2774fa909c78a74ef50849
+SHA256 (libusb-1.0.26.tar.bz2) = 12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5
