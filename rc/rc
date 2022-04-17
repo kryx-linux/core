@@ -53,8 +53,7 @@ fi
 /bin/mount -a -O no_netdev
 
 # Create user dir in /run
-/bin/mkdir /run/user
-/bin/chmod 0755 /run/user
+/bin/mkdir -m 0755 /run/user
 
 # Activate swap
 /sbin/swapon -a
