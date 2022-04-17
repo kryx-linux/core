@@ -5,8 +5,8 @@
 # Optional: python3-sphinx
 
 name=cmake
-version=3.23.0
-release=2
+version=3.23.1
+release=1
 source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz)
 
 build() {
@@ -26,7 +26,8 @@ build() {
 		--system-libs \
 		--parallel=${JOBS:-1} \
 		$(prt-get isinst python3-sphinx >/dev/null && echo --sphinx-man) \
-		-- -D CMake_BUILD_LTO=ON
+		-- -D CMake_BUILD_LTO=ON \
+		-D BUILD_TESTING=OFF
 
 	ninja
 	DESTDIR=$PKG ninja install
