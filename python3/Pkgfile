@@ -5,19 +5,19 @@
 
 name=python3
 version=3.10.4
-release=1
+release=2
 source=(https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz)
 
 build() {
 	cd Python-$version
 
-	# PGO and LTO make python go brrrrr
 	sed -i -e "s|-flto |-flto=4 |g" configure configure.ac
-	CFLAGS="${CFLAGS/-O2/-O3}"
+	sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python3|" Lib/cgi.py
+	CFLAGS="${CFLAGS/-O2/-O3} -ffat-lto-objects"
 	local _pgojobs=$(nproc)
 	export PROFILE_TASK="-m test -j${_pgojobs} --pgo-extended -x test_gdb -u-network"
 	PROFILE_TASK+=" -x test_socket -x test_asyncio -x test_httpservers -x test_logging -x test_multiprocessing_fork -x test_xmlrpc"
-	local -x LC_ALL=C.utf8
+	local -x LC_ALL=C.UTF-8
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
@@ -38,6 +38,7 @@ build() {
 		--enable-ipv6 \
 		--enable-loadable-sqlite-extensions \
 		--with-computed-gotos \
+		--with-dbmliborder=gdbm:ndbm \
 		--with-lto \
 		--with-system-expat \
 		--with-system-ffi \
@@ -57,10 +58,19 @@ build() {
 	ln -s python-${version%.*}.pc       $PKG/usr/lib/pkgconfig/python3.pc
 	ln -s python-${version%.*}-embed.pc $PKG/usr/lib/pkgconfig/python3-embed.pc
 
-	rm $PKG/usr/lib/python${version%.*}/ctypes/macholib/README.ctypes
-	rm $PKG/usr/lib/python${version%.*}/distutils/README
-	rm $PKG/usr/lib/python${version%.*}/idlelib/{ChangeLog,NEWS.txt,NEWS2x.txt}
-	rm $PKG/usr/lib/python${version%.*}/idlelib/{README,TODO,CREDITS,HISTORY}.txt
-	rm $PKG/usr/lib/python${version%.*}/idlelib/Icons/README.txt
-	rm $PKG/usr/lib/python${version%.*}/site-packages/README.txt
+	_pybasever=${version%.*}
+	install -dm755 $PKG/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
+	install -m755 Tools/i18n/{msgfmt,pygettext}.py \
+		$PKG/usr/lib/python${_pybasever}/Tools/i18n/
+	install -m755 Tools/scripts/{README,*py} \
+		$PKG/usr/lib/python${_pybasever}/Tools/scripts/
+
+	find $PKG/usr/lib/python${version%.*} \( \
+		-iname "*README*" -o \
+		-iname "*ChangeLog*" -o \
+		-iname "*NEWS*" -o \
+		-iname "*TODO*" -o \
+		-iname "*CREDITS*" -o \
+		-iname "*HISTORY*" \) \
+		-type f -delete
 }
