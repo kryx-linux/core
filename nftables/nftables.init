@@ -4,7 +4,7 @@
 #
 
 PROG=/usr/bin/nft
-CONF=/etc/nftables
+CONF=/etc/nftables.nft
 LOADOPTS="-f"
 SHOWOPTS="-s list ruleset"
 RESETRULES="flush ruleset"

@@ -15,7 +15,7 @@ table ip filter {
 	 	# accept traffic originated from us
 	 	ct state established,related accept
 
-	 	# accept traffic originated from us
+	 	# accept ssh logins via port 22
 	 	tcp dport 22 accept comment "Accept SSH on port 22"
 	}
 }
