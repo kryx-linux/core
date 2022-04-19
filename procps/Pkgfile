@@ -6,14 +6,15 @@
 name=procps
 version=4.0.0
 release=1
-source=(http://downloads.sourceforge.net/project/procps-ng/Production/$name-ng-$version.tar.xz
+source=(https://gitlab.com/procps-ng/procps/-/archive/v$version/procps-v$version.tar.bz2
 	sysctl.conf)
 
 build() {
-	cd $name-ng-$version
+	cd $name-v$version
 
 	export LINGUAS=' '
 
+	./autogen.sh
 	./configure \
 		--prefix=/usr \
 		--sbindir=/sbin \
