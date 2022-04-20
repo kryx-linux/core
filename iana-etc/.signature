@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequvnI5aiOfDbQfzxA80TUe1VoGVBf31GzHqapzi5wHdRXWPZqxmKo3h/qY0DHwJENPaFiXDqabN4cVkzWRb0IAM=
-SHA256 (Pkgfile) = 227058457d55022970966a2464546ff211001073879ea74f152aac2659d9e416
+RWRJc1FUaeVeqlVf5VXj09gLaIuOZkyhxCkKj4TCffcasql40nrdsU1t2xMFESdKwgyg25vBohVRjnrTbIEWxqlVAFAnQ/sX6w0=
+SHA256 (Pkgfile) = 8e479f403d7639a0baa946ee5fcc656bbf5af76c6a9fc9016abefb95096eb5c6
 SHA256 (.footprint) = 20bee9bdc0754167b76a54dd3f5b32a38ac4075bb7d0936188d78809f9056c8b
-SHA256 (services) = abb71719467602dfd2d23851d118d9cd219f5d8dc75b887abf855d2e58a86703
-SHA256 (protocols) = b4dac996577aa1b3894717eeafde97c63daa0d8da6177a3d5e6b0e3dd98d3fea
+SHA256 (services) = 26683692f3ffad528fd6bbe2b58314f09ae1a6971f4011fd46265e9d36645cca
+SHA256 (protocols) = c2d39ab1a99fa2cbc02b3cbdd129d661a3bff55d93d09fe04fb256bcb6d5e6d6
 SHA256 (update.sh) = c0177c49b9ac29c4f8d89d5f26ca4dc8b1ca358c4e71efca562e61f71f9f3df0
