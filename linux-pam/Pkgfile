@@ -4,8 +4,8 @@
 
 name=linux-pam
 version=1.5.2
-release=2
-source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz
+release=3
+source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz \
 	common-account common-auth common-password common-session \
 	other)
 
