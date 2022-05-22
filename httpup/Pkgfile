@@ -9,6 +9,7 @@ release=1
 source=(https://crux.nu/files/$name-$version.tar.xz httpup)
 
 build() {
+	export CPPFLAGS="-Wno-error=mismatched-new-delete"
 	cd $name-$version
 	make
 	make DESTDIR=$PKG prefix=/usr mandir=/usr/share/man install
