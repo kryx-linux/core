@@ -3282,6 +3282,8 @@ lrwxrwxrwx	root/root	usr/share/man/man3/PBKDF2PARAM_new.3ssl.gz -> X509_dup.3ssl
 lrwxrwxrwx	root/root	usr/share/man/man3/PEM_FLAG_EAY_COMPATIBLE.3ssl.gz -> PEM_read_bio_ex.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/PEM_FLAG_ONLY_B64.3ssl.gz -> PEM_read_bio_ex.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/PEM_FLAG_SECURE.3ssl.gz -> PEM_read_bio_ex.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/PEM_X509_INFO_read.3ssl.gz -> PEM_X509_INFO_read_bio_ex.3ssl.gz
+lrwxrwxrwx	root/root	usr/share/man/man3/PEM_X509_INFO_read_bio.3ssl.gz -> PEM_X509_INFO_read_bio_ex.3ssl.gz
 -rw-r--r--	root/root	usr/share/man/man3/PEM_X509_INFO_read_bio_ex.3ssl.gz
 lrwxrwxrwx	root/root	usr/share/man/man3/PEM_X509_INFO_read_ex.3ssl.gz -> PEM_X509_INFO_read_bio_ex.3ssl.gz
 -rw-r--r--	root/root	usr/share/man/man3/PEM_bytes_read_bio.3ssl.gz
