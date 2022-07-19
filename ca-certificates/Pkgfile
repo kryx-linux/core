@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=ca-certificates
-version=20220426
-# Thu, 17 Mar 2022 08:14:03 +0000
+version=20220719
+# Mon, 18 Jul 2022 18:53:05 +0000
 release=1
 source=(cacert.pem)
 
@@ -15,6 +15,7 @@ build() {
 	# mk-ca-bundle.pl -p ALL:TRUSTED_DELEGATOR cacert.pem
 	# As of version 20180620 we are using again the bundle
 	# from curl without modifications.
+	# https://curl.se/docs/caextract.html
 
 	# check commit date from here
 	# https://hg.mozilla.org/releases/mozilla-release/file/tip/security/nss/lib/ckfw/builtins/certdata.txt
