@@ -18,6 +18,10 @@
 #tmp                   /tmp      tmpfs     defaults                         0      0
 #usb                   /proc/bus/usb usbfs defaults                         0      0
 
+# EFI-related entries
+#efivars               /sys/firmware/efi/efivarfs efivarfs defaults         0      0
+#/dev/#ESP#            /boot/efi vfat      defaults                         0      2
+
 # the following entries are required for proper system operation
 devpts                 /dev/pts  devpts    noexec,nosuid,gid=tty,mode=0620  0      0
 shm                    /dev/shm  tmpfs     defaults                         0      0
