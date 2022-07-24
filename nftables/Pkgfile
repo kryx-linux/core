@@ -4,8 +4,8 @@
 # Depends on: jansson libedit libgmp libnftnl python3
 
 name=nftables
-version=1.0.2
-release=2
+version=1.0.4
+release=1
 source=(https://www.netfilter.org/pub/nftables/nftables-$version.tar.bz2
 	nftables.nft nftables.init)
 
@@ -13,6 +13,9 @@ build() {
 	cd $name-$version
 
 	PYTHON_VERSION=$(python3 -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+
+	autoreconf -vfi
+
 	PYTHON_PATH=/usr/lib/python${PYTHON_VERSION}/site-packages/ \
 	./configure \
 		--prefix=/usr \
