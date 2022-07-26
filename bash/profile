@@ -2,15 +2,25 @@
 # /etc/profile: system-wide defaults for bash(1) login shells
 #
 
-if [ "$UID" = "0" ]; then
-	export PATH="/sbin:/usr/sbin:/opt/sbin:/bin:/usr/bin:/opt/bin"
-else
-	export PATH="/bin:/usr/bin:/opt/bin"
-fi
+export PATH="/sbin:/usr/sbin:/opt/sbin:/bin:/usr/bin:/opt/bin"
 
-if [ ! -f ~/.inputrc ]; then
-	export INPUTRC="/etc/inputrc"
-fi
+export XDG_RUNTIME_DIR=/run/user/${UID}
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.local/cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+[[ ! -e "$XDG_STATE_HOME" ]] && mkdir -p "$XDG_STATE_HOME"
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+#export XDG_DESKTOP_DIR=$HOME/Desktop
+#export XDG_DOCUMENTS_DIR=$HOME/Documents/
+#export XDG_MUSIC_DIR=$HOME/Music
+#export XDG_PICTURES_DIR=$HOME/Pictures/
+#export XDG_VIDEOS_DIR=$HOME/Videos/
+#export XDG_DOWNLOAD_DIR=$HOME/Downloads/
+#export XDG_TEMPLATES_DIR=$HOME/
+#export XDG_PUBLICSHARE_DIR=$HOME/
+
+[[ ! -f ~/.inputrc ]] && export INPUTRC="/etc/inputrc"
 
 export LESS="-R"
 export PS1="\[\033[1m\]\\$ \[\033[0m\]"
