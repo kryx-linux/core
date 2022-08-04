@@ -29,6 +29,7 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/
 -rw-r--r--	root/root	usr/share/vim/autoload/RstFold.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/ada.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/adacomplete.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/ccomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/clojurecomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/context.vim
@@ -52,6 +53,7 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/dist/
 -rw-r--r--	root/root	usr/share/vim/autoload/netrw_gitignore.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/paste.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/phpcomplete.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/python.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/python3complete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/pythoncomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/rubycomplete.vim
@@ -89,6 +91,7 @@ drwxr-xr-x	root/root	usr/share/vim/colors/
 -rw-r--r--	root/root	usr/share/vim/colors/desert.vim
 -rw-r--r--	root/root	usr/share/vim/colors/elflord.vim
 -rw-r--r--	root/root	usr/share/vim/colors/evening.vim
+-rw-r--r--	root/root	usr/share/vim/colors/habamax.vim
 -rw-r--r--	root/root	usr/share/vim/colors/industry.vim
 -rw-r--r--	root/root	usr/share/vim/colors/koehler.vim
 drwxr-xr-x	root/root	usr/share/vim/colors/lists/
@@ -98,6 +101,7 @@ drwxr-xr-x	root/root	usr/share/vim/colors/lists/
 -rw-r--r--	root/root	usr/share/vim/colors/murphy.vim
 -rw-r--r--	root/root	usr/share/vim/colors/pablo.vim
 -rw-r--r--	root/root	usr/share/vim/colors/peachpuff.vim
+-rw-r--r--	root/root	usr/share/vim/colors/quiet.vim
 -rw-r--r--	root/root	usr/share/vim/colors/ron.vim
 -rw-r--r--	root/root	usr/share/vim/colors/shine.vim
 -rw-r--r--	root/root	usr/share/vim/colors/slate.vim
@@ -379,6 +383,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bash.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/basic.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bdf.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bst.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/btm.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bzl.vim
@@ -407,6 +412,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/debchangelog.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/debcontrol.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/denyhosts.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/desktop.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dictconf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/dictdconf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/diff.vim
@@ -425,6 +431,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/erlang.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/eruby.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/eterm.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/expect.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/falcon.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/fennel.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/fetchmail.vim
@@ -580,6 +587,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/sshconfig.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/sudoers.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/svg.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/swayconfig.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/swift.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/swiftgyb.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/sysctl.vim
@@ -638,6 +646,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/bash.vim
 -rw-r--r--	root/root	usr/share/vim/indent/basic.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bib.vim
+-rw-r--r--	root/root	usr/share/vim/indent/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bst.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bzl.vim
 -rw-r--r--	root/root	usr/share/vim/indent/c.vim
@@ -669,6 +678,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/erlang.vim
 -rw-r--r--	root/root	usr/share/vim/indent/eruby.vim
 -rw-r--r--	root/root	usr/share/vim/indent/eterm.vim
+-rw-r--r--	root/root	usr/share/vim/indent/expect.vim
 -rw-r--r--	root/root	usr/share/vim/indent/falcon.vim
 -rw-r--r--	root/root	usr/share/vim/indent/fennel.vim
 -rw-r--r--	root/root	usr/share/vim/indent/fortran.vim
@@ -924,6 +934,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/bdf.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bib.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bindzone.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/blank.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bsdl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bst.vim
@@ -1415,6 +1426,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/sudoers.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/svg.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/svn.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/swayconfig.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/swift.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/swiftgyb.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/syncolor.vim
