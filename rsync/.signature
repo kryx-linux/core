@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqsk1RsEzGx/CQ0MGqMUHYQLc/BRM4RFS8Zniokw7aruJvZmHlMWMx0J++7o3YXnziC5yRI4g+if75zj+81JtMgY=
-SHA256 (Pkgfile) = d81ec905826ef4d5b0c20373f96e5d25cf01ed4112eecbdf293d04c90b0883ed
+RWRJc1FUaeVeqoA/4xXfARazubzLedpTAvC0pElJGtYKLgSFm2y2Bl4htM3WNibKPipseqHCDMCF7j4IvBRM/1JM2R1ICU1fyQs=
+SHA256 (Pkgfile) = 8803f93fd577fce7dd628e6efafd18f9dce797220cddbb6abe4c0f1dc0110dd8
 SHA256 (.footprint) = bf468272af3c29c8b4b4d150730c23071cf0093dc06172548b7dbddaeee6c3c3
-SHA256 (rsync-3.2.4.tar.gz) = 6f761838d08052b0b6579cf7f6737d93e47f01f4da04c5d24d3447b7f2a5fad1
+SHA256 (rsync-3.2.5.tar.gz) = 2ac4d21635cdf791867bc377c35ca6dda7f50d919a58be45057fd51600c69aba
 SHA256 (rsyncd.conf) = ada548bd0ff96a02dea1fc58dd3d0821027526c4f3cd1a35dcaf30b22dc02c7e
 SHA256 (rsyncd) = 424dbf7cbe8d4f60a1868984084d107445a3dd33c77a82eb36598f012204946a
 SHA256 (rsync.driver) = 5e0f94a972cf7e47f153ccd0ac454ec2bd3056a834b69e82d3f3984d44308ef7
