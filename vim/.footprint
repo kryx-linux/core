@@ -64,6 +64,7 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/dist/
 -rw-r--r--	root/root	usr/share/vim/autoload/syntaxcomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/tar.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/tohtml.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/typeset.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/vimball.vim
 drwxr-xr-x	root/root	usr/share/vim/autoload/xml/
 -rw-r--r--	root/root	usr/share/vim/autoload/xml/html32.vim
