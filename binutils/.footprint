@@ -6,7 +6,13 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/c++filt
 -rwxr-xr-x	root/root	usr/bin/dwp
 -rwxr-xr-x	root/root	usr/bin/elfedit
+-rwxr-xr-x	root/root	usr/bin/gp-archive
+-rwxr-xr-x	root/root	usr/bin/gp-collect-app
+-rwxr-xr-x	root/root	usr/bin/gp-display-html
+-rwxr-xr-x	root/root	usr/bin/gp-display-src
+-rwxr-xr-x	root/root	usr/bin/gp-display-text
 -rwxr-xr-x	root/root	usr/bin/gprof
+-rwxr-xr-x	root/root	usr/bin/gprofng
 -rwxr-xr-x	root/root	usr/bin/ld
 -rwxr-xr-x	root/root	usr/bin/ld.bfd
 -rwxr-xr-x	root/root	usr/bin/ld.gold
@@ -18,14 +24,19 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/size
 -rwxr-xr-x	root/root	usr/bin/strings
 -rwxr-xr-x	root/root	usr/bin/strip
+drwxr-xr-x	root/root	usr/etc/
+-rw-r--r--	root/root	usr/etc/gprofng.rc
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/ansidecl.h
 -rw-r--r--	root/root	usr/include/bfd.h
 -rw-r--r--	root/root	usr/include/bfdlink.h
+-rw-r--r--	root/root	usr/include/collectorAPI.h
 -rw-r--r--	root/root	usr/include/ctf-api.h
 -rw-r--r--	root/root	usr/include/ctf.h
 -rw-r--r--	root/root	usr/include/diagnostics.h
 -rw-r--r--	root/root	usr/include/dis-asm.h
+-rw-r--r--	root/root	usr/include/libcollector.h
+-rw-r--r--	root/root	usr/include/libfcollector.h
 drwxr-xr-x	root/root	usr/include/libiberty/
 -rw-r--r--	root/root	usr/include/libiberty/ansidecl.h
 -rw-r--r--	root/root	usr/include/libiberty/demangle.h
@@ -45,6 +56,15 @@ drwxr-xr-x	root/root	usr/include/libiberty/
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/bfd-plugins/
 -rwxr-xr-x	root/root	usr/lib/bfd-plugins/libdep.so
+drwxr-xr-x	root/root	usr/lib/gprofng/
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgp-collector.so
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgp-collectorAPI.so
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgp-heap.so
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgp-iotrace.so
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgp-sync.so
+lrwxrwxrwx	root/root	usr/lib/gprofng/libgprofng.so -> libgprofng.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/gprofng/libgprofng.so.0 -> libgprofng.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/gprofng/libgprofng.so.0.0.0
 drwxr-xr-x	root/root	usr/lib/ldscripts/
 -rw-r--r--	root/root	usr/lib/ldscripts/elf32_x86_64.x
 -rw-r--r--	root/root	usr/lib/ldscripts/elf32_x86_64.xbn
@@ -112,50 +132,6 @@ drwxr-xr-x	root/root	usr/lib/ldscripts/
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_iamcu.xu
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_iamcu.xw
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_iamcu.xwe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.x
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xbn
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xd
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xdc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xdce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xde
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xdw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xdwe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xn
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xr
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xs
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xsc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xsce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xse
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xsw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xswe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xu
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_k1om.xwe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.x
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xbn
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xd
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xdc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xdce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xde
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xdw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xdwe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xn
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xr
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xs
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xsc
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xsce
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xse
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xsw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xswe
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xu
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xw
--rw-r--r--	root/root	usr/lib/ldscripts/elf_l1om.xwe
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.x
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xbn
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xc
@@ -178,10 +154,10 @@ drwxr-xr-x	root/root	usr/lib/ldscripts/
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xu
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xw
 -rw-r--r--	root/root	usr/lib/ldscripts/elf_x86_64.xwe
--rwxr-xr-x	root/root	usr/lib/libbfd-2.38.so
+-rwxr-xr-x	root/root	usr/lib/libbfd-2.39.so
 -rw-r--r--	root/root	usr/lib/libbfd.a
 -rwxr-xr-x	root/root	usr/lib/libbfd.la
-lrwxrwxrwx	root/root	usr/lib/libbfd.so -> libbfd-2.38.so
+lrwxrwxrwx	root/root	usr/lib/libbfd.so -> libbfd-2.39.so
 -rw-r--r--	root/root	usr/lib/libctf-nobfd.a
 -rwxr-xr-x	root/root	usr/lib/libctf-nobfd.la
 lrwxrwxrwx	root/root	usr/lib/libctf-nobfd.so -> libctf-nobfd.so.0.0.0
@@ -193,10 +169,10 @@ lrwxrwxrwx	root/root	usr/lib/libctf.so -> libctf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libctf.so.0 -> libctf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libctf.so.0.0.0
 -rw-r--r--	root/root	usr/lib/libiberty.a
--rwxr-xr-x	root/root	usr/lib/libopcodes-2.38.so
+-rwxr-xr-x	root/root	usr/lib/libopcodes-2.39.so
 -rw-r--r--	root/root	usr/lib/libopcodes.a
 -rwxr-xr-x	root/root	usr/lib/libopcodes.la
-lrwxrwxrwx	root/root	usr/lib/libopcodes.so -> libopcodes-2.38.so
+lrwxrwxrwx	root/root	usr/lib/libopcodes.so -> libopcodes-2.39.so
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
