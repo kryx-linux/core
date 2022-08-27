@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequtncdke115jfwc1xb4gRSWO5AEJjqqaON0l+owjyMWw+vI7TNeOdZ/4gFAk4V3+gik1lXDOmk0QhxXjkAKBPwY=
-SHA256 (Pkgfile) = 6595efba9c0a55ffc0db06fe4f40132de607f81681d150c2324409dd943f7a79
+RWRJc1FUaeVeqghRmnn6d1mKk7J8nLFJQaE6PIod0M4r3+dSulVC33aR2z7B5rCAGVJFKiQ4fmBIeVUbWf3rhiKHRzaOHNDf6wg=
+SHA256 (Pkgfile) = 118b9b3c9d8eba995bbafba6811ab4ab5741bea5ef55562ab6f14dd604cb24da
 SHA256 (.footprint) = 64614a7fcc7b8c2330824675ccbe9a7601cff4f12fe6d87ac9d9a10d11471d3e
-SHA256 (shadow-4.12.2.tar.xz) = 7897c5dac0f600d329fc6710d8272f41253dac22c5f5dec590d8afcc3547ebb8
+SHA256 (shadow-4.12.3.tar.xz) = 3d3ec447cfdd11ab5f0486ebc47d15718349d13fea41fc8584568bc118083ccd
 SHA256 (pwck) = c62f1bf5785c2bb93bb269156bfa02b06728a01ff5d6c2e09cf6285701a1fda0
 SHA256 (login.defs) = def991c4bc012834d726a4010783634a930558b91650bc4cba5fe822064c3535
 SHA256 (chfn) = b31ef7a14f747e114c970027a57acb5dcefffee439ce0b4a7d55cc2f6b632fcf

@@ -98,6 +98,7 @@ drwxr-xr-x	root/root	usr/share/vim/colors/
 drwxr-xr-x	root/root	usr/share/vim/colors/lists/
 -rw-r--r--	root/root	usr/share/vim/colors/lists/csscolors.vim
 -rw-r--r--	root/root	usr/share/vim/colors/lists/default.vim
+-rw-r--r--	root/root	usr/share/vim/colors/lunaperche.vim
 -rw-r--r--	root/root	usr/share/vim/colors/morning.vim
 -rw-r--r--	root/root	usr/share/vim/colors/murphy.vim
 -rw-r--r--	root/root	usr/share/vim/colors/pablo.vim
@@ -230,6 +231,8 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/doc/filetype.txt
 -rw-r--r--	root/root	usr/share/vim/doc/fold.txt
 -rw-r--r--	root/root	usr/share/vim/doc/ft_ada.txt
+-rw-r--r--	root/root	usr/share/vim/doc/ft_context.txt
+-rw-r--r--	root/root	usr/share/vim/doc/ft_mp.txt
 -rw-r--r--	root/root	usr/share/vim/doc/ft_ps1.txt
 -rw-r--r--	root/root	usr/share/vim/doc/ft_raku.txt
 -rw-r--r--	root/root	usr/share/vim/doc/ft_rust.txt
@@ -1373,6 +1376,13 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/sgmldecl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sgmllnx.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sh.vim
+drwxr-xr-x	root/root	usr/share/vim/syntax/shared/
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/README.txt
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/context-data-context.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/context-data-interfaces.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/context-data-metafun.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/context-data-tex.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/shared/typescriptcommon.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sicad.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sieve.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sil.vim
@@ -1472,7 +1482,6 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/tt2html.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tt2js.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/typescript.vim
--rw-r--r--	root/root	usr/share/vim/syntax/typescriptcommon.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/typescriptreact.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/uc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/udevconf.vim
