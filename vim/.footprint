@@ -181,6 +181,10 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/powershell.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/pylint.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/pyunit.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/raco.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/racomake.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/racosetup.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/racotest.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rake.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rhino.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/rspec.vim
@@ -447,6 +451,8 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/fstab.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/fvwm.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gdb.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/gdscript.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/gdshader.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gitcommit.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gitconfig.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gitrebase.vim
@@ -554,6 +560,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/quake.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/r.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/racc.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/racket.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/raku.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/readline.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/registry.vim
@@ -688,6 +695,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/fortran.vim
 -rw-r--r--	root/root	usr/share/vim/indent/framescript.vim
 -rw-r--r--	root/root	usr/share/vim/indent/freebasic.vim
+-rw-r--r--	root/root	usr/share/vim/indent/gdscript.vim
 -rw-r--r--	root/root	usr/share/vim/indent/gitconfig.vim
 -rw-r--r--	root/root	usr/share/vim/indent/gitolite.vim
 -rw-r--r--	root/root	usr/share/vim/indent/go.vim
@@ -737,6 +745,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/python.vim
 -rw-r--r--	root/root	usr/share/vim/indent/qb64.vim
 -rw-r--r--	root/root	usr/share/vim/indent/r.vim
+-rw-r--r--	root/root	usr/share/vim/indent/racket.vim
 -rw-r--r--	root/root	usr/share/vim/indent/raku.vim
 -rw-r--r--	root/root	usr/share/vim/indent/raml.vim
 -rw-r--r--	root/root	usr/share/vim/indent/readline.vim
@@ -1080,6 +1089,9 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/fvwm2m4.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gdb.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gdmo.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/gdresource.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/gdscript.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/gdshader.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gedcom.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gemtext.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gift.vim
@@ -1321,6 +1333,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/quake.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/r.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/racc.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/racket.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/radiance.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/raku.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/raml.vim
