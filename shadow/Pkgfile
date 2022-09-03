@@ -5,9 +5,9 @@
 
 name=shadow
 version=4.12.3
-release=1
+release=2
 source=(https://github.com/shadow-maint/$name/releases/download/$version/$name-$version.tar.xz \
-	pwck login.defs chfn chsh login groupadd groupdel \
+	pwck chfn chsh login groupadd groupdel \
 	groupmems groupmod passwd su useradd userdel usermod)
 
 build() {
@@ -34,7 +34,7 @@ build() {
 	chmod -s $PKG/usr/sbin/*
 
 	install -d $PKG/etc/cron/daily $PKG/var/log
-	install -m 644 $SRC/login.defs $PKG/etc
+	install -m 644 etc/login.defs $PKG/etc
 	install -m 755 $SRC/pwck $PKG/etc/cron/daily
 	touch $PKG/var/log/{lastlog,faillog}
 
