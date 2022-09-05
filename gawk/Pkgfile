@@ -4,7 +4,7 @@
 # Depends on: libmpfr readline
 
 name=gawk
-version=5.1.1
+version=5.2.0
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -13,7 +13,8 @@ build() {
 
 	export ac_cv_libsigsegv=no
 
-	./configure --prefix=/usr \
+	./configure \
+		--prefix=/usr \
 		--libexecdir=/usr/lib \
 		--disable-nls
 	make
