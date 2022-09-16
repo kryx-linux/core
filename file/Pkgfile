@@ -4,9 +4,9 @@
 # Depends on: zlib
 
 name=file
-version=5.42
+version=5.43
 release=1
-source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
+source=(http://www.astron.com/pub/file/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
