@@ -4,12 +4,12 @@
 # Depends on: zlib
 
 name=file
-version=5.42
+version=5.43
 release=1
-source=(https://github.com/file/file/archive/refs/tags/FILE${version/./_}.tar.gz)
+source=(http://www.astron.com/pub/file/$name-$version.tar.gz)
 
 build() {
-	cd $name-FILE${version/./_}
+	cd file-$version
 	autoreconf -vfi
 	./configure \
 		--prefix=/usr \
