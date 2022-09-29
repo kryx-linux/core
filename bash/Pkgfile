@@ -4,15 +4,13 @@
 # Depends on: readline
 
 name=bash
-version=5.1.16
-release=4
+version=5.2
+release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz
-	$name-$version.patch.gz profile)
+	profile)
 
 build() {
 	cd $name-${version:0:3}
-
-	gunzip -c $SRC/$name-$version.patch.gz | patch -p0
 
 	./configure \
 		--prefix=/usr \
