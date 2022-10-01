@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqlXPoeovRmxfqygS9L3tYz6k9rSB2CwBAXHmO+UJnDrYe15JiVt2izbvbxckjjMDWstpMWD4l2crg32d0m7POAk=
-SHA256 (Pkgfile) = f3b1cef9547a69480d1ff93bb22f3ad6b6493aea49cb56dbfd3ab32dbc4e05ad
+RWRJc1FUaeVeqkOEbFbIaevBhtWSwJ4MuG8La6Cwr1gGBiVJNQdokXFnJ5C1rDWehAH4Lgfrn5j9+Nh3QeGJQRwmxGB04JqgXg4=
+SHA256 (Pkgfile) = ae5f3949e4e46b96a30b1c1908133b1d88c58a3cd975aece989cdd21c14c1f3e
 SHA256 (.footprint) = 4815ac0043534dcfed82ad99eb6a9260f725b4c2f39f39d40dec2b6fbc8a52bc
-SHA256 (cmake-3.24.1.tar.gz) = 4931e277a4db1a805f13baa7013a7757a0cbfe5b7932882925c7061d9d1fa82b
+SHA256 (cmake-3.24.2.tar.gz) = 0d9020f06f3ddf17fb537dc228e1a56c927ee506b486f55fe2dc19f69bf0c8db
