@@ -6,7 +6,8 @@
 name=dhcpcd
 version=9.4.1
 release=1
-source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
+#source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
+source=(https://crux.nu/files/distfiles/$name-$version.tar.xz
 	rc.dhcpcd)
 
 build() {
