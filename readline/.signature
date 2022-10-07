@@ -1,6 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqqTeWs0xDiU01m8WJW3a9Z2DazZp5Cb9cu7FUpOVoBmGkItYI9+SZcfjX0hQG09IBwHE282U7vy9j90mkeipBAw=
-SHA256 (Pkgfile) = f320f9664d65adc3314ef7ad56fc87196818899977a08af10ea2ca6c44f1e226
+RWRJc1FUaeVeqnWuK+DEhdCvfMV8j2IheoRV+lLY99kuuikQLoCAEabzpuy6hU9hfzDtL1BiL9RpZLIzvrO9BaS1CM9hIxqQXws=
+SHA256 (Pkgfile) = 0b154c9a1c52b2d85fa15a138eadca81d6acba3215e27f55dc57b76a6eba96a3
 SHA256 (.footprint) = ef47c205c60675d3bf1c17a08ea69427281b94b26fcf5528017f2ef901b5068f
 SHA256 (readline-8.2.tar.gz) = 3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35
+SHA256 (readline-8.2.1.patch.gz) = 5c7e6aa4360d9ab2a4a35a0ccb6b0e26137803fbe7c68ab2be290e61f6f313dc
 SHA256 (inputrc) = 9119a95d4b1407e3c4ad2b6fb92e840353e65ae9d7ec77fed75cab293cb81bcb
