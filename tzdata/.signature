@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqslDsi0pz7P4lJ2MdvbPIjcPFGcIvSKMlxbIl67xfpL68txuJr9znHyX8tc2iQbZXokGK0mrc4FPeCP2QU1Nnwo=
-SHA256 (Pkgfile) = ef2694854987d407cda9ab1e9e6be39f694394922b85a0d7cf4a500ce923f8a9
+RWRJc1FUaeVeqnRWusAK3UBglnl9fFs8a6HHMLyq6ltlbKM1yzK3es4Gy0mOo7rZ6ruIkWkDNqawycOLILk1ThvRsYPV+w3P1w0=
+SHA256 (Pkgfile) = 7fb82a9c076d096876c2801366c044e28fcd8a565feaa5becb4b210b08fcc1bd
 SHA256 (.footprint) = fff7dde466656b1299891c0fed66336fc07dda5fba8f01566f34d1d9909bde82
-SHA256 (tzdb-2022d.tar.lz) = 60d1d7ab9f230fcb3ab32a7576d667c87a03d8825009dd099d232ad84ce1c835
+SHA256 (tzdb-2022e.tar.lz) = 4e2258a521ae0daff5a5715f9b0620eb4471bcda65397663bbd706b3eee73d62
