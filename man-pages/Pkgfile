@@ -3,13 +3,17 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=man-pages
-version=5.13
+version=6.00
 release=1
 source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz
 	http://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2017-a.tar.xz)
 
 build() {
 	cd $name-$version
+
+	# we don't need libbsd
+	sed '/PKG-CONFIG/s/^/#/' -i lib/build-src.mk
+
 	rm man5/passwd.5
 	make prefix=/usr DESTDIR=$PKG install
 
