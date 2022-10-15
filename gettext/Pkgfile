@@ -5,7 +5,7 @@
 
 name=gettext
 version=0.21.1
-release=1
+release=2
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
@@ -15,7 +15,7 @@ build() {
 		--enable-{shared,static} \
 		--disable-{csharp,java,nls} \
 		--without-{emacs,git} \
-		--with-included-{glib,libcroco,libxml}
+		--with-included-{glib,libcroco,libxml,libunistring}
 	make
 	make DESTDIR=$PKG install
 	rm -r $PKG/usr/share/{info,doc}
