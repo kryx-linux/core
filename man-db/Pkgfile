@@ -5,7 +5,7 @@
 
 name=man-db
 version=2.10.2
-release=1
+release=2
 source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz
 	mandb.cron)
 
@@ -20,7 +20,8 @@ build() {
 		--disable-cache-owner \
 		--disable-nls \
 		--with-systemdtmpfilesdir=no \
-		--with-systemdsystemunitdir=no
+		--with-systemdsystemunitdir=no \
+		--without-libseccomp
 
 	make
 	make DESTDIR=$PKG install
