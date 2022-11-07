@@ -4,13 +4,14 @@
 # Depends on: acl
 
 name=sed
-version=4.8
+version=4.9
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
-	./configure --prefix=/usr \
+	./configure \
+		--prefix=/usr \
 		--exec-prefix=/ \
 		--disable-nls
 	make
