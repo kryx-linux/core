@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=sysvinit
-version=3.05
+version=3.06
 release=1
 source=(https://github.com/slicer69/sysvinit/releases/download/$version/$name-$version.tar.xz)
 
