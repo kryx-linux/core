@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=start-stop-daemon
-version=20210417
+version=20221219
 release=1
 source=(start-stop-daemon.c start-stop-daemon.pod crux-patch.diff makefile)
 

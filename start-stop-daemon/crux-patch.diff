@@ -12,7 +12,7 @@ index d16f0ed..1c3ff78 100644
  
  #include <dpkg/macros.h>
 +#else
-+# define VERSION "20210417"
++# define VERSION "20221219"
 +# define CRUX "CRUX-Linux"
 +
 +# define WANT_SYSTEMD_NOTIFY 0 /* 1=yes */
@@ -29,9 +29,9 @@ index d16f0ed..1c3ff78 100644
 +# define HAVE_IOPRIO_SET
 +# define HAVE_SETSID
 +
-+# define DPKG_ATTR_NORET __attribute__((noreturn))
-+# define DPKG_ATTR_PRINTF(X)
-+# define DPKG_ATTR_VPRINTF(X)
++# define LIBCOMPAT_ATTR_NORET __attribute__((noreturn))
++# define LIBCOMPAT_ATTR_PRINTF(X)
++# define LIBCOMPAT_ATTR_VPRINTF(X)
 +
 +# define _GNU_SOURCE
 +# include <unistd.h>
