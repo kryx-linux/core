@@ -1,4 +1,4 @@
-# /etc/services, created 2022-11-06T11:31:32+0000
+# /etc/services, created 2023-01-05T11:31:14+0100
 # Source: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml
 tcpmux              1/tcp
 tcpmux              1/udp
@@ -10007,6 +10007,7 @@ espeech-rtp      8417/tcp
 espeech-rtp      8417/udp
 aritts           8423/tcp
 pgbackrest       8432/tcp
+aws-as2          8433/udp
 cybro-a-bus      8442/tcp
 cybro-a-bus      8442/udp
 pcsync-https     8443/tcp
@@ -10953,8 +10954,10 @@ faircom-db      19790/tcp
 iec-104-sec     19998/tcp
 dnp-sec         19999/tcp
 dnp-sec         19999/udp
+dnp-sec         19999/sctp
 dnp             20000/tcp
 dnp             20000/udp
+dnp             20000/sctp
 microsan        20001/tcp
 microsan        20001/udp
 commtact-http   20002/tcp
@@ -11401,6 +11404,7 @@ candrp          42509/tcp
 candrp          42509/udp
 caerpc          42510/tcp
 caerpc          42510/udp
+curiosity       42999/tcp
 recvr-rc        43000/tcp
 recvr-rc-disc   43000/udp
 reachout        43188/tcp
