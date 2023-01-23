@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=pkgconf
-version=1.9.3
+version=1.9.4
 release=1
 source=(https://distfiles.dereferenced.org/pkgconf/$name-$version.tar.xz
   i686-pc-linux-gnu.personality x86_64-pc-linux-gnu.personality)
@@ -15,7 +15,7 @@ build() {
 		--wrap-mode=nodownload \
 		-D b_lto=true \
 		-D b_pie=true \
-		-D tests=false
+		-D tests=disabled
 	ninja -C build
 	DESTDIR=$PKG ninja -C build install
 
