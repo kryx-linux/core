@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqlD8Ljyp2JtZGIL1HhBAbtcULqIXkyFj2NVehRXocpyGvcmStbZ0QVNKWRpIaLqksAoyaDPSQNC8ir+ll8+5UgQ=
-SHA256 (Pkgfile) = 079be0759c254bdff2da3d5ff8c8c9bad82313d135488aaa8e6eb489cef682eb
+RWRJc1FUaeVeqpyYbSZSl0JeDpkNHmXUBaj5KWZe5rnxOUibjL7ZAFUISOJAmlRZqNiR4Ama1lyzMA+2uErZ22jviPUDzaLJIwA=
+SHA256 (Pkgfile) = c5ad5528cdb9cb54dc1a8889909a96373d6fc2950c0d09bdc35caf15ddd37637
 SHA256 (.footprint) = a9db6ab183909fefb12ac7b5a5100070014c1543f38056c92305b4accf44b09d
-SHA256 (e2fsprogs-1.46.5.tar.xz) = 2f16c9176704cf645dc69d5b15ff704ae722d665df38b2ed3cfc249757d8d81e
+SHA256 (e2fsprogs-1.46.6.tar.xz) = a77517f19ff5e4e97ede63536566865dd5d48654e13fc145f5f2249ef7c4f4fc
