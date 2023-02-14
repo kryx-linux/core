@@ -3,10 +3,10 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=man-pages
-version=6.02
+version=6.03
 release=1
-source=(http://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz
-	http://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2017-a.tar.xz)
+source=(https://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz
+	https://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2017-a.tar.xz)
 
 build() {
 	cd $name-$version
