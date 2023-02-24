@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequeGsh8hR1q4a2F11upatvuRuiRK5ZG/WyI2lQQv+W0RI6kkqvJObOLPEZ9TDNX1hyQYsfGzn79iYAKSlZ+WaQc=
-SHA256 (Pkgfile) = cd18f8dd6aafc207cbbe9ff142ab2e921ca6997a4c7792a8958226a19122b313
-SHA256 (.footprint) = cd12858982eac6da66f85ca1b02d8df018039dd50419b0adffc43f5ac94fa569
-SHA256 (meson-1.0.0.tar.gz) = aa50a4ba4557c25e7d48446abfde857957dcdf58385fffbe670ba0e8efacce05
+RWRJc1FUaeVeqp8/oUHDq6DA5lH9xSJfWyOuTCP3Tbtx2UEDqpSHnhgSsHh+WhBwL9t7011x/SbJ4LXQjGOvkJjKP6rHyIDPnA4=
+SHA256 (Pkgfile) = c00818bced529171e5b0510b5655f6b96b17ecebe9ab2f6d657a81e74c19f65d
+SHA256 (.footprint) = 04e96fae10ae91dbc3b2fb1ccedd00ec8cd1dcdaa2df226ecd2e755a9ef97cf9
+SHA256 (meson-1.0.1.tar.gz) = d926b730de6f518728cc7c57bc5e701667bae0c3522f9e369427b2cc7839d3c1
