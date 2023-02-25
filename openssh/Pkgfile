@@ -5,7 +5,7 @@
 
 name=openssh
 version=9.2p1
-release=1
+release=2
 source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
 	sshd.rc sshd.pam)
 
@@ -19,7 +19,6 @@ build() {
 		--with-mantype=man \
 		--mandir=/usr/share/man \
 		--with-pid-dir=/run \
-		--with-md5-passwords \
 		--with-pam \
 		--with-privsep-user=nobody \
 		--with-privsep-path=/var/empty \
