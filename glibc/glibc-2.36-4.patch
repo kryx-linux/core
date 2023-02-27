@@ -1,8 +1,75 @@
+diff --git a/Makeconfig b/Makeconfig
+index ba70321af1..9dd058e04b 100644
+--- a/Makeconfig
++++ b/Makeconfig
+@@ -43,6 +43,22 @@ else
+ $(error objdir must be defined by the build-directory Makefile)
+ endif
+ 
++# Did we request 'make -s' run? "yes" or "no".
++# Starting from make-4.4 MAKEFLAGS now contains long
++# options like '--shuffle'. To detect presence of 's'
++# we pick first word with short options. Long options
++# are guaranteed to come after whitespace. We use '-'
++# prefix to always have a word before long options
++# even if no short options were passed.
++# Typical MAKEFLAGS values to watch for:
++#   "rs --shuffle=42" (silent)
++#   " --shuffle" (not silent)
++ifeq ($(findstring s, $(firstword -$(MAKEFLAGS))),)
++silent-make := no
++else
++silent-make := yes
++endif
++
+ # Root of the sysdeps tree.
+ sysdep_dir := $(..)sysdeps
+ export sysdep_dir := $(sysdep_dir)
+@@ -868,7 +884,7 @@ endif
+ # Use 64 bit time_t support for installed programs
+ installed-modules = nonlib nscd lddlibc4 ldconfig locale_programs \
+ 		    iconvprogs libnss_files libnss_compat libnss_db libnss_hesiod \
+-		    libutil libpcprofile libSegFault
++		    libutil libpcprofile libSegFault libnsl
+ +extra-time-flags = $(if $(filter $(installed-modules),\
+                            $(in-module)),-D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64)
+ 
+@@ -917,7 +933,7 @@ endif
+ # umpteen zillion filenames along with it (we use `...' instead)
+ # but we don't want this echoing done when the user has said
+ # he doesn't want to see commands echoed by using -s.
+-ifneq	"$(findstring s,$(MAKEFLAGS))" ""	# if -s
++ifeq ($(silent-make),yes)			# if -s
+ +cmdecho	:= echo >/dev/null
+ else						# not -s
+ +cmdecho	:= echo
+diff --git a/Makerules b/Makerules
+index d1e139d03c..09c0cf8357 100644
+--- a/Makerules
++++ b/Makerules
+@@ -794,7 +794,7 @@ endif
+ # Maximize efficiency by minimizing the number of rules.
+ .SUFFIXES:	# Clear the suffix list.  We don't use suffix rules.
+ # Don't define any builtin rules.
+-MAKEFLAGS := $(MAKEFLAGS)r
++MAKEFLAGS := $(MAKEFLAGS) -r
+ 
+ # Generic rule for making directories.
+ %/:
+@@ -811,7 +811,7 @@ MAKEFLAGS := $(MAKEFLAGS)r
+ .PRECIOUS: $(foreach l,$(libtypes),$(patsubst %,$(common-objpfx)$l,c))
+ 
+ # Use the verbose option of ar and tar when not running silently.
+-ifeq	"$(findstring s,$(MAKEFLAGS))" ""	# if not -s
++ifeq ($(silent-make),no)			# if not -s
+ verbose := v
+ else	   					# -s
+ verbose	:=
 diff --git a/NEWS b/NEWS
-index f61e521fc8..e92d547e2c 100644
+index f61e521fc8..aff6951c1d 100644
 --- a/NEWS
 +++ b/NEWS
-@@ -5,6 +5,48 @@ See the end for copying conditions.
+@@ -5,6 +5,57 @@ See the end for copying conditions.
  Please send GNU C library bug reports via <https://sourceware.org/bugzilla/>
  using `glibc' in the "product" field.
  
@@ -27,7 +94,10 @@ index f61e521fc8..e92d547e2c 100644
 +  [12154] Do not fail DNS resolution for CNAMEs which are not host names
 +  [24816] Fix tst-nss-files-hosts-long on single-stack hosts
 +  [28846] CMSG_NXTHDR may trigger -Wstrict-overflow warning
++  [29864] libc: __libc_start_main() should obtain program headers
++    address (_dl_phdr) from the auxv, not the ELF header.
 +  [29305] Conserve NSS buffer space during DNS packet parsing
++  [29402] nscd: nscd: No such file or directory
 +  [29415] nscd: Fix netlink cache invalidation if epoll is used
 +  [28937] New DSO dependency sorter does not put new map first if in a cycle
 +  [29446] _dlopen now ignores dl_caller argument in static mode
@@ -39,6 +109,8 @@ index f61e521fc8..e92d547e2c 100644
 +  [29528] elf: Call __libc_early_init for reused namespaces
 +  [29537] libc: [2.34 regression]: Alignment issue on m68k when using
 +  [29539] libc: LD_TRACE_LOADED_OBJECTS changed how vDSO library are
++  [29576] build: librtld.os: in function `_dl_start_profile':
++    (.text+0x9444): undefined reference to `strcpy'
 +  [29583] Use 64-bit interfaces in gconv_parseconfdir
 +  [29600] Do not completely clear reused namespace in dlmopen
 +  [29607] nscd repeatably crashes calling __strlen_avx2 when hosts cache is
@@ -47,6 +119,10 @@ index f61e521fc8..e92d547e2c 100644
 +  [29657] libc: Incorrect struct stat for 64-bit time on linux/generic
 +    platforms
 +  [29730] broken y2038 support in fstatat on MIPS N64
++  [29771] Restore IPC_64 support in sysvipc *ctl functions
++  [29776] elf/tst-tlsopt-powerpc fails when compiled with -mcpu=power10
++  [29951] time: Set daylight to 1 for matching DST/offset change
++  [30053] time: strftime %s returns -1 after 2038 on 32 bits systems
 +
  Version 2.36
  
@@ -114,6 +190,75 @@ index 2b99dea33b..aac8c49b00 100644
    return __cmsg;
  }
  #endif	/* Use `extern inline'.  */
+diff --git a/csu/libc-start.c b/csu/libc-start.c
+index 543560f36c..bfeee6d851 100644
+--- a/csu/libc-start.c
++++ b/csu/libc-start.c
+@@ -262,28 +262,7 @@ LIBC_START_MAIN (int (*main) (int, char **, char ** MAIN_AUXVEC_DECL),
+   }
+ #  endif
+   _dl_aux_init (auxvec);
+-  if (GL(dl_phdr) == NULL)
+ # endif
+-    {
+-      /* Starting from binutils-2.23, the linker will define the
+-         magic symbol __ehdr_start to point to our own ELF header
+-         if it is visible in a segment that also includes the phdrs.
+-         So we can set up _dl_phdr and _dl_phnum even without any
+-         information from auxv.  */
+-
+-      extern const ElfW(Ehdr) __ehdr_start
+-# if BUILD_PIE_DEFAULT
+-	__attribute__ ((visibility ("hidden")));
+-# else
+-	__attribute__ ((weak, visibility ("hidden")));
+-      if (&__ehdr_start != NULL)
+-# endif
+-        {
+-          assert (__ehdr_start.e_phentsize == sizeof *GL(dl_phdr));
+-          GL(dl_phdr) = (const void *) &__ehdr_start + __ehdr_start.e_phoff;
+-          GL(dl_phnum) = __ehdr_start.e_phnum;
+-        }
+-    }
+ 
+   __tunables_init (__environ);
+ 
+diff --git a/csu/libc-tls.c b/csu/libc-tls.c
+index 0a216c5502..7fdf7cd7a8 100644
+--- a/csu/libc-tls.c
++++ b/csu/libc-tls.c
+@@ -118,19 +118,18 @@ __libc_setup_tls (void)
+   __tls_pre_init_tp ();
+ 
+   /* Look through the TLS segment if there is any.  */
+-  if (_dl_phdr != NULL)
+-    for (phdr = _dl_phdr; phdr < &_dl_phdr[_dl_phnum]; ++phdr)
+-      if (phdr->p_type == PT_TLS)
+-	{
+-	  /* Remember the values we need.  */
+-	  memsz = phdr->p_memsz;
+-	  filesz = phdr->p_filesz;
+-	  initimage = (void *) phdr->p_vaddr + main_map->l_addr;
+-	  align = phdr->p_align;
+-	  if (phdr->p_align > max_align)
+-	    max_align = phdr->p_align;
+-	  break;
+-	}
++  for (phdr = _dl_phdr; phdr < &_dl_phdr[_dl_phnum]; ++phdr)
++    if (phdr->p_type == PT_TLS)
++      {
++	/* Remember the values we need.  */
++	memsz = phdr->p_memsz;
++	filesz = phdr->p_filesz;
++	initimage = (void *) phdr->p_vaddr + main_map->l_addr;
++	align = phdr->p_align;
++	if (phdr->p_align > max_align)
++	  max_align = phdr->p_align;
++	break;
++      }
+ 
+   /* Calculate the size of the static TLS surplus, with 0 auditors.  */
+   _dl_tls_static_surplus_init (0);
 diff --git a/dlfcn/dlopen.c b/dlfcn/dlopen.c
 index 2696dde4b1..9b07b4e132 100644
 --- a/dlfcn/dlopen.c
@@ -128,7 +273,7 @@ index 2696dde4b1..9b07b4e132 100644
  
  void *
 diff --git a/elf/Makefile b/elf/Makefile
-index fd77d0c7c8..72178d33ff 100644
+index fd77d0c7c8..48788fcdb8 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
 @@ -374,6 +374,8 @@ tests += \
@@ -148,7 +293,15 @@ index fd77d0c7c8..72178d33ff 100644
    tst-dlopenfail \
    tst-dlopenfail-2 \
    tst-dlopenrpath \
-@@ -765,6 +768,8 @@ modules-names += \
+@@ -631,6 +634,7 @@ ifeq ($(run-built-tests),yes)
+ tests-special += \
+   $(objpfx)noload-mem.out \
+   $(objpfx)tst-ldconfig-X.out \
++  $(objpfx)tst-ldconfig-p.out \
+   $(objpfx)tst-leaks1-mem.out \
+   $(objpfx)tst-rtld-help.out \
+   # tests-special
+@@ -765,6 +769,8 @@ modules-names += \
    tst-alignmod3 \
    tst-array2dep \
    tst-array5dep \
@@ -157,7 +310,7 @@ index fd77d0c7c8..72178d33ff 100644
    tst-audit11mod1 \
    tst-audit11mod2 \
    tst-audit12mod1 \
-@@ -798,6 +803,7 @@ modules-names += \
+@@ -798,6 +804,7 @@ modules-names += \
    tst-auditmanymod7 \
    tst-auditmanymod8 \
    tst-auditmanymod9 \
@@ -165,7 +318,7 @@ index fd77d0c7c8..72178d33ff 100644
    tst-auditmod1 \
    tst-auditmod9a \
    tst-auditmod9b \
-@@ -834,6 +840,8 @@ modules-names += \
+@@ -834,6 +841,8 @@ modules-names += \
    tst-dlmopen1mod \
    tst-dlmopen-dlerror-mod \
    tst-dlmopen-gethostbyname-mod \
@@ -174,7 +327,7 @@ index fd77d0c7c8..72178d33ff 100644
    tst-dlopenfaillinkmod \
    tst-dlopenfailmod1 \
    tst-dlopenfailmod2 \
-@@ -990,23 +998,8 @@ modules-names += tst-gnu2-tls1mod
+@@ -990,23 +999,8 @@ modules-names += tst-gnu2-tls1mod
  $(objpfx)tst-gnu2-tls1: $(objpfx)tst-gnu2-tls1mod.so
  tst-gnu2-tls1mod.so-no-z-defs = yes
  CFLAGS-tst-gnu2-tls1mod.c += -mtls-dialect=gnu2
@@ -199,7 +352,19 @@ index fd77d0c7c8..72178d33ff 100644
  ifeq (yes,$(have-protected-data))
  modules-names += tst-protected1moda tst-protected1modb
  tests += tst-protected1a tst-protected1b
-@@ -2967,3 +2960,25 @@ $(objpfx)tst-tls-allocation-failure-static-patched.out: \
+@@ -2410,6 +2404,11 @@ $(objpfx)tst-ldconfig-X.out : tst-ldconfig-X.sh $(objpfx)ldconfig
+ 		 '$(run-program-env)' > $@; \
+ 	$(evaluate-test)
+ 
++$(objpfx)tst-ldconfig-p.out : tst-ldconfig-p.sh $(objpfx)ldconfig
++	$(SHELL) $< '$(common-objpfx)' '$(test-wrapper-env)' \
++		 '$(run-program-env)' > $@; \
++	$(evaluate-test)
++
+ # Test static linking of all the libraries we can possibly link
+ # together.  Note that in some configurations this may be less than the
+ # complete list of libraries we build but we try to maxmimize this list.
+@@ -2967,3 +2966,25 @@ $(objpfx)tst-tls-allocation-failure-static-patched.out: \
  	grep -q '^Fatal glibc error: Cannot allocate TLS block$$' $@ \
  	  && grep -q '^status: 127$$' $@; \
  	  $(evaluate-test)
@@ -412,6 +577,70 @@ index 96638d7ed1..3e2a6a584e 100644
  }
  
  #endif /* HAVE_TUNABLES.  */
+diff --git a/elf/dl-support.c b/elf/dl-support.c
+index 4af0b5b2ce..f45b630ba5 100644
+--- a/elf/dl-support.c
++++ b/elf/dl-support.c
+@@ -255,6 +255,25 @@ _dl_aux_init (ElfW(auxv_t) *av)
+   for (int i = 0; i < array_length (auxv_values); ++i)
+     auxv_values[i] = 0;
+   _dl_parse_auxv (av, auxv_values);
++
++  _dl_phdr = (void*) auxv_values[AT_PHDR];
++  _dl_phnum = auxv_values[AT_PHNUM];
++
++  if (_dl_phdr == NULL)
++    {
++      /* Starting from binutils-2.23, the linker will define the
++         magic symbol __ehdr_start to point to our own ELF header
++         if it is visible in a segment that also includes the phdrs.
++         So we can set up _dl_phdr and _dl_phnum even without any
++         information from auxv.  */
++
++      extern const ElfW(Ehdr) __ehdr_start attribute_hidden;
++      assert (__ehdr_start.e_phentsize == sizeof *GL(dl_phdr));
++      _dl_phdr = (const void *) &__ehdr_start + __ehdr_start.e_phoff;
++      _dl_phnum = __ehdr_start.e_phnum;
++    }
++
++  assert (_dl_phdr != NULL);
+ }
+ #endif
+ 
+@@ -323,20 +342,19 @@ _dl_non_dynamic_init (void)
+   if (_dl_platform != NULL)
+     _dl_platformlen = strlen (_dl_platform);
+ 
+-  if (_dl_phdr != NULL)
+-    for (const ElfW(Phdr) *ph = _dl_phdr; ph < &_dl_phdr[_dl_phnum]; ++ph)
+-      switch (ph->p_type)
+-	{
+-	/* Check if the stack is nonexecutable.  */
+-	case PT_GNU_STACK:
+-	  _dl_stack_flags = ph->p_flags;
+-	  break;
+-
+-	case PT_GNU_RELRO:
+-	  _dl_main_map.l_relro_addr = ph->p_vaddr;
+-	  _dl_main_map.l_relro_size = ph->p_memsz;
+-	  break;
+-	}
++  for (const ElfW(Phdr) *ph = _dl_phdr; ph < &_dl_phdr[_dl_phnum]; ++ph)
++    switch (ph->p_type)
++      {
++      /* Check if the stack is nonexecutable.  */
++      case PT_GNU_STACK:
++	_dl_stack_flags = ph->p_flags;
++	break;
++
++      case PT_GNU_RELRO:
++	_dl_main_map.l_relro_addr = ph->p_vaddr;
++	_dl_main_map.l_relro_size = ph->p_memsz;
++	break;
++      }
+ 
+   call_function_static_weak (_dl_find_object_init);
+ 
 diff --git a/elf/dso-sort-tests-1.def b/elf/dso-sort-tests-1.def
 index 5f7f18ef27..4bf9052db1 100644
 --- a/elf/dso-sort-tests-1.def
@@ -445,6 +674,19 @@ index 02a1b3f52f..014393f3cc 100644
  
  /* LoongArch specific dynamic relocations */
  #define R_LARCH_NONE		0
+diff --git a/elf/rtld-Rules b/elf/rtld-Rules
+index ca00dd1fe2..3c5e273f2b 100644
+--- a/elf/rtld-Rules
++++ b/elf/rtld-Rules
+@@ -52,7 +52,7 @@ $(objpfx)rtld-libc.a: $(foreach dir,$(rtld-subdirs),\
+ 	mv -f $@T $@
+ 
+ # Use the verbose option of ar and tar when not running silently.
+-ifeq	"$(findstring s,$(MAKEFLAGS))" ""	# if not -s
++ifeq ($(silent-make),no)			# if not -s
+ verbose := v
+ else						# -s
+ verbose	:=
 diff --git a/elf/rtld.c b/elf/rtld.c
 index cbbaf4a331..3e771a93d8 100644
 --- a/elf/rtld.c
@@ -621,6 +863,89 @@ index 0000000000..70c71fe19c
 +}
 +
 +#include <support/test-driver.c>
+diff --git a/elf/tst-ldconfig-p.sh b/elf/tst-ldconfig-p.sh
+new file mode 100644
+index 0000000000..ec937bf4ec
+--- /dev/null
++++ b/elf/tst-ldconfig-p.sh
+@@ -0,0 +1,77 @@
++#!/bin/sh
++# Test that ldconfig -p prints something useful.
++# Copyright (C) 2023 Free Software Foundation, Inc.
++# This file is part of the GNU C Library.
++
++# The GNU C Library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2.1 of the License, or (at your option) any later version.
++
++# The GNU C Library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++
++# You should have received a copy of the GNU Lesser General Public
++# License along with the GNU C Library; if not, see
++# <https://www.gnu.org/licenses/>.
++
++# Check that the newly built ldconfig -p can dump the system
++# /etc/ld.so.cache file.  This should always work even if the ABIs are
++# not compatible, except in a cross-endian build (that presumably
++# involves emulation when running ldconfig).
++
++common_objpfx=$1
++test_wrapper_env=$2
++run_program_env=$3
++
++if ! test -r /etc/ld.so.cache; then
++    echo "warning: /etc/ld.so.cache does not exist, test skipped"
++    exit 77
++fi
++
++testout="${common_objpfx}elf/tst-ldconfig-p.out"
++# Truncate file.
++: > "$testout"
++
++${test_wrapper_env} \
++${run_program_env} \
++${common_objpfx}elf/ldconfig -p \
++  $testroot/lib >>"$testout" 2>>"$testout"
++status=$?
++echo "info: ldconfig exit status: $status" >>"$testout"
++
++errors=0
++case $status in
++    (0)
++	if head -n 1 "$testout" | \
++		grep -q "libs found in cache \`/etc/ld.so.cache'\$" ; then
++	    echo "info: initial string found" >>"$testout"
++	else
++	    echo "error: initial string not found" >>"$testout"
++	    errors=1
++	fi
++	if grep -q "^	libc\.so\..* => " "$testout"; then
++	    echo "info: libc.so.* string found" >>"$testout"
++	else
++	    echo "error: libc.so.* string not found" >>"$testout"
++	    errors=1
++	fi
++	;;
++    (1)
++	if head -n 1 "$testout" | \
++		grep -q ": Cache file has wrong endianness\.$" ; then
++	    echo "info: cache file has wrong endianess" >> "$testout"
++	else
++	    echo "error: unexpected ldconfig error message" >> "$testout"
++	    errors=1
++	fi
++	;;
++    (*)
++	echo "error: unexpected exit status" >> "$testout"
++	errors=1
++	;;
++esac
++
++exit $errors
 diff --git a/iconv/gconv_parseconfdir.h b/iconv/gconv_parseconfdir.h
 index debb96b322..b72933b526 100644
 --- a/iconv/gconv_parseconfdir.h
@@ -813,6 +1138,113 @@ index 3590b6f496..4dbbac3800 100644
 +
  # endif /* _RESOLV_H_ && !_ISOMAC */
  #endif
+diff --git a/locale/weight.h b/locale/weight.h
+index 8be2d220f8..4a4d5aa6b2 100644
+--- a/locale/weight.h
++++ b/locale/weight.h
+@@ -27,7 +27,14 @@ findidx (const int32_t *table,
+ 	 const unsigned char *extra,
+ 	 const unsigned char **cpp, size_t len)
+ {
++  /* With GCC 8 when compiling with -Os the compiler warns that
++     seq1.back_us and seq2.back_us might be used uninitialized.
++     This uninitialized use is impossible for the same reason
++     as described in comments in locale/weightwc.h.  */
++  DIAG_PUSH_NEEDS_COMMENT;
++  DIAG_IGNORE_Os_NEEDS_COMMENT (8, "-Wmaybe-uninitialized");
+   int32_t i = table[*(*cpp)++];
++  DIAG_POP_NEEDS_COMMENT;
+   const unsigned char *cp;
+   const unsigned char *usrc;
+ 
+diff --git a/misc/bits/syslog.h b/misc/bits/syslog.h
+index fd30dd3114..916d2b6f12 100644
+--- a/misc/bits/syslog.h
++++ b/misc/bits/syslog.h
+@@ -24,6 +24,20 @@
+ extern void __syslog_chk (int __pri, int __flag, const char *__fmt, ...)
+      __attribute__ ((__format__ (__printf__, 3, 4)));
+ 
++#ifdef __USE_MISC
++extern void __vsyslog_chk (int __pri, int __flag, const char *__fmt,
++			   __gnuc_va_list __ap)
++     __attribute__ ((__format__ (__printf__, 3, 0)));
++#endif
++
++#include <bits/floatn.h>
++#if defined __LDBL_COMPAT || __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 1
++# include <bits/syslog-ldbl.h>
++#endif
++
++/* The following functions must be used only after applying all asm
++   redirections, e.g. long double asm redirections.  */
++
+ #ifdef __va_arg_pack
+ __fortify_function void
+ syslog (int __pri, const char *__fmt, ...)
+@@ -37,10 +51,6 @@ syslog (int __pri, const char *__fmt, ...)
+ 
+ 
+ #ifdef __USE_MISC
+-extern void __vsyslog_chk (int __pri, int __flag, const char *__fmt,
+-			   __gnuc_va_list __ap)
+-     __attribute__ ((__format__ (__printf__, 3, 0)));
+-
+ __fortify_function void
+ vsyslog (int __pri, const char *__fmt, __gnuc_va_list __ap)
+ {
+diff --git a/misc/sys/cdefs.h b/misc/sys/cdefs.h
+index f525f67547..294e633335 100644
+--- a/misc/sys/cdefs.h
++++ b/misc/sys/cdefs.h
+@@ -152,6 +152,7 @@
+ # define __glibc_objsize(__o) __bos (__o)
+ #endif
+ 
++#if __USE_FORTIFY_LEVEL > 0
+ /* Compile time conditions to choose between the regular, _chk and _chk_warn
+    variants.  These conditions should get evaluated to constant and optimized
+    away.  */
+@@ -187,7 +188,7 @@
+    ? __ ## f ## _alias (__VA_ARGS__)					      \
+    : (__glibc_unsafe_len (__l, __s, __osz)				      \
+       ? __ ## f ## _chk_warn (__VA_ARGS__, __osz)			      \
+-      : __ ## f ## _chk (__VA_ARGS__, __osz)))			      \
++      : __ ## f ## _chk (__VA_ARGS__, __osz)))
+ 
+ /* Fortify function f, where object size argument passed to f is the number of
+    elements and not total size.  */
+@@ -197,7 +198,8 @@
+    ? __ ## f ## _alias (__VA_ARGS__)					      \
+    : (__glibc_unsafe_len (__l, __s, __osz)				      \
+       ? __ ## f ## _chk_warn (__VA_ARGS__, (__osz) / (__s))		      \
+-      : __ ## f ## _chk (__VA_ARGS__, (__osz) / (__s))))		      \
++      : __ ## f ## _chk (__VA_ARGS__, (__osz) / (__s))))
++#endif
+ 
+ #if __GNUC_PREREQ (4,3)
+ # define __warnattr(msg) __attribute__((__warning__ (msg)))
+diff --git a/misc/sys/syslog.h b/misc/sys/syslog.h
+index d933fea104..3888153ed2 100644
+--- a/misc/sys/syslog.h
++++ b/misc/sys/syslog.h
+@@ -205,11 +205,11 @@ extern void vsyslog (int __pri, const char *__fmt, __gnuc_va_list __ap)
+ /* Define some macros helping to catch buffer overflows.  */
+ #if __USE_FORTIFY_LEVEL > 0 && defined __fortify_function
+ # include <bits/syslog.h>
+-#endif
+-
+-#include <bits/floatn.h>
+-#if defined __LDBL_COMPAT || __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 1
+-# include <bits/syslog-ldbl.h>
++#else
++# include <bits/floatn.h>
++# if defined __LDBL_COMPAT || __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 1
++#  include <bits/syslog-ldbl.h>
++# endif
+ #endif
+ 
+ __END_DECLS
 diff --git a/misc/syslog.c b/misc/syslog.c
 index 554089bfc4..f67d4b58a4 100644
 --- a/misc/syslog.c
@@ -1140,6 +1572,55 @@ index e550d15796..3560b518a2 100644
  
    return 0;
  }
+diff --git a/nis/nis_call.c b/nis/nis_call.c
+index 90187e30b1..5b9dd50151 100644
+--- a/nis/nis_call.c
++++ b/nis/nis_call.c
+@@ -574,7 +574,7 @@ static struct nis_server_cache
+   unsigned int size;
+   unsigned int server_used;
+   unsigned int current_ep;
+-  __time64_t expires;
++  time_t expires;
+   char name[];
+ } *nis_server_cache[16];
+ static time_t nis_cold_start_mtime;
+@@ -583,7 +583,7 @@ __libc_lock_define_initialized (static, nis_server_cache_lock)
+ static directory_obj *
+ nis_server_cache_search (const_nis_name name, int search_parent,
+ 			 unsigned int *server_used, unsigned int *current_ep,
+-			 struct __timespec64 *now)
++			 struct timespec *now)
+ {
+   directory_obj *ret = NULL;
+   int i;
+@@ -641,7 +641,7 @@ nis_server_cache_search (const_nis_name name, int search_parent,
+ static void
+ nis_server_cache_add (const_nis_name name, int search_parent,
+ 		      directory_obj *dir, unsigned int server_used,
+-		      unsigned int current_ep, struct __timespec64 *now)
++		      unsigned int current_ep, struct timespec *now)
+ {
+   struct nis_server_cache **loc;
+   struct nis_server_cache *new;
+@@ -707,7 +707,7 @@ __nisfind_server (const_nis_name name, int search_parent,
+   nis_error result = NIS_SUCCESS;
+   nis_error status;
+   directory_obj *obj;
+-  struct __timespec64 ts;
++  struct timespec ts;
+   unsigned int server_used = ~0;
+   unsigned int current_ep = ~0;
+ 
+@@ -717,7 +717,7 @@ __nisfind_server (const_nis_name name, int search_parent,
+   if (*dir != NULL)
+     return NIS_SUCCESS;
+ 
+-  __clock_gettime64 (CLOCK_REALTIME, &ts);
++  clock_gettime (CLOCK_REALTIME, &ts);
+ 
+   if ((flags & NO_CACHE) == 0)
+     *dir = nis_server_cache_search (name, search_parent, &server_used,
 diff --git a/nscd/aicache.c b/nscd/aicache.c
 index 51e793199f..e0baed170b 100644
 --- a/nscd/aicache.c
@@ -1180,6 +1661,32 @@ index 61d1674eb4..531d2e83df 100644
  	  }
  # endif
  	else
+diff --git a/nscd/nscd.h b/nscd/nscd.h
+index 368091aef8..f15321585b 100644
+--- a/nscd/nscd.h
++++ b/nscd/nscd.h
+@@ -65,7 +65,7 @@ typedef enum
+ struct traced_file
+ {
+   /* Tracks the last modified time of the traced file.  */
+-  time_t mtime;
++  __time64_t mtime;
+   /* Support multiple registered files per database.  */
+   struct traced_file *next;
+   int call_res_init;
+diff --git a/nscd/nscd_gethst_r.c b/nscd/nscd_gethst_r.c
+index 9becb62033..31c64275f0 100644
+--- a/nscd/nscd_gethst_r.c
++++ b/nscd/nscd_gethst_r.c
+@@ -112,7 +112,7 @@ __nscd_get_nl_timestamp (void)
+   if (map == NULL
+       || (map != NO_MAPPING
+ 	  && map->head->nscd_certainly_running == 0
+-	  && map->head->timestamp + MAPPING_TIMEOUT < time_now ()))
++	  && map->head->timestamp + MAPPING_TIMEOUT < time64_now ()))
+     map = __nscd_get_mapping (GETFDHST, "hosts", &__hst_map_handle.mapped);
+ 
+   if (map == NO_MAPPING)
 diff --git a/nss/getent.c b/nss/getent.c
 index 8178b4b470..d2d2524b0c 100644
 --- a/nss/getent.c
@@ -5011,6 +5518,18 @@ index 0000000000..68c96d3c9d
 +}
 +
 +#include <support/test-driver.c>
+diff --git a/stdlib/Makefile b/stdlib/Makefile
+index f7b25c1981..3d49c4941a 100644
+--- a/stdlib/Makefile
++++ b/stdlib/Makefile
+@@ -171,6 +171,7 @@ tests := \
+   test-a64l \
+   test-at_quick_exit-race \
+   test-atexit-race \
++  test-atexit-recursive \
+   test-bz22786 \
+   test-canon \
+   test-canon2 \
 diff --git a/stdlib/arc4random.c b/stdlib/arc4random.c
 index e417ef624d..960a38f295 100644
 --- a/stdlib/arc4random.c
@@ -5024,6 +5543,31 @@ index e417ef624d..960a38f295 100644
    int fd;
  
    if (n == 0)
+diff --git a/stdlib/exit.c b/stdlib/exit.c
+index bc46109f3e..dc12e212bc 100644
+--- a/stdlib/exit.c
++++ b/stdlib/exit.c
+@@ -53,7 +53,10 @@ __run_exit_handlers (int status, struct exit_function_list **listp,
+      exit (). */
+   while (true)
+     {
+-      struct exit_function_list *cur = *listp;
++      struct exit_function_list *cur;
++
++    restart:
++      cur = *listp;
+ 
+       if (cur == NULL)
+ 	{
+@@ -118,7 +121,7 @@ __run_exit_handlers (int status, struct exit_function_list **listp,
+ 	  if (__glibc_unlikely (new_exitfn_called != __new_exitfn_called))
+ 	    /* The last exit function, or another thread, has registered
+ 	       more exit functions.  Start the loop over.  */
+-            continue;
++	    goto restart;
+ 	}
+ 
+       *listp = cur->next;
 diff --git a/stdlib/longlong.h b/stdlib/longlong.h
 index 9b89469ac2..d8f76a43b5 100644
 --- a/stdlib/longlong.h
@@ -5047,6 +5591,230 @@ index 9b89469ac2..d8f76a43b5 100644
  #if defined (__M32R__) && W_TYPE_SIZE == 32
  #define add_ssaaaa(sh, sl, ah, al, bh, bl) \
    /* The cmp clears the condition bit.  */ \
+diff --git a/stdlib/test-atexit-recursive.c b/stdlib/test-atexit-recursive.c
+new file mode 100644
+index 0000000000..0596b9763b
+--- /dev/null
++++ b/stdlib/test-atexit-recursive.c
+@@ -0,0 +1,75 @@
++/* Support file for atexit/exit, etc. race tests (BZ #27749).
++   Copyright (C) 2023 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++/* Check that atexit handler registed from another handler still called. */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <support/check.h>
++#include <support/xunistd.h>
++#include <sys/wait.h>
++#include <unistd.h>
++
++static void
++atexit_cb (void)
++{
++}
++
++static void
++atexit_last (void)
++{
++  _exit (1);
++}
++
++static void
++atexit_recursive (void)
++{
++  atexit (&atexit_cb);
++  atexit (&atexit_last);
++}
++
++_Noreturn static void
++test_and_exit (int count)
++{
++  for (int i = 0; i < count; ++i)
++    atexit (&atexit_cb);
++  atexit (&atexit_recursive);
++  exit (0);
++}
++
++static int
++do_test (void)
++{
++  for (int i = 0; i < 100; ++i)
++    if (xfork () == 0)
++      test_and_exit (i);
++
++  for (int i = 0; i < 100; ++i)
++    {
++      int status;
++      xwaitpid (0, &status, 0);
++      if (!WIFEXITED (status))
++	FAIL_EXIT1 ("Failed iterations %d", i);
++      TEST_COMPARE (WEXITSTATUS (status), 1);
++    }
++
++  return 0;
++}
++
++#define TEST_FUNCTION do_test
++#include <support/test-driver.c>
+diff --git a/string/test-strnlen.c b/string/test-strnlen.c
+index 4a9375112a..5cbaf4b734 100644
+--- a/string/test-strnlen.c
++++ b/string/test-strnlen.c
+@@ -73,7 +73,7 @@ do_test (size_t align, size_t len, size_t maxlen, int max_char)
+ {
+   size_t i;
+ 
+-  align &= 63;
++  align &= (getpagesize () / sizeof (CHAR) - 1);
+   if ((align + len) * sizeof (CHAR) >= page_size)
+     return;
+ 
+@@ -90,38 +90,50 @@ do_test (size_t align, size_t len, size_t maxlen, int max_char)
+ static void
+ do_overflow_tests (void)
+ {
+-  size_t i, j, len;
++  size_t i, j, al_idx, repeats, len;
+   const size_t one = 1;
+   uintptr_t buf_addr = (uintptr_t) buf1;
++  const size_t alignments[] = { 0, 1, 7, 9, 31, 33, 63, 65, 95, 97, 127, 129 };
+ 
+-  for (i = 0; i < 750; ++i)
++  for (al_idx = 0; al_idx < sizeof (alignments) / sizeof (alignments[0]);
++       al_idx++)
+     {
+-      do_test (1, i, SIZE_MAX, BIG_CHAR);
+-
+-      do_test (0, i, SIZE_MAX - i, BIG_CHAR);
+-      do_test (0, i, i - buf_addr, BIG_CHAR);
+-      do_test (0, i, -buf_addr - i, BIG_CHAR);
+-      do_test (0, i, SIZE_MAX - buf_addr - i, BIG_CHAR);
+-      do_test (0, i, SIZE_MAX - buf_addr + i, BIG_CHAR);
+-
+-      len = 0;
+-      for (j = 8 * sizeof(size_t) - 1; j ; --j)
+-        {
+-          len |= one << j;
+-          do_test (0, i, len - i, BIG_CHAR);
+-          do_test (0, i, len + i, BIG_CHAR);
+-          do_test (0, i, len - buf_addr - i, BIG_CHAR);
+-          do_test (0, i, len - buf_addr + i, BIG_CHAR);
+-
+-          do_test (0, i, ~len - i, BIG_CHAR);
+-          do_test (0, i, ~len + i, BIG_CHAR);
+-          do_test (0, i, ~len - buf_addr - i, BIG_CHAR);
+-          do_test (0, i, ~len - buf_addr + i, BIG_CHAR);
+-
+-          do_test (0, i, -buf_addr, BIG_CHAR);
+-          do_test (0, i, j - buf_addr, BIG_CHAR);
+-          do_test (0, i, -buf_addr - j, BIG_CHAR);
+-        }
++      for (repeats = 0; repeats < 2; ++repeats)
++	{
++	  size_t align = repeats ? (getpagesize () - alignments[al_idx])
++				 : alignments[al_idx];
++	  align /= sizeof (CHAR);
++	  for (i = 0; i < 750; ++i)
++	    {
++	      do_test (align, i, SIZE_MAX, BIG_CHAR);
++
++	      do_test (align, i, SIZE_MAX - i, BIG_CHAR);
++	      do_test (align, i, i - buf_addr, BIG_CHAR);
++	      do_test (align, i, -buf_addr - i, BIG_CHAR);
++	      do_test (align, i, SIZE_MAX - buf_addr - i, BIG_CHAR);
++	      do_test (align, i, SIZE_MAX - buf_addr + i, BIG_CHAR);
++
++	      len = 0;
++	      for (j = 8 * sizeof (size_t) - 1; j; --j)
++		{
++		  len |= one << j;
++		  do_test (align, i, len, BIG_CHAR);
++		  do_test (align, i, len - i, BIG_CHAR);
++		  do_test (align, i, len + i, BIG_CHAR);
++		  do_test (align, i, len - buf_addr - i, BIG_CHAR);
++		  do_test (align, i, len - buf_addr + i, BIG_CHAR);
++
++		  do_test (align, i, ~len - i, BIG_CHAR);
++		  do_test (align, i, ~len + i, BIG_CHAR);
++		  do_test (align, i, ~len - buf_addr - i, BIG_CHAR);
++		  do_test (align, i, ~len - buf_addr + i, BIG_CHAR);
++
++		  do_test (align, i, -buf_addr, BIG_CHAR);
++		  do_test (align, i, j - buf_addr, BIG_CHAR);
++		  do_test (align, i, -buf_addr - j, BIG_CHAR);
++		}
++	    }
++	}
+     }
+ }
+ 
+diff --git a/sunrpc/netname.c b/sunrpc/netname.c
+index bf7f0b81c4..c1d1c43e50 100644
+--- a/sunrpc/netname.c
++++ b/sunrpc/netname.c
+@@ -20,6 +20,7 @@
+ #include <string.h>
+ #include <rpc/rpc.h>
+ #include <shlib-compat.h>
++#include <libc-diag.h>
+ 
+ #include "nsswitch.h"
+ 
+@@ -48,7 +49,12 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
+   if ((strlen (dfltdom) + OPSYS_LEN + 3 + MAXIPRINT) > (size_t) MAXNETNAMELEN)
+     return 0;
+ 
++  /* GCC with -Os warns that sprint might overflow while handling dfltdom,
++     however the above test does check if an overflow would happen.  */
++  DIAG_PUSH_NEEDS_COMMENT;
++  DIAG_IGNORE_Os_NEEDS_COMMENT (8, "-Wformat-overflow");
+   sprintf (netname, "%s.%d@%s", OPSYS, uid, dfltdom);
++  DIAG_POP_NEEDS_COMMENT;
+   i = strlen (netname);
+   if (netname[i - 1] == '.')
+     netname[i - 1] = '\0';
+diff --git a/sysdeps/aarch64/dl-trampoline.S b/sysdeps/aarch64/dl-trampoline.S
+index 909b208578..d66f0b9c45 100644
+--- a/sysdeps/aarch64/dl-trampoline.S
++++ b/sysdeps/aarch64/dl-trampoline.S
+@@ -298,12 +298,11 @@ _dl_runtime_profile:
+ 	stp	x2, x3, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*1]
+ 	stp	x4, x5, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*2]
+ 	stp	x6, x7, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*3]
+-	str	x8,     [x29, #OFFSET_RG + DL_OFFSET_RG_X0 + 16*4]
+ 	stp	q0, q1, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*0]
+ 	stp	q2, q3, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*1]
+ 	stp	q4, q5, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*2]
+ 	stp	q6, q7, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*3]
+-	str	xzr,    [X29, #OFFSET_RV + DL_OFFSET_RG_VPCS]
++	str	xzr,    [X29, #OFFSET_RV + DL_OFFSET_RV_VPCS]
+ 
+ 	/* Setup call to pltexit  */
+ 	ldp	x0, x1, [x29, #OFFSET_SAVED_CALL_X0]
+@@ -315,7 +314,6 @@ _dl_runtime_profile:
+ 	ldp	x2, x3, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*1]
+ 	ldp	x4, x5, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*2]
+ 	ldp	x6, x7, [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*3]
+-	ldr	x8,     [x29, #OFFSET_RV + DL_OFFSET_RV_X0 + 16*4]
+ 	ldp	q0, q1, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*0]
+ 	ldp	q2, q3, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*1]
+ 	ldp	q4, q5, [x29, #OFFSET_RV + DL_OFFSET_RV_V0 + 32*2]
 diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
 index 050a3032de..6b256b8388 100644
 --- a/sysdeps/generic/ldsodefs.h
@@ -5359,6 +6127,23 @@ index bcff909b2f..5cda9bb072 100644
  	    res->got_ipv6 = true;
  	}
        at[count].next = at + count + 1;
+diff --git a/sysdeps/powerpc/mod-tlsopt-powerpc.c b/sysdeps/powerpc/mod-tlsopt-powerpc.c
+index 2a82e53baf..d941024963 100644
+--- a/sysdeps/powerpc/mod-tlsopt-powerpc.c
++++ b/sysdeps/powerpc/mod-tlsopt-powerpc.c
+@@ -22,7 +22,11 @@ tls_get_addr_opt_test (void)
+   tls_index *tls_arg;
+ #ifdef __powerpc64__
+   register unsigned long thread_pointer __asm__ ("r13");
+-  asm ("addi %0,2,foo@got@tlsgd" : "=r" (tls_arg));
++# ifdef __PCREL__
++  asm ("paddi %0,0,foo@got@tlsgd@pcrel,1" : "=b" (tls_arg));
++# else
++  asm ("addi %0,2,foo@got@tlsgd" : "=b" (tls_arg));
++# endif
+ #else
+   register unsigned long thread_pointer __asm__ ("r2");
+   asm ("bcl 20,31,1f\n1:\t"
 diff --git a/sysdeps/unix/sysv/linux/Makefile b/sysdeps/unix/sysv/linux/Makefile
 index a139a16532..3ceda9fdbf 100644
 --- a/sysdeps/unix/sysv/linux/Makefile
@@ -6069,6 +6854,21 @@ index 0cd21ef0fa..079612e4aa 100644
 +
 +/* QEMU does not support set_robust_list.  */
 +#undef __ASSUME_SET_ROBUST_LIST
+diff --git a/sysdeps/unix/sysv/linux/ipc_priv.h b/sysdeps/unix/sysv/linux/ipc_priv.h
+index 87893a6757..2f50c31a8e 100644
+--- a/sysdeps/unix/sysv/linux/ipc_priv.h
++++ b/sysdeps/unix/sysv/linux/ipc_priv.h
+@@ -63,4 +63,10 @@ struct __old_ipc_perm
+ # define __IPC_TIME64 0
+ #endif
+ 
++#if __IPC_TIME64 || defined __ASSUME_SYSVIPC_BROKEN_MODE_T
++# define IPC_CTL_NEED_TRANSLATION 1
++#else
++# define IPC_CTL_NEED_TRANSLATION 0
++#endif
++
+ #include <ipc_ops.h>
 diff --git a/sysdeps/unix/sysv/linux/m68k/libc-lock-arch.h b/sysdeps/unix/sysv/linux/m68k/libc-lock-arch.h
 new file mode 100644
 index 0000000000..1844bbaf6f
@@ -6157,6 +6957,89 @@ index 0000000000..fe6c3a0dda
 +}
 +
 +weak_alias (__fstatat, fstatat)
+diff --git a/sysdeps/unix/sysv/linux/msgctl.c b/sysdeps/unix/sysv/linux/msgctl.c
+index e824ebb095..2072205252 100644
+--- a/sysdeps/unix/sysv/linux/msgctl.c
++++ b/sysdeps/unix/sysv/linux/msgctl.c
+@@ -85,11 +85,19 @@ msgctl_syscall (int msqid, int cmd, msgctl_arg_t *buf)
+ int
+ __msgctl64 (int msqid, int cmd, struct __msqid64_ds *buf)
+ {
+-#if __IPC_TIME64
++#if IPC_CTL_NEED_TRANSLATION
++# if __IPC_TIME64
+   struct kernel_msqid64_ds ksemid, *arg = NULL;
+-#else
++# else
+   msgctl_arg_t *arg;
+-#endif
++# endif
++
++  /* Some applications pass the __IPC_64 flag in cmd, to invoke
++     previously unsupported commands back when there was no EINVAL
++     error checking in glibc.  Mask the flag for the switch statements
++     below.  msgctl_syscall adds back the __IPC_64 flag for the actual
++     system call.  */
++  cmd &= ~__IPC_64;
+ 
+   switch (cmd)
+     {
+@@ -101,19 +109,19 @@ __msgctl64 (int msqid, int cmd, struct __msqid64_ds *buf)
+     case IPC_STAT:
+     case MSG_STAT:
+     case MSG_STAT_ANY:
+-#if __IPC_TIME64
++# if __IPC_TIME64
+       if (buf != NULL)
+ 	{
+ 	  msqid64_to_kmsqid64 (buf, &ksemid);
+ 	  arg = &ksemid;
+ 	}
+-# ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
++#  ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+       if (cmd == IPC_SET)
+ 	arg->msg_perm.mode *= 0x10000U;
+-# endif
+-#else
++#  endif
++# else
+       arg = buf;
+-#endif
++# endif
+       break;
+ 
+     case IPC_INFO:
+@@ -137,21 +145,25 @@ __msgctl64 (int msqid, int cmd, struct __msqid64_ds *buf)
+     case IPC_STAT:
+     case MSG_STAT:
+     case MSG_STAT_ANY:
+-#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
++# ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+       arg->msg_perm.mode >>= 16;
+-#else
++# else
+       /* Old Linux kernel versions might not clear the mode padding.  */
+       if (sizeof ((struct msqid_ds){0}.msg_perm.mode)
+           != sizeof (__kernel_mode_t))
+ 	arg->msg_perm.mode &= 0xFFFF;
+-#endif
++# endif
+ 
+-#if __IPC_TIME64
++# if __IPC_TIME64
+       kmsqid64_to_msqid64 (arg, buf);
+-#endif
++# endif
+     }
+ 
+   return ret;
++
++#else /* !IPC_CTL_NEED_TRANSLATION */
++  return msgctl_syscall (msqid, cmd, buf);
++#endif
+ }
+ #if __TIMESIZE != 64
+ libc_hidden_def (__msgctl64)
 diff --git a/sysdeps/unix/sysv/linux/nios2/bits/struct_stat.h b/sysdeps/unix/sysv/linux/nios2/bits/struct_stat.h
 new file mode 100644
 index 0000000000..e00e71173e
@@ -6335,6 +7218,24 @@ index d656aedcc2..4e65f337d4 100644
  #define __NR_migrate_pages 238
  #define __NR_mincore 232
  #define __NR_mkdirat 34
+diff --git a/sysdeps/unix/sysv/linux/semctl.c b/sysdeps/unix/sysv/linux/semctl.c
+index 77a8130c18..3458b018bc 100644
+--- a/sysdeps/unix/sysv/linux/semctl.c
++++ b/sysdeps/unix/sysv/linux/semctl.c
+@@ -140,6 +140,13 @@ __semctl64 (int semid, int semnum, int cmd, ...)
+   union semun64 arg64 = { 0 };
+   va_list ap;
+ 
++  /* Some applications pass the __IPC_64 flag in cmd, to invoke
++     previously unsupported commands back when there was no EINVAL
++     error checking in glibc.  Mask the flag for the switch statements
++     below.  semctl_syscall adds back the __IPC_64 flag for the actual
++     system call.  */
++  cmd &= ~__IPC_64;
++
+   /* Get the argument only if required.  */
+   switch (cmd)
+     {
 diff --git a/sysdeps/unix/sysv/linux/sh/bits/struct_stat.h b/sysdeps/unix/sysv/linux/sh/bits/struct_stat.h
 new file mode 100644
 index 0000000000..0f7c9cdc89
@@ -6480,6 +7381,89 @@ index 0000000000..0f7c9cdc89
 +
 +
 +#endif /* _BITS_STRUCT_STAT_H  */
+diff --git a/sysdeps/unix/sysv/linux/shmctl.c b/sysdeps/unix/sysv/linux/shmctl.c
+index ea38935497..f00817a6f6 100644
+--- a/sysdeps/unix/sysv/linux/shmctl.c
++++ b/sysdeps/unix/sysv/linux/shmctl.c
+@@ -85,11 +85,19 @@ shmctl_syscall (int shmid, int cmd, shmctl_arg_t *buf)
+ int
+ __shmctl64 (int shmid, int cmd, struct __shmid64_ds *buf)
+ {
+-#if __IPC_TIME64
++#if IPC_CTL_NEED_TRANSLATION
++# if __IPC_TIME64
+   struct kernel_shmid64_ds kshmid, *arg = NULL;
+-#else
++# else
+   shmctl_arg_t *arg;
+-#endif
++# endif
++
++  /* Some applications pass the __IPC_64 flag in cmd, to invoke
++     previously unsupported commands back when there was no EINVAL
++     error checking in glibc.  Mask the flag for the switch statements
++     below.  shmctl_syscall adds back the __IPC_64 flag for the actual
++     system call.  */
++  cmd &= ~__IPC_64;
+ 
+   switch (cmd)
+     {
+@@ -103,19 +111,19 @@ __shmctl64 (int shmid, int cmd, struct __shmid64_ds *buf)
+     case IPC_STAT:
+     case SHM_STAT:
+     case SHM_STAT_ANY:
+-#if __IPC_TIME64
++# if __IPC_TIME64
+       if (buf != NULL)
+ 	{
+ 	  shmid64_to_kshmid64 (buf, &kshmid);
+ 	  arg = &kshmid;
+ 	}
+-# ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
++#  ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+       if (cmd == IPC_SET)
+         arg->shm_perm.mode *= 0x10000U;
+-# endif
+-#else
++#  endif
++# else
+       arg = buf;
+-#endif
++# endif
+       break;
+ 
+     case IPC_INFO:
+@@ -140,21 +148,25 @@ __shmctl64 (int shmid, int cmd, struct __shmid64_ds *buf)
+       case IPC_STAT:
+       case SHM_STAT:
+       case SHM_STAT_ANY:
+-#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
++# ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+         arg->shm_perm.mode >>= 16;
+-#else
++# else
+       /* Old Linux kernel versions might not clear the mode padding.  */
+       if (sizeof ((struct shmid_ds){0}.shm_perm.mode)
+ 	  != sizeof (__kernel_mode_t))
+ 	arg->shm_perm.mode &= 0xFFFF;
+-#endif
++# endif
+ 
+-#if __IPC_TIME64
++# if __IPC_TIME64
+       kshmid64_to_shmid64 (arg, buf);
+-#endif
++# endif
+     }
+ 
+   return ret;
++
++#else /* !IPC_CTL_NEED_TRANSLATION */
++  return shmctl_syscall (shmid, cmd, buf);
++#endif
+ }
+ #if __TIMESIZE != 64
+ libc_hidden_def (__shmctl64)
 diff --git a/sysdeps/unix/sysv/linux/sys/mount.h b/sysdeps/unix/sysv/linux/sys/mount.h
 index f965986ba8..19841d0738 100644
 --- a/sysdeps/unix/sysv/linux/sys/mount.h
@@ -7144,6 +8128,53 @@ index 68646ef199..7622af259c 100644
        && X86_ISA_CPU_FEATURES_ARCH_P (cpu_features,
  				      AVX_Fast_Unaligned_Load, ))
      {
+diff --git a/sysdeps/x86_64/multiarch/memcmp-sse2.S b/sysdeps/x86_64/multiarch/memcmp-sse2.S
+index afd450d020..51bc9344f0 100644
+--- a/sysdeps/x86_64/multiarch/memcmp-sse2.S
++++ b/sysdeps/x86_64/multiarch/memcmp-sse2.S
+@@ -308,7 +308,17 @@ L(ret_nonzero_vec_end_0):
+ 	setg	%dl
+ 	leal	-1(%rdx, %rdx), %eax
+ #  else
+-	addl	%edx, %eax
++	/* Use `addq` instead of `addl` here so that even if `rax` + `rdx`
++       is negative value of the sum will be usable as a 64-bit offset
++       (negative 32-bit numbers zero-extend to a large and often
++       out-of-bounds 64-bit offsets).  Note that `rax` + `rdx` >= 0 is
++       an invariant when `memcmp` is used correctly, but if the input
++       strings `rsi`/`rdi` are concurrently modified as the function
++       runs (there is a Data-Race) it is possible for `rax` + `rdx` to
++       be negative.  Given that there is virtually no extra to cost
++       using `addq` instead of `addl` we may as well protect the
++       data-race case.  */
++	addq	%rdx, %rax
+ 	movzbl	(VEC_SIZE * -1 + SIZE_OFFSET)(%rsi, %rax), %ecx
+ 	movzbl	(VEC_SIZE * -1 + SIZE_OFFSET)(%rdi, %rax), %eax
+ 	subl	%ecx, %eax
+diff --git a/sysdeps/x86_64/multiarch/rtld-strcpy.S b/sysdeps/x86_64/multiarch/rtld-strcpy.S
+new file mode 100644
+index 0000000000..19439c553d
+--- /dev/null
++++ b/sysdeps/x86_64/multiarch/rtld-strcpy.S
+@@ -0,0 +1,18 @@
++/* Copyright (C) 2022 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include "../strcpy.S"
 diff --git a/sysdeps/x86_64/multiarch/strcmp.c b/sysdeps/x86_64/multiarch/strcmp.c
 index fdd5afe3af..9d6c9f66ba 100644
 --- a/sysdeps/x86_64/multiarch/strcmp.c
@@ -7163,6 +8194,27 @@ index fdd5afe3af..9d6c9f66ba 100644
  	return OPTIMIZE (evex);
  
        if (CPU_FEATURE_USABLE_P (cpu_features, RTM))
+diff --git a/sysdeps/x86_64/multiarch/strlen-avx2.S b/sysdeps/x86_64/multiarch/strlen-avx2.S
+index 0593fb303b..b9b58ef599 100644
+--- a/sysdeps/x86_64/multiarch/strlen-avx2.S
++++ b/sysdeps/x86_64/multiarch/strlen-avx2.S
+@@ -544,14 +544,11 @@ L(return_vzeroupper):
+ L(cross_page_less_vec):
+ 	tzcntl	%eax, %eax
+ #  ifdef USE_AS_WCSLEN
+-	/* NB: Multiply length by 4 to get byte count.  */
+-	sall	$2, %esi
++	/* NB: Divide by 4 to convert from byte-count to length.  */
++	shrl	$2, %eax
+ #  endif
+ 	cmpq	%rax, %rsi
+ 	cmovb	%esi, %eax
+-#  ifdef USE_AS_WCSLEN
+-	shrl	$2, %eax
+-#  endif
+ 	VZEROUPPER_RETURN
+ # endif
+ 
 diff --git a/sysdeps/x86_64/multiarch/strncmp.c b/sysdeps/x86_64/multiarch/strncmp.c
 index 4ebe4bde30..c4f8b6bbb5 100644
 --- a/sysdeps/x86_64/multiarch/strncmp.c
@@ -7182,6 +8234,368 @@ index 4ebe4bde30..c4f8b6bbb5 100644
  	return OPTIMIZE (evex);
  
        if (CPU_FEATURE_USABLE_P (cpu_features, RTM))
+diff --git a/time/Makefile b/time/Makefile
+index 470275b90c..2f4aa2d528 100644
+--- a/time/Makefile
++++ b/time/Makefile
+@@ -50,7 +50,7 @@ tests	:= test_time clocktest tst-posixtz tst-strptime tst_wcsftime \
+ 	   tst-clock tst-clock2 tst-clock_nanosleep tst-cpuclock1 \
+ 	   tst-adjtime tst-ctime tst-difftime tst-mktime4 tst-clock_settime \
+ 	   tst-settimeofday tst-itimer tst-gmtime tst-timegm \
+-	   tst-timespec_get tst-timespec_getres
++	   tst-timespec_get tst-timespec_getres tst-strftime4
+ 
+ tests-time64 := \
+   tst-adjtime-time64 \
+@@ -65,6 +65,7 @@ tests-time64 := \
+   tst-itimer-time64 \
+   tst-mktime4-time64 \
+   tst-settimeofday-time64 \
++  tst-strftime4-time64 \
+   tst-timegm-time64 \
+   tst-timespec_get-time64 \
+   tst-timespec_getres-time64 \
+diff --git a/time/mktime.c b/time/mktime.c
+index 494c89bf54..e9a6006710 100644
+--- a/time/mktime.c
++++ b/time/mktime.c
+@@ -429,8 +429,13 @@ __mktime_internal (struct tm *tp,
+ 	 time with the right value, and use its UTC offset.
+ 
+ 	 Heuristic: probe the adjacent timestamps in both directions,
+-	 looking for the desired isdst.  This should work for all real
+-	 time zone histories in the tz database.  */
++	 looking for the desired isdst.  If none is found within a
++	 reasonable duration bound, assume a one-hour DST difference.
++	 This should work for all real time zone histories in the tz
++	 database.  */
++
++      /* +1 if we wanted standard time but got DST, -1 if the reverse.  */
++      int dst_difference = (isdst == 0) - (tm.tm_isdst == 0);
+ 
+       /* Distance between probes when looking for a DST boundary.  In
+ 	 tzdata2003a, the shortest period of DST is 601200 seconds
+@@ -441,12 +446,14 @@ __mktime_internal (struct tm *tp,
+ 	 periods when probing.  */
+       int stride = 601200;
+ 
+-      /* The longest period of DST in tzdata2003a is 536454000 seconds
+-	 (e.g., America/Jujuy starting 1946-10-01 01:00).  The longest
+-	 period of non-DST is much longer, but it makes no real sense
+-	 to search for more than a year of non-DST, so use the DST
+-	 max.  */
+-      int duration_max = 536454000;
++      /* In TZDB 2021e, the longest period of DST (or of non-DST), in
++	 which the DST (or adjacent DST) difference is not one hour,
++	 is 457243209 seconds: e.g., America/Cambridge_Bay with leap
++	 seconds, starting 1965-10-31 00:00 in a switch from
++	 double-daylight time (-05) to standard time (-07), and
++	 continuing to 1980-04-27 02:00 in a switch from standard time
++	 (-07) to daylight time (-06).  */
++      int duration_max = 457243209;
+ 
+       /* Search in both directions, so the maximum distance is half
+ 	 the duration; add the stride to avoid off-by-1 problems.  */
+@@ -483,6 +490,11 @@ __mktime_internal (struct tm *tp,
+ 	      }
+ 	  }
+ 
++      /* No unusual DST offset was found nearby.  Assume one-hour DST.  */
++      t += 60 * 60 * dst_difference;
++      if (mktime_min <= t && t <= mktime_max && convert_time (convert, t, &tm))
++	goto offset_found;
++
+       __set_errno (EOVERFLOW);
+       return -1;
+     }
+diff --git a/time/strftime_l.c b/time/strftime_l.c
+index 75554fee7c..4d7c4ea828 100644
+--- a/time/strftime_l.c
++++ b/time/strftime_l.c
+@@ -159,6 +159,10 @@ extern char *tzname[];
+ #ifdef _LIBC
+ # define tzname __tzname
+ # define tzset __tzset
++
++# define time_t __time64_t
++# define __gmtime_r(t, tp) __gmtime64_r (t, tp)
++# define mktime(tp) __mktime64 (tp)
+ #endif
+ 
+ #if !HAVE_TM_GMTOFF
+diff --git a/time/strptime_l.c b/time/strptime_l.c
+index a3c5681fc2..f927448204 100644
+--- a/time/strptime_l.c
++++ b/time/strptime_l.c
+@@ -30,8 +30,10 @@
+ #ifdef _LIBC
+ # define HAVE_LOCALTIME_R 0
+ # include "../locale/localeinfo.h"
+-#endif
+ 
++# define time_t __time64_t
++# define __localtime_r(t, tp) __localtime64_r (t, tp)
++#endif
+ 
+ #if ! HAVE_LOCALTIME_R && ! defined localtime_r
+ # ifdef _LIBC
+diff --git a/time/tst-strftime4-time64.c b/time/tst-strftime4-time64.c
+new file mode 100644
+index 0000000000..4d47ee7d79
+--- /dev/null
++++ b/time/tst-strftime4-time64.c
+@@ -0,0 +1 @@
++#include "tst-strftime4.c"
+diff --git a/time/tst-strftime4.c b/time/tst-strftime4.c
+new file mode 100644
+index 0000000000..659716d0fa
+--- /dev/null
++++ b/time/tst-strftime4.c
+@@ -0,0 +1,52 @@
++/* Test strftime and strptime after 2038-01-19 03:14:07 UTC (bug 30053).
++   Copyright (C) 2023 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <time.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <support/check.h>
++
++static int
++do_test (void)
++{
++  TEST_VERIFY_EXIT (setenv ("TZ", "UTC0", 1) == 0);
++  tzset ();
++  if (sizeof (time_t) > 4)
++    {
++      time_t wrap = (time_t) 2147483648LL;
++      char buf[80];
++      struct tm *tm = gmtime (&wrap);
++      TEST_VERIFY_EXIT (tm != NULL);
++      TEST_VERIFY_EXIT (strftime (buf, sizeof buf, "%s", tm) > 0);
++      puts (buf);
++      TEST_VERIFY (strcmp (buf, "2147483648") == 0);
++
++      struct tm tm2;
++      char *p = strptime (buf, "%s", &tm2);
++      TEST_VERIFY_EXIT (p != NULL && *p == '\0');
++      time_t t = mktime (&tm2);
++      printf ("%lld\n", (long long) t);
++      TEST_VERIFY (t == wrap);
++    }
++  else
++    FAIL_UNSUPPORTED ("32-bit time_t");
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/time/tzfile.c b/time/tzfile.c
+index dd75848ba9..8bba4e5b8d 100644
+--- a/time/tzfile.c
++++ b/time/tzfile.c
+@@ -32,7 +32,7 @@
+ int __use_tzfile;
+ static dev_t tzfile_dev;
+ static ino64_t tzfile_ino;
+-static time_t tzfile_mtime;
++static __time64_t tzfile_mtime;
+ 
+ struct ttinfo
+   {
+@@ -61,6 +61,10 @@ static size_t num_leaps;
+ static struct leap *leaps;
+ static char *tzspec;
+ 
++/* Used to restore the daylight variable during time conversion, as if
++   tzset had been called.  */
++static int daylight_saved;
++
+ #include <endian.h>
+ #include <byteswap.h>
+ 
+@@ -438,36 +442,35 @@ __tzfile_read (const char *file, size_t extra, char **extrap)
+   if (__tzname[1] == NULL)
+     __tzname[1] = __tzname[0];
+ 
++  daylight_saved = 0;
+   if (num_transitions == 0)
+     /* Use the first rule (which should also be the only one).  */
+     rule_stdoff = rule_dstoff = types[0].offset;
+   else
+     {
+-      int stdoff_set = 0, dstoff_set = 0;
+-      rule_stdoff = rule_dstoff = 0;
++      rule_stdoff = 0;
++
++      /* Search for the last rule with a standard time offset.  This
++	 will be used for the global timezone variable.  */
+       i = num_transitions - 1;
+       do
+-	{
+-	  if (!stdoff_set && !types[type_idxs[i]].isdst)
+-	    {
+-	      stdoff_set = 1;
+-	      rule_stdoff = types[type_idxs[i]].offset;
+-	    }
+-	  else if (!dstoff_set && types[type_idxs[i]].isdst)
+-	    {
+-	      dstoff_set = 1;
+-	      rule_dstoff = types[type_idxs[i]].offset;
+-	    }
+-	  if (stdoff_set && dstoff_set)
++	if (!types[type_idxs[i]].isdst)
++	  {
++	    rule_stdoff = types[type_idxs[i]].offset;
+ 	    break;
+-	}
++	  }
++	else
++	  daylight_saved = 1;
+       while (i-- > 0);
+ 
+-      if (!dstoff_set)
+-	rule_dstoff = rule_stdoff;
++      /* Keep searching to see if there is a DST rule.  This
++	 information will be used to set the global daylight
++	 variable.  */
++      while (i-- > 0 && !daylight_saved)
++	daylight_saved = types[type_idxs[i]].isdst;
+     }
+ 
+-  __daylight = rule_stdoff != rule_dstoff;
++  __daylight = daylight_saved;
+   __timezone = -rule_stdoff;
+ 
+  done:
+@@ -731,7 +734,7 @@ __tzfile_compute (__time64_t timer, int use_localtime,
+ 	}
+ 
+       struct ttinfo *info = &types[i];
+-      __daylight = rule_stdoff != rule_dstoff;
++      __daylight = daylight_saved;
+       __timezone = -rule_stdoff;
+ 
+       if (__tzname[0] == NULL)
+diff --git a/timezone/Makefile b/timezone/Makefile
+index a789c22d26..5002de39ad 100644
+--- a/timezone/Makefile
++++ b/timezone/Makefile
+@@ -23,7 +23,7 @@ subdir	:= timezone
+ include ../Makeconfig
+ 
+ others	:= zdump zic
+-tests	:= test-tz tst-timezone tst-tzset tst-bz28707
++tests	:= test-tz tst-timezone tst-tzset tst-bz28707 tst-bz29951
+ 
+ generated-dirs += testdata
+ 
+@@ -86,11 +86,13 @@ $(objpfx)tst-timezone.out: $(addprefix $(testdata)/, \
+ 				       Europe/London)
+ $(objpfx)tst-tzset.out: $(addprefix $(testdata)/XT, 1 2 3 4)
+ $(objpfx)tst-bz28707.out: $(testdata)/XT5
++$(objpfx)tst-bz29951.out: $(testdata)/XT6
+ 
+ test-tz-ENV = TZDIR=$(testdata)
+ tst-timezone-ENV = TZDIR=$(testdata)
+ tst-tzset-ENV = TZDIR=$(testdata)
+ tst-bz28707-ENV = TZDIR=$(testdata)
++tst-bz29951-ENV = TZDIR=$(testdata)
+ 
+ # Note this must come second in the deps list for $(built-program-cmd) to work.
+ zic-deps = $(objpfx)zic $(leapseconds) yearistype
+diff --git a/timezone/testdata/XT6 b/timezone/testdata/XT6
+new file mode 100644
+index 0000000000..07b393bb7d
+Binary files /dev/null and b/timezone/testdata/XT6 differ
+diff --git a/timezone/tst-bz29951.c b/timezone/tst-bz29951.c
+new file mode 100644
+index 0000000000..abd334683b
+--- /dev/null
++++ b/timezone/tst-bz29951.c
+@@ -0,0 +1,68 @@
++/* Check that daylight is set if the last DST transition did not change offset.
++   Copyright (C) 2023 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <errno.h>
++#include <stdlib.h>
++#include <support/check.h>
++#include <time.h>
++
++/* Set the specified time zone with error checking.  */
++static void
++set_timezone (const char *name)
++{
++  TEST_VERIFY (setenv ("TZ", name, 1) == 0);
++  errno = 0;
++  tzset ();
++  TEST_COMPARE (errno, 0);
++}
++
++static int
++do_test (void)
++{
++  /* Test zone based on tz-2022g version of Africa/Tripoli.  The last
++     DST transition coincided with a change in the standard time
++     offset, effectively making it a no-op.
++
++     Africa/Tripoli  Thu Oct 24 23:59:59 2013 UT
++       = Fri Oct 25 01:59:59 2013 CEST isdst=1 gmtoff=7200
++     Africa/Tripoli  Fri Oct 25 00:00:00 2013 UT
++       = Fri Oct 25 02:00:00 2013 EET isdst=0 gmtoff=7200
++   */
++  set_timezone ("XT6");
++  TEST_VERIFY (daylight != 0);
++  TEST_COMPARE (timezone, -7200);
++
++  /* Check that localtime re-initializes the two variables.  */
++  daylight = timezone = 17;
++  time_t t = 844034401;
++  struct tm *tm = localtime (&t);
++  TEST_VERIFY (daylight != 0);
++  TEST_COMPARE (timezone, -7200);
++  TEST_COMPARE (tm->tm_year, 96);
++  TEST_COMPARE (tm->tm_mon, 8);
++  TEST_COMPARE (tm->tm_mday, 29);
++  TEST_COMPARE (tm->tm_hour, 23);
++  TEST_COMPARE (tm->tm_min, 0);
++  TEST_COMPARE (tm->tm_sec, 1);
++  TEST_COMPARE (tm->tm_gmtoff, 3600);
++  TEST_COMPARE (tm->tm_isdst, 0);
++
++  return 0;
++}
++
++#include <support/test-driver.c>
 diff --git a/wcsmbs/Makefile b/wcsmbs/Makefile
 index e6b9e8743a..4af102a3f6 100644
 --- a/wcsmbs/Makefile
