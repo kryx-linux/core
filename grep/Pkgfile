@@ -4,17 +4,17 @@
 # Depends on: libpcre2
 
 name=grep
-version=3.8
+version=3.9
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
 
-	# don't link against libsigsegv
-	export ac_cv_libsigsegv=no
-
-	./configure --prefix=/usr --disable-nls
+	./configure \
+		--prefix=/usr \
+		--disable-nls \
+		--without-libsigsegv
 	make
 	make DESTDIR=$PKG install
 
