@@ -5,7 +5,7 @@
 # Optional: python3-sphinx
 
 name=cmake
-version=3.26.1
+version=3.26.2
 release=1
 source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz)
 
@@ -29,7 +29,7 @@ build() {
 		-- -D CMake_BUILD_LTO=ON \
 		-D BUILD_TESTING=OFF
 
-	ninja
+	ninja -j ${JOBS:-1}
 	DESTDIR=$PKG ninja install
 	rm -r $PKG/usr/{doc,share/cmake/Help}
 
