@@ -4,14 +4,13 @@
 # Depends on: eudev
 
 name=dhcpcd
-version=9.4.0.105
+version=9.5.0
 release=1
-#source=(https://roy.marples.name/downloads/dhcpcd/$name-$version.tar.xz
-source=(https://crux.nu/files/distfiles/$name-$version.tar.xz
+source=(https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/$name-$version.tar.gz
 	rc.dhcpcd)
 
 build() {
-	cd $name-$version
+	cd $name-$name-$version
 
 	./configure \
 		--prefix= \
