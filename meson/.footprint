@@ -4,13 +4,13 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/python3.10/
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/
-drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/PKG-INFO
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/SOURCES.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/dependency_links.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/entry_points.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/requires.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.0.1-py3.10.egg-info/top_level.txt
+drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/PKG-INFO
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/SOURCES.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/dependency_links.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/entry_points.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/requires.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.1.0-py3.10.egg-info/top_level.txt
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/__init__.py (EMPTY)
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/__pycache__/
@@ -102,6 +102,8 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/backends.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/ninjabackend.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/ninjabackend.cpython-310.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/nonebackend.cpython-310.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/nonebackend.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/vs2010backend.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/vs2010backend.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/vs2012backend.cpython-310.opt-1.pyc
@@ -120,6 +122,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/__pycache__/xcodebackend.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/backends.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/ninjabackend.py
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/nonebackend.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/vs2010backend.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/vs2012backend.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/backend/vs2013backend.py
@@ -305,6 +308,8 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/pkgconfig.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/platform.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/platform.cpython-310.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/python.cpython-310.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/python.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/qt.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/qt.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__pycache__/scalapack.cpython-310.opt-1.pyc
@@ -335,6 +340,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/da
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/mpi.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/pkgconfig.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/platform.py
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/python.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/qt.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/scalapack.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/ui.py
@@ -567,6 +573,8 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/meson_exe.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/msgfmthelper.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/msgfmthelper.cpython-310.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-310.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/run_tool.cpython-310.opt-1.pyc
@@ -604,6 +612,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/itstool.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/meson_exe.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/msgfmthelper.py
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/python_info.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/regen_checker.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/run_tool.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/scanbuild.py
