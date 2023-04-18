@@ -4,12 +4,14 @@
 # Depends on: libgmp
 
 name=libmpfr
-version=4.2.0
+version=4.2.0-p4
 release=1
-source=(https://www.mpfr.org/mpfr-${version%-*}/mpfr-${version%-*}.tar.xz)
+source=(https://www.mpfr.org/mpfr-${version%-*}/mpfr-${version%-*}.tar.xz
+	$name-$version.patch)
 
 build() {
 	cd mpfr-${version%-*}
+	patch -p1 -i $SRC/$name-$version.patch
 	./configure --prefix=/usr
 	make
 	make DESTDIR=$PKG install
