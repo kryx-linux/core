@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqt+DLM9b5iryklLP4a4NOTeRnczmsa+nNpmS5/Krw0zAU1jyNaSrE567f4ZgKEWaOuIHNU3OV+qNZSmox5hXgwo=
-SHA256 (Pkgfile) = 1ae7bd79c3bd7356a8575d35c96fbe8f8c22ada6cadb162f66d9903d7b15144d
+RWRJc1FUaeVeqvKMhKESvbODPCDmT5HR0vE3WocP7jv8WLFUK8XXF8+FUJlZOmWBM4/KCKnNQmWX1zLXx9bP36huqIXNEq29oQA=
+SHA256 (Pkgfile) = a4e7f3de0eccb365a6b7af7ca909d8e6b96b8ca3a089f7343178988f13e9dbb5
 SHA256 (.footprint) = f676700a19f936a1af944e81a516dbf182723d6ac244eadabd3fd19e9a01daa5
 SHA256 (glibc-2.36.tar.xz) = 1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75
 SHA256 (linux-5.15.55.tar.xz) = 1ef6bd508b6c3af3bef2d5b337e4477254dba284c79e329aa38f9763ae3bfdcc
-SHA256 (glibc-2.36-4.patch) = c562f1a0b80b6ba8694df8a90fa7a3ff20604b6bf486c2ab76d02a62f3e77844
+SHA256 (glibc-2.36-5.patch) = 99eb19cb6fc24553fcd548e8f375dd1d10a4996d1605cf0036bdaac2013a7f3f
 SHA256 (lib32.conf) = 2f174d2bcefe1c29327690514f34d6970fffdd54398320ca23a11b5f1e3c9b2d
