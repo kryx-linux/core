@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=linux-pam
-version=1.5.2
-release=3
+version=1.5.3
+release=1
 source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz \
 	common-account common-auth common-password common-session \
 	other)
@@ -15,7 +15,6 @@ build() {
 	CONFIG_SHELL=/bin/bash ./configure \
 		--prefix=/usr \
 		--libdir=/lib \
-		--disable-nis \
 		--disable-nls \
 		--disable-prelude \
 		--enable-db=no
