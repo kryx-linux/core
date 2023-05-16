@@ -4,7 +4,7 @@
 # Depends on: kmod
 
 name=eudev
-version=3.2.11
+version=3.2.12
 release=1
 source=(https://github.com/eudev-project/eudev/releases/download/v$version/$name-$version.tar.gz
 	81-crux.rules start_udev)

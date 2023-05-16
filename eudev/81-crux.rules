@@ -3,4 +3,3 @@
 # 
 
 KERNEL=="fuse", ACTION=="add", RUN+="/bin/mount -t fusectl fusectl /sys/fs/fuse/connections"
-
