@@ -1,5 +1,5 @@
 # Description: The GNU Binutils are a collection of binary tools
-# URL: http://sources.redhat.com/binutils/
+# URL: https://www.gnu.org/software/binutils/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: flex zlib
 
