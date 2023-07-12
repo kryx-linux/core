@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqifX0gaydgB36Chk9kFgi0rlLB//9NNLAbHGk/hZilccqwpQApmt2ud87O6PlKoZ1xW6oOCiusUP1gLyBM3qdAw=
-SHA256 (Pkgfile) = 7ac7de8f2a2451f7fd8d56af0d5accaf2de5dec649b589a0cbfcb38b82f27e3b
+RWRJc1FUaeVeqiR4rM/cU2KGVFzW+g7T5i1sukPuZxHg5/TVy1dRMELiaTLJbyZoFJ5Kx4vfe/RbbqmqstH2EXHQeD28wZznDAI=
+SHA256 (Pkgfile) = 35decab331613e2ab4626a87a9520dc970cc3d6984910cb599817d28e365c7a8
 SHA256 (.footprint) = 78704a4c9b22be12c0f2ed660be355c90dd2c2ae3b0d2ece5a80b371a3491acc
-SHA256 (nghttp2-1.54.0.tar.xz) = 20533c9354fbb6aa689b6aa0ddb77f91da1d242587444502832e1864308152df
+SHA256 (nghttp2-1.55.0.tar.xz) = bc5b9d33fc08b195f0f2e685aa70bfd3f2f265a8d48039a701b7d67b375a783f
