@@ -19,8 +19,9 @@ drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/rhash_torrent.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/librhash.a
-lrwxrwxrwx	root/root	usr/lib/librhash.so -> librhash.so.0
--rwxr-xr-x	root/root	usr/lib/librhash.so.0
+lrwxrwxrwx	root/root	usr/lib/librhash.so -> librhash.so.1
+lrwxrwxrwx	root/root	usr/lib/librhash.so.1 -> librhash.so.1.4.4
+-rwxr-xr-x	root/root	usr/lib/librhash.so.1.4.4
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/librhash.pc
 drwxr-xr-x	root/root	usr/share/
