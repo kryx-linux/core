@@ -5,8 +5,8 @@
 # Optional: python3-sphinx
 
 name=cmake
-version=3.26.4
-release=2
+version=3.27.0
+release=1
 source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz)
 
 build() {
@@ -23,6 +23,7 @@ build() {
 		--bootstrap-system-libuv \
 		--bootstrap-system-jsoncpp \
 		--bootstrap-system-librhash \
+		--no-system-cppdap \
 		--system-libs \
 		--parallel=${JOBS:-1} \
 		$(prt-get isinst python3-sphinx >/dev/null && echo --sphinx-man) \
