@@ -1,9 +1,9 @@
 # Description: A system for managing library compile/link flags.
-# URL: https://git.sr.ht/~kaniini/pkgconf
+# URL: https://github.com/pkgconf/pkgconf/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=pkgconf
-version=1.9.5
+version=2.0.0
 release=1
 source=(https://distfiles.ariadne.space/pkgconf/pkgconf-$version.tar.xz
   i686-pc-linux-gnu.personality x86_64-pc-linux-gnu.personality)
