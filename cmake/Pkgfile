@@ -1,11 +1,11 @@
 # Description: A cross-platform, open-source make system
 # URL: https://www.cmake.org/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: curl expat jsoncpp libarchive libnghttp2 libuv lzlib ncurses rhash
+# Depends on: curl expat jsoncpp libarchive libuv lzlib ncurses rhash
 # Optional: python3-sphinx
 
 name=cmake
-version=3.27.1
+version=3.27.2
 release=1
 source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz)
 
