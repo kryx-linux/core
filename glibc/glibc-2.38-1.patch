@@ -1,0 +1,562 @@
+diff --git a/include/ifaddrs.h b/include/ifaddrs.h
+index 416118f1b3..19a3afb19f 100644
+--- a/include/ifaddrs.h
++++ b/include/ifaddrs.h
+@@ -34,9 +34,5 @@ extern void __check_native (uint32_t a1_index, int *a1_native,
+ 			    uint32_t a2_index, int *a2_native)
+   attribute_hidden;
+ 
+-#if IS_IN (nscd)
+-extern uint32_t __bump_nl_timestamp (void) attribute_hidden;
+-#endif
+-
+ # endif /* !_ISOMAC */
+ #endif	/* ifaddrs.h */
+diff --git a/inet/check_pf.c b/inet/check_pf.c
+index 5310c99121..6d1475920f 100644
+--- a/inet/check_pf.c
++++ b/inet/check_pf.c
+@@ -60,12 +60,3 @@ __free_in6ai (struct in6addrinfo *in6ai)
+ {
+   /* Nothing to do.  */
+ }
+-
+-
+-#if IS_IN (nscd)
+-uint32_t
+-__bump_nl_timestamp (void)
+-{
+-  return 0;
+-}
+-#endif
+diff --git a/nscd/Makefile b/nscd/Makefile
+index 2a0489f4cf..16b6460ee9 100644
+--- a/nscd/Makefile
++++ b/nscd/Makefile
+@@ -35,7 +35,7 @@ nscd-modules := nscd connections pwdcache getpwnam_r getpwuid_r grpcache \
+ 		getgrnam_r getgrgid_r hstcache gethstbyad_r gethstbynm3_r \
+ 		getsrvbynm_r getsrvbypt_r servicescache \
+ 		dbg_log nscd_conf nscd_stat cache mem nscd_setup_thread \
+-		xmalloc xstrdup aicache initgrcache gai res_hconf \
++		xmalloc xstrdup aicache initgrcache res_hconf \
+ 		netgroupcache cachedumper
+ 
+ ifeq ($(build-nscd)$(have-thread-library),yesyes)
+diff --git a/nscd/connections.c b/nscd/connections.c
+index a405a44a9b..15693e5090 100644
+--- a/nscd/connections.c
++++ b/nscd/connections.c
+@@ -256,6 +256,17 @@ int inotify_fd = -1;
+ #ifdef HAVE_NETLINK
+ /* Descriptor for netlink status updates.  */
+ static int nl_status_fd = -1;
++
++static uint32_t
++__bump_nl_timestamp (void)
++{
++  static uint32_t nl_timestamp;
++
++  if (atomic_fetch_add_relaxed (&nl_timestamp, 1) + 1 == 0)
++    atomic_fetch_add_relaxed (&nl_timestamp, 1);
++
++  return nl_timestamp;
++}
+ #endif
+ 
+ /* Number of times clients had to wait.  */
+diff --git a/nscd/gai.c b/nscd/gai.c
+deleted file mode 100644
+index e29f3fe583..0000000000
+--- a/nscd/gai.c
++++ /dev/null
+@@ -1,50 +0,0 @@
+-/* Copyright (C) 2004-2023 Free Software Foundation, Inc.
+-   This file is part of the GNU C Library.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published
+-   by the Free Software Foundation; version 2 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program; if not, see <https://www.gnu.org/licenses/>.  */
+-
+-#include <alloca.h>
+-#include <sys/stat.h>
+-
+-/* This file uses the getaddrinfo code but it compiles it without NSCD
+-   support.  We just need a few symbol renames.  */
+-#define __ioctl ioctl
+-#define __getsockname getsockname
+-#define __socket socket
+-#define __recvmsg recvmsg
+-#define __bind bind
+-#define __sendto sendto
+-#define __strchrnul strchrnul
+-#define __getline getline
+-#define __qsort_r qsort_r
+-/* nscd uses 1MB or 2MB thread stacks.  */
+-#define __libc_use_alloca(size) (size <= __MAX_ALLOCA_CUTOFF)
+-#define __getifaddrs getifaddrs
+-#define __freeifaddrs freeifaddrs
+-#undef __fstat64
+-#define __fstat64 fstat64
+-#undef __stat64
+-#define __stat64 stat64
+-
+-/* We are nscd, so we don't want to be talking to ourselves.  */
+-#undef  USE_NSCD
+-
+-#include <getaddrinfo.c>
+-
+-/* Support code.  */
+-#include <check_pf.c>
+-#include <check_native.c>
+-
+-/* Some variables normally defined in libc.  */
+-nss_action_list __nss_hosts_database attribute_hidden;
+diff --git a/stdlib/tst-realpath.c b/stdlib/tst-realpath.c
+index f325c95a44..3694ecd8af 100644
+--- a/stdlib/tst-realpath.c
++++ b/stdlib/tst-realpath.c
+@@ -24,6 +24,7 @@
+    License along with the GNU C Library; if not, see
+    <https://www.gnu.org/licenses/>.  */
+ 
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+@@ -50,7 +51,11 @@ void dealloc (void *p)
+ 
+ char* alloc (void)
+ {
+-  return (char *)malloc (8);
++#ifdef PATH_MAX
++  return (char *)malloc (PATH_MAX);
++#else
++  return (char *)malloc (4096);
++#endif
+ }
+ 
+ static int
+diff --git a/sysdeps/i386/i686/memcpy.S b/sysdeps/i386/i686/memcpy.S
+index 9b48ec0ea1..b86af4aac9 100644
+--- a/sysdeps/i386/i686/memcpy.S
++++ b/sysdeps/i386/i686/memcpy.S
+@@ -27,7 +27,7 @@
+ #define LEN	SRC+4
+ 
+ 	.text
+-#if defined PIC && IS_IN (libc)
++#if defined SHARED && IS_IN (libc)
+ ENTRY_CHK (__memcpy_chk)
+ 	movl	12(%esp), %eax
+ 	cmpl	%eax, 16(%esp)
+diff --git a/sysdeps/i386/i686/mempcpy.S b/sysdeps/i386/i686/mempcpy.S
+index 26f8501e7d..14d9dd681a 100644
+--- a/sysdeps/i386/i686/mempcpy.S
++++ b/sysdeps/i386/i686/mempcpy.S
+@@ -27,7 +27,7 @@
+ #define LEN	SRC+4
+ 
+ 	.text
+-#if defined PIC && IS_IN (libc)
++#if defined SHARED && IS_IN (libc)
+ ENTRY_CHK (__mempcpy_chk)
+ 	movl	12(%esp), %eax
+ 	cmpl	%eax, 16(%esp)
+diff --git a/sysdeps/i386/i686/multiarch/memcpy_chk.c b/sysdeps/i386/i686/multiarch/memcpy_chk.c
+index ec945dc91f..c3a8aeaf18 100644
+--- a/sysdeps/i386/i686/multiarch/memcpy_chk.c
++++ b/sysdeps/i386/i686/multiarch/memcpy_chk.c
+@@ -32,4 +32,6 @@ libc_ifunc_redirected (__redirect_memcpy_chk, __memcpy_chk,
+ __hidden_ver1 (__memcpy_chk, __GI___memcpy_chk, __redirect_memcpy_chk)
+   __attribute__ ((visibility ("hidden"))) __attribute_copy__ (__memcpy_chk);
+ # endif
++#else
++# include <debug/memcpy_chk.c>
+ #endif
+diff --git a/sysdeps/i386/i686/multiarch/memmove_chk.c b/sysdeps/i386/i686/multiarch/memmove_chk.c
+index 55c7601d5d..070dde083a 100644
+--- a/sysdeps/i386/i686/multiarch/memmove_chk.c
++++ b/sysdeps/i386/i686/multiarch/memmove_chk.c
+@@ -32,4 +32,6 @@ libc_ifunc_redirected (__redirect_memmove_chk, __memmove_chk,
+ __hidden_ver1 (__memmove_chk, __GI___memmove_chk, __redirect_memmove_chk)
+   __attribute__ ((visibility ("hidden"))) __attribute_copy__ (__memmove_chk);
+ # endif
++#else
++# include <debug/memmove_chk.c>
+ #endif
+diff --git a/sysdeps/i386/i686/multiarch/mempcpy_chk.c b/sysdeps/i386/i686/multiarch/mempcpy_chk.c
+index 83569cf9d9..14360f1828 100644
+--- a/sysdeps/i386/i686/multiarch/mempcpy_chk.c
++++ b/sysdeps/i386/i686/multiarch/mempcpy_chk.c
+@@ -32,4 +32,6 @@ libc_ifunc_redirected (__redirect_mempcpy_chk, __mempcpy_chk,
+ __hidden_ver1 (__mempcpy_chk, __GI___mempcpy_chk, __redirect_mempcpy_chk)
+   __attribute__ ((visibility ("hidden"))) __attribute_copy__ (__mempcpy_chk);
+ # endif
++#else
++# include <debug/mempcpy_chk.c>
+ #endif
+diff --git a/sysdeps/i386/i686/multiarch/memset_chk.c b/sysdeps/i386/i686/multiarch/memset_chk.c
+index 1a7503858d..8179ef7c0b 100644
+--- a/sysdeps/i386/i686/multiarch/memset_chk.c
++++ b/sysdeps/i386/i686/multiarch/memset_chk.c
+@@ -32,4 +32,6 @@ libc_ifunc_redirected (__redirect_memset_chk, __memset_chk,
+ __hidden_ver1 (__memset_chk, __GI___memset_chk, __redirect_memset_chk)
+   __attribute__ ((visibility ("hidden"))) __attribute_copy__ (__memset_chk);
+ # endif
++#else
++# include <debug/memset_chk.c>
+ #endif
+diff --git a/sysdeps/unix/sysv/linux/check_pf.c b/sysdeps/unix/sysv/linux/check_pf.c
+index 2b0b8b6368..3aa6a00348 100644
+--- a/sysdeps/unix/sysv/linux/check_pf.c
++++ b/sysdeps/unix/sysv/linux/check_pf.c
+@@ -66,25 +66,10 @@ static struct cached_data *cache;
+ __libc_lock_define_initialized (static, lock);
+ 
+ 
+-#if IS_IN (nscd)
+-static uint32_t nl_timestamp;
+-
+-uint32_t
+-__bump_nl_timestamp (void)
+-{
+-  if (atomic_fetch_add_relaxed (&nl_timestamp, 1) + 1 == 0)
+-    atomic_fetch_add_relaxed (&nl_timestamp, 1);
+-
+-  return nl_timestamp;
+-}
+-#endif
+-
+ static inline uint32_t
+ get_nl_timestamp (void)
+ {
+-#if IS_IN (nscd)
+-  return nl_timestamp;
+-#elif defined USE_NSCD
++#if defined USE_NSCD
+   return __nscd_get_nl_timestamp ();
+ #else
+   return 0;
+diff --git a/sysdeps/x86/dl-cacheinfo.h b/sysdeps/x86/dl-cacheinfo.h
+index cd4d0351ae..5ddb35c9d9 100644
+--- a/sysdeps/x86/dl-cacheinfo.h
++++ b/sysdeps/x86/dl-cacheinfo.h
+@@ -315,40 +315,206 @@ handle_amd (int name)
+ {
+   unsigned int eax;
+   unsigned int ebx;
+-  unsigned int ecx;
++  unsigned int ecx = 0;
+   unsigned int edx;
+-  unsigned int count = 0x1;
++  unsigned int max_cpuid = 0;
++  unsigned int fn = 0;
+ 
+   /* No level 4 cache (yet).  */
+   if (name > _SC_LEVEL3_CACHE_LINESIZE)
+     return 0;
+ 
+-  if (name >= _SC_LEVEL3_CACHE_SIZE)
+-    count = 0x3;
+-  else if (name >= _SC_LEVEL2_CACHE_SIZE)
+-    count = 0x2;
+-  else if (name >= _SC_LEVEL1_DCACHE_SIZE)
+-    count = 0x0;
++  __cpuid (0x80000000, max_cpuid, ebx, ecx, edx);
++
++  if (max_cpuid >= 0x8000001D)
++    /* Use __cpuid__ '0x8000_001D' to compute cache details.  */
++    {
++      unsigned int count = 0x1;
++
++      if (name >= _SC_LEVEL3_CACHE_SIZE)
++        count = 0x3;
++      else if (name >= _SC_LEVEL2_CACHE_SIZE)
++        count = 0x2;
++      else if (name >= _SC_LEVEL1_DCACHE_SIZE)
++        count = 0x0;
++
++      __cpuid_count (0x8000001D, count, eax, ebx, ecx, edx);
++
++      if (ecx != 0)
++        {
++          switch (name)
++            {
++            case _SC_LEVEL1_ICACHE_ASSOC:
++            case _SC_LEVEL1_DCACHE_ASSOC:
++            case _SC_LEVEL2_CACHE_ASSOC:
++            case _SC_LEVEL3_CACHE_ASSOC:
++              return ((ebx >> 22) & 0x3ff) + 1;
++            case _SC_LEVEL1_ICACHE_LINESIZE:
++            case _SC_LEVEL1_DCACHE_LINESIZE:
++            case _SC_LEVEL2_CACHE_LINESIZE:
++            case _SC_LEVEL3_CACHE_LINESIZE:
++              return (ebx & 0xfff) + 1;
++            case _SC_LEVEL1_ICACHE_SIZE:
++            case _SC_LEVEL1_DCACHE_SIZE:
++            case _SC_LEVEL2_CACHE_SIZE:
++            case _SC_LEVEL3_CACHE_SIZE:
++              return (((ebx >> 22) & 0x3ff) + 1) * ((ebx & 0xfff) + 1) * (ecx + 1);
++            default:
++              __builtin_unreachable ();
++            }
++          return -1;
++        }
++    }
++
++  /* Legacy cache computation for CPUs prior to Bulldozer family.
++     This is also a fail-safe mechanism for some hypervisors that
++     accidentally configure __cpuid__ '0x8000_001D' to Zero.  */
++
++  fn = 0x80000005 + (name >= _SC_LEVEL2_CACHE_SIZE);
++
++  if (max_cpuid < fn)
++    return 0;
++
++  __cpuid (fn, eax, ebx, ecx, edx);
+ 
+-  __cpuid_count (0x8000001D, count, eax, ebx, ecx, edx);
++  if (name < _SC_LEVEL1_DCACHE_SIZE)
++    {
++      name += _SC_LEVEL1_DCACHE_SIZE - _SC_LEVEL1_ICACHE_SIZE;
++      ecx = edx;
++    }
+ 
+   switch (name)
+     {
+-    case _SC_LEVEL1_ICACHE_ASSOC:
+-    case _SC_LEVEL1_DCACHE_ASSOC:
+-    case _SC_LEVEL2_CACHE_ASSOC:
++      case _SC_LEVEL1_DCACHE_SIZE:
++        return (ecx >> 14) & 0x3fc00;
++
++      case _SC_LEVEL1_DCACHE_ASSOC:
++        ecx >>= 16;
++        if ((ecx & 0xff) == 0xff)
++        {
++          /* Fully associative.  */
++          return (ecx << 2) & 0x3fc00;
++        }
++        return ecx & 0xff;
++
++      case _SC_LEVEL1_DCACHE_LINESIZE:
++        return ecx & 0xff;
++
++      case _SC_LEVEL2_CACHE_SIZE:
++        return (ecx & 0xf000) == 0 ? 0 : (ecx >> 6) & 0x3fffc00;
++
++      case _SC_LEVEL2_CACHE_ASSOC:
++        switch ((ecx >> 12) & 0xf)
++          {
++            case 0:
++            case 1:
++            case 2:
++            case 4:
++              return (ecx >> 12) & 0xf;
++            case 6:
++              return 8;
++            case 8:
++              return 16;
++            case 10:
++              return 32;
++            case 11:
++              return 48;
++            case 12:
++              return 64;
++            case 13:
++              return 96;
++            case 14:
++              return 128;
++            case 15:
++              return ((ecx >> 6) & 0x3fffc00) / (ecx & 0xff);
++            default:
++              return 0;
++          }
++
++      case _SC_LEVEL2_CACHE_LINESIZE:
++        return (ecx & 0xf000) == 0 ? 0 : ecx & 0xff;
++
++      case _SC_LEVEL3_CACHE_SIZE:
++        {
++        long int total_l3_cache = 0, l3_cache_per_thread = 0;
++        unsigned int threads = 0;
++        const struct cpu_features *cpu_features;
++
++        if ((edx & 0xf000) == 0)
++          return 0;
++
++        total_l3_cache = (edx & 0x3ffc0000) << 1;
++        cpu_features = __get_cpu_features ();
++
++        /* Figure out the number of logical threads that share L3.  */
++        if (max_cpuid >= 0x80000008)
++          {
++            /* Get width of APIC ID.  */
++            __cpuid (0x80000008, eax, ebx, ecx, edx);
++            threads = (ecx & 0xff) + 1;
++          }
++
++        if (threads == 0)
++          {
++            /* If APIC ID width is not available, use logical
++            processor count.  */
++            __cpuid (0x00000001, eax, ebx, ecx, edx);
++            if ((edx & (1 << 28)) != 0)
++              threads = (ebx >> 16) & 0xff;
++          }
++
++        /* Cap usage of highest cache level to the number of
++           supported threads.  */
++        if (threads > 0)
++          l3_cache_per_thread = total_l3_cache/threads;
++
++        /* Get shared cache per ccx for Zen architectures.  */
++        if (cpu_features->basic.family >= 0x17)
++          {
++            long int l3_cache_per_ccx = 0;
++            /* Get number of threads share the L3 cache in CCX.  */
++            __cpuid_count (0x8000001D, 0x3, eax, ebx, ecx, edx);
++            unsigned int threads_per_ccx = ((eax >> 14) & 0xfff) + 1;
++            l3_cache_per_ccx = l3_cache_per_thread * threads_per_ccx;
++            return l3_cache_per_ccx;
++          }
++        else
++          {
++            return l3_cache_per_thread;
++          }
++      }
++
+     case _SC_LEVEL3_CACHE_ASSOC:
+-      return ecx ? ((ebx >> 22) & 0x3ff) + 1 : 0;
+-    case _SC_LEVEL1_ICACHE_LINESIZE:
+-    case _SC_LEVEL1_DCACHE_LINESIZE:
+-    case _SC_LEVEL2_CACHE_LINESIZE:
++      switch ((edx >> 12) & 0xf)
++      {
++        case 0:
++        case 1:
++        case 2:
++        case 4:
++          return (edx >> 12) & 0xf;
++        case 6:
++          return 8;
++        case 8:
++          return 16;
++        case 10:
++          return 32;
++        case 11:
++          return 48;
++        case 12:
++          return 64;
++        case 13:
++          return 96;
++        case 14:
++          return 128;
++        case 15:
++          return ((edx & 0x3ffc0000) << 1) / (edx & 0xff);
++        default:
++          return 0;
++      }
++
+     case _SC_LEVEL3_CACHE_LINESIZE:
+-      return ecx ? (ebx & 0xfff) + 1 : 0;
+-    case _SC_LEVEL1_ICACHE_SIZE:
+-    case _SC_LEVEL1_DCACHE_SIZE:
+-    case _SC_LEVEL2_CACHE_SIZE:
+-    case _SC_LEVEL3_CACHE_SIZE:
+-      return ecx ? (((ebx >> 22) & 0x3ff) + 1) * ((ebx & 0xfff) + 1) * (ecx + 1): 0;
++      return (edx & 0xf000) == 0 ? 0 : edx & 0xff;
++
+     default:
+       __builtin_unreachable ();
+     }
+@@ -604,11 +770,10 @@ get_common_cache_info (long int *shared_ptr, long int * shared_per_thread_ptr, u
+ 	     level.  */
+ 	  threads = ((cpu_features->features[CPUID_INDEX_1].cpuid.ebx >> 16)
+ 		     & 0xff);
+-
+-	  /* Get per-thread size of highest level cache.  */
+-	  if (shared_per_thread > 0 && threads > 0)
+-	    shared_per_thread /= threads;
+ 	}
++      /* Get per-thread size of highest level cache.  */
++      if (shared_per_thread > 0 && threads > 0)
++	shared_per_thread /= threads;
+     }
+ 
+   /* Account for non-inclusive L2 and L3 caches.  */
+@@ -703,7 +868,6 @@ dl_init_cacheinfo (struct cpu_features *cpu_features)
+       data = handle_amd (_SC_LEVEL1_DCACHE_SIZE);
+       core = handle_amd (_SC_LEVEL2_CACHE_SIZE);
+       shared = handle_amd (_SC_LEVEL3_CACHE_SIZE);
+-      shared_per_thread = shared;
+ 
+       level1_icache_size = handle_amd (_SC_LEVEL1_ICACHE_SIZE);
+       level1_icache_linesize = handle_amd (_SC_LEVEL1_ICACHE_LINESIZE);
+@@ -716,13 +880,20 @@ dl_init_cacheinfo (struct cpu_features *cpu_features)
+       level3_cache_size = shared;
+       level3_cache_assoc = handle_amd (_SC_LEVEL3_CACHE_ASSOC);
+       level3_cache_linesize = handle_amd (_SC_LEVEL3_CACHE_LINESIZE);
++      level4_cache_size = handle_amd (_SC_LEVEL4_CACHE_SIZE);
+ 
+       if (shared <= 0)
+-        /* No shared L3 cache.  All we have is the L2 cache.  */
+-	shared = core;
++        {
++           /* No shared L3 cache.  All we have is the L2 cache.  */
++           shared = core;
++        }
++      else if (cpu_features->basic.family < 0x17)
++        {
++           /* Account for exclusive L2 and L3 caches.  */
++           shared += core;
++        }
+ 
+-      if (shared_per_thread <= 0)
+-	shared_per_thread = shared;
++      shared_per_thread = shared;
+     }
+ 
+   cpu_features->level1_icache_size = level1_icache_size;
+diff --git a/sysdeps/x86_64/memcpy.S b/sysdeps/x86_64/memcpy.S
+index d98500a78a..4922cba657 100644
+--- a/sysdeps/x86_64/memcpy.S
++++ b/sysdeps/x86_64/memcpy.S
+@@ -1 +1 @@
+-/* Implemented in memcpy.S.  */
++/* Implemented in memmove.S.  */
+diff --git a/sysdeps/x86_64/memmove.S b/sysdeps/x86_64/memmove.S
+index f0b84e3b52..c3c08165e1 100644
+--- a/sysdeps/x86_64/memmove.S
++++ b/sysdeps/x86_64/memmove.S
+@@ -46,6 +46,9 @@ weak_alias (__mempcpy, mempcpy)
+ 
+ #ifndef USE_MULTIARCH
+ libc_hidden_builtin_def (memmove)
++libc_hidden_builtin_def (__memmove_chk)
++libc_hidden_builtin_def (__memcpy_chk)
++libc_hidden_builtin_def (__mempcpy_chk)
+ # if defined SHARED && IS_IN (libc)
+ strong_alias (memmove, __memcpy)
+ libc_hidden_ver (memmove, memcpy)
+diff --git a/sysdeps/x86_64/memset.S b/sysdeps/x86_64/memset.S
+index 7c99df36db..c6df24e8de 100644
+--- a/sysdeps/x86_64/memset.S
++++ b/sysdeps/x86_64/memset.S
+@@ -32,6 +32,7 @@
+ #include "isa-default-impl.h"
+ 
+ libc_hidden_builtin_def (memset)
++libc_hidden_builtin_def (__memset_chk)
+ 
+ #if IS_IN (libc)
+ libc_hidden_def (__wmemset)
