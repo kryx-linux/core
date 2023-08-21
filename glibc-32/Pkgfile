@@ -3,57 +3,62 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
-version=2.36
-release=7
-_kernel_version=5.15.55
+version=2.38
+release=1
+_kernel_version=6.1.46
 
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
-	https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_kernel_version.tar.xz
-	glibc-$version-6.patch lib32.conf)
+  https://www.kernel.org/pub/linux/kernel/v6.x/linux-$_kernel_version.tar.xz
+  glibc-2.38-fhs-1.patch
+  glibc-2.38-memalign_fix-1.patch
+  glibc-$version-1.patch lib32.conf)
 
 build() {
-	# install kernel headers
-	make -C $SRC/linux-$_kernel_version mrproper
-	make -C $SRC/linux-$_kernel_version INSTALL_HDR_PATH=$PKG/usr headers_install
-	chown root:root $PKG/usr
+  # install kernel headers
+  make -C $SRC/linux-$_kernel_version mrproper
+  make -C $SRC/linux-$_kernel_version INSTALL_HDR_PATH=$PKG/usr headers_install
+  chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-6.patch
+  patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-1.patch
+  patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.38-fhs-1.patch
+  patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.38-memalign_fix-1.patch
 
-	mkdir $SRC/build
-	cd $SRC/build
+  mkdir $SRC/build
+  cd $SRC/build
 
-	export libc_cv_slibdir=/lib32
-	export CC="${CC:-gcc} -m32 -mstackrealign"
-	export CFLAGS="$CFLAGS -Wno-error=parentheses"
+  export libc_cv_slibdir=/lib32
+  export CC="${CC:-gcc} -m32 -mstackrealign"
+  export CFLAGS="$CFLAGS -Wno-error=parentheses"
 
-	../glibc-${version:0:4}/configure --prefix=/usr \
-		--libdir=/usr/lib32 \
-		--libexecdir=/usr/lib32 \
-		--with-headers=$PKG/usr/include \
-		--enable-kernel=4.9 \
-		--enable-add-ons \
-		--enable-stack-protector=strong \
-		--enable-static-pie \
-		--enable-bind-now \
-		--enable-multi-arch \
-		--disable-profile \
-		--disable-werror \
-		--without-gd \
-		--enable-multi-arch \
-		i686-pc-linux-gnu
+  ../glibc-${version:0:4}/configure --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --libexecdir=/usr/lib32 \
+    --with-headers=$PKG/usr/include \
+    --enable-kernel=5.10 \
+    --enable-add-ons \
+    --enable-stack-protector=strong \
+    --enable-static-pie \
+    --enable-bind-now \
+    --enable-crypt \
+    --enable-multi-arch \
+    --disable-profile \
+    --disable-werror \
+    --without-gd \
+    --enable-multi-arch \
+    i686-pc-linux-gnu
 
-	make
-	#make check
-	make install_root=$PKG install
+  make
+  #make check
+  make install_root=$PKG install
 
-	rm -r $PKG/usr/{bin,sbin,share} $PKG/{etc,sbin} $PKG/var
+  rm -r $PKG/usr/{bin,sbin,share} $PKG/{etc,sbin} $PKG/var
 
-	mv $PKG/usr/include/gnu/stubs-32.h $SRC
-	rm -r $PKG/usr/include
-	install -D $SRC/stubs-32.h $PKG/usr/include/gnu/stubs-32.h
+  mv $PKG/usr/include/gnu/stubs-32.h $SRC
+  rm -r $PKG/usr/include
+  install -D $SRC/stubs-32.h $PKG/usr/include/gnu/stubs-32.h
 
-	install -D $SRC/lib32.conf $PKG/etc/ld.so.conf.d/lib32.conf
+  install -D $SRC/lib32.conf $PKG/etc/ld.so.conf.d/lib32.conf
 
-	install -d $PKG/lib
-	ln -s /lib32/ld-linux.so.2 $PKG/lib/ld-linux.so.2
+  install -d $PKG/lib
+  ln -s /lib32/ld-linux.so.2 $PKG/lib/ld-linux.so.2
 }
