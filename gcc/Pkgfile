@@ -4,57 +4,67 @@
 # Depends on: libmpc zlib zstd
 
 name=gcc
-version=12.3.0
-release=2
+version=13.2.0
+release=1
 source=(https://sourceware.org/pub/gcc/releases/gcc-$version/$name-$version.tar.xz
-	$name-nocheck-fixincludes.patch $name-4.7.3-multilib-dirs.patch
-	fix-nested-generic-lambda.patch)
+  $name-nocheck-fixincludes.patch $name-4.7.3-multilib-dirs.patch)
 
 build() {
-	patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
-	patch -d $name-$version -p1 -i $SRC/$name-4.7.3-multilib-dirs.patch
-	patch -d $name-$version -p1 -i $SRC/fix-nested-generic-lambda.patch
+  patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
+  patch -d $name-$version -p1 -i $SRC/$name-4.7.3-multilib-dirs.patch
 
-	# pipe fails tests
-	CFLAGS=${CFLAGS/-pipe/}
-	CXXFLAGS=${CXXFLAGS/-pipe/}
+  sed -i 's@\./fixinc\.sh@-c true@' gcc-$version/Makefile.in
 
-	mkdir build
-	cd build
-	../$name-$version/configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib \
-		--enable-languages=c,c++,lto \
-		--enable-threads=posix \
-		--enable-__cxa_atexit \
-		--enable-clocale=gnu \
-		--enable-shared \
-		--enable-lto \
-		--with-x=no \
-		--enable-multilib \
-		--enable-plugin \
-		--enable-default-pie \
-		--enable-default-ssp \
-		--with-pkgversion="CRUX-x86_64-multilib" \
-		--with-system-zlib \
-		--disable-nls
-	make bootstrap
-	make -j1 DESTDIR=$PKG install
+  # pipe fails tests
+  CFLAGS=${CFLAGS/-pipe/}
+  CXXFLAGS=${CXXFLAGS/-pipe/}
 
-	install -d $PKG/lib
-	ln -sf ../usr/bin/cpp $PKG/lib/cpp
-	ln -sf gcc $PKG/usr/bin/cc
-	ln -sf g++ $PKG/usr/bin/c++
+  mkdir build
+  cd build
+  ../$name-$version/configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --with-build-config=bootstrap-lto \
+    --enable-stage1-languages=c,lto \
+    --enable-languages=c,c++,lto \
+    --enable-threads=posix \
+    --with-linker-hash-style=gnu \
+    --enable-link-serialization=1 \
+    --enable-linker-build-id \
+    --enable-gnu-indirect-function \
+    --enable-__cxa_atexit \
+    --enable-clocale=gnu \
+    --enable-shared \
+    --enable-lto \
+    --with-x=no \
+    --enable-multilib \
+    --enable-plugin \
+    --enable-default-pie \
+    --enable-default-ssp \
+    --with-pkgversion="CRUX-x86_64-multilib" \
+    --with-system-zlib \
+    --disable-nls
 
-	mv $PKG/usr/lib/gcc/*/$version/include-fixed/{limits.h,syslimits.h} $PKG/usr/lib/gcc/*/$version/include/
-	rm -r $PKG/usr/share/{info,$name-$version}
-	rm -r $PKG/usr/bin/*-linux-gnu-*
-	rm -r $PKG/usr/lib/gcc/*/$version/{install-tools,include-fixed}
+  make -O STAGE1_CFLAGS="-O2" \
+    BOOT_CFLAGS="$CFLAGS" \
+    BOOT_LDFLAGS="$LDFLAGS" \
+    LDFLAGS_FOR_TARGET="$LDFLAGS" \
+    bootstrap
+  make -j1 DESTDIR=$PKG install
 
-	for D in lib{,32}; do
-		install -d -m 0755 $PKG/usr/share/gdb/auto-load/usr/${D}
-		mv $PKG/usr/${D}/libstdc++.so.*-gdb.py $PKG/usr/share/gdb/auto-load/usr/${D}
-	done
+  install -d $PKG/lib
+  ln -sf ../usr/bin/cpp $PKG/lib/cpp
+  ln -sf gcc $PKG/usr/bin/cc
+  ln -sf g++ $PKG/usr/bin/c++
 
-	sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib{,32}/{libstdc++.la,libsupc++.la}
+  rm -r $PKG/usr/share/{info,$name-$version}
+  rm -r $PKG/usr/bin/*-linux-gnu-*
+  rm -r $PKG/usr/lib/gcc/*/$version/{install-tools,include-fixed}
+
+  for D in lib{,32}; do
+    install -d -m 0755 $PKG/usr/share/gdb/auto-load/usr/${D}
+    mv $PKG/usr/${D}/libstdc++.so.*-gdb.py $PKG/usr/share/gdb/auto-load/usr/${D}
+  done
+
+  sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib{,32}/{libstdc++.la,libsupc++.la}
 }
