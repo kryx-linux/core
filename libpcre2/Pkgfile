@@ -8,20 +8,20 @@ release=1
 source=(https://github.com/PhilipHazel/pcre2/releases/download/pcre2-$version/pcre2-$version.tar.gz)
 
 build() {
-	cd pcre2-$version
+  cd pcre2-$version
 
-	./configure \
-		--prefix=/usr \
-		--enable-jit \
-		--enable-pcre2-16 \
-		--enable-pcre2-32
+  ./configure \
+    --prefix=/usr \
+    --enable-jit \
+    --enable-pcre2-16 \
+    --enable-pcre2-32
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 
-	install -d $PKG/lib
-	mv $PKG/usr/lib/libpcre2-8.so.* $PKG/lib
-	ln -sf ../../lib/$(readlink $PKG/usr/lib/libpcre2-8.so) $PKG/usr/lib/libpcre2-8.so
+  install -d $PKG/lib
+  mv $PKG/usr/lib/libpcre2-8.so.* $PKG/lib
+  ln -sf ../../lib/$(readlink $PKG/usr/lib/libpcre2-8.so) $PKG/usr/lib/libpcre2-8.so
 
-	rm -r $PKG/usr/share/doc
+  rm -r $PKG/usr/share/doc
 }

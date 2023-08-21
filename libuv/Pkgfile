@@ -8,10 +8,10 @@ release=1
 source=(https://dist.libuv.org/dist/v$version/$name-v$version.tar.gz)
 
 build() {
-	cd $name-v$version
+  cd $name-v$version
 
-	./autogen.sh
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
 }

@@ -9,33 +9,33 @@ release=1
 source=(https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.22.tgz)
 
 build() {
-	cd LVM2.2.03.22
+  cd LVM2.2.03.22
 
-	# libaio is not needed for libdevmapper
-	sed 's/libaio.h//' -i configure
+  # libaio is not needed for libdevmapper
+  sed 's/libaio.h//' -i configure
 
-	CONFIG_SHELL=/bin/bash \
-	./configure \
-		--prefix=/usr \
-		--exec-prefix= \
-		--datarootdir=/usr \
-		--with-udev-prefix= \
-		--mandir=/usr/share/man \
-		--disable-readline \
-		--disable-selinux \
-		--enable-pkgconfig \
-		--enable-static_link \
-		--enable-udev_sync \
-		--enable-udev_rules \
-		--with-{user,group}=root
+  CONFIG_SHELL=/bin/bash \
+  ./configure \
+    --prefix=/usr \
+    --exec-prefix= \
+    --datarootdir=/usr \
+    --with-udev-prefix= \
+    --mandir=/usr/share/man \
+    --disable-readline \
+    --disable-selinux \
+    --enable-pkgconfig \
+    --enable-static_link \
+    --enable-udev_sync \
+    --enable-udev_rules \
+    --with-{user,group}=root
 
-	make device-mapper
-	make -j1 DESTDIR=$PKG install_device-mapper
-	install -m0644 -D udev/12-dm-permissions.rules $PKG/etc/udev/rules.d/12-dm-permissions.rules.example
+  make device-mapper
+  make -j1 DESTDIR=$PKG install_device-mapper
+  install -m0644 -D udev/12-dm-permissions.rules $PKG/etc/udev/rules.d/12-dm-permissions.rules.example
 
-	# symlink dmsetup to dmstats and not dmsetup.static
-	ln -sf dmsetup $PKG/sbin/dmstats
+  # symlink dmsetup to dmstats and not dmsetup.static
+  ln -sf dmsetup $PKG/sbin/dmstats
 
-	# pkgconfig insists on /lib one or the other way...
-	sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
+  # pkgconfig insists on /lib one or the other way...
+  sed -i '/^libdir=/s|${exec_prefix}|/usr|' $PKG/usr/lib/pkgconfig/devmapper.pc
 }

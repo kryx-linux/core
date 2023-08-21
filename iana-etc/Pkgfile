@@ -8,6 +8,6 @@ release=1
 source=(services protocols update.sh)
 
 build() {
-	install -d -m 755 $PKG/etc
-	install -m 644 {services,protocols} $PKG/etc
+  install -d -m 755 $PKG/etc
+  install -m 644 {services,protocols} $PKG/etc
 }

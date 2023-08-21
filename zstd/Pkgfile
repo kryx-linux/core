@@ -9,13 +9,13 @@ release=1
 source=(https://github.com/facebook/zstd/archive/v$version/$name-v$version.tar.gz)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	export PREFIX=/usr DESTDIR=$PKG
+  export PREFIX=/usr DESTDIR=$PKG
 
-	make
-	make install
+  make
+  make install
 
-	make -C contrib/pzstd
-	make -C contrib/pzstd install
+  make -C contrib/pzstd
+  make -C contrib/pzstd install
 }

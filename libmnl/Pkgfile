@@ -8,10 +8,10 @@ release=1
 source=(https://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	./configure --prefix=/usr
+  ./configure --prefix=/usr
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 }

@@ -8,8 +8,9 @@ release=1
 source=(https://crux.nu/files/distfiles/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+  cd $name-$version
+
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
 }

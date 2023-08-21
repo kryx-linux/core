@@ -8,9 +8,10 @@ release=1
 source=(https://github.com/thkukuk/$name/releases/download/v$version/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
-	autoreconf -fi
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+  cd $name-$version
+
+  autoreconf -fi
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
 }

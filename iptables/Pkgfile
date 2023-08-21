@@ -9,14 +9,14 @@ release=1
 source=(https://www.netfilter.org/projects/$name/files/$name-$version.tar.xz)
 
 build () {
-	cd $name-$version
+  cd $name-$version
 
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib \
-		--enable-libipq \
-		--enable-nftables
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --enable-libipq \
+    --enable-nftables
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 }

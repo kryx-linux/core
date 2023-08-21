@@ -7,29 +7,29 @@ name=inetutils
 version=2.4
 release=1
 source=(http://ftpmirror.gnu.org/gnu/inetutils/inetutils-$version.tar.gz
-	inetd.conf inetd)
+  inetd.conf inetd)
 
 build() {
-	cd inetutils-$version
+  cd inetutils-$version
 
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/sbin \
-		--localstatedir=/var \
-		--sysconfdir=/etc \
-		--disable-{servers,clients} \
-		--enable-{hostname,ifconfig,inetd,ftp,telnet,traceroute}
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/sbin \
+    --localstatedir=/var \
+    --sysconfdir=/etc \
+    --disable-{servers,clients} \
+    --enable-{hostname,ifconfig,inetd,ftp,telnet,traceroute}
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 
-	install -d $PKG/{bin,sbin,etc/rc.d}
+  install -d $PKG/{bin,sbin,etc/rc.d}
 
-	mv $PKG/usr/bin/hostname $PKG/bin
-	mv $PKG/usr/bin/ifconfig $PKG/sbin
+  mv $PKG/usr/bin/hostname $PKG/bin
+  mv $PKG/usr/bin/ifconfig $PKG/sbin
 
-	install -m 644 $SRC/inetd.conf $PKG/etc
-	install -m 755 $SRC/inetd $PKG/etc/rc.d
+  install -m 644 $SRC/inetd.conf $PKG/etc
+  install -m 755 $SRC/inetd $PKG/etc/rc.d
 
-	rm -r $PKG/usr/share/info
+  rm -r $PKG/usr/share/info
 }

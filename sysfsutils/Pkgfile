@@ -8,9 +8,9 @@ release=1
 source=(https://github.com/linux-ras/sysfsutils/archive/v$version/$name-$version.tar.gz)
 
 build() {
-	cd $name-$version
-	./autogen
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+  cd $name-$version
+  ./autogen
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
 }

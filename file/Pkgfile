@@ -9,13 +9,15 @@ release=1
 source=(http://www.astron.com/pub/file/$name-$version.tar.gz)
 
 build() {
-	cd file-$version
-	./configure \
-		--prefix=/usr \
-		--enable-fsect-man5 \
-		--enable-static \
-		--disable-libseccomp
-	make
-	make DESTDIR=$PKG install
-	rmdir $PKG/usr/share/man/man4
+  cd file-$version
+
+  ./configure \
+    --prefix=/usr \
+    --enable-fsect-man5 \
+    --enable-static \
+    --disable-libseccomp
+  make
+  make DESTDIR=$PKG install
+
+  rmdir $PKG/usr/share/man/man4
 }

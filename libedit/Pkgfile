@@ -8,13 +8,13 @@ release=1
 source=(https://thrysoee.dk/editline/$name-${version/_/-}.tar.gz)
 
 build() {
-	cd $name-${version/_/-}
+  cd $name-${version/_/-}
 
-	./configure --prefix=/usr
+  ./configure --prefix=/usr
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 
-	rm $PKG/usr/share/man/man3/history.3 # conflicts with readline
-	ln -s editline.3 $PKG/usr/share/man/man3/el.3
+  rm $PKG/usr/share/man/man3/history.3 # conflicts with readline
+  ln -s editline.3 $PKG/usr/share/man/man3/el.3
 }

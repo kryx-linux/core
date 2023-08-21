@@ -7,19 +7,19 @@ name=iproute2
 version=6.4.0
 release=1
 source=(https://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz
-	lo.iproute2 net.iproute2)
+  lo.iproute2 net.iproute2)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	./configure
-	make CCOPTS="$CFLAGS"
-	make DESTDIR=$PKG install
+  ./configure
+  make CCOPTS="$CFLAGS"
+  make DESTDIR=$PKG install
 
-	install -D -m 0755 $SRC/lo.iproute2 $PKG/etc/rc.d/lo
-	install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
+  install -D -m 0755 $SRC/lo.iproute2 $PKG/etc/rc.d/lo
+  install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
 
-	# add ip to user path via symlink
-	install -d $PKG/bin
-	ln -s /sbin/ip $PKG/bin/ip
+  # add ip to user path via symlink
+  install -d $PKG/bin
+  ln -s /sbin/ip $PKG/bin/ip
 }

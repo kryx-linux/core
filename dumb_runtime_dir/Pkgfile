@@ -8,6 +8,6 @@ release=1
 source=(https://github.com/ifreund/dumb_runtime_dir/releases/download/v$version/$name-$version.tar.gz)
 
 build() {
-	make -C $name-$version
-	make -C $name-$version DESTDIR=$PKG PAMDIR="/lib/security" install
+  make -C $name-$version
+  make -C $name-$version DESTDIR=$PKG PAMDIR="/lib/security" install
 }

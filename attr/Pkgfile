@@ -8,20 +8,20 @@ release=1
 source=(https://download-mirror.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	./configure \
-		--prefix=/usr \
-		--bindir=/bin \
-		--sysconfdir=/etc \
-		--disable-nls
+  ./configure \
+    --prefix=/usr \
+    --bindir=/bin \
+    --sysconfdir=/etc \
+    --disable-nls
 
-	make
-	make DESTDIR=$PKG install
+  make
+  make DESTDIR=$PKG install
 
-	install -d $PKG/lib
-	mv $PKG/usr/lib/libattr.so.* $PKG/lib
-	ln -sf ../../lib/$(readlink $PKG/usr/lib/libattr.so) $PKG/usr/lib/libattr.so
+  install -d $PKG/lib
+  mv $PKG/usr/lib/libattr.so.* $PKG/lib
+  ln -sf ../../lib/$(readlink $PKG/usr/lib/libattr.so) $PKG/usr/lib/libattr.so
 
-	rm -r $PKG/usr/share/doc
+  rm -r $PKG/usr/share/doc
 }

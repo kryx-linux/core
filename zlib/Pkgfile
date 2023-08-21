@@ -8,13 +8,13 @@ release=1
 source=(https://www.zlib.net/$name-$version.tar.gz)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	./configure --prefix=/usr --sharedlibdir=/lib
-	make
-	make DESTDIR=$PKG install
+  ./configure --prefix=/usr --sharedlibdir=/lib
+  make
+  make DESTDIR=$PKG install
 
-	ln -sf ../../lib/libz.so.$version $PKG/usr/lib/libz.so
+  ln -sf ../../lib/libz.so.$version $PKG/usr/lib/libz.so
 
-	rm $PKG/lib/libz.so
+  rm $PKG/lib/libz.so
 }

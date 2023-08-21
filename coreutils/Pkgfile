@@ -9,20 +9,20 @@ release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	FORCE_UNSAFE_CONFIGURE=1 \
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib \
-		--disable-nls \
-		--disable-assert \
-		--enable-no-install-program=uptime,kill,chcon,runcon,groups
-	make
-	make DESTDIR=$PKG install
+  FORCE_UNSAFE_CONFIGURE=1 \
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --disable-nls \
+    --disable-assert \
+    --enable-no-install-program=uptime,kill,chcon,runcon,groups
+  make
+  make DESTDIR=$PKG install
 
-	install -d $PKG/bin
-	mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
-	mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
-	rm -r $PKG/usr/share/info
+  install -d $PKG/bin
+  mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
+  mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
+  rm -r $PKG/usr/share/info
 }
