@@ -1,10 +1,10 @@
 # Description: A tool for transfering files with URL syntax
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # URL: https://curl.haxx.se
-# Depends on: libnghttp2 openssl zlib zstd
+# Depends on: libnghttp2 openssl zstd
 
 name=curl
-version=8.2.1
+version=8.3.0
 release=1
 source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
