@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqrcrl6n0Z1d73px0cBWYNwXa1RVIvuJSwlVMwzYP61liT4SIc3cM0ti/bFazTL45muqflE4Dg3GCoTRyMkM2jwc=
-SHA256 (Pkgfile) = be9dc7648b2f7c85f97d8b14c0a62daaa6d6930a0523f83da9816460e30e0c35
+RWRJc1FUaeVeqoBoFzAcWCy2bRMfU0F9V5Ql0Rmw9GGpf1lQFKtNSbE4gdMyPZWBy95OYc579PA4Iu8bvacj8b5xqgY6jVde+gg=
+SHA256 (Pkgfile) = a84801ef8beeb200eb57e9c586aca060383b1b57557b1fd62a8719ea8fc607f0
 SHA256 (.footprint) = 40c1675d17a58b1815bc369b160d4a08f55eb7790d6ae09a137c8c223ea1bb4a
-SHA256 (sysklogd-2.5.1.tar.gz) = 47a7ba220035c5b116c249dc271c7c007ec37ffd2b453404e38aabf467d16806
+SHA256 (sysklogd-2.5.2.tar.gz) = 9da4444285772ce2bfc9c687be8f978b7a9fe7d3937347cd4938eda0c4545e05
 SHA256 (rotatelog) = 4f51230e8c371d61018d88f6d88d1c6bf6b9aee054302fbf4285c82084bdc98f
 SHA256 (syslog) = fc29247aaee9baec087d29a6ffef469d8301bddef913bb7eee67151fceba7112
 SHA256 (syslog.conf) = b38189cac2b80dcd7d74d8759dddcdd57a203becdbece27253d6d2ba25be95c2
