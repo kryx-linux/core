@@ -15,6 +15,7 @@ build() {
 		--prefix=/usr \
 		--libdir=lib \
 		--openssldir=/etc/ssl \
+		disable-tests \
 		enable-ec_nistp_64_gcc_128 enable-camellia \
 		enable-seed enable-rfc3779 \
 		no-mdc2 no-ec2m no-sm2 no-sm4 \
