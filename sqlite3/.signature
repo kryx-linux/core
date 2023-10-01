@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqq48q/z4Mq6/BW7Kv7aiMkQchAnN0iPgLb18JnSG4AgJDBVovExAiuaeMIJSODsjn+ucs02W2SZ9mkfD3yguIw0=
+RWRJc1FUaeVeqsQm4n5DiF36JYfR8ZDf+PqRGLZXj4qWTdddj+lQka5VBjsshYHzIeJvl66iCv1rqfi+lqsv4mfnhH7wtVpdMws=
 SHA256 (Pkgfile) = 8514a80908f49e65b036da369fbeff09b91c7f5ad3f130fb19cde87a1e836991
 SHA256 (.footprint) = 54d29bd72af140bd285f65d0e72b3ef8eb4279298c98354632552b41db701253
-SHA256 (sqlite-autoconf-3430100.tar.gz) = 46db2f10f306e163e4571b8974d44cd37078aae04295bbf08b253655df3265f4
+SHA256 (sqlite-autoconf-3430100.tar.gz) = 39116c94e76630f22d54cd82c3cea308565f1715f716d1b2527f1c9c969ba4d9

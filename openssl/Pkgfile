@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=openssl
-version=3.1.2
+version=3.1.3
 release=1
 source=(https://www.openssl.org/source/$name-$version.tar.gz
   mksslcert.sh)
@@ -17,10 +17,11 @@ build() {
     --openssldir=/etc/ssl \
     enable-ec_nistp_64_gcc_128 enable-camellia \
     enable-seed enable-rfc3779 \
-    no-mdc2 no-ec2m no-sm2 no-sm4 \
     shared \
     threads \
-    zlib
+    zlib \
+    no-mdc2 no-ec2m no-sm2 no-sm4 \
+    disable-tests
 
   sed -i "s|-O3|$CFLAGS|" Makefile
 
