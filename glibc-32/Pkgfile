@@ -4,12 +4,12 @@
 
 name=glibc-32
 version=2.36
-release=7
+release=8
 _kernel_version=5.15.55
 
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
 	https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_kernel_version.tar.xz
-	glibc-$version-6.patch lib32.conf)
+	glibc-$version-7.patch lib32.conf)
 
 build() {
 	# install kernel headers
@@ -17,7 +17,7 @@ build() {
 	make -C $SRC/linux-$_kernel_version INSTALL_HDR_PATH=$PKG/usr headers_install
 	chown root:root $PKG/usr
 
-	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-6.patch
+	patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-7.patch
 
 	mkdir $SRC/build
 	cd $SRC/build
