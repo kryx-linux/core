@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqlVcTznEHinj9qgm0XeWcVVt36fpj/XJUWl+uLhWTLGmxgKp2NUir4ZojaYRkef4dDMtyRJJSnbdvDjfTyXTcww=
+RWRJc1FUaeVeqgAVsgq9Y9OmPI6a8LtxgvZAlFP68KKR+nj+rWsJei/SNFn9x/bwQhHqjz6sCUbRrS/jqG93vzq+THQalaGbNQQ=
 SHA256 (Pkgfile) = 824fd550098409604b6a2a4d75d11baeb89678ccf5cf14c2c2a47691e6b2a502
-SHA256 (.footprint) = ae3a775d6b19f204ec90f3f87c84c7efec7f8c13525bae2785f7412fa6db76be
+SHA256 (.footprint) = 4396f8169c40ab310af7d780821edeb41deaf5b79b534138a1b717c23f8d9334
 SHA256 (glibc-2.38.tar.xz) = fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2
 SHA256 (linux-6.1.46.tar.xz) = f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296
 SHA256 (glibc-2.38-1.patch) = 9216845f1c369107cac2d33fa3e8b0f85939850330ed81220b19ed1adb49d6fa

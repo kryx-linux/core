@@ -4,9 +4,10 @@
 # Depends on: acl ncurses
 
 name=vim
-version=9.0.1888
+version=9.0.1994
 release=1
-source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz)
+source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz
+  https://git.crux.nu:82/tb/Pkgfile.vim/archive/master.tar.gz)
 
 build() {
   cd $name-$version/src
@@ -58,4 +59,8 @@ build() {
 
   make VIMRTDIR=
   make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
+
+  cd $SRC/pkgfile.vim
+  install -d $PKG/usr/share/vim/vimfiles
+  cp -r * $PKG/usr/share/vim/vimfiles
 }

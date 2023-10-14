@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqhyiiH4V71EIlXiFBxT3PiIEBa86xvbQrl5X59DPlzwSJATrTyFOrwUmAbMGLe9teCmcPSC8yVR5pvvnmnKk3Q0=
-SHA256 (Pkgfile) = b2b11409abe153e660d16610a92654cc788bba31b8e81f5ef4b6f4aaddb501c0
+RWRJc1FUaeVeqn8Fp3lC3AMoKND6lomZYz7n8em22i4cWxl1eEfiWuGPFP81OJVP3Ww7sw0tMpnyVZB6ZW5YEtlUZp6RmGXRNgQ=
+SHA256 (Pkgfile) = 44e578ded651d9f9d3abe9308e92258978a76f3cda4e4788b1f8b93cb9856730
 SHA256 (.footprint) = 38f0afbdfac0c23ab732a17ebb485af02e6f8e89692d00d2e6d22da1ec9cb0b0
-SHA256 (libnsl-2.0.0.tar.xz) = 2da075ef1893ebdfc5f074f83ac811873dc06fd5c62bc9a4729fd2e27a40341a
+SHA256 (libnsl-2.0.1.tar.xz) = 5c9e470b232a7acd3433491ac5221b4832f0c71318618dc6aa04dd05ffcd8fd9

@@ -47,6 +47,7 @@ lrwxrwxrwx	root/root	usr/bin/ld.so -> ../../lib/ld-linux-x86-64.so.2
 -rwxr-xr-x	root/root	usr/bin/locale
 -rwxr-xr-x	root/root	usr/bin/localedef
 -rwxr-xr-x	root/root	usr/bin/makedb
+-rwxr-xr-x	root/root	usr/bin/mtrace
 -rwxr-xr-x	root/root	usr/bin/pcprofiledump
 -rwxr-xr-x	root/root	usr/bin/pldd
 -rwxr-xr-x	root/root	usr/bin/sotruss
