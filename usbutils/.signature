@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnfKxeql8OcO08ORWBCkHgz8UsrjlDRgy2mTu80VH0ZfZzwlt6KOZ218S1gfrP/ZuAqITKxLWT7Y++NAFm4O4ws=
-SHA256 (Pkgfile) = 3b72ff6f7c7956ff36f9df30cda7d7c6c5f3e08bf835d1b1d25a7317699e5e30
+RWRJc1FUaeVeqhO/UCWutEAXH9j0StYLjEiaXzOlcjDpIWu5j801Wgzgb/717BGQhoqCEsz+jlQp2xEXfsm1+gDeN/JJNnldMgE=
+SHA256 (Pkgfile) = d1c9b8ef287dbe4fab156e7195bc96d827d0bb9b9f38cf59dea587d51368fec7
 SHA256 (.footprint) = 21494efbc2e45e61b623a6971bc947aded879ee933adba115a98e78ad837463b
-SHA256 (usbutils-016.tar.gz) = b5773496238a389de6f7a0057a272a8b2de045c57e2650c6e054e9aeb6b488a4
+SHA256 (usbutils-017.tar.gz) = 7bb79a4c3fc664b700838add2444906919fd1d9bd767a733fc4b23975d2872b7
 SHA256 (usb.ids.xz) = 96fd1f68de1222d39ad20243d1c70488d166a4bc37aa1b62dfd18e5789e70e02
