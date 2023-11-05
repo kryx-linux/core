@@ -4,10 +4,11 @@
 # Depends on: acl ncurses
 
 name=vim
-version=9.0.1994
+version=9.0.2059
 release=1
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz
   https://git.crux.nu:82/tb/Pkgfile.vim/archive/master.tar.gz)
+renames=(SKIP Pkgfile.vim.tar.gz)
 
 build() {
   cd $name-$version/src

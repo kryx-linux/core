@@ -10,7 +10,6 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libarchive.a
 lrwxrwxrwx	root/root	usr/lib/libarchive.so -> libarchive.so.20
-lrwxrwxrwx	root/root	usr/lib/libarchive.so.19 -> libarchive.so.20
 -rwxr-xr-x	root/root	usr/lib/libarchive.so.20
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libarchive.pc
