@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqq6fyxM44erfS9h24ZhCPbS1NoYd0Qhnsus3z5MF0ugffxnKanm/DAYGr/P0DNuHh6wxe991ZoaasMm+LcVTPA4=
+RWRJc1FUaeVeqsxSS1bRvz5umh8aEiXIoWSNmxRh5R0S0Tm96fgqa0PTh4uMLa7c+f/EJwMbJsUzo8ynba/PjjTc7tH9VyJ4wgU=
 SHA256 (Pkgfile) = b5bd65622d5269bd7716bd658472309ebd7b6089886c711f9eded62a8a49a412
-SHA256 (.footprint) = d941ad0993cb92b52ca96990acdcd2e9fdc2c14556221edb91292c9c51f642fe
+SHA256 (.footprint) = 1fa2fbfb00e6f9dac4de0498f38ef002efe4718652a1fcd4fdd196be49e02711
 SHA256 (nftables-1.0.8.tar.xz) = 9373740de41a82dbc98818e0a46a073faeb8a8d0689fa4fa1a74399c32bf3d50
 SHA256 (nftables.nft) = 43436a5237a259378f6b712978db6e0d821d2be0528f9a2e93cfdc2fca504d7c
 SHA256 (nftables.init) = bfd1698c0f89b39ff3d0a5eceffe68d79bde0ac73c4e9eedcac8748274320f0c
