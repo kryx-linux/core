@@ -13,8 +13,14 @@ build() {
 
   export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
 
-  /usr/bin/python3 setup.py build
+  ## Bootstrap pip to build setuptools
+  mkdir $SRC/temp
+  _pyver=$(/usr/bin/python3 -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+  export PYTHONPATH="$SRC/temp/usr/lib/python$_pyver/site-packages"
+  /usr/bin/python3 -m ensurepip --root $SRC/temp
 
-  /usr/bin/python3 setup.py install \
-    --prefix=/usr --root=$PKG --optimize=1
+  $SRC/temp/usr/bin/pip3 install --isolate \
+    --root=$PKG \
+    --ignore-installed \
+    --no-deps .
 }
