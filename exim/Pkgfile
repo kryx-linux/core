@@ -4,13 +4,15 @@
 # Depends on: db libpcre2 openssl
 
 name=exim
-version=4.96.2
+version=4.97
 release=1
 source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz
-	$name $name-config.patch)
+	$name $name-config.patch disable-id_update.patch)
 
 build() {
 	cd $name-$version
+
+	patch -p1 -i $SRC/disable-id_update.patch
 
 	sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
 	cp src/EDITME Local/Makefile
