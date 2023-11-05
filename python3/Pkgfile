@@ -4,7 +4,7 @@
 # Depends on: bzip2 expat gdbm libffi libnsl libtirpc mpdecimal sqlite3 xz
 
 name=python3
-version=3.11.5
+version=3.12.0
 release=1
 source=(https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz)
 
@@ -14,6 +14,7 @@ build() {
   sed -i -e "s|-flto |-flto=4 |g" configure configure.ac
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python3|" Lib/cgi.py
   CFLAGS="${CFLAGS/-O2/-O3} -ffat-lto-objects"
+  sed -i -e "s:-j0:-j$(nproc):" Makefile.pre.in
   local _pgojobs=$(nproc)
   export PROFILE_TASK="-m test -j${_pgojobs} --pgo-extended -x test_gdb -u-network"
   PROFILE_TASK+=" -x test_socket -x test_asyncio -x test_httpservers -x test_logging -x test_multiprocessing_fork -x test_xmlrpc"
@@ -22,14 +23,9 @@ build() {
   local -x COLUMNS=80
   local -x PYTHONDONTWRITEBYTECODE=
 
-  # Ensure that we are using the system copy of various libraries
-  rm -r Modules/expat
-  rm -r Modules/_ctypes/{darwin,libffi}*
-  rm -r Modules/_decimal/libmpdec
-
-  # Remove tests
-  rm -r Lib/{test,{ctypes,tkinter,unittest}/test}
-  rm -r Lib/{{distutils,lib2to3}/tests,idlelib/idle_test}
+  ## Remove tests
+  #rm -r Lib/{test,{ctypes,tkinter,unittest}/test}
+  #rm -r Lib/{{distutils,lib2to3}/tests,idlelib/idle_test}
 
   ./configure \
     --prefix=/usr \
