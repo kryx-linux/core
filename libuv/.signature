@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnyl9DJ+LNmqsbjCw9J8OBsHjL0wfsuZe5ylRA+l9A3tTmQHnxYMUkPklumY6PKijBZJqa9wWa2gVWiBPIQ9lAQ=
-SHA256 (Pkgfile) = 50453bf40f551bffe1b5dcbc25686386cc6f2d6347f1e5104a8de2828ae6a245
+RWRJc1FUaeVeqjKkPK9/xOiKDDupJ/vYP3CyvgD6f/yyOgV5BM1TUJchWxe1lRA2CydU40El9jvMaFSUtp4/ryVeDJZA69wCcQQ=
+SHA256 (Pkgfile) = 048e8c06b1536939cb831eb8a76febae286761f6b32791e3127ffcc2bfbfcbf6
 SHA256 (.footprint) = 78e764acb0a80912745e882ad9b3319a7225e9a8cc4b01863985d7d9487ab4c9
-SHA256 (libuv-v1.46.0.tar.gz) = 111f83958b9fdc65f1489195d25f342b9f7a3e683140c60e62c00fbaccddddce
+SHA256 (libuv-v1.47.0.tar.gz) = 20c37a4ca77a2107879473c6c8fa0dc1350e80045df98bfbe78f7cd6d7dd2965
