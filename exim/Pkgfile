@@ -1,11 +1,11 @@
 # Description: Mail transfer agent
 # URL: https://www.exim.org
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: db libpcre2 openssl
+# Depends on: db libpcre2 libxcrypt openssl
 
 name=exim
 version=4.97
-release=1
+release=2
 source=(https://ftp.exim.org/pub/exim/exim4/$name-$version.tar.xz
   $name $name-config.patch disable-id_update.patch)
 
