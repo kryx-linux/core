@@ -1,11 +1,11 @@
 # Description: Perl programming language
 # URL: https://www.perl.org/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: db gdbm libnsl libtirpc
+# Depends on: db gdbm libnsl libtirpc libxcrypt
 
 name=perl
 version=5.38.0
-release=1
+release=2
 source=(https://www.cpan.org/src/5.0/$name-$version.tar.xz)
 
 build() {
