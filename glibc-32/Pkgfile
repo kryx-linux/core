@@ -1,16 +1,15 @@
 # Description: The C library used in the GNU system
-# URL: http://www.gnu.org/software/libc/
+# URL: https://www.gnu.org/software/libc/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=glibc-32
 version=2.38
-release=1
+release=2
 _kernel_version=6.1.46
 
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
   https://www.kernel.org/pub/linux/kernel/v6.x/linux-$_kernel_version.tar.xz
   glibc-2.38-fhs-1.patch
-  glibc-2.38-memalign_fix-1.patch
   glibc-$version-1.patch lib32.conf)
 
 build() {
@@ -21,7 +20,6 @@ build() {
 
   patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-$version-1.patch
   patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.38-fhs-1.patch
-  patch -p1 -d $SRC/glibc-${version:0:4} -i $SRC/glibc-2.38-memalign_fix-1.patch
 
   mkdir $SRC/build
   cd $SRC/build
@@ -39,7 +37,6 @@ build() {
     --enable-stack-protector=strong \
     --enable-static-pie \
     --enable-bind-now \
-    --enable-crypt \
     --enable-multi-arch \
     --disable-profile \
     --disable-werror \
