@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqhrrv3JcbBVEiWWS9YwtHm26sHnJAKg2zfdCL00s012eMq0sv7H2f5ihsK7HnrmW0Qaxe10QpzuOu8SsYZYxago=
+SHA256 (Pkgfile) = c24b2bafd8cee87d67b3f9d1365b8c4e84e1ecdce4f500993ba7203fffe5e4ee
+SHA256 (.footprint) = 524f49370778366b439a63a9158b93f604070588f0e4700ec714bf3debd47434
+SHA256 (libbsd-0.11.7.tar.xz) = 9baa186059ebbf25c06308e9f991fda31f7183c0f24931826d83aa6abd8a0261
