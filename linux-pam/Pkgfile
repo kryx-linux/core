@@ -1,10 +1,10 @@
 # Description: Pluggable Authentication Modules (PAM) for Linux
-# URL: http://www.linux-pam.org/
+# URL: https://github.com/linux-pam/linux-pam
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=linux-pam
 version=1.5.3
-release=1
+release=2
 source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz
   common-account common-auth common-password common-session
   other)
