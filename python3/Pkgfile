@@ -4,8 +4,8 @@
 # Depends on: bzip2 expat gdbm libffi libnsl libtirpc libxcrypt mpdecimal sqlite3 xz
 
 name=python3
-version=3.12.0
-release=2
+version=3.12.1
+release=1
 source=(https://www.python.org/ftp/python/${version%rc*}/Python-$version.tar.xz)
 
 build() {
