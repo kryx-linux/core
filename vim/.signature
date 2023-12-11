@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqscGoVBeCvwMxr9WwRP4rT8SWrSPW9m2i+0cReFd0w+F95gTrLTcddn390FqufJdOrk+xpqnXvaWzV3EhflngA8=
-SHA256 (Pkgfile) = 93dac36bb0f57fc7c210e2e59ed69f9366a8c98a5d596aa5c9b368d7599634c3
-SHA256 (.footprint) = 738c953002c8f347d1a0322d06878e260b7aa9f0d5ed7d4598a55d03a0a1737e
-SHA256 (vim-9.0.2095.tar.gz) = 28bbb99b6381b1359e7f9b6e73ed81cfbfe3bba4e7b6fb999354b7c521af5cda
+RWRJc1FUaeVeqot+BodmuS/MzOmrrq/lYptdqFvPzzQAGghpslrc5eZPbddfXqd9DgcY4iMceiq9fhu+jGsm7LEH8H7ur9AwgQs=
+SHA256 (Pkgfile) = dcc62c45fca72856e89ac07ae4563ef55fdb79cf3b55e0fca0fd9c2bee93b872
+SHA256 (.footprint) = 02d0e251b20f3de6415a41655c51f01e09938d101e5760e410349eeabd2b87ae
+SHA256 (vim-9.0.2130.tar.gz) = e748cbe3656587c8bb2316e2bcd0dcb38a6f191e7779bd715ec9300a551be6b0
 SHA256 (Pkgfile.vim.tar.gz) = 1f275a454fdd936b446518dbd6b60ea8e82895b4fb9759a2f5757e03e996b195
