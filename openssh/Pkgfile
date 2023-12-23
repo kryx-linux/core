@@ -4,35 +4,37 @@
 # Depends on: libmd libxcrypt linux-pam openssl zlib
 
 name=openssh
-version=9.5p1
-release=2
+version=9.6p1
+release=1
 source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
-	sshd.rc sshd.pam)
+  sshd.rc sshd.pam)
 
 build() {
-	cd $name-$version
+  cd $name-$version
 
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib/ssh \
-		--sysconfdir=/etc/ssh \
-		--with-mantype=man \
-		--mandir=/usr/share/man \
-		--with-pid-dir=/run \
-		--with-pam \
-		--with-privsep-user=nobody \
-		--with-privsep-path=/var/empty \
-		--with-xauth=/usr/bin/xauth \
-		--without-zlib-version-check
-	make
-	make DESTDIR=$PKG install
-	install -D -m 755 $SRC/sshd.rc $PKG/etc/rc.d/sshd
-	install -D -m 644 $SRC/sshd.pam $PKG/etc/pam.d/sshd
-	rm -r $PKG/var
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/ssh \
+    --sysconfdir=/etc/ssh \
+    --with-mantype=man \
+    --mandir=/usr/share/man \
+    --with-pid-dir=/run \
+    --with-pam \
+    --with-privsep-user=nobody \
+    --with-privsep-path=/var/empty \
+    --with-xauth=/usr/bin/xauth \
+    --without-zlib-version-check
+  make
+  make DESTDIR=$PKG install
 
-	# enable PAM
-	sed '/^#UsePAM/aUsePAM yes' -i $PKG/etc/ssh/sshd_config
+  install -D -m 755 $SRC/sshd.rc $PKG/etc/rc.d/sshd
+  install -D -m 644 $SRC/sshd.pam $PKG/etc/pam.d/sshd
 
-	install -D -m 755 contrib/ssh-copy-id $PKG/usr/bin/ssh-copy-id
-	install -D -m 644 contrib/ssh-copy-id.1 $PKG/usr/share/man/man1/ssh-copy-id.1
+  rm -r $PKG/var
+
+  # enable PAM
+  sed '/^#UsePAM/aUsePAM yes' -i $PKG/etc/ssh/sshd_config
+
+  install -D -m 755 contrib/ssh-copy-id $PKG/usr/bin/ssh-copy-id
+  install -D -m 644 contrib/ssh-copy-id.1 $PKG/usr/share/man/man1/ssh-copy-id.1
 }
