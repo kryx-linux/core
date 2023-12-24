@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjNYi9YZelaXpXmRsbzP2i1G+lEKpT1b6XnrwxkMMPpU3KR8wEZb4bTblklcY0+xqJmr40UPQYPlu3158Br33go=
-SHA256 (Pkgfile) = 358d7c28d4116e26cf89b59555eaa44a3e1cd04aa8cdf3de49a4a006afdb0a87
+RWRJc1FUaeVeqooajReggZkPPLQTvymLCiJqTi7m/2bZCPKDJMKu/KDY+BNikdWyeSlnNV48K2r1Ln2prnQNUP+L3bQ6qqbZVQw=
+SHA256 (Pkgfile) = 1ba70f1ff89573a14e3b801fa90f6305b414aab30525b82d5da465ea00814d0e
 SHA256 (.footprint) = 40c1675d17a58b1815bc369b160d4a08f55eb7790d6ae09a137c8c223ea1bb4a
 SHA256 (sysklogd-2.5.2.tar.gz) = 9da4444285772ce2bfc9c687be8f978b7a9fe7d3937347cd4938eda0c4545e05
 SHA256 (rotatelog) = 4f51230e8c371d61018d88f6d88d1c6bf6b9aee054302fbf4285c82084bdc98f

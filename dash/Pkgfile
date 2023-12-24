@@ -8,13 +8,13 @@ release=1
 source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr \
-    --bindir=/bin
-  make
-  make DESTDIR=$PKG install
+    ./configure --prefix=/usr \
+        --bindir=/bin
+    make
+    make DESTDIR=$PKG install
 
-  ln -s dash $PKG/bin/sh
-  ln -s dash.1 $PKG/usr/share/man/man1/sh.1
+    ln -s dash $PKG/bin/sh
+    ln -s dash.1 $PKG/usr/share/man/man1/sh.1
 }

@@ -8,10 +8,10 @@ release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.lz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  sed "/^CFLAGS/s/-O2/$CFLAGS/" -i configure
-  ./configure --prefix=/usr --exec-prefix=/
-  make
-  make DESTDIR=$PKG install-bin install-man
+    sed "/^CFLAGS/s/-O2/$CFLAGS/" -i configure
+    ./configure --prefix=/usr --exec-prefix=/
+    make
+    make DESTDIR=$PKG install-bin install-man
 }

@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqkaIyUkI0S5q7L0H986CzQpsFdoy4H/9eLhpjn/uqbtm7e42Kg7uuwGUhJmxzHpVfQu7Fbr2sdFb/xjJUAtsyAM=
-SHA256 (Pkgfile) = baf6cf6d4912bc7f4f4b171ab6bcd4223a929e7503214a45c42abb88cfb7f7e2
+RWRJc1FUaeVeqqOzoiil3wRxO4nK0DqJDeBc5fSLKYL3wDDlj6DdrLhCsjMBW6AaVFqL+b0K3j5QIqjms7KZsSXgK4PvSfYbBg8=
+SHA256 (Pkgfile) = bef4027679e85575fa95ffab4fa318082ac5a31d6105983b580d443235876bca
 SHA256 (.footprint) = f37587295fdc61d6a3b29c7bea19a41aa909a42977fb86c4d1fa18ab0138d145
 SHA256 (setuptools-69.0.3.tar.gz) = be1af57fc409f93647f2e8e4573a142ed38724b8cdd389706a867bb4efcf1e78

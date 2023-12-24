@@ -9,11 +9,11 @@ release=1
 source=(https://mj.ucw.cz/download/linux/pci/$name-$version.tar.gz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  local CONF="ZLIB=no DESTDIR=$PKG PREFIX=/usr"
+    local CONF="ZLIB=no DESTDIR=$PKG PREFIX=/usr"
 
-  make -j1 $CONF OPT="$CFLAGS" SHARED=yes install install-lib
-  make clean
-  make -j1 $CONF OPT="$CFLAGS" SHARED=no  install install-lib
+    make -j1 $CONF OPT="$CFLAGS" SHARED=yes install install-lib
+    make clean
+    make -j1 $CONF OPT="$CFLAGS" SHARED=no    install install-lib
 }

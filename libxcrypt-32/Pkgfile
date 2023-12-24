@@ -9,21 +9,21 @@ release=1
 source=(https://github.com/besser82/libxcrypt/releases/download/v$version/libxcrypt-$version.tar.xz)
 
 build() {
-  cd libxcrypt-$version
+    cd libxcrypt-$version
 
-  ./configure --prefix=/usr \
-    --libdir=/usr/lib32 \
-    --enable-hashes=strong,glibc \
-    --enable-obsolete-api=no \
-    --enable-shared \
-    --enable-static \
-    --with-pkgconfigdir=/usr/lib32/pkgconfig \
-    --disable-failure-tokens \
-    --disable-silent-rules \
-    --disable-valgrind
+    ./configure --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --enable-hashes=strong,glibc \
+        --enable-obsolete-api=no \
+        --enable-shared \
+        --enable-static \
+        --with-pkgconfigdir=/usr/lib32/pkgconfig \
+        --disable-failure-tokens \
+        --disable-silent-rules \
+        --disable-valgrind
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 
-  rm -r $PKG/usr/{include,share}
+    rm -r $PKG/usr/{include,share}
 }

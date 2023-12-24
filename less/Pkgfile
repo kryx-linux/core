@@ -7,13 +7,13 @@ name=less
 version=643
 release=1
 source=(https://www.greenwoodsoftware.com/less/$name-$version-beta.tar.gz
-  filter)
+    filter)
 
 build() {
-  cd $name-$version
-  ./configure --prefix=/usr --with-regex=pcre2
-  make
-  make DESTDIR=$PKG install
+    cd $name-$version
+    ./configure --prefix=/usr --with-regex=pcre2
+    make
+    make DESTDIR=$PKG install
 
-  install -m 755 -D $SRC/filter $PKG/usr/lib/less/filter
+    install -m 755 -D $SRC/filter $PKG/usr/lib/less/filter
 }

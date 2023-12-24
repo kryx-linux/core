@@ -7,61 +7,61 @@ name=vim
 version=9.0.2130
 release=1
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz
-  https://git.crux.nu:82/tb/Pkgfile.vim/archive/master.tar.gz)
+    https://git.crux.nu:82/tb/Pkgfile.vim/archive/master.tar.gz)
 renames=(SKIP Pkgfile.vim.tar.gz)
 
 build() {
-  cd $name-$version/src
+    cd $name-$version/src
 
-  sed -i '/^CFLAGS/d' Makefile
+    sed -i '/^CFLAGS/d' Makefile
 
-  CFLAGS+=' -flto=auto' \
-  ./configure \
-    --prefix=/usr \
-    --with-vim-name=vim \
-    --with-compiledby="$(crux | awk '{ print $1, $3 }')" \
-    --enable-multibyte \
-    --enable-cscope \
-    --enable-perlinterp=dynamic \
-    --enable-python3interp=dynamic \
-    --without-x \
-    --disable-gui \
-    --disable-gpm \
-    --disable-canberra \
-    --disable-nls
+    CFLAGS+=' -flto=auto' \
+    ./configure \
+        --prefix=/usr \
+        --with-vim-name=vim \
+        --with-compiledby="$(crux | awk '{ print $1, $3 }')" \
+        --enable-multibyte \
+        --enable-cscope \
+        --enable-perlinterp=dynamic \
+        --enable-python3interp=dynamic \
+        --without-x \
+        --disable-gui \
+        --disable-gpm \
+        --disable-canberra \
+        --disable-nls
 
-  make VIMRTDIR=
-  make -j1 VIMRTDIR= DESTDIR=$PKG install
+    make VIMRTDIR=
+    make -j1 VIMRTDIR= DESTDIR=$PKG install
 
-  mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
-  rm -r $PKG/usr/share/icons $PKG/usr/share/applications/gvim.desktop
-  rm -r $PKG/usr/{share/man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
-  rm $PKG/usr/share/vim/*/README.txt
+    mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
+    rm -r $PKG/usr/share/icons $PKG/usr/share/applications/gvim.desktop
+    rm -r $PKG/usr/{share/man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
+    rm $PKG/usr/share/vim/*/README.txt
 
-  ln -sf vim $PKG/usr/bin/evim
-  ln -sf /bin/vi $PKG/usr/bin/vi
-  for i in ex vi rvim view rview; do
-    ln -sf vim.1.gz $PKG/usr/share/man/man1/${i}.1.gz
-  done
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf /bin/vi $PKG/usr/bin/vi
+    for i in ex vi rvim view rview; do
+        ln -sf vim.1.gz $PKG/usr/share/man/man1/${i}.1.gz
+    done
 
-  make distclean
+    make distclean
 
-  ./configure \
-    --prefix=/ \
-    --datarootdir=/usr/share \
-    --with-vim-name=vi \
-    --with-compiledby="$(crux | awk '{ print $1, $3 }')" \
-    --with-features=tiny \
-    --enable-multibyte \
-    --without-x \
-    --disable-gui \
-    --disable-gpm \
-    --disable-nls
+    ./configure \
+        --prefix=/ \
+        --datarootdir=/usr/share \
+        --with-vim-name=vi \
+        --with-compiledby="$(crux | awk '{ print $1, $3 }')" \
+        --with-features=tiny \
+        --enable-multibyte \
+        --without-x \
+        --disable-gui \
+        --disable-gpm \
+        --disable-nls
 
-  make VIMRTDIR=
-  make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
+    make VIMRTDIR=
+    make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
 
-  cd $SRC/pkgfile.vim
-  install -d $PKG/usr/share/vim/vimfiles
-  cp -r * $PKG/usr/share/vim/vimfiles
+    cd $SRC/pkgfile.vim
+    install -d $PKG/usr/share/vim/vimfiles
+    cp -r * $PKG/usr/share/vim/vimfiles
 }

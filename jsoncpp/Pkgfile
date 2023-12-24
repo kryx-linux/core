@@ -8,15 +8,15 @@ release=1
 source=(https://github.com/open-source-parsers/jsoncpp/archive/$version/$name-$version.tar.gz)
 
 build() {
-  echo ${version} > $name-$version/version
+    echo ${version} > $name-$version/version
 
-  meson setup $name-$version build \
-    --prefix=/usr \
-    --buildtype=plain \
-    --wrap-mode nodownload \
-    -D b_lto=true \
-    -D b_pie=true \
-    --default-library shared
-  meson compile -C build
-  DESTDIR=$PKG meson install -C build
+    meson setup $name-$version build \
+        --prefix=/usr \
+        --buildtype=plain \
+        --wrap-mode nodownload \
+        -D b_lto=true \
+        -D b_pie=true \
+        --default-library shared
+    meson compile -C build
+    DESTDIR=$PKG meson install -C build
 }

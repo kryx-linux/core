@@ -7,22 +7,22 @@ name=bash
 version=5.2.21
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz
-  $name-$version.patch.gz profile)
+    $name-$version.patch.gz profile)
 
 build() {
-  cd $name-${version:0:3}
+    cd $name-${version:0:3}
 
-  gunzip -c $SRC/$name-$version.patch.gz | patch -p0
+    gunzip -c $SRC/$name-$version.patch.gz | patch -p0
 
-  ./configure \
-    --prefix=/usr \
-    --exec-prefix= \
-    --disable-nls \
-    --with-curses \
-    --with-installed-readline
-  make -j1
+    ./configure \
+        --prefix=/usr \
+        --exec-prefix= \
+        --disable-nls \
+        --with-curses \
+        --with-installed-readline
+    make -j1
 
-  install -D -m 755 bash $PKG/bin/bash
-  install -D -m 644 doc/bash.1 $PKG/usr/share/man/man1/bash.1
-  install -D -m 644 $SRC/profile $PKG/etc/profile
+    install -D -m 755 bash $PKG/bin/bash
+    install -D -m 644 doc/bash.1 $PKG/usr/share/man/man1/bash.1
+    install -D -m 644 $SRC/profile $PKG/etc/profile
 }

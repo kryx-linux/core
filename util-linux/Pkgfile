@@ -9,25 +9,25 @@ release=1
 source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure \
-    --prefix=/usr \
-    --enable-{write,kill} \
-    --disable-nls \
-    --disable-asciidoc \
-    --disable-{login,su,sulogin,nologin,runuser,raw} \
-    --disable-chfn-chsh \
-    --without-python
+    ./configure \
+        --prefix=/usr \
+        --enable-{write,kill} \
+        --disable-nls \
+        --disable-asciidoc \
+        --disable-{login,su,sulogin,nologin,runuser,raw} \
+        --disable-chfn-chsh \
+        --without-python
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 
-  install -d $PKG/{etc,var/lib/libuuid}
-  touch $PKG/etc/adjtime
+    install -d $PKG/{etc,var/lib/libuuid}
+    touch $PKG/etc/adjtime
 
-  prt-get isinst bash-completion || rm -r $PKG/usr/share/bash-completion
-  rm -r $PKG/usr/share/doc
-  rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
-  rm $PKG/usr/share/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
+    prt-get isinst bash-completion || rm -r $PKG/usr/share/bash-completion
+    rm -r $PKG/usr/share/doc
+    rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
+    rm $PKG/usr/share/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }

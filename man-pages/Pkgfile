@@ -6,16 +6,16 @@ name=man-pages
 version=6.05.01
 release=1
 source=(https://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz
-  https://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2017-a.tar.xz)
+    https://www.kernel.org/pub/linux/docs/$name/$name-posix/$name-posix-2017-a.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  rm man5/passwd.5
-  make prefix=/usr DESTDIR=$PKG install
+    rm man5/passwd.5
+    make prefix=/usr DESTDIR=$PKG install
 
-  cd $SRC/$name-posix-2017
-  make prefix=/usr DESTDIR=$PKG install
+    cd $SRC/$name-posix-2017
+    make prefix=/usr DESTDIR=$PKG install
 
-  touch $PKG/usr/share/man/whatis
+    touch $PKG/usr/share/man/whatis
 }

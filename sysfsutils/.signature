@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqlYm6WeyGE87hJPwnxpqzi77FFOd3Eq3C6Y9/CYI5SvrpKlKSKF3VfgsVi1hpBOWeNFrAZEeroJsWz2IuvR+eg4=
-SHA256 (Pkgfile) = c7d5cbf7f83d351706a67bd5f6ed700b694c474262b4ba706849fd9d3f45b1f3
+RWRJc1FUaeVeqsTF8+bqB+ru9JXPjtqgpWdfDbn4hsQaBroeYpPsV0CRkaIfrPgq5NPpdtFsP3yGqSrNtPqqzX1zDr1r0bpI6w0=
+SHA256 (Pkgfile) = 445bc654234650720f012be39fc7528f999662ba727f0174f47d8f343d2563ea
 SHA256 (.footprint) = 7911636f1748eba3de236618e2e115d272441f89d4ec547d0b140679f6abb516
 SHA256 (sysfsutils-2.1.1.tar.gz) = f7f669d27c997d3eb3f3e014b4c0aa1aa4d07ce4d6f9e41fa835240f2bf38810

@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmCiZ8VEZNofK01ebqJbkXMvoY4Ey5McbSL92uOmEiz6wCHvBDyVPESAdI1jc2b+cRNrA6mBrUIc8516xGS0kwc=
-SHA256 (Pkgfile) = 4d53df6288a3af37b6b8564748ad811d96e1c5ad4c5f804bd2f623ef4f6393f4
+RWRJc1FUaeVeqgPTkgA8gdUPINEmnq6G27VxfI00AganiHa8HgasQ3UkyNqvx8jbWyidsRgKDL63+Mumqavk6QZQPZJ4qJcOPAY=
+SHA256 (Pkgfile) = a13911dc15b344fc02def587a1a781d311b8339b82629b74f470633591058588
 SHA256 (.footprint) = db00a298e2b47ffcdebfee03a69cb61db7ce11907af11c9fb925d0d28428c947
 SHA256 (dcron-4.5.tar.gz) = 9e50edb6f5bd8153b16bad05087d985e5153ce45cc01ae77e7f842213fb4a824
 SHA256 (crontab) = 5341be13c6322cc70e0559ca5c888c5d90746ae50b7ee4bf28afdc1ef7408a1b

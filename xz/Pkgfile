@@ -8,11 +8,11 @@ release=1
 source=(https://tukaani.org/xz/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr \
-    --disable-nls \
-    --disable-doc
-  make
-  make DESTDIR=$PKG install
+    ./configure --prefix=/usr \
+        --disable-nls \
+        --disable-doc
+    make
+    make DESTDIR=$PKG install
 }

@@ -9,11 +9,11 @@ release=1
 source=(https://www.mpfr.org/mpfr-${version%-*}/mpfr-${version%-*}.tar.xz)
 
 build() {
-  cd mpfr-${version%-*}
+    cd mpfr-${version%-*}
 
-  ./configure --prefix=/usr
-  make
-  make DESTDIR=$PKG install
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
 
-  rm -r $PKG/usr/share
+    rm -r $PKG/usr/share
 }

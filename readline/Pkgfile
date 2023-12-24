@@ -7,22 +7,22 @@ name=readline
 version=8.2.7
 release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-${version:0:3}.tar.gz
-  $name-$version.patch.gz inputrc)
+    $name-$version.patch.gz inputrc)
 
 build() {
-  cd $name-${version:0:3}
+    cd $name-${version:0:3}
 
-  gunzip -c $SRC/$name-$version.patch.gz | patch -p0
+    gunzip -c $SRC/$name-$version.patch.gz | patch -p0
 
-  ./configure --prefix=/usr
-  make -j1 SHLIB_LIBS=-lncurses
-  make -j1 DESTDIR=$PKG install
+    ./configure --prefix=/usr
+    make -j1 SHLIB_LIBS=-lncurses
+    make -j1 DESTDIR=$PKG install
 
-  install -d $PKG/lib
-  mv $PKG/usr/lib/lib*.so.* $PKG/lib
-  ln -sf ../../lib/libhistory.so.${version:0:3} $PKG/usr/lib/libhistory.so
-  ln -sf ../../lib/libreadline.so.${version:0:3} $PKG/usr/lib/libreadline.so
+    install -d $PKG/lib
+    mv $PKG/usr/lib/lib*.so.* $PKG/lib
+    ln -sf ../../lib/libhistory.so.${version:0:3} $PKG/usr/lib/libhistory.so
+    ln -sf ../../lib/libreadline.so.${version:0:3} $PKG/usr/lib/libreadline.so
 
-  install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
-  rm -r $PKG/usr/share/{doc,info}
+    install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
+    rm -r $PKG/usr/share/{doc,info}
 }

@@ -8,16 +8,16 @@ release=1
 source=(https://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.bz2)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  # move path for rpcbind.sock to /run
-  sed 's|/var/run|/run|' -i tirpc/rpc/rpcb_prot.h
+    # move path for rpcbind.sock to /run
+    sed 's|/var/run|/run|' -i tirpc/rpc/rpcb_prot.h
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --disable-gssapi
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --disable-gssapi
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 }

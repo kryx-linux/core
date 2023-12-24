@@ -9,13 +9,13 @@ release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr
+    ./configure --prefix=/usr
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 
-  rm -r  $PKG/usr/share/{info,doc}
-  rm $PKG/usr/share/automake-*/texinfo.tex
+    rm -r    $PKG/usr/share/{info,doc}
+    rm $PKG/usr/share/automake-*/texinfo.tex
 }

@@ -8,13 +8,13 @@ version=017
 release=1
 #source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.xz
 source=(https://github.com/gregkh/usbutils/archive/refs/tags/v$version/$name-$version.tar.gz
-  usb.ids.xz)
+    usb.ids.xz)
 
 build() {
-  cd $name-$version
-  autoreconf --install
-  ./configure --prefix=/usr --disable-zlib
-  make
-  make DESTDIR=$PKG install
-  unxz -c $SRC/usb.ids.xz > $PKG/usr/share/usb.ids
+    cd $name-$version
+    autoreconf --install
+    ./configure --prefix=/usr --disable-zlib
+    make
+    make DESTDIR=$PKG install
+    unxz -c $SRC/usb.ids.xz > $PKG/usr/share/usb.ids
 }

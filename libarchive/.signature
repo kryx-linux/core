@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVequbHLoTtOyF6vsHZpi3jxIFnjBalh92DEYbTZzbLFUe9nctlKgsI5fYjgVxGA5HVD9lv2fLW6/dv2TnmUr4h3wI=
-SHA256 (Pkgfile) = c0fa76524bb74b88c155c01971570a32776baa56bf67bf80794179fa8386bb65
+RWRJc1FUaeVeqig5jKE9SDx4sbdp2u6tGGD7o4Ik1D3K0/iebRRps2dq7zRUC/EfktTftN6jmOf/RElBl0Y+Myz3tm7k3+0v3ws=
+SHA256 (Pkgfile) = f1c2f8b66cafdf1f61f14371e4618d04112cf4938b35aeff6318d16f1300c648
 SHA256 (.footprint) = 297bc91d57d21039ca861bbbc40537465edfede236532f8caec8434129f5c880
 SHA256 (libarchive-3.7.2.tar.xz) = 04357661e6717b6941682cde02ad741ae4819c67a260593dfb2431861b251acb
 SHA256 (lzma_stream.patch) = 0ef35ac67530d5ae3e4e39d968c4ba72a7a9806e4d98aa16aa8b608c76eb32c8

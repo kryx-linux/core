@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqku9F/7zOpFwony9+8JhCRaFzYK+57i6XBgX4E79qoLivSGsSIHzu4sRGbZx+pxKIfreK35JJSl0zNTnjZ3zXAQ=
-SHA256 (Pkgfile) = 8c6e474cd885af055a48ccdd6c820188776078451e232456d148d35552294f14
+RWRJc1FUaeVeqnh8qYhi2ziLxLxWqdq/W/IpGu9c7FIOm3b0M4YO1b28KxN56lAeXxi7VSjjBqIKgoox12D/IFBlQwsvDZm7rwU=
+SHA256 (Pkgfile) = 7b700508a3f28eb08cef083837758bed72eeff57313596a4f5bff2cf949a8380
 SHA256 (.footprint) = 9423354c7e253916d705194ba4ca5ab182c9e9ca785bdac6fa81f46c1d386542
 SHA256 (jansson-2.14.tar.bz2) = fba956f27c6ae56ce6dfd52fbf9d20254aad42821f74fa52f83957625294afb9

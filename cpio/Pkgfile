@@ -8,14 +8,14 @@ release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr \
-    --disable-nls
+    ./configure --prefix=/usr \
+        --disable-nls
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 
-  rm -r $PKG/usr/{libexec,share/info}
-  rm -r $PKG/usr/share/man/man8
+    rm -r $PKG/usr/{libexec,share/info}
+    rm -r $PKG/usr/share/man/man8
 }

@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqm7oMluLADkwrboGASbb0Uxw0hS/52eG4Bv5yVtBoFL/ho2drMVtGwAdJK8kCWV1Y7rHi4HqeIgsNPeech4QdgM=
-SHA256 (Pkgfile) = f2d59e3b8ac40cc653ff1e64e87111b168b91315371d40118fe505644d90c25b
+RWRJc1FUaeVeqlmlJMcTipdzTL2hIruVygHb4XSovw6ktcGV9Uxl82x8wkpx5lfV10uB7jhT0petGU6VwRdK1HyuwIvD/LuckQY=
+SHA256 (Pkgfile) = b7559f7243702152c2f50545c18319bdb414f270125f068d74d248687b97e84d
 SHA256 (.footprint) = 60e5563297178ddb8ef8bb0c5b8f527bc272675115b3be714a29f48c5bdaf3d3
 SHA256 (bison-3.8.2.tar.xz) = 9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2

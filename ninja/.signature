@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqtLTjTLbdTZf3VQwFnGGvTZQzAu/No0uEeeypCxj1L+pqP4WqHn3zLawOJhzcs1NL5YUhFZA4yd9fH5jbLK2yw8=
-SHA256 (Pkgfile) = c931feef2bc6b1ae8a5001f95b4e2c9f9d133fb2aa2a2def503ae82cfac1eecb
+RWRJc1FUaeVeqvj871thivca+Ki28ovn05TeJ5C8MvMGJDyW7lRQhKaRYTJYDON254Rqrvs2oQn3A1sfbsabadi9JjvLqZDnBQ0=
+SHA256 (Pkgfile) = acf7693174f1c2b0274df8edb1c74c91b03973f079e8a0796cf0b201f8bea1db
 SHA256 (.footprint) = 4f940f03f9adfac22005f86ffdd7356bc18b652cc6c218e4e60837214b6df70b
 SHA256 (ninja-v1.11.1.tar.gz) = 31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea

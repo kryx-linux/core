@@ -8,25 +8,25 @@ release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --without-x
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --without-x
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 
-  sed -e 's|^\(papersize\).*|\1 /etc/papersize|' \
-    -i $PKG/usr/share/groff/current/font/*/DESC
+    sed -e 's|^\(papersize\).*|\1 /etc/papersize|' \
+        -i $PKG/usr/share/groff/current/font/*/DESC
 
-  install -d $PKG/etc
-  echo 'letter' > $PKG/etc/papersize
+    install -d $PKG/etc
+    echo 'letter' > $PKG/etc/papersize
 
-  rm -rf $PKG/usr/share/{info,doc}
+    rm -rf $PKG/usr/share/{info,doc}
 
-  ln -s eqn $PKG/usr/bin/geqn
-  ln -s tbl $PKG/usr/bin/gtbl
-  ln -s soelim $PKG/usr/bin/zsoelim
+    ln -s eqn $PKG/usr/bin/geqn
+    ln -s tbl $PKG/usr/bin/gtbl
+    ln -s soelim $PKG/usr/bin/zsoelim
 }

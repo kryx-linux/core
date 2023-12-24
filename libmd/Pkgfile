@@ -8,9 +8,9 @@ release=1
 source=(https://archive.hadrons.org/software/$name/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr
-  make
-  make DESTDIR=$PKG install
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
 }

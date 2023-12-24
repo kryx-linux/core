@@ -8,13 +8,13 @@ release=1
 source=(https://github.com/nghttp2/nghttp2/releases/download/v$version/nghttp2-$version.tar.xz)
 
 build() {
-  cd nghttp2-$version
+    cd nghttp2-$version
 
-  ./configure \
-    --prefix=/usr \
-    --enable-lib-only \
-    --disable-examples \
-    --disable-python-bindings
-  make
-  make -C lib DESTDIR=$PKG install
+    ./configure \
+        --prefix=/usr \
+        --enable-lib-only \
+        --disable-examples \
+        --disable-python-bindings
+    make
+    make -C lib DESTDIR=$PKG install
 }

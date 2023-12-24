@@ -9,13 +9,13 @@ release=1
 source=(http://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  export LINGUAS=' '
+    export LINGUAS=' '
 
-  ./configure --prefix=/usr --disable-nls
-  make
-  make DESTDIR=$PKG install
+    ./configure --prefix=/usr --disable-nls
+    make
+    make DESTDIR=$PKG install
 
-  rm $PKG/usr/bin/pstree.x11
+    rm $PKG/usr/bin/pstree.x11
 }

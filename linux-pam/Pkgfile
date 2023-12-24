@@ -6,30 +6,30 @@ name=linux-pam
 version=1.5.3
 release=2
 source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz
-  common-account common-auth common-password common-session
-  other)
+    common-account common-auth common-password common-session
+    other)
 
 build() {
-  cd Linux-PAM-$version
+    cd Linux-PAM-$version
 
-  CONFIG_SHELL=/bin/bash ./configure \
-    --prefix=/usr \
-    --libdir=/lib \
-    --disable-nls \
-    --disable-prelude \
-    --enable-db=no
-  make
-  make DESTDIR=$PKG install
+    CONFIG_SHELL=/bin/bash ./configure \
+        --prefix=/usr \
+        --libdir=/lib \
+        --disable-nls \
+        --disable-prelude \
+        --enable-db=no
+    make
+    make DESTDIR=$PKG install
 
-  mv $PKG/lib/pkgconfig $PKG/usr/lib
+    mv $PKG/lib/pkgconfig $PKG/usr/lib
 
-  # unix_chkpwd needs to be setuid root
-  chmod u+s $PKG/sbin/unix_chkpwd
+    # unix_chkpwd needs to be setuid root
+    chmod u+s $PKG/sbin/unix_chkpwd
 
-  mkdir -p $PKG/etc/pam.d
-  install -o root -g root -m 0644 \
-    $SRC/{common-*,other} \
-    $PKG/etc/pam.d/
+    mkdir -p $PKG/etc/pam.d
+    install -o root -g root -m 0644 \
+        $SRC/{common-*,other} \
+        $PKG/etc/pam.d/
 
-  rm -r $PKG/usr/{lib/systemd,share/doc}
+    rm -r $PKG/usr/{lib/systemd,share/doc}
 }

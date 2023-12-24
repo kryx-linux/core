@@ -8,13 +8,13 @@ release=1
 source=(https://download.sourceforge.net/$name/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  ./configure --prefix=/usr
+    ./configure --prefix=/usr
 
-  make
-  make DESTDIR=$PKG install
-  install -D -m 0644 doc/xmlwf.1 $PKG/usr/share/man/man1/xmlwf.1
+    make
+    make DESTDIR=$PKG install
+    install -D -m 0644 doc/xmlwf.1 $PKG/usr/share/man/man1/xmlwf.1
 
-  rm -r $PKG/usr/{lib/cmake,share/doc}
+    rm -r $PKG/usr/{lib/cmake,share/doc}
 }

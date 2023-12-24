@@ -8,8 +8,8 @@ release=1
 source=(https://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  make
-  make DESTDIR=$PKG install
+    make
+    make DESTDIR=$PKG install
 }

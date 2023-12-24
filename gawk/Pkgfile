@@ -9,17 +9,17 @@ release=1
 source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  export ac_cv_libsigsegv=no
+    export ac_cv_libsigsegv=no
 
-  ./configure \
-    --prefix=/usr \
-    --libexecdir=/usr/lib \
-    --disable-nls
-  make
-  make DESTDIR=$PKG install
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib \
+        --disable-nls
+    make
+    make DESTDIR=$PKG install
 
-  rm -r $PKG/usr/{etc,share/info}
-  rm $PKG/usr/bin/gawk-$version
+    rm -r $PKG/usr/{etc,share/info}
+    rm $PKG/usr/bin/gawk-$version
 }

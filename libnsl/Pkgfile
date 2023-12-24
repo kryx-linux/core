@@ -8,10 +8,10 @@ release=1
 source=(https://github.com/thkukuk/libnsl/releases/download/v$version/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
+    cd $name-$version
 
-  autoreconf -fi
-  ./configure --prefix=/usr
-  make
-  make DESTDIR=$PKG install
+    autoreconf -fi
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
 }
