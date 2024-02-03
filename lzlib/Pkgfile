@@ -1,11 +1,11 @@
 # Description: Data compression library
-# URL: http://lzip.nongnu.org/lzlib.html
+# URL: https://lzip.nongnu.org/lzlib.html
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=lzlib
-version=1.13
+version=1.14
 release=1
-source=(http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-$version.tar.gz)
+source=(https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-$version.tar.gz)
 
 build() {
     cd $name-$version

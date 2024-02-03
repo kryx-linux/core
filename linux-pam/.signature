@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqkC0o2MkNDsb93FnEkxzvpdE0EPoJqsHWAQHcldPaMI5nnRikRheV/nNcxlityrOK2+jNTeZMdXgIxugtq0PGAg=
-SHA256 (Pkgfile) = 10f9181d58abfed9fda8521cb95450de91f0c97fa6dd4cb31eee8e4ff204dc74
-SHA256 (.footprint) = e821bafa2b55574efc1be8ae5637978630503fccda7b12751cf689b8fb540f14
-SHA256 (Linux-PAM-1.5.3.tar.xz) = 7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283
+RWRJc1FUaeVeqoxUgi+hj1Kdm/aTi8Fz6nnByHuyIEJVQMWWr+94+7oF3M2ZSzG/D256xkrEOKUIDn1HTZEvK1560eJm8+XRJAY=
+SHA256 (Pkgfile) = d6e9b0f2be5267d25c70192947303f86e9e62dc8177f01874af9e0bd85c628db
+SHA256 (.footprint) = 2dc2275e9e9e7fd93a2c1aeb364d8db7336699b4577a43b1b728e98113cc890e
+SHA256 (Linux-PAM-1.6.0.tar.xz) = fff4a34e5bbee77e2e8f1992f27631e2329bcbf8a0563ddeb5c3389b4e3169ad
 SHA256 (common-account) = 63b6d073e0a05d45260912fd900e27ccac3304ca23cd05df68ce88da34a5d832
 SHA256 (common-auth) = c8f2c471572147fafddfe2062b763d360bbb6d21aa8017c725785f96667e9b02
 SHA256 (common-password) = 999c19d97ab2a8408103304faa12252d11ab03d492880d78a0bd1a1335659258

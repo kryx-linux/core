@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqktNwuCz1mI6FAhzJ+RDhle41g194J6bLbefyaWrxprJC3PkoAbqXVRQ4L0rXh4VDBT8a2xmnuCn+KMsqp8oDww=
-SHA256 (Pkgfile) = 11b433b160e00014f32bfe5848b3b65a66e1eee9fe9721f0984348100a0243ff
+RWRJc1FUaeVeqtS6OMxN2tl3oFVZhO7MnrYftg4LHh0a2XGlftxhEhtQUuuwWo9/66jpRUnYGgysCcHWmeTL1g0I/ebi4nvJeAg=
+SHA256 (Pkgfile) = aeb85154010227706b86ad4d4e5a78d1650110c3864f4f087e302ecbd54cfe8c
 SHA256 (.footprint) = ea3802c2571c2652b12d43cfb5d843810d15f43a991c3b4a6e1e807c27bb6c78
-SHA256 (exim-4.97.tar.xz) = 428150e67c494fa14fe5195d81b972c1b23e651ee4f9f2ff1788250266d31e9c
+SHA256 (exim-4.97.1.tar.xz) = bd782057509a793593508528590626d185ea160ce32cb34beda262e99cefdfa9
 SHA256 (exim) = fcc6489769d9b4503f6435747dca79d9f8aca1da05628dc82de6a27335cd27a7
 SHA256 (exim-config.patch) = 5b1843a12f62e830712cffcbc1fc585887e8fafcebc59cc47e299b2eefe54f96
 SHA256 (disable-id_update.patch) = f0deb49dc795a4f3c8094e73f92b923fed517b549c24864086f0996059947c88
