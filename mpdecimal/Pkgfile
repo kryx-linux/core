@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=mpdecimal
-version=2.5.1
+version=4.0.0
 release=1
 source=(https://www.bytereef.org/software/$name/releases/$name-$version.tar.gz)
 
@@ -16,5 +16,4 @@ build() {
     make DESTDIR=$PKG install
 
     rm -r $PKG/usr/share/doc
-    rmdir $PKG/usr/share
 }
