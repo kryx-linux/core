@@ -4,14 +4,15 @@
 # Depends on: libmd
 
 name=libbsd
-version=0.11.7
+version=0.12.1
 release=1
 source=(https://libbsd.freedesktop.org/releases/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
 
-    ./configure --prefix=/usr \
+    ./configure \
+        --prefix=/usr \
         --mandir=/usr/share/man
     make
     make install DESTDIR=$PKG
