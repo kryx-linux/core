@@ -4,14 +4,20 @@
 
 name=dash
 version=0.5.12
-release=1
-source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz)
+release=2
+source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz
+	$name-20230109.patch)
 
 build() {
 	cd $name-$version
+
+	patch -p1 -i $SRC/$name-20230109.patch
+
+	autoreconf -if
 	./configure --prefix=/usr --bindir=/bin
 	make
 	make DESTDIR=$PKG install
+
 	ln -s dash $PKG/bin/sh
 	ln -s dash.1 $PKG/usr/share/man/man1/sh.1
 }
