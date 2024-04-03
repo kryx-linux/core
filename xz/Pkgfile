@@ -3,16 +3,21 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=xz
-version=5.6.1
+version=5.4.6
 release=1
-source=(https://github.com/tukaani-project/xz/releases/download/v$version/$name-$version.tar.xz)
+source=(https://crux.nu/files/distfiles/xz-5.4.6.tar.gz)
 
 build() {
     cd $name-$version
 
-    ./configure --prefix=/usr \
-        --disable-nls \
-        --disable-doc
+    autoreconf -vfi
+    ./configure \
+        --prefix=/usr \
+        --enable-threads \
+        --enable-werror \
+        --disable-doc \
+        --disable-nls
+
     make
     make DESTDIR=$PKG install
 }
