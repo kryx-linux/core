@@ -1,6 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqhhcYV8Mj1epcbiJjojx8Wyszpq10F9NAvur29htW9LGX2MykBuQJtFsSnn7ZCN1heoSfCojrb/5zwaopWcJrQ4=
-SHA256 (Pkgfile) = 21dddb72c212746841544407b3865eeb243be86d9c026c7c82c335e3ff191f6e
-SHA256 (.footprint) = 3847de47444494a7817db23a570db60e78a1904eca16bd867dc320a4d15c7e83
-SHA256 (util-linux-2.40.tar.xz) = d57a626081f9ead02fa44c63a6af162ec19c58f53e993f206ab7c3a6641c2cd7
-SHA256 (pam_lastlog2.patch) = 638dd140a0643730d43ed693bbe58e53881eb8e1117d1d8e0bfae765c758be4b
+RWRJc1FUaeVeqnik6JPP6ieUn6PdtABQwYQoQZRSdlEwRrdachLfrxT+TNKd/7PTIfyzIcJSGBB20qtUiWKMuL/J0fH5WZ86LQI=
+SHA256 (Pkgfile) = feeb65843deb8507ad11b470e8c5b5ac10e8b3eee2130e01883774044745cf7e
+SHA256 (.footprint) = 82d4a87081e972e8e9918f25890577cd61f5e81d01ccec9d90a14663fc6a38e7
+SHA256 (util-linux-2.40.1.tar.xz) = 59e676aa53ccb44b6c39f0ffe01a8fa274891c91bef1474752fad92461def24f
