@@ -1,5 +1,12 @@
 untrusted comment: verify with /etc/ports/core.pub
+<<<<<<< HEAD
 RWRJc1FUaeVeqp45P5fm/jPzTy0KJvd8cuZeLsv8Zxv5ZUhPZhgAveG84CC5/314svmgUXvFYt8K5WsdLxCkvuagRYcOmicsrAQ=
 SHA256 (Pkgfile) = 163244607cb38bd23e798006b04f981626c704572bbe2af60bbdc03a3bd7a266
 SHA256 (.footprint) = 27074b94034805c15867ae49c737b37ea169d73e7121d12b20b9b0795e103974
 SHA256 (setuptools-69.5.1.tar.gz) = 6c1fccdac05a97e598fb0ae3bbed5904ccb317337a51139dcd51453611bbb987
+=======
+RWRJc1FUaeVeqoWeCI8TWEpV7XkzklbIErR7tN2ca3/jyvYXigKODdTpui+tbqw/KlppSVpZhw15/kHifBPYN8GaR4JVeTaD9wc=
+SHA256 (Pkgfile) = d1356482a15da87ccff31d4199dacdd41ad284f939102df1b7006218c2cc47ea
+SHA256 (.footprint) = 44f6e569ea7a86e5350b831830ce12847eed938fd4e5d206aec71d847f0e71f0
+SHA256 (setuptools-68.2.2.tar.gz) = 4ac1475276d2f1c48684874089fefcd83bd7162ddaafb81fac866ba0db282a87
+>>>>>>> parent of a4ce8cb8 (python3-setuptools: rebuilt for python3.12)
