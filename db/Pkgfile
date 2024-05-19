@@ -28,7 +28,8 @@ build() {
         --enable-compat185 \
         --enable-shared \
         --enable-static \
-        --enable-cxx
+        --enable-cxx \
+        --with-mutex=x86_64/gcc-assembly
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/docs
