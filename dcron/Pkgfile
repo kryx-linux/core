@@ -3,9 +3,9 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=dcron
-version=4.5
-release=3
-source=(http://www.jimpryor.net/linux/releases/$name-$version.tar.gz
+version=4.6
+release=1
+source=(https://github.com/ptchinster/dcron/archive/v$version/$name-$version.tar.gz
     crontab runjobs crond)
 
 build() {
