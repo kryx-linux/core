@@ -24,12 +24,14 @@ build() {
     patch -p1 -i $SRC/db-5.3.28_cve-2019-2708.patch
 
     cd build_unix
+
+    CFLAGS="$CFLAGS -Wno-error=implicit-int" \
     ../dist/configure --prefix=/usr \
         --enable-compat185 \
         --enable-shared \
         --enable-static \
         --enable-cxx \
-        --with-mutex=x86_64/gcc-assembly
+
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/docs
