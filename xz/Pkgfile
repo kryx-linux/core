@@ -3,15 +3,15 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=xz
-version=5.4.6
+version=5.6.2
 release=1
-source=(https://crux.nu/files/distfiles/xz-5.4.6.tar.gz)
+source=(https://github.com/tukaani-project/xz/releases/download/v$version/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
 
-	autoreconf -vfi
-	./configure --prefix=/usr \
+	./configure \
+		--prefix=/usr \
 		--enable-threads \
 		--enable-werror \
 		--disable-doc \
