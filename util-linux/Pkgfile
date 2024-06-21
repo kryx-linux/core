@@ -1,11 +1,11 @@
 # Description: Miscellaneous system utilities
 # URL: https://github.com/karelzak/util-linux
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: bzip2 eudev file linux-pam readline sqlite3 xz
+# Depends on: bzip2 eudev file libcap-ng linux-pam readline sqlite3 xz
 
 name=util-linux
 version=2.40.1
-release=1
+release=2
 #source=(https://github.com/util-linux/util-linux/archive/refs/tags/v$version/$name-$version.tar.gz)
 source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz)
 
