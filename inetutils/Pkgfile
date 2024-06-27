@@ -10,6 +10,7 @@ source=(http://ftpmirror.gnu.org/gnu/inetutils/inetutils-$version.tar.gz
     inetd.conf inetd)
 
 build() {
+	export CFLAGS+=" -Wno-implicit-function-declaration"
     cd inetutils-$version
 
     ./configure \
