@@ -5,8 +5,8 @@
 
 name=less
 version=661
-release=1
-source=(https://www.greenwoodsoftware.com/less/$name-$version-beta.tar.gz
+release=2
+source=(https://www.greenwoodsoftware.com/less/$name-$version.tar.gz
 	filter)
 
 build() {
