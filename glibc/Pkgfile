@@ -70,7 +70,4 @@ build() {
 
     install -Dm644 $SRC/$name-$version/intl/locale.alias \
         $PKG/usr/share/locale/locale.alias
-
-    find $PKG -name "*install.cmd" -delete
-    find $PKG -name ".\install" -delete
 }
