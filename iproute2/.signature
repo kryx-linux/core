@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqqKRk3RBIIPqKXZekaZg8Ywb4tq/EAU1FrxKvCIVLx242KlokbzQQbtwULcwg07IV9s4YweHaYIH4ul3O0NfzQs=
-SHA256 (Pkgfile) = 01154e1795cc0b81f416a1b626e0d740659565f1fbae57d53b4913e3fa0e5cdf
+RWRJc1FUaeVeqkU4Ku44npHZJGVxMfn/GzNSZCLzp9Nx18A58mic26AaeSw3IC5IhMa7GulM5Gdd/k5oSKHKBhJW+DHL0hiR/ws=
+SHA256 (Pkgfile) = 3713fac592c0db17846d2235d9e83f2dc041e8f05138d55893e7920d72ea007e
 SHA256 (.footprint) = 4590e4dcfe844e86665e606b2673bb711dc0ab707addfda10a8b5936caeccb9a
-SHA256 (iproute2-6.9.0.tar.xz) = 2f643d09ea11a4a2a043c92e2b469b5f73228cbf241ae806760296ed0ec413d0
+SHA256 (iproute2-6.10.0.tar.xz) = 91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
 SHA256 (lo.iproute2) = ce94fcf414aa11927a66a221af14180f125f4efbf985dd4db9a1b43dad9cbcc7
 SHA256 (net.iproute2) = 0af62a6d674d159ec77ccb46c7ee189c1dc4db0213026d6c42c2b80ce01d231d
