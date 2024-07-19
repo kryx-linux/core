@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqixWjhIJxAxDzY6qikysVmf5/s/zb0C7U7KFyJkUcGXCOR5b4zg3O8CPVlRPMseIfFtm1zscRbSFUVLO1hCk2Aw=
-SHA256 (Pkgfile) = 3625c80f6f9a0dceff4058f9fd6dce9f938735289577ba6d2ce2aba178ddf6bc
+RWRJc1FUaeVeqgmV5Bw5wKU2uN6LCLnviKekOzznwsQ3M/6PrIuy3NYe/JGpNcpomXI5n9MuYW/RStiwZPDbGXpWhQBWFkqvzQ8=
+SHA256 (Pkgfile) = 771b206a47c92649cf026fb2821fdc0056b6307b825662fa440f917a5415db5b
 SHA256 (.footprint) = 881affe152fa8ce229a6bbac47e52e9c3431693811432c8d505e0c2813d6adda
-SHA256 (libnftnl-1.2.6.tar.xz) = ceeaea2cd92147da19f13a35a7f1a4bc2767ff897e838e4b479cf54b59c777f4
+SHA256 (libnftnl-1.2.7.tar.xz) = 9122774f968093d5c0bacddd67de480f31fa4073405a7fc058a34b0f387aecb3
