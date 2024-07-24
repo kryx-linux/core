@@ -4,13 +4,11 @@
 # Depends on: ncurses acl
 
 name=vim
-version=9.1.0505
+version=9.1.0613
 release=1
-_commit=897d46d5fd029945d7373167ec2bf8d8c37079b2
-_date=20230703
+pkgfileversion=0.0.1
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz \
-	https://git.crux.nu/tb/Pkgfile.vim/archive/$_commit.tar.gz)
-renames=(SKIP Pkgfile-$_date.vim.tar.gz)
+	https://github.com/TimB87/Pkgfile.vim/archive/refs/tags/v$pkgfileversion/Pkgfile.vim-$pkgfileversion.tar.gz)
 
 build() {
 	cd $name-$version/src
@@ -58,7 +56,7 @@ build() {
 	make VIMRTDIR=
 	make -j1 VIMRTDIR= DESTDIR=$PKG installvimbin
 
-	cd $SRC/pkgfile.vim
+	cd $SRC/Pkgfile.vim-$pkgfileversion
 	install -d $PKG/usr/share/vim/vimfiles
 	cp -r * $PKG/usr/share/vim/vimfiles
 }
