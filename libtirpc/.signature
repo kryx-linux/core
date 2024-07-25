@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpdhuiQCr+JBTaq+i+cZWOw7yD+XzaBmASJ/Tntzdod5aJg3XRvmaC7QlaD0n6/S4OZjwDE3CRmUNu74//+51wc=
-SHA256 (Pkgfile) = 333f46ee0e93776afe08b16ab884cac9169cffd48833dba1c42a1b43c771507c
+RWRJc1FUaeVeqoOLkkzZl5LlgIQUHo8vZLuJpKbOzDod7lkcxGIwBCVgOj3XFc8pbtHPVnasZXT1vjZoDEKNTm2APOe5MYAHvAk=
+SHA256 (Pkgfile) = 428b6a68b04e6709c1115cf7cc1f084fee3ff5ae9c72cfd16a34bbae18b8219c
 SHA256 (.footprint) = dfffa90037e87e2954aec95c896e466e6be48fc6a8e9bc80b72d6aab0b64bdd7
-SHA256 (libtirpc-1.3.4.tar.bz2) = 1e0b0c7231c5fa122e06c0609a76723664d068b0dba3b8219b63e6340b347860
+SHA256 (libtirpc-1.3.5.tar.bz2) = 9b31370e5a38d3391bf37edfa22498e28fe2142467ae6be7a17c9068ec0bf12f
