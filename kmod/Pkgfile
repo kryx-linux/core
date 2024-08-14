@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=kmod
-version=32
+version=33
 release=1
 source=(https://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz)
 
@@ -30,6 +30,5 @@ build() {
 
 	ln -s ../sbin/kmod $PKG/bin/lsmod
 
-	mv $PKG/usr/{lib,share}/pkgconfig/kmod.pc
 	rm -r $PKG/usr/share/bash-completion
 }
