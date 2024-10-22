@@ -4,7 +4,7 @@
 # Depends on: python3-setuptools
 
 name=meson
-version=1.5.2
+version=1.6.0
 release=1
 source=(https://github.com/mesonbuild/meson/releases/download/$version/$name-$version.tar.gz)
 
@@ -16,6 +16,8 @@ build() {
 
 	/usr/bin/python3 setup.py install \
 		--prefix=/usr --root=$PKG --optimize=1 --skip-build
+
+	chmod -R g-w $PKG
 
 	prt-get isinst bash-completion && install -m 0644 -Dt $PKG/usr/share/bash-completion/completions data/shell-completions/bash/*
 	prt-get isinst zsh && install -m 0644 -Dt $PKG/usr/share/zsh/site-functions data/shell-completions/zsh/*

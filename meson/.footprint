@@ -4,13 +4,13 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/python3.10/
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/
-drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/PKG-INFO
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/SOURCES.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/dependency_links.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/entry_points.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/requires.txt
--rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.5.2-py3.10.egg-info/top_level.txt
+drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/PKG-INFO
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/SOURCES.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/dependency_links.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/entry_points.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/requires.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/meson-1.6.0-py3.10.egg-info/top_level.txt
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/__init__.py (EMPTY)
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/__pycache__/
@@ -357,7 +357,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/__
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/CMakeLists.txt
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/CMakeListsLLVM.txt
--rw-rw-r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/CMakePathInfo.txt
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/CMakePathInfo.txt
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/__init__.py (EMPTY)
 drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/dependencies/data/__pycache__/__init__.cpython-310.opt-1.pyc
@@ -617,6 +617,8 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-310.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/reprotest.cpython-310.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/reprotest.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/run_tool.cpython-310.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/run_tool.cpython-310.pyc
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycache__/scanbuild.cpython-310.opt-1.pyc
@@ -655,6 +657,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/__pycac
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/pycompile.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/python_info.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/regen_checker.py
+-rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/reprotest.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/run_tool.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/scanbuild.py
 -rw-r--r--	root/root	usr/lib/python3.10/site-packages/mesonbuild/scripts/symbolextractor.py
@@ -747,7 +750,7 @@ drwxr-xr-x	root/root	usr/lib/python3.10/site-packages/mesonbuild/wrap/__pycache_
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
--rw-rw-r--	root/root	usr/share/man/man1/meson.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/meson.1.gz
 drwxr-xr-x	root/root	usr/share/polkit-1/
 drwxr-xr-x	root/root	usr/share/polkit-1/actions/
 -rw-r--r--	root/root	usr/share/polkit-1/actions/com.mesonbuild.install.policy
