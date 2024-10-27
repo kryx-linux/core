@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnPTRL/gz/fv9g57OXj2VgDTZQ+uW/u+lupkNTRfGe18KDG5Nu34uSxP2hq6ekofHZGg374G8fiqXAD2C5cK2gg=
-SHA256 (Pkgfile) = 038e7dd0d0254238921f4d4836565e4ab0d0cf41ed559c6f38a3398ac08decde
-SHA256 (.footprint) = 79f9f329ba045a0d8572c66ffd2d288ebfc6833db684029a734ce3aadcc1f6a2
-SHA256 (elfutils-0.191.tar.bz2) = df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871
+RWRJc1FUaeVeqhrOijNRb9Wl4Nn8kvtIQz6M+ItOj/33CDKxeaai8sBmL/dD0h0pjBH7MzNyF8V6ygAPAIDSue8VPEYCUSyobQY=
+SHA256 (Pkgfile) = 2fd114e65cf1f39c6bd6b5aab39d2f2a0a485495380f50dc767f2e8c36b87feb
+SHA256 (.footprint) = e9564db72000ea63c2e33c455f0d685192fbccdc5b3a3711e5e48c9414fca29c
+SHA256 (elfutils-0.192.tar.bz2) = 616099beae24aba11f9b63d86ca6cc8d566d968b802391334c91df54eab416b4
