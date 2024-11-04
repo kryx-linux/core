@@ -5,15 +5,21 @@
 
 name=elfutils
 version=0.192
-release=1
-source=(https://sourceware.org/$name/ftp/$version/$name-$version.tar.bz2)
+release=2
+source=(https://sourceware.org/$name/ftp/$version/$name-$version.tar.bz2
+	libeu.patch)
 
 build() {
 	cd $name-$version
 
+	patch -Np1 -i $SRC/libeu.patch
+	autoreconf -vfi
+
+	CFLAGS+=" -ffat-lto-objects" \
 	./configure \
 		--prefix=/usr \
 		--program-prefix=eu- \
+		--enable-deterministic-archives \
 		--disable-debuginfod \
 		--disable-libdebuginfod \
 		--disable-nls
