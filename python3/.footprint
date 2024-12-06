@@ -1694,7 +1694,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/ensurepip/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/ensurepip/__pycache__/_uninstall.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/ensurepip/__pycache__/_uninstall.cpython-312.pyc
 drwxr-xr-x	root/root	usr/lib/python3.12/ensurepip/_bundled/
--rw-r--r--	root/root	usr/lib/python3.12/ensurepip/_bundled/pip-24.2-py3-none-any.whl
+-rw-r--r--	root/root	usr/lib/python3.12/ensurepip/_bundled/pip-24.3.1-py3-none-any.whl
 -rw-r--r--	root/root	usr/lib/python3.12/ensurepip/_uninstall.py
 -rw-r--r--	root/root	usr/lib/python3.12/enum.py
 -rw-r--r--	root/root	usr/lib/python3.12/filecmp.py
@@ -2481,9 +2481,9 @@ drwxr-xr-x	root/root	usr/lib/python3.12/lib-dynload/
 -rwxr-xr-x	root/root	usr/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so
 drwxr-xr-x	root/root	usr/lib/python3.12/lib2to3/
 -rw-r--r--	root/root	usr/lib/python3.12/lib2to3/Grammar.txt
--rw-r--r--	root/root	usr/lib/python3.12/lib2to3/Grammar3.12.7.final.0.pickle
+-rw-r--r--	root/root	usr/lib/python3.12/lib2to3/Grammar3.12.8.final.0.pickle
 -rw-r--r--	root/root	usr/lib/python3.12/lib2to3/PatternGrammar.txt
--rw-r--r--	root/root	usr/lib/python3.12/lib2to3/PatternGrammar3.12.7.final.0.pickle
+-rw-r--r--	root/root	usr/lib/python3.12/lib2to3/PatternGrammar3.12.8.final.0.pickle
 -rw-r--r--	root/root	usr/lib/python3.12/lib2to3/__init__.py
 -rw-r--r--	root/root	usr/lib/python3.12/lib2to3/__main__.py
 drwxr-xr-x	root/root	usr/lib/python3.12/lib2to3/__pycache__/
@@ -4910,6 +4910,9 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/support/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/hypothesis_helper.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/hypothesis_helper.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/hypothesis_helper.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/i18n_helper.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/i18n_helper.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/i18n_helper.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/import_helper.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/import_helper.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/import_helper.cpython-312.pyc
@@ -4940,6 +4943,9 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/support/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/threading_helper.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/threading_helper.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/threading_helper.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/venv.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/venv.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/venv.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/warnings_helper.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/warnings_helper.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/__pycache__/warnings_helper.cpython-312.pyc
@@ -4963,6 +4969,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/support/_hypothesis_stubs/__pycache
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/bytecode_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/hashlib_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/hypothesis_helper.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/i18n_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/import_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/interpreters.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/logging_helper.py
@@ -4973,6 +4980,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/support/_hypothesis_stubs/__pycache
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/socket_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/testcase.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/threading_helper.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/support/venv.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/support/warnings_helper.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test___all__.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test__locale.py
@@ -5398,6 +5406,9 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/__main__.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/__main__.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/__main__.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/_support.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/_support.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/_support.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_anon.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_anon.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_anon.cpython-312.pyc
@@ -5422,6 +5433,9 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_byteswap.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_byteswap.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_byteswap.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_c_simple_type_meta.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_c_simple_type_meta.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_c_simple_type_meta.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_callbacks.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_callbacks.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_callbacks.cpython-312.pyc
@@ -5548,9 +5562,13 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32_com_foreign_func.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32_com_foreign_func.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_win32_com_foreign_func.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_wintypes.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_wintypes.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/test_wintypes.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/_support.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_anon.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_array_in_pointer.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_arrays.py
@@ -5559,6 +5577,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_buffers.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_bytes.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_byteswap.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_c_simple_type_meta.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_callbacks.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_cast.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_cfuncs.py
@@ -5601,6 +5620,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_ctypes/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_values.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_varsize_struct.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_win32.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_win32_com_foreign_func.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_ctypes/test_wintypes.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_curses.py
 drwxr-xr-x	root/root	usr/lib/python3.12/test/test_dataclasses/
@@ -7312,6 +7332,23 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/test_tools/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/__pycache__/test_sundry.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/__pycache__/test_sundry.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/__pycache__/test_sundry.cpython-312.pyc
+drwxr-xr-x	root/root	usr/lib/python3.12/test/test_tools/i18n_data/
+drwxr-xr-x	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/docstrings.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/docstrings.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/docstrings.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/fileloc.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/fileloc.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/fileloc.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/messages.cpython-312.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/messages.cpython-312.opt-2.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/__pycache__/messages.cpython-312.pyc
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/docstrings.pot
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/docstrings.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/fileloc.pot
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/fileloc.py
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/messages.pot
+-rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/i18n_data/messages.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/test_freeze.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/test_i18n.py
 -rw-r--r--	root/root	usr/lib/python3.12/test/test_tools/test_makefile.py
@@ -7669,6 +7706,13 @@ drwxr-xr-x	root/root	usr/lib/python3.12/test/tracedmodules/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/test/tracedmodules/__pycache__/testmod.cpython-312.opt-2.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/tracedmodules/__pycache__/testmod.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/test/tracedmodules/testmod.py
+drwxr-xr-x	root/root	usr/lib/python3.12/test/translationdata/
+drwxr-xr-x	root/root	usr/lib/python3.12/test/translationdata/argparse/
+-rw-r--r--	root/root	usr/lib/python3.12/test/translationdata/argparse/msgids.txt
+drwxr-xr-x	root/root	usr/lib/python3.12/test/translationdata/getopt/
+-rw-r--r--	root/root	usr/lib/python3.12/test/translationdata/getopt/msgids.txt
+drwxr-xr-x	root/root	usr/lib/python3.12/test/translationdata/optparse/
+-rw-r--r--	root/root	usr/lib/python3.12/test/translationdata/optparse/msgids.txt
 drwxr-xr-x	root/root	usr/lib/python3.12/test/typinganndata/
 -rw-r--r--	root/root	usr/lib/python3.12/test/typinganndata/__init__.py (EMPTY)
 drwxr-xr-x	root/root	usr/lib/python3.12/test/typinganndata/__pycache__/
