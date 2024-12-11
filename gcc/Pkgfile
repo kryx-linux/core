@@ -1,7 +1,7 @@
 # Description: The GNU Compiler Collection
 # URL: https://gcc.gnu.org
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: libgmp libmpc libmpfr zlib zstd
+# Depends on: libmpc zstd
 
 name=gcc
 version=14.2.0
@@ -69,7 +69,7 @@ build() {
     done
 
     mkdir $PKG/usr/lib/bfd-plugins
-    ln -sfv ../../lib/gcc/$($PKG/usr/bin/gcc -dumpmachine)/14.1.0/liblto_plugin.so \
+    ln -sfv ../../lib/gcc/$($PKG/usr/bin/gcc -dumpmachine)/$version/liblto_plugin.so \
         $PKG/usr/lib/bfd-plugins/
 
     sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib{,32}/{libstdc++.la,libsupc++.la}
