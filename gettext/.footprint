@@ -42,24 +42,24 @@ drwxr-xr-x	root/root	usr/lib/gettext/
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so -> libasprintf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so.0 -> libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libasprintf.so.0.0.0
--rwxr-xr-x	root/root	usr/lib/libgettextlib-0.22.5.so
+-rwxr-xr-x	root/root	usr/lib/libgettextlib-0.23.1.so
 -rw-r--r--	root/root	usr/lib/libgettextlib.a
 -rwxr-xr-x	root/root	usr/lib/libgettextlib.la
-lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.22.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.23.1.so
 -rw-r--r--	root/root	usr/lib/libgettextpo.a
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.la
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.5.10
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.5.10
--rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.5.10
--rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.22.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.5.12
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.5.12
+-rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.5.12
+-rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.23.1.so
 -rw-r--r--	root/root	usr/lib/libgettextsrc.a
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc.la
-lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.22.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.23.1.so
 -rw-r--r--	root/root	usr/lib/libtextstyle.a
 -rwxr-xr-x	root/root	usr/lib/libtextstyle.la
-lrwxrwxrwx	root/root	usr/lib/libtextstyle.so -> libtextstyle.so.0.2.1
-lrwxrwxrwx	root/root	usr/lib/libtextstyle.so.0 -> libtextstyle.so.0.2.1
--rwxr-xr-x	root/root	usr/lib/libtextstyle.so.0.2.1
+lrwxrwxrwx	root/root	usr/lib/libtextstyle.so -> libtextstyle.so.0.2.3
+lrwxrwxrwx	root/root	usr/lib/libtextstyle.so.0 -> libtextstyle.so.0.2.3
+-rwxr-xr-x	root/root	usr/lib/libtextstyle.so.0.2.3
 -rw-r--r--	root/root	usr/lib/preloadable_libintl.so
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/aclocal/
@@ -74,20 +74,24 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/nls.m4
 -rw-r--r--	root/root	usr/share/aclocal/po.m4
 -rw-r--r--	root/root	usr/share/aclocal/progtest.m4
-drwxr-xr-x	root/root	usr/share/gettext-0.22.5/
-drwxr-xr-x	root/root	usr/share/gettext-0.22.5/its/
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/glade.loc
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/glade1.its
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/glade2.its
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/gsettings.its
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/gsettings.loc
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/gtkbuilder.its
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/metainfo.its
--rw-r--r--	root/root	usr/share/gettext-0.22.5/its/metainfo.loc
+drwxr-xr-x	root/root	usr/share/gettext-0.23.1/
+drwxr-xr-x	root/root	usr/share/gettext-0.23.1/its/
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/docbook.loc
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/docbook4.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/docbook5.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/glade.loc
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/glade1.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/glade2.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/gsettings.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/gsettings.loc
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/gtkbuilder.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/metainfo.its
+-rw-r--r--	root/root	usr/share/gettext-0.23.1/its/metainfo.loc
 drwxr-xr-x	root/root	usr/share/gettext/
 -rw-r--r--	root/root	usr/share/gettext/ABOUT-NLS
 -rw-r--r--	root/root	usr/share/gettext/archive.dir.tar.xz
 -rwxr-xr-x	root/root	usr/share/gettext/config.rpath
+-rw-r--r--	root/root	usr/share/gettext/disclaim-translations.txt
 -rw-r--r--	root/root	usr/share/gettext/gettext.h
 -rw-r--r--	root/root	usr/share/gettext/javaversion.class
 -rw-r--r--	root/root	usr/share/gettext/msgunfmt.tcl
@@ -98,9 +102,9 @@ drwxr-xr-x	root/root	usr/share/gettext/po/
 -rw-r--r--	root/root	usr/share/gettext/po/boldquot.sed
 -rw-r--r--	root/root	usr/share/gettext/po/en@boldquot.header
 -rw-r--r--	root/root	usr/share/gettext/po/en@quot.header
--rw-r--r--	root/root	usr/share/gettext/po/insert-header.sin
+-rw-r--r--	root/root	usr/share/gettext/po/insert-header.sed
 -rw-r--r--	root/root	usr/share/gettext/po/quot.sed
--rw-r--r--	root/root	usr/share/gettext/po/remove-potcdate.sin
+-rw-r--r--	root/root	usr/share/gettext/po/remove-potcdate.sed
 drwxr-xr-x	root/root	usr/share/gettext/projects/
 drwxr-xr-x	root/root	usr/share/gettext/projects/GNOME/
 -rwxr-xr-x	root/root	usr/share/gettext/projects/GNOME/team-address
@@ -119,6 +123,12 @@ drwxr-xr-x	root/root	usr/share/gettext/projects/TP/
 -rwxr-xr-x	root/root	usr/share/gettext/projects/TP/trigger
 -rw-r--r--	root/root	usr/share/gettext/projects/index
 -rwxr-xr-x	root/root	usr/share/gettext/projects/team-address
+drwxr-xr-x	root/root	usr/share/gettext/schema/
+-rw-r--r--	root/root	usr/share/gettext/schema/its-extensions.xsd
+-rw-r--r--	root/root	usr/share/gettext/schema/its.xsd10
+-rw-r--r--	root/root	usr/share/gettext/schema/its.xsd11
+-rw-r--r--	root/root	usr/share/gettext/schema/locating-rules.xsd10
+-rw-r--r--	root/root	usr/share/gettext/schema/locating-rules.xsd11
 drwxr-xr-x	root/root	usr/share/gettext/styles/
 -rw-r--r--	root/root	usr/share/gettext/styles/po-default.css
 -rw-r--r--	root/root	usr/share/gettext/styles/po-emacs-x.css
