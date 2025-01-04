@@ -4,7 +4,7 @@
 # Depends on: libxcrypt
 
 name=sysvinit
-version=3.12
+version=3.13
 release=1
 source=(https://github.com/slicer69/sysvinit/releases/download/$version/$name-$version.tar.xz)
 
@@ -31,5 +31,5 @@ build() {
     touch $PKG/var/log/btmp
     chmod 0600 $PKG/var/log/btmp
 
-    rmdir $PKG/usr/share/man/man*/*/
+    find $PKG/usr/share/man -mindepth 1 -type d -name "??" -exec rm -r {} +
 }

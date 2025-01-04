@@ -4,21 +4,20 @@
 # Depends on: acl ncurses
 
 name=gettext
-version=0.22.5
+version=0.23.1
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
-
     ./configure \
         --prefix=/usr \
+        --libexecdir=/usr/lib \
         --enable-{shared,static} \
         --disable-{csharp,java,nls} \
         --without-{emacs,git} \
         --with-included-{glib,libcroco,libxml,libunistring}
     make
     make DESTDIR=$PKG install
-
     rm -r $PKG/usr/share/{info,doc}
 }
