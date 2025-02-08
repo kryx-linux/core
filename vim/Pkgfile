@@ -4,7 +4,7 @@
 # Depends on: acl ncurses
 
 name=vim
-version=9.1.0887
+version=9.1.1055
 release=1
 pkgfileversion=0.0.1
 source=(https://github.com/vim/vim/archive/v${version}/$name-$version.tar.gz \
@@ -34,9 +34,18 @@ build() {
     make -j1 VIMRTDIR= DESTDIR=$PKG install
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
-    rm -r $PKG/usr/share/icons $PKG/usr/share/applications/gvim.desktop
     rm -r $PKG/usr/{share/man/man?/vimtutor*,share/vim/{tutor,macros},bin/vimtutor}
     rm $PKG/usr/share/vim/*/README.txt
+    rm $PKG/usr/share/vim/{LICENSE,README.txt}
+    rm -rf $PKG/usr/share/{applications,icons}
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf /bin/vi $PKG/usr/bin/vi
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/share/man/man1/gvim.1.gz
 
     ln -sf vim $PKG/usr/bin/evim
     ln -sf /bin/vi $PKG/usr/bin/vi

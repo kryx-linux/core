@@ -4,7 +4,7 @@
 
 name=kmod
 version=33
-release=1
+release=2
 source=(https://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz)
 
 build() {
@@ -15,7 +15,10 @@ build() {
         --bindir=/sbin \
         --sysconfdir=/etc \
         --disable-manpages \
-        --with-rootlibdir=/lib
+        --with-rootlibdir=/lib \
+        --with-zstd \
+        --with-xz \
+        --with-zlib
 
     make
     make DESTDIR=$PKG install
