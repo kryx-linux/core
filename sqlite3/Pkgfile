@@ -5,7 +5,7 @@
 
 name=sqlite3
 version=3.49.0
-release=1
+release=2
 _version=$(printf "%i%.2i%.2i%.2i" ${version//./ })
 
 source=(https://www.sqlite.org/2025/sqlite-autoconf-${_version}.tar.gz)
@@ -13,11 +13,22 @@ source=(https://www.sqlite.org/2025/sqlite-autoconf-${_version}.tar.gz)
 build() {
     cd sqlite-autoconf-${_version}
 
-    CONFIG_SHELL=/bin/bash \
-    CFLAGS="-DSQLITE_SECURE_DELETE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 \
-        -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
-        -DSQLITE_ENABLE_FTS3=1 $CFLAGS" \
-    ./configure --prefix=/usr --enable-readline
+    export CFLAGS="$CFLAGS \
+        -DSQLITE_SECURE_DELETE=1 \
+        -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+        -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 \
+        -DSQLITE_ENABLE_DBSTAT_VTAB=1" 
+
+    ./configure \
+        --prefix=/usr \
+        --enable-readline \
+        --fts3 \
+        --fts4 \
+        --fts5 \
+        --geopoly \
+        --rtree \
+        --session \
+        --update-limit
 
     make
     make DESTDIR=$PKG install
