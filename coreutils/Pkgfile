@@ -5,7 +5,7 @@
 
 name=coreutils
 version=9.6
-release=1
+release=2
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
@@ -17,7 +17,7 @@ build() {
         --libexecdir=/usr/lib \
         --disable-nls \
         --disable-assert \
-        --enable-no-install-program=uptime,kill,chcon,runcon,groups
+        --enable-no-install-program=uptime,kill,chcon,runcon
     make
     make DESTDIR=$PKG install
 
