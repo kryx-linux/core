@@ -3,35 +3,31 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=kmod
-version=33
-release=2
+version=34
+release=1
 source=(https://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz)
 
 build() {
-	cd $name-$version
-
-	./configure \
+	meson setup build $name-$version \
 		--prefix=/usr \
-		--bindir=/sbin \
+		--bindir=/bin \
+		--sbindir=/sbin \
 		--sysconfdir=/etc \
-		--disable-manpages \
-		--with-rootlibdir=/lib \
-		--with-zstd \
-		--with-xz \
-		--with-zlib
+		--buildtype=plain \
+		--wrap-mode=nodownload \
+		-D b_lto=true \
+		-D b_pie=true \
+		-D dlopen=all \
+		-D docs=false \
+		-D manpages=false \
+		-D bashcompletiondir=no \
+		-D fishcompletiondir=no \
+		-D zshcompletiondir=no
 
-	make
-	make DESTDIR=$PKG install
+	meson compile -C build -j ${JOBS:-1}
+	DESTDIR=$PKG meson install -C build
 
-	install -d $PKG/etc/{modprobe,depmod}.d
-	install -d $PKG/bin
-	install -d $PKG/usr/share/man/{man5,man8}
-	install -d $PKG/usr/share/pkgconfig
-
-	install -m 0644 man/*.5 $PKG/usr/share/man/man5
-	install -m 0644 man/*.8 $PKG/usr/share/man/man8
-
-	ln -s ../sbin/kmod $PKG/bin/lsmod
-
-	rm -r $PKG/usr/share/bash-completion
+	install -d $PKG/lib
+	mv $PKG/usr/lib/libkmod.so.* $PKG/lib
+	ln -sf ../../lib/$(readlink $PKG/usr/lib/libkmod.so) $PKG/usr/lib/libkmod.so
 }
