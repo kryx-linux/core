@@ -12,6 +12,8 @@ source=(http://ftpmirror.gnu.org/gnu/inetutils/inetutils-$version.tar.gz
 build() {
 	cd inetutils-$version
 
+	export LDFLAGS="$LDFLAGS -lcurses"
+
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/sbin \
