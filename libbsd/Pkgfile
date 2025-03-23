@@ -5,7 +5,7 @@
 
 name=libbsd
 version=0.12.2
-release=1
+release=2
 source=(https://libbsd.freedesktop.org/releases/$name-$version.tar.xz)
 
 build() {
@@ -16,4 +16,10 @@ build() {
         --mandir=/usr/share/man
     make
     make install DESTDIR=$PKG
+
+    # move library to /lib
+    install -d $PKG/lib
+    mv $PKG/usr/lib/libbsd.so.* $PKG/lib
+    # fix linker script
+    sed 's|/usr||' -i $PKG/usr/lib/libbsd.so
 }
