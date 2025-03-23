@@ -4,7 +4,7 @@
 
 name=libmd
 version=1.1.0
-release=1
+release=2
 source=(https://archive.hadrons.org/software/$name/$name-$version.tar.xz)
 
 build() {
@@ -13,4 +13,9 @@ build() {
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
+
+    # move library to /lib
+    install -d $PKG/lib
+    mv $PKG/usr/lib/libmd.so.* $PKG/lib
+    ln -sf ../../lib/$(readlink $PKG/lib/libmd.so.0) $PKG/usr/lib/libmd.so
 }
