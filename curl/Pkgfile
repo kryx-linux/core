@@ -4,8 +4,8 @@
 # Depends on: libnghttp2 openssl zstd
 
 name=curl
-version=8.12.1
-release=2
+version=8.13.0
+release=1
 source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
 build() {
