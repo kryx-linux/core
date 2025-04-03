@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpx/B7AAVb9PsH+tUzS+41VFcK/mgtVkafvO1/wWPPGGBgvfSsLh6m6ixLc1xbU9IOdSeYvJb4Z+qZR3248YpAQ=
-SHA256 (Pkgfile) = 065595c74547f03a45ebeef72538738e43a2f3a12a6acda0baecf4c537a27d3d
+RWRJc1FUaeVeqq4gLnd42QxpeRWCl6/2kjQF4dbBccxiCuN8wUKJhNB+8kg2vhazn3LATadVZ26iYaCvrPgPUSnRw2OBI7tsYwo=
+SHA256 (Pkgfile) = ef559f4319b0e74e40e9bb919cba5807b3b1fb9e25ed7d8c207c7988416cc551
 SHA256 (.footprint) = 516e302f0bac915d667d13d60080faed50b1224768437a972151a306dae4a522
 SHA256 (gawk-5.3.2.tar.xz) = f8c3486509de705192138b00ef2c00bbbdd0e84c30d5c07d23fc73a9dc4cc9cc
