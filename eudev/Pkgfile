@@ -5,9 +5,10 @@
 
 name=eudev
 version=3.2.14
-release=2
+release=3
 source=(https://github.com/eudev-project/eudev/releases/download/v$version/$name-$version.tar.gz
     81-crux.rules
+    mount_fusectl.sh
     start_udev)
 
 build() {
@@ -40,5 +41,6 @@ build() {
 
     # Add CRUX items
     install -m 0755 $SRC/start_udev $PKG/sbin
+    install -Dm 0755 $SRC/mount_fusectl.sh $PKG/bin/mount_fusectl
     install -m 0644 $SRC/81-crux.rules $PKG/lib/udev/rules.d
 }

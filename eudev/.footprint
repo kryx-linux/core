@@ -1,3 +1,5 @@
+drwxr-xr-x	root/root	bin/
+-rwxr-xr-x	root/root	bin/mount_fusectl
 drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/udev/
 -r--r--r--	root/root	etc/udev/hwdb.bin
