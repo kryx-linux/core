@@ -2,4 +2,4 @@
 # 81-crux.rules
 # 
 
-KERNEL=="fuse", ACTION=="add", RUN+="/bin/mount_fusectl"
+KERNEL=="fuse", SUBSYSTEM=="module", ACTION=="add", RUN+="/bin/mount_fusectl"

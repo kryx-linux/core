@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeql5RFs6cYDKXGcEGywiUlwvpVcUOdp5Ob8zBh9OqsqyFM/W3cI0TfpUcyPa3sDMwOypoYZTUDdy/HDFJ4D/MFQA=
+RWRJc1FUaeVeqpbVwLpFmA4+cWIFJuH3PT9VxIOcdFbEeyKC0oFzR5x36QZJ57w56u77WdomQS6g4HlVkxLcxez2hfZIszOD4AU=
 SHA256 (Pkgfile) = da697f28a5d6a859b46ff29e566a5a1467d6b44334864140db513621902a02b5
 SHA256 (.footprint) = cc47f6aadd113f5bf5a216d4f9ab2942a4fa40c6b0d0b2cb9becc6e594c22fc1
 SHA256 (eudev-3.2.14.tar.gz) = 8da4319102f24abbf7fff5ce9c416af848df163b29590e666d334cc1927f006f
-SHA256 (81-crux.rules) = a4251c8630ab6db9a4b8c8306312e7821d08fecbd90e3ed27f4e093b02d08fe2
+SHA256 (81-crux.rules) = 471461041f28a8fee471417e8986c0f9fd9994143e61d95f3537c1f4e28d076c
 SHA256 (mount_fusectl.sh) = 42236a8de2417b16cc52482d08f889f04caad7ab47ab09b530c18ec4e287b22c
 SHA256 (start_udev) = 436f93fc60dca6a3ec3e0f130defe2ac74d6e17ba63796e9d000c5b5b70ae605
