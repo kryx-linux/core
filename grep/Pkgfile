@@ -4,8 +4,8 @@
 # Depends on: libpcre2
 
 name=grep
-version=3.11
-release=2
+version=3.12
+release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
