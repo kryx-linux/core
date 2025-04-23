@@ -31,9 +31,6 @@ case $1 in
 	restart)
 		$0 stop
 		$0 start
-		if podman container list -a --format "{{.Names}}"; then 
-			podman network reload $(podman container list -a --format "{{.Names}}")
-		fi
 		;;
 	status)
 		if [ "$($PROG $SHOWOPTS | head -c1 | wc -c )" -ne 0 ]; then 
