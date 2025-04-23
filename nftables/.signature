@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqmlACruo8W9AbWeSNo1uJU3I0MOJjZY/3bOJ1h/fC4f/iMC6Ny4C4JbbSuh0G9yQyz86RYHqSsblC2BBxlFaGgc=
-SHA256 (Pkgfile) = 1c85c1a8a71d52da66cedc1ed2443856c2113aa5dcfebd388f0b7015cb9a2fbd
+RWRJc1FUaeVeqqRpx/ENKfcZA10wdmebyCsP3yJKI63Eq4Q30fJXMrYtHaO9P0TC6DhCRVnhetHfFonwOr7s28Vuiy/DfMy3xAE=
+SHA256 (Pkgfile) = 14445c8ddf3d56a65b673cc664cc188b41739430d9524af2755097b94b7c913b
 SHA256 (.footprint) = 536399db3b50e2b7f9773844a3335b866f156d6632a1e96f0a6963824f2811b4
-SHA256 (nftables-1.1.2.tar.xz) = 822f1f7c4059e8420387c302bd603cc0eb8cbfe403fa2e3f78c8ddb7f0d53bbc
+SHA256 (nftables-1.1.3.tar.xz) = 9c8a64b59c90b0825e540a9b8fcb9d2d942c636f81ba50199f068fde44f34ed8
 SHA256 (nftables.nft) = 43436a5237a259378f6b712978db6e0d821d2be0528f9a2e93cfdc2fca504d7c
-SHA256 (nftables.init) = bfd1698c0f89b39ff3d0a5eceffe68d79bde0ac73c4e9eedcac8748274320f0c
+SHA256 (nftables.init) = bb80914d080c2ef1eedede33a393c51bfdb0a80629c0cf03eee440bbfdd86608
