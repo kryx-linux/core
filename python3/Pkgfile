@@ -23,9 +23,8 @@ build() {
     local -x COLUMNS=80
     local -x PYTHONDONTWRITEBYTECODE=
 
-    ## Remove tests
-    #rm -r Lib/{test,{ctypes,tkinter,unittest}/test}
-    #rm -r Lib/{{distutils,lib2to3}/tests,idlelib/idle_test}
+    autoconf
+    autoheader
 
     ./configure \
         --prefix=/usr \
@@ -36,14 +35,15 @@ build() {
         --with-computed-gotos \
         --with-dbmliborder=gdbm:ndbm \
         --with-lto \
+        --with-pkg-config=yes \
         --with-system-expat \
-        --with-system-ffi \
         --with-system-libmpdec \
         --with-tzpath=/usr/share/zoneinfo \
         --without-ensurepip
 
     make EXTRA_CFLAGS="$CFLAGS"
-    make -j1 EXTRA_CFLAGS="$CFLAGS" DESTDIR=$PKG altinstall maninstall
+    sed -i 's/^all:.*$/all: build_all/' Makefile
+    make -j1 EXTRA_CFLAGS="$CFLAGS" DESTDIR=$PKG TEST_MODULES=no altinstall maninstall
 
     ln -s 2to3-${version%.*}                        $PKG/usr/bin/2to3
     ln -s python${version%.*}                     $PKG/usr/bin/python3
