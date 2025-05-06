@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=mpdecimal
-version=4.0.0
+version=4.0.1
 release=1
 source=(https://www.bytereef.org/software/$name/releases/$name-$version.tar.gz)
 
