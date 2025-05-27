@@ -4,9 +4,9 @@
 # Depends on: readline
 
 name=bc
-version=1.08.1
+version=1.08.2
 release=1
-source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.lz)
 
 build() {
     cd $name-$version
