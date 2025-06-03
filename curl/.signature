@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqp4t2LCmBGcgqvbgyXDbBKAtcWn5wKZSxh8cKTGa8Z09MA71H0llagmf7HCqplH62YElPVFvmDTvf6PYbvkEpwA=
-SHA256 (Pkgfile) = 19a28906e9a44174a54aba8c524ce4a53dff1f2ccd8565b064b21812acdeafe1
-SHA256 (.footprint) = 42392c0c5d26d1ebe175129d0e41f1163862d43632ec0f9e3124560c4d835fae
-SHA256 (curl-8.13.0.tar.xz) = 4a093979a3c2d02de2fbc00549a32771007f2e78032c6faa5ecd2f7a9e152025
+RWRJc1FUaeVeqhJ2uoCGVgTaYdtw84UJYZvU2/IpubsV9wckVSJAzs8N533Jz3CuPxqfs2z2Wvz4eiRq/0qLlHQf4hJTKCKR7QI=
+SHA256 (Pkgfile) = 6b9bbf73af009d48e312122b8f4b703f366c691e39f22c11adfad3ca448615c6
+SHA256 (.footprint) = 5960d0affd714d4810803e5cec994d41dcb886ff14f233fc8d371bf3982ae382
+SHA256 (curl-8.14.0.tar.xz) = b3634cfc538c72c9c6ca794ef4c73d7fdbd171e8dee2db837d83a5e45231002a
