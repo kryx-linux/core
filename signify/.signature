@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqh8imtFSz8E7VsFPq1zKa36g6qqDumxGk2jU3cUiXznq5ab643U1XcdRHkSC8qf1nn0E0eWXqxv4iT0zJ+XJNQI=
-SHA256 (Pkgfile) = 63dca42af7c849d2f9ca50ab50fdb004348a5ad6c12fdd1b868d1ab64ba5c740
+RWRJc1FUaeVeqvRFKhb4e8s/BdxjbmXuAVXyVImg6SDEmq76nJ3tEh9x7ZbOf15DSbFrXvWN75GxVruABtBqoN4VLgmIyOP0RwY=
+SHA256 (Pkgfile) = 8521cc566178f5f3b4fbfdc03f506c725fa00eec1ea2bf3dd3b9befe6a8f81a5
 SHA256 (.footprint) = 7254b9c6417527154751eece07f12711fa68773b4d8cad5e659e552f6adf39bc
-SHA256 (outils-0.13.tar.gz) = 49d46211fe84a5b96cf55d689696d190b7aba7d3e043c8c8dc9f5ff9af8f927a
-SHA256 (cruxify.patch) = d2f254f066d26273716a69c7fbb902c8fba7a8e441cd5285594a27df8bf5a752
+SHA256 (outils-0.14.tar.gz) = e4dcbd92b25bbb371216b0fad5aa80cdff19f466f7ec8b5e145111fb348c91eb
+SHA256 (cruxify.patch) = d6494461f1713494a6c902788608790ae0b92107fd372f22ca49ba1adb592aa8
