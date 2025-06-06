@@ -55,6 +55,7 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/dist/
 -rw-r--r--	root/root	usr/share/vim/autoload/haskellcomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/hcl.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/htmlcomplete.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/htmlfold.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/javaformat.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/javascriptcomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/modula2.vim
@@ -168,6 +169,7 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/gfortran.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/ghc.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/gjs.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/gleam_build.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/gm2.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/gnat.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/go.vim
@@ -425,6 +427,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/aap.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/abap.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/abaqus.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/abnf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/ada.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/alsaconf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/ant.vim
@@ -544,6 +547,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gpg.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/gprof.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/graphql.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/groff.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/groovy.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/group.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/grub.vim
@@ -601,6 +605,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/leo.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/less.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/lex.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/lf.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/lftp.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/libao.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/limits.vim
@@ -632,6 +637,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/markdown.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/masm.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/matlab.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/mbsync.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/mediawiki.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/mermaid.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/meson.vim
@@ -684,6 +690,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/poefilter.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/poke.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/postscr.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/pq.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/prisma.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/procmail.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/prolog.vim
@@ -708,6 +715,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/rasi.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/readline.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/registry.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/remind.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/requirements.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/rescript.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/reva.vim
@@ -1058,6 +1066,9 @@ drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/editorconfig/plugin/
 drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/helptoc/
 drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/helptoc/autoload/
 -rw-r--r--	root/root	usr/share/vim/pack/dist/opt/helptoc/autoload/helptoc.vim
+drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/helptoc/doc/
+-rw-r--r--	root/root	usr/share/vim/pack/dist/opt/helptoc/doc/helptoc.txt
+-rw-r--r--	root/root	usr/share/vim/pack/dist/opt/helptoc/doc/tags
 drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/helptoc/plugin/
 -rw-r--r--	root/root	usr/share/vim/pack/dist/opt/helptoc/plugin/helptoc.vim
 drwxr-xr-x	root/root	usr/share/vim/pack/dist/opt/hlyank/
@@ -1393,6 +1404,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/gitrebase.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gitsendemail.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gkrellmrc.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/gleam.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/glsl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gnash.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/gnuplot.vim
@@ -1545,6 +1557,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/master.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/matlab.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/maxima.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/mbsync.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mediawiki.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mel.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/mermaid.vim
@@ -1652,6 +1665,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/modula2/opt/
 -rw-r--r--	root/root	usr/share/vim/syntax/povini.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ppd.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ppwiz.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/pq.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/prescribe.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/privoxy.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/procmail.vim
