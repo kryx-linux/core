@@ -5,14 +5,15 @@
 
 name=curl
 version=8.14.1
-release=1
+release=2
 source=(https://curl.haxx.se/download/$name-$version.tar.xz
-    17545.patch)
+    17545.patch 17554.patch)
 
 build() {
     cd $name-$version
 
     patch -p1 -i $SRC/17545.patch
+    patch -p1 -i $SRC/17554.patch
 
     autoreconf 
     ./configure \
@@ -28,6 +29,7 @@ build() {
         --without-libidn2 \
         --without-libpsl \
         --without-librtmp
+
     make
     make DESTDIR=$PKG install
     make -C docs/libcurl DESTDIR=$PKG install
