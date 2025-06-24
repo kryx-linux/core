@@ -12,6 +12,7 @@ source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$vers
 build() {
 
     # don't try to link pg and ul against libtinfo
+    # fix for several missing bash-completion
     patch -p0 -i $SRC/meson.diff -d $SRC/$name-$version
 
     meson setup $name-$version build \
