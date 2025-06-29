@@ -1,17 +1,21 @@
 # Description: A library for Linux that makes using posix capabilities easy
 # URL: https://people.redhat.com/sgrubb/libcap-ng/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: 
+# Depends on:
 
 name=libcap-ng
 version=0.8.5
 release=1
-source=(https://people.redhat.com/sgrubb/$name/$name-$version.tar.gz)
+source=(https://people.redhat.com/sgrubb/$name/$name-$version.tar.gz
+    1fe7c1cfeea00ba4eb903fbb39b74361594d4835.patch)
 
 build() {
-	cd $name-$version
+    cd $name-$version
 
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+    patch -Np1 -i $SRC/1fe7c1cfeea00ba4eb903fbb39b74361594d4835.patch
+    autoreconf -fvi
+
+    ./configure --prefix=/usr --with-python3=yes
+    make
+    make DESTDIR=$PKG install
 }
