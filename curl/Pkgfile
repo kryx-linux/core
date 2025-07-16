@@ -4,18 +4,13 @@
 # Depends on: libnghttp2 openssl zstd
 
 name=curl
-version=8.14.1
-release=2
-source=(https://curl.haxx.se/download/$name-$version.tar.xz
-    17545.patch 17554.patch)
+version=8.15.0
+release=1
+source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
 
-    patch -p1 -i $SRC/17545.patch
-    patch -p1 -i $SRC/17554.patch
-
-    autoreconf 
     ./configure \
         --prefix=/usr \
         --enable-ipv6 \
