@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=rdate
-version=0.13
+version=0.14
 release=1
 source=(https://github.com/leahneukirchen/outils/archive/v$version/outils-$version.tar.gz
     ntpleaps.patch rdate)
