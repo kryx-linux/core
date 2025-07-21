@@ -18,14 +18,14 @@ build() {
     mv $PKG/usr/bin/{gzip,gunzip,zcat} $PKG/bin
 
     rm $PKG/usr/share/man/man1/{gunzip.1,zcat.1,zcmp.1}
-    ln -s gzip.1.gz    $PKG/usr/share/man/man1/gunzip.1.gz
-    ln -s gzip.1.gz    $PKG/usr/share/man/man1/zcat.1.gz
+    ln -s gzip.1.gz $PKG/usr/share/man/man1/gunzip.1.gz
+    ln -s gzip.1.gz $PKG/usr/share/man/man1/zcat.1.gz
     ln -s zdiff.1.gz $PKG/usr/share/man/man1/zcmp.1.gz
 
     # make uncompress a symlink to gunzip, since the hardlink
     # will not work if / and /usr are on different file systems.
     rm $PKG/usr/bin/uncompress
-    ln -s /bin/gunzip $PKG/usr/bin/uncompress
+    ln -s ../../bin/gunzip $PKG/usr/bin/uncompress
 
     rm -r $PKG/usr/share/info
 }
