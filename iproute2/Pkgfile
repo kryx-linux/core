@@ -21,5 +21,5 @@ build() {
 
     # add ip to user path via symlink
     install -d $PKG/bin
-    ln -s /sbin/ip $PKG/bin/ip
+    ln -s ../sbin/ip $PKG/bin/ip
 }
