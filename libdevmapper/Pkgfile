@@ -4,12 +4,12 @@
 # Depends on: util-linux
 
 name=libdevmapper
-version=1.02.207
+version=1.02.208
 release=1
-source=(https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.33.tgz)
+source=(https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.34.tgz)
 
 build() {
-    cd LVM2.2.03.33
+    cd LVM2.2.03.34
 
     # libaio is not needed for libdevmapper
     sed 's/libaio.h//' -i configure
