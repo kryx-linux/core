@@ -4,17 +4,13 @@
 # Depends on: jansson libedit libgmp libnftnl python3
 
 name=nftables
-version=1.1.4
-release=2
+version=1.1.5
+release=1
 source=(https://www.netfilter.org/pub/nftables/nftables-$version.tar.xz
-    nftables.nft nftables.init json.patch)
+    nftables.nft nftables.init)
 
 build() {
     cd $name-$version
-
-    patch -Np1 -i $SRC/json.patch
-
-    autoreconf -vfi
 
     ./configure \
         --prefix=/usr \
