@@ -7,7 +7,8 @@
 name=cmake
 version=3.31.8
 release=1
-source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz)
+source=(https://cmake.org/files/v${version%.*}/$name-$version.tar.gz
+  curl.patch)
 
 build() {
     cd $name-$version
@@ -16,6 +17,8 @@ build() {
         -e 's|share/cmake-${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}|share/cmake|'
 
     prt-get isinst ccache && PKGMK_CMAKE+=' --enable-ccache'
+
+    patch -Np1 -i $SRC/curl.patch
 
     CONFIG_SHELL=/bin/bash ./bootstrap --generator=Ninja $PKGMK_CMAKE \
         --prefix=/usr \
