@@ -4,11 +4,14 @@
 # Depends on: eudev file libcap-ng linux-pam sqlite3
 
 name=util-linux
-version=2.40.4
+version=2.41.2
 release=1
 source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz)
 
 build() {
+
+    sed -r '/^  dependencies/s/lib_tinfo,//' -i $name-$version/meson.build
+
     meson setup $name-$version build \
         --prefix=/usr \
         --bindir=/usr/bin \
@@ -37,7 +40,7 @@ build() {
     meson compile -C build -j ${JOBS:-1}
     DESTDIR=$PKG meson install -C build
 
-    rm -r $PKG/usr/share/{doc,locale}
+    rm -r $PKG/usr/share/doc
 
     install -d $PKG/{bin,usr/sbin,usr/lib,var/lib/lastlog}
 
