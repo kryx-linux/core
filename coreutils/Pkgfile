@@ -5,11 +5,14 @@
 
 name=coreutils
 version=9.8
-release=1
-source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
+release=2
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+    914972e80dbf82aac9ffe3ff1f67f1028e1a788b.patch)
 
 build() {
     cd $name-$version
+
+    patch -Np1 -i $SRC/914972e80dbf82aac9ffe3ff1f67f1028e1a788b.patch
 
     FORCE_UNSAFE_CONFIGURE=1 \
     ./configure \
