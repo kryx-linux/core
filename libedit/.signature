@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqk34tAXIkUwAM5D2I0vVuIwYQM7tY6TfprXkwnDsXTuxzJytAvwK3WC8I6AWpx7sxBCl8l/lfo7f5+FOrcLU3gY=
-SHA256 (Pkgfile) = dd44b46ecfce14cfc182111fc0327b3e7b1b9cca0046717d1a975fcf35ec87b8
-SHA256 (.footprint) = ec76a260e8c58b6c4b1270b8e2acbab8c35c89ac4279879d9a6830b4d122ecbf
-SHA256 (libedit-20250104-3.1.tar.gz) = 23792701694550a53720630cd1cd6167101b5773adddcb4104f7345b73a568ac
+RWRJc1FUaeVeqi5nl7lINhEps6wncXa2Pfnh173Pk+5ZXQbcM5zj/tQc+OY16iz4W4H5N4NbomRaev+Nudh+u/DzSI8Khv14NwI=
+SHA256 (Pkgfile) = e199c4ea85f4b932a4da900b0b2dd6822b0b9065b7c9ba75dc0d852e70e259d4
+SHA256 (.footprint) = a7dac0429f2a740e339bafedf26af9aeba3a9c94d1371c14cc9062509ef1b82c
+SHA256 (libedit-20251016-3.1.tar.gz) = 21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041
