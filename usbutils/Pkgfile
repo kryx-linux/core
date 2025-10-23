@@ -4,7 +4,7 @@
 # Depends on: libusb
 
 name=usbutils
-version=018
+version=019
 release=1
 #source=(http://www.kernel.org/pub/linux/utils/usb/$name/$name-$version.tar.xz
 source=(https://github.com/gregkh/usbutils/archive/refs/tags/v$version/$name-$version.tar.gz
