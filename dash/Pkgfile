@@ -4,11 +4,14 @@
 
 name=dash
 version=0.5.13.1
-release=1
-source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz)
+release=2
+source=(http://gondor.apana.org.au/~herbert/dash/files/$name-$version.tar.gz
+    $name-20251012.patch)
 
 build() {
     cd $name-$version
+
+    patch -p1 -i $SRC/$name-20251012.patch
 
     autoreconf -if
     ./configure --prefix=/usr --bindir=/bin
