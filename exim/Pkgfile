@@ -14,7 +14,6 @@ build() {
 
     patch -p1 -i $SRC/disable-id_update.patch
     sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
-    sed "40s|/bin/sh|/bin/bash|" -i scripts/Configure-config.h
     cp src/EDITME Local/Makefile
 
     make
