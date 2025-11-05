@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqsdRpyQSDGmgAngKbnZ9rV1vAZ0hrwEon5Z8ivRam45te29sDLrhPBjgq7sAkwaAswyqCkrMq7iKJjaPgnww1Qk=
-SHA256 (Pkgfile) = 07d4930f67002bb836a83bbb09a93dc26bc26f4dbb4532260028ef4e3368b648
+RWRJc1FUaeVeqp3GQ1Dv+eXXfQai+GWEpBHuUykdCJUlTSq0xcqu5OOGy0JrOlhhzdLLtv2ZoQIfcvpFmAbu2jX5qW0cbSw3CgQ=
+SHA256 (Pkgfile) = ba52b586896715d1390a03c6815469b46f41f89536b1d56050598c824c86a009
 SHA256 (.footprint) = 9eee91e74bee049b50674c4d2bdaf4be145cbf59ce382722dd632e07c38186bb
-SHA256 (libxcrypt-4.4.38.tar.xz) = 80304b9c306ea799327f01d9a7549bdb28317789182631f1b54f4511b4206dd6
+SHA256 (libxcrypt-4.5.0.tar.xz) = 825e764e4ff2e6304adb814cda297074b222d54a04edbd8ebc7cf58fc3af857d
