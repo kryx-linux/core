@@ -17,7 +17,7 @@ build() {
 
     prt-get isinst ccache && PKGMK_CMAKE+=' --enable-ccache'
 
-    CONFIG_SHELL=/bin/bash ./bootstrap --generator=Ninja $PKGMK_CMAKE \
+    ./bootstrap --generator=Ninja $PKGMK_CMAKE \
         --prefix=/usr \
         --datadir=/share/cmake \
         --bootstrap-system-libuv \
