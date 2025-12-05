@@ -30,7 +30,7 @@ drwxr-xr-x	root/root	usr/lib/python3.12/site-packages/nftables/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.12/site-packages/nftables/__pycache__/nftables.cpython-312.opt-1.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/site-packages/nftables/__pycache__/nftables.cpython-312.pyc
 -rw-r--r--	root/root	usr/lib/python3.12/site-packages/nftables/nftables.py
--rw-r--r--	root/root	usr/lib/python3.12/site-packages/nftables/schema.json
+-rw-rw-r--	root/root	usr/lib/python3.12/site-packages/nftables/schema.json
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man3/
@@ -39,7 +39,6 @@ drwxr-xr-x	root/root	usr/share/man/man5/
 -rw-r--r--	root/root	usr/share/man/man5/libnftables-json.5.gz
 drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/nft.8.gz
--rw-r--r--	root/root	usr/share/man/man8/nftables.service.8.gz
 drwxr-xr-x	root/root	usr/share/nftables/
 -rw-r--r--	root/root	usr/share/nftables/all-in-one.nft
 -rw-r--r--	root/root	usr/share/nftables/arp-filter.nft
