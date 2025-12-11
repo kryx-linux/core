@@ -1,8 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnWL5h6MF5t0aM1l85/7F8yn4sgvLz7WcPTDJUTxjJctvm5WGa9USAkwMyNCb5m4YsdcbF2q1ECWUpCxoaVy/Qw=
-SHA256 (Pkgfile) = 900a7118d18606f7f1be0a37ef980e255527c1e93baf3db8a0d4b735183f92ac
+RWRJc1FUaeVeqsl6lO12GCHeRvE3Y7jxPwqIrRBOPiD8/UrKk5JFrSMKalJpSSUntzRLgJEYXNKlNbcN+sp3ufWxWpNj/8QlSwU=
+SHA256 (Pkgfile) = fc8f9e702fdfe768bac7c53463f661e3293f5663432de2be590a4f4cc0b279ee
 SHA256 (.footprint) = bdbbc35fd758b754900bc80104f2ea3d22706eb9af630bdfd772d930eb8391c1
 SHA256 (readline-8.3.tar.gz) = fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc
-SHA256 (readline-8.3.1.patch.gz) = 821be598942beb21d2b81624c4c227ef6dcb96d089dc9abc2c2b28d1ee83fe33
+SHA256 (readline-8.3.3.patch.gz) = c0040daf2bdb8c99dda4aed933e30da996b2f8e6048fa95eae801d78b8a26387
 SHA256 (inputrc) = 9119a95d4b1407e3c4ad2b6fb92e840353e65ae9d7ec77fed75cab293cb81bcb
-SHA256 (display-null-prompt.patch) = 188b99582f9d31e9c18dd3e4a903ac5fb4c8e265207cfc21fc27f32ed4ee6a78
