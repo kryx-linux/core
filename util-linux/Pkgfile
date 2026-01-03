@@ -11,7 +11,6 @@ source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$vers
 
 build() {
 
-    sed -r '/^  dependencies/s/lib_tinfo,//' -i $name-$version/meson.build
     cp $SRC/bits $name-$version/bash-completion
 
     meson setup $name-$version build \
