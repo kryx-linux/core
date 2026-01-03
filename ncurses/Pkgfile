@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=ncurses
-version=6.5
+version=6.6
 release=1
 source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
 
@@ -40,4 +40,12 @@ build() {
     # linker script for the curses library
     echo "INPUT(-lncursesw)" > $PKG/usr/lib/libcursesw.so
     ln -s libncurses.so $PKG/usr/lib/libcurses.so
+
+    # symlinks for tic and tinfo
+    for LIB in tic tinfo; do
+        echo "INPUT(-lncursesw)" > $PKG/usr/lib/lib${LIB}.so
+        ln -sv libncursesw.so $PKG/usr/lib/lib${LIB}.so.6
+        ln -sv ncursesw.pc $PKG/usr/lib/pkgconfig/${LIB}.pc
+    done
+
 }
