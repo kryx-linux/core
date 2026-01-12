@@ -4,18 +4,16 @@
 # Depends on:
 
 name=libcap-ng
-version=0.8.5
+version=0.9
 release=1
-source=(https://people.redhat.com/sgrubb/$name/$name-$version.tar.gz
-    1fe7c1cfeea00ba4eb903fbb39b74361594d4835.patch)
+source=https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v$version/$name-$version.tar.gz
 
 build() {
     cd $name-$version
 
-    patch -Np1 -i $SRC/1fe7c1cfeea00ba4eb903fbb39b74361594d4835.patch
-    autoreconf -fvi
+    ./autogen.sh
+    ./configure --prefix=/usr
 
-    ./configure --prefix=/usr --with-python3=yes
     make
     make DESTDIR=$PKG install
 }
