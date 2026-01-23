@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=linux-pam
-version=1.7.1
+version=1.7.2
 release=1
 source=(https://github.com/$name/$name/releases/download/v${version}/Linux-PAM-$version.tar.xz \
     common-account common-auth common-password common-session \
@@ -21,6 +21,7 @@ build() {
         -D b_lto=true \
         -D b_pie=true \
         -D securedir=/lib/security \
+        -D vendordir=/etc \
         -D pam_userdb=disabled \
         -D docs=disabled
 
