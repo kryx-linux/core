@@ -4,7 +4,7 @@
 # Depends on: acl libcap libgmp
 
 name=coreutils
-version=9.9
+version=9.10
 release=1
 source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 
