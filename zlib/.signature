@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqoHEMnx3r+TrXMj4IqWG8wmyTMCjWbgR3oYW8mAZWOB/ywxVTIE1BgvUwt71CQusrW7ee8FucZf0lse8HdQXIgU=
-SHA256 (Pkgfile) = a56633b99a58b88d4b6e692b660631fd8464a3ebf34a1eda87f264ab9ca500ed
-SHA256 (.footprint) = fe4997e1bc53c02faca1111b1dbd8ff79d1b5714c8beee0f8c4d37b80b0bf9c1
-SHA256 (zlib-1.3.1.tar.gz) = 9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
+RWRJc1FUaeVeqq7hM5PZY3AL2dxsvlFoUkvmj8Rz+WhwJAZpVgXS40i81D7e4MPrJlygE8zvIG2hnEayL2u9tVBq+JpSsSR3IgQ=
+SHA256 (Pkgfile) = 711745652372ddbb618e34b5e5c98168c38549ac95e00b5c697eca77b6c2c462
+SHA256 (.footprint) = 0a040315d4f3189b5bc0abaec5e3345da49020428fca3f6bf1ad8f9495c90c16
+SHA256 (zlib-1.3.2.tar.gz) = bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16
