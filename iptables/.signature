@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqvWlQR3Kmr4QqS2IQg8id0ZlZnKMcN0TW8nP2bgnyMjTPtAkTlyjfBhS7sHTNjFNdSZooKjYvVfG5AeKAlK46wg=
-SHA256 (Pkgfile) = bfeb5eacc298a57f959ed5b04a2edf1b0fea1862e105701b163812e417d57c66
+RWRJc1FUaeVeqmxWo6KLIwFOs++lwi2xG3yJgTltO+87llB4ZnS/Wxr3+gLj0ajozbcC4wTyTMsMhpnMpHOEBSerzbToNcGi6wE=
+SHA256 (Pkgfile) = 53d8395e56542100f192bcd200cef6dd2519f4d01e58398e3520246f468f17a0
 SHA256 (.footprint) = 769aa2d01215f62ff80959fd6c7c14947c8bb6024f7174a7bb7282bca466abba
-SHA256 (iptables-1.8.11.tar.xz) = d87303d55ef8c92bcad4dd3f978b26d272013642b029425775f5bad1009fe7b2
+SHA256 (iptables-1.8.12.tar.xz) = 8e7ee962601492de6503d171d4a948092ab18f89f111de72e3037c1f40cfb846
