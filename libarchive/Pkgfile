@@ -21,6 +21,7 @@ build() {
         -D ENABLE_NETTLE=OFF \
         -D ENABLE_TEST=OFF \
         -D BUILD_TESTING=OFF \
+        -D ENABLE_LZ4=OFF \
         -Wno-dev
 
     cmake --build build -j ${JOBS:-1}
