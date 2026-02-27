@@ -4,7 +4,7 @@
 # Depends on: bzip2 zstd
 
 name=file
-version=5.46
+version=5.47
 release=1
 source=(http://www.astron.com/pub/file/$name-$version.tar.gz)
 
