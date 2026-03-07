@@ -1,5 +1,5 @@
 # Description: C library for the arithmetic of complex numbers
-# URL: http://www.multiprecision.org/
+# URL: https://www.multiprecision.org
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Depends on: libmpfr
 
