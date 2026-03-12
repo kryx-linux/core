@@ -4,12 +4,16 @@
 
 name=groff
 version=1.24.0
-release=2
-source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
+release=3
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
+    eee74c1a.patch)
 
 build() {
     cd $name-$version
 
+    patch -p1 -i $SRC/eee74c1a.patch
+
+    autoreconf -fiv
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
