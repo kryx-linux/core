@@ -3,17 +3,13 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=groff
-version=1.24.0
-release=3
-source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
-    eee74c1a.patch)
+version=1.24.1
+release=1
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
 
-    patch -p1 -i $SRC/eee74c1a.patch
-
-    autoreconf -fiv
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
