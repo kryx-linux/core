@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqk/VJ6MpcHVMMp8sNcsKrDJLbrVPVzQF9aeYgOCIcbEfSo/6Bxga+LguZNcglT59U+smg1bsSRj4DLjDgr067Qk=
-SHA256 (Pkgfile) = b269d6054e27c4c39da78eeeef496c6d5c28eaa766c2084b5fc11d75d685c07c
+RWRJc1FUaeVeqsgx7VwVVDlSfkLNcZRZDI45bhgteOh2Ab8sjGCATv0XJ73wYmHEs4l6UgolVZm+1m7+rYI8QseY34BsAdcAyQM=
+SHA256 (Pkgfile) = d5c26a7dfd0e81b1533979c83a0c56cec5b192e05aa0d160fb69bbc2a6cebd22
 SHA256 (.footprint) = 20009abfd7acf452ce8d24472e430ff195c2471c1e8d1fe63767751fb79214f2
-SHA256 (libcap-ng-0.9.1.tar.gz) = 52418b8940f83dcc00dcd01d187e67c3399ff65f3fa558442e3a21b415cc46c0
+SHA256 (libcap-ng-0.9.2.tar.gz) = df6910d996818848de92db9c05f96492e008c4e35f96a8673f9b7cc44f5cf813
