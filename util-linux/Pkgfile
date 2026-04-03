@@ -6,13 +6,9 @@
 name=util-linux
 version=2.42
 release=1
-source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz
-    bits)
+source=(https://www.kernel.org/pub/linux/utils/$name/v${version:0:4}/$name-$version.tar.xz)
 
 build() {
-
-    cp $SRC/bits $name-$version/bash-completion
-
     meson setup $name-$version build \
         --prefix=/usr \
         --bindir=/usr/bin \
