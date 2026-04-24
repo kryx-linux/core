@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=expat
-version=2.7.5
+version=2.8.0
 release=1
 source=(https://github.com/libexpat/libexpat/releases/download/R_${version//./_}/$name-$version.tar.xz)
 
