@@ -4,7 +4,7 @@
 # Depends on: libxcrypt readline
 
 name=inetutils
-version=2.7
+version=2.8
 release=1
 source=(http://ftpmirror.gnu.org/gnu/inetutils/inetutils-$version.tar.gz
     inetd.conf inetd)
