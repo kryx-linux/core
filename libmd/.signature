@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqiaPIHMU1zrAF27Mg7oXmbPXe891advAa6ZAA6ABNqi8N9tbDQcjwgiszqXGbYnPta5yp/QY+hrcOIYivncpYgc=
-SHA256 (Pkgfile) = 0d5213502f955ca07c754e2aca9413a0c259a7b9bcae16ac95fabaa5ab23fec0
-SHA256 (.footprint) = 54634421722efc97479424b2b277246280d47f2d33c6e9c6b0fd7097c0fd5dcb
-SHA256 (libmd-1.1.0.tar.xz) = 1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332
+RWRJc1FUaeVequiKk+It8Rn6nMKL3qgOasCf7z6IkcZbWUUB5bGsMMz88C4yAfb6fy3is2P6uxvHoLb+LZ9XQoIJQSYs3tutHw0=
+SHA256 (Pkgfile) = 7e83a4c8cc029530d31472a6602fb43401b3a013e49519f93c071329941649f9
+SHA256 (.footprint) = d6f31564478fd8f91f35a0e383dd80b1d68a0ae63f571c512c66a099ffc0b478
+SHA256 (libmd-1.2.0.tar.xz) = ac15ffb8430502fbaccdec66c5a82ee0eab0b0f36220df56710feadfeb13d0a0
