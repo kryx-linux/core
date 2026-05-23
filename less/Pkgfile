@@ -4,7 +4,7 @@
 # Depends on: libpcre2 ncurses
 
 name=less
-version=692
+version=702
 release=1
 source=(https://www.greenwoodsoftware.com/less/$name-$version.tar.gz
     filter)
@@ -12,7 +12,10 @@ source=(https://www.greenwoodsoftware.com/less/$name-$version.tar.gz
 build() {
     cd $name-$version
 
-    ./configure --prefix=/usr --with-regex=pcre2
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/less \
+        --with-regex=pcre2
     make
     make DESTDIR=$PKG install
 
