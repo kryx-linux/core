@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=openssl
-version=3.6.2
+version=3.6.3
 release=1
 source=(https://github.com/openssl/openssl/releases/download/$name-$version/$name-$version.tar.gz
     mksslcert.sh)
