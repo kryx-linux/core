@@ -29,6 +29,8 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/
 -rw-r--r--	root/root	usr/share/vim/autoload/RstFold.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/ada.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/adacomplete.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/beancount.vim
+-rw-r--r--	root/root	usr/share/vim/autoload/beancountcomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/cargo.vim
 drwxr-xr-x	root/root	usr/share/vim/autoload/cargo/
@@ -138,6 +140,7 @@ drwxr-xr-x	root/root	usr/share/vim/compiler/
 -rw-r--r--	root/root	usr/share/vim/compiler/bash.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/bcc.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/bdf.vim
+-rw-r--r--	root/root	usr/share/vim/compiler/bean_check.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/biome.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/cabal.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/cargo.vim
@@ -461,6 +464,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bash.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/basic.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bdf.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/beancount.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bicep-params.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bicep.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/bindzone.vim
@@ -819,6 +823,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tiasm.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tidy.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tmux.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/tolk.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/toml.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/treetop.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/tt2html.vim
@@ -883,6 +888,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/awk.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bash.vim
 -rw-r--r--	root/root	usr/share/vim/indent/basic.vim
+-rw-r--r--	root/root	usr/share/vim/indent/beancount.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bib.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bitbake.vim
 -rw-r--r--	root/root	usr/share/vim/indent/bpftrace.vim
@@ -954,6 +960,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/jsp.vim
 -rw-r--r--	root/root	usr/share/vim/indent/julia.vim
 -rw-r--r--	root/root	usr/share/vim/indent/just.vim
+-rw-r--r--	root/root	usr/share/vim/indent/karel.vim
 -rw-r--r--	root/root	usr/share/vim/indent/kdl.vim
 -rw-r--r--	root/root	usr/share/vim/indent/kotlin.vim
 -rw-r--r--	root/root	usr/share/vim/indent/krl.vim
@@ -1292,6 +1299,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/basic.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bdf.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/beancount.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bib.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bindzone.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/bitbake.vim
@@ -1818,6 +1826,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/modula2/opt/
 -rw-r--r--	root/root	usr/share/vim/syntax/services.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/setserial.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sexplib.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sgf.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sgml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sgmldecl.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sgmllnx.vim
@@ -1926,6 +1935,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/shared/
 -rw-r--r--	root/root	usr/share/vim/syntax/tilde.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tli.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tmux.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/tolk.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/toml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/tpp.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/trasys.vim
