@@ -15,7 +15,8 @@ build() {
         --datadir=/usr/share/kbd \
         --disable-vlock \
         --disable-nls \
-        --disable-tests
+        --disable-tests \
+        --disable-xkb
     make
     make DESTDIR=$PKG install
 
