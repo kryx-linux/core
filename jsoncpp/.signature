@@ -1,5 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqpbgyXa32r+WB3wFfjO0wrfskwAwrWhR5ubs11xXT3gGMWRqcF0R33o6CcVGvmuvmsEVl2fFxcHenraZitTWWgM=
-SHA256 (Pkgfile) = 08e01bc5fcfbe1dba44cd0080cbfd08429571ae21f8ee0f2b5d5fc502a5e3347
-SHA256 (.footprint) = c49c85dcb64ee7e2b46e5e8a947b9404cf1e4d6f66f9ad937e82d1feac6a5580
-SHA256 (jsoncpp-1.9.6.tar.gz) = f93b6dd7ce796b13d02c108bc9f79812245a82e577581c4c9aabe57075c90ea2
+RWRJc1FUaeVequXRTiG/PU9DdakuIs09kLy8232Nb4j2EwfJXTudt8b/EimOm2VJGh0F74p0NX+/b7YKHeBQWHQVvrM5KL3eYwE=
+SHA256 (Pkgfile) = 266bdbc7e8ff4f03117bf59c0ac0383fdf00ebda5ee535e8fecca13fb57a6b63
+SHA256 (.footprint) = d6538d8e50cff9f1318fbd67996cdf1f5c3992b459518c5f4812a49d5c8460e2
+SHA256 (jsoncpp-1.9.7.tar.gz) = 830bf352d822d8558e9d0eb19d640d2e38536b4b6699c30a4488da09d5b1df18
+SHA256 (1675.patch) = b048ce249b4e1482851f18265ddb8ba41937b1a50a8a071314bd0440c56e88d4
