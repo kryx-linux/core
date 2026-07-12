@@ -1888,8 +1888,12 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/shared/
 -rw-r--r--	root/root	usr/share/vim/syntax/srec.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/srt.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/ssa.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sshallowedsigners.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sshauthorizedkeys.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sshconfig.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sshdconfig.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sshknownhosts.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sshpublickey.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/st.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/stata.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/stp.vim
