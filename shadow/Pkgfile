@@ -4,7 +4,7 @@
 # Depends on: acl libbsd libxcrypt linux-pam
 
 name=shadow
-version=4.19.4
+version=4.20.0
 release=1
 source=(https://github.com/shadow-maint/$name/releases/download/$version/$name-$version.tar.xz
     pwck chfn chsh login groupadd groupdel
@@ -40,10 +40,10 @@ build() {
     touch $PKG/var/log/{lastlog,faillog}
 
     rm -r $PKG/usr/bin/gpasswd \
-        $PKG/usr/sbin/{chpasswd,grpconv,grpunconv,logoutd} \
+        $PKG/usr/sbin/{chpasswd,grpconv,grpunconv} \
         $PKG/usr/sbin/{newusers,pwconv,pwunconv} \
         $PKG/usr/share/man/man1/gpasswd.1 \
-        $PKG/usr/share/man/man8/{chpasswd.8,grpconv.8,grpunconv.8,logoutd.8} \
+        $PKG/usr/share/man/man8/{chpasswd.8,grpconv.8,grpunconv.8} \
         $PKG/usr/share/man/man8/{newusers.8,pwconv.8,pwunconv.8} \
         $PKG/usr/share/man/man5/gshadow.5 \
         $PKG/usr/share/man/man3

@@ -30,7 +30,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwsr-xr-x	root/root	usr/bin/chage
 -rwsr-xr-x	root/root	usr/bin/chfn
 -rwsr-xr-x	root/root	usr/bin/chsh
--rwsr-xr-x	root/root	usr/bin/expiry
 -rwxr-xr-x	root/root	usr/bin/faillog
 -rwxr-xr-x	root/root	usr/bin/getsubids
 -rwsr-xr-x	root/root	usr/bin/newgidmap
@@ -46,7 +45,6 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/chgpasswd
 -rwxr-xr-x	root/root	usr/sbin/groupadd
 -rwxr-xr-x	root/root	usr/sbin/groupdel
--rwxr-xr-x	root/root	usr/sbin/groupmems
 -rwxr-xr-x	root/root	usr/sbin/groupmod
 -rwxr-xr-x	root/root	usr/sbin/grpck
 -rwxr-xr-x	root/root	usr/sbin/pwck
@@ -61,7 +59,6 @@ drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/chage.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/chfn.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/chsh.1.gz
--rw-r--r--	root/root	usr/share/man/man1/expiry.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/getsubids.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/login.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/newgidmap.1.gz
@@ -82,7 +79,6 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/faillog.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/groupadd.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/groupdel.8.gz
--rw-r--r--	root/root	usr/share/man/man8/groupmems.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/groupmod.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/grpck.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/nologin.8.gz
