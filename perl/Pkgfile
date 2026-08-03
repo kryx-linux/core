@@ -4,7 +4,7 @@
 # Depends on: db gdbm libnsl libtirpc libxcrypt
 
 name=perl
-version=5.40.4
+version=5.40.5
 release=1
 source=(https://www.cpan.org/src/5.0/$name-$version.tar.xz)
 
