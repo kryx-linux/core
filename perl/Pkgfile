@@ -5,7 +5,7 @@
 
 name=perl
 version=5.40.5
-release=1
+release=2
 source=(https://www.cpan.org/src/5.0/$name-$version.tar.xz)
 
 build() {
@@ -30,6 +30,10 @@ build() {
 
     ln -sf perl${version%-*} $PKG/usr/bin/perl
     ln -sf perlbug.1pm $PKG/usr/share/man/man1/perlthanks.1pm
+
+    install -d $PKG/etc/ld.so.conf.d
+    echo "/usr/lib/perl5/${version%.*}/linux-thread-multi/CORE" \
+        > $PKG/etc/ld.so.conf.d/perl.conf
 
     find $PKG \
         -iname 'TODO*' -or \
