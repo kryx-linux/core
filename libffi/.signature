@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqp/lsXdnPygcOVMmOeCnscSyrA5OzCRCg7GU/1HblxY5IzqCg32UTNmVsecZz+dfTrO5IANXOuTxye+ARYP/Qw4=
-SHA256 (Pkgfile) = d213f7dac53f3b5296a7bc9ec752d24470af9d2079f85e676ec8bee7ce64ab71
-SHA256 (.footprint) = 2fd688d8aa3b994d60e9c5390bbae4bee732cd59d257145b3659aa08d7bffc71
-SHA256 (libffi-3.7.1.tar.gz) = d5e9a6638ddbd2513ddb54518eb67e4bbe6fa707bcc01c10f6212f0a088d819d
+RWRJc1FUaeVeqn9RuMJfrN4/WB8ERjJz0/NsJDJFO1hQg13Tfsb5idtVOh1VLSLcnZpZVsgu/CRhLHVB0hEki7qknUGgf8P8Ww4=
+SHA256 (Pkgfile) = e0895962fe94555f3a711fe540080d418715a8f93aeef6e4a32d2b59f5d7a420
+SHA256 (.footprint) = 51cd2a7b2eb18510619dce48357ae26ee75c2e798417341cc6642061941dc94d
+SHA256 (libffi-3.8.0.tar.gz) = 7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4
