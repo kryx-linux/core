@@ -15,6 +15,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/eu-size
 -rwxr-xr-x	root/root	usr/bin/eu-srcfiles
 -rwxr-xr-x	root/root	usr/bin/eu-stack
+-rwxr-xr-x	root/root	usr/bin/eu-stackprof
 -rwxr-xr-x	root/root	usr/bin/eu-strings
 -rwxr-xr-x	root/root	usr/bin/eu-strip
 -rwxr-xr-x	root/root	usr/bin/eu-unstrip
@@ -33,18 +34,18 @@ drwxr-xr-x	root/root	usr/include/elfutils/
 -rw-r--r--	root/root	usr/include/libelf.h
 -rw-r--r--	root/root	usr/include/nlist.h
 drwxr-xr-x	root/root	usr/lib/
--rwxr-xr-x	root/root	usr/lib/libasm-0.195.so
+-rwxr-xr-x	root/root	usr/lib/libasm-0.196.so
 -rw-r--r--	root/root	usr/lib/libasm.a
 lrwxrwxrwx	root/root	usr/lib/libasm.so -> libasm.so.1
-lrwxrwxrwx	root/root	usr/lib/libasm.so.1 -> libasm-0.195.so
--rwxr-xr-x	root/root	usr/lib/libdw-0.195.so
+lrwxrwxrwx	root/root	usr/lib/libasm.so.1 -> libasm-0.196.so
+-rwxr-xr-x	root/root	usr/lib/libdw-0.196.so
 -rw-r--r--	root/root	usr/lib/libdw.a
 lrwxrwxrwx	root/root	usr/lib/libdw.so -> libdw.so.1
-lrwxrwxrwx	root/root	usr/lib/libdw.so.1 -> libdw-0.195.so
--rwxr-xr-x	root/root	usr/lib/libelf-0.195.so
+lrwxrwxrwx	root/root	usr/lib/libdw.so.1 -> libdw-0.196.so
+-rwxr-xr-x	root/root	usr/lib/libelf-0.196.so
 -rw-r--r--	root/root	usr/lib/libelf.a
 lrwxrwxrwx	root/root	usr/lib/libelf.so -> libelf.so.1
-lrwxrwxrwx	root/root	usr/lib/libelf.so.1 -> libelf-0.195.so
+lrwxrwxrwx	root/root	usr/lib/libelf.so.1 -> libelf-0.196.so
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libdw.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libelf.pc
@@ -55,6 +56,7 @@ drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/eu-elfclassify.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/eu-readelf.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/eu-srcfiles.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/eu-stackprof.1.gz
 drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/debuginfod_add_http_header.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/debuginfod_begin.3.gz
