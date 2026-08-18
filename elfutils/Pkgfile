@@ -11,6 +11,12 @@ source=(https://sourceware.org/$name/ftp/$version/$name-$version.tar.bz2)
 build() {
     cd $name-$version
 
+    sed \
+        -e 's/run-strip-strmerge.sh//g' \
+        -e 's/run-elflint-self.sh//g' \
+        -e 's/run-reverse-sections-self.sh//g' \
+        -i tests/Makefile.am
+
     CFLAGS+=" -ffat-lto-objects" \
     ./configure \
         --prefix=/usr \
