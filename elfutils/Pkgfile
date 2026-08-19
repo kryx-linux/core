@@ -17,6 +17,8 @@ build() {
         -e 's/run-reverse-sections-self.sh//g' \
         -i tests/Makefile.am
 
+    autoreconf -fvi
+
     CFLAGS+=" -ffat-lto-objects" \
     ./configure \
         --prefix=/usr \
