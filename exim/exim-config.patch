@@ -1,6 +1,6 @@
-diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
---- exim-4.99.orig/src/EDITME	2025-10-29 12:58:16.328652018 +0100
-+++ exim-4.99/src/EDITME	2025-10-29 12:58:37.532161830 +0100
+diff -Nru exim-4.100.orig/src/EDITME exim-4.100/src/EDITME
+--- exim-4.100.orig/src/EDITME	2026-08-21 10:50:28.926479496 +0200
++++ exim-4.100/src/EDITME	2026-08-21 10:54:09.255227033 +0200
 @@ -78,7 +78,7 @@
  # this would be wanted.
  ###############################################################################
@@ -59,7 +59,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  # SUPPORT_MAILSTORE=yes
  # SUPPORT_MBX=yes
  
-@@ -434,8 +434,8 @@
+@@ -436,8 +436,8 @@
  LOOKUP_LSEARCH=yes
  LOOKUP_DNSDB=yes
  
@@ -67,10 +67,10 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
 -# LOOKUP_DSEARCH=yes
 +LOOKUP_CDB=yes
 +LOOKUP_DSEARCH=yes
- # LOOKUP_IBASE=yes
  # LOOKUP_JSON=yes
  # LOOKUP_LDAP=yes
-@@ -879,7 +879,7 @@
+ # LOOKUP_LMDB=yes
+@@ -870,7 +870,7 @@
  # core exim build.  This gets them linked with the module instead.
  # The heimdal does build but we have no test coverage so it is not know to work.
  
@@ -79,7 +79,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  # AUTH_CYRUS_SASL=yes
  # AUTH_DOVECOT=yes
  # AUTH_EXTERNAL=yes
-@@ -888,7 +888,7 @@
+@@ -879,7 +879,7 @@
  # AUTH_HEIMDAL_GSSAPI=yes
  # AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi
  # AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi heimdal-krb5
@@ -88,7 +88,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  # AUTH_SPA=yes
  # AUTH_TLS=yes
  
-@@ -1026,7 +1026,7 @@
+@@ -1017,7 +1017,7 @@
  # %s. This will be replaced by one of the strings "main", "panic", or "reject"
  # to form the final file names. Some installations may want something like this:
  
@@ -97,7 +97,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  # which results in files with names /var/log/exim_mainlog, etc. The directory
  # in which the log files are placed must exist; Exim does not try to create
-@@ -1075,7 +1075,7 @@
+@@ -1066,7 +1066,7 @@
  # files. Both the name of the command and the suffix that it adds to files
  # need to be defined here. See also the EXICYCLOG_MAX configuration.
  
@@ -106,7 +106,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  COMPRESS_SUFFIX=gz
  
  
-@@ -1090,7 +1090,7 @@
+@@ -1081,7 +1081,7 @@
  # ZCAT_COMMAND=zcat
  #
  # Or specify the full pathname:
@@ -115,7 +115,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  #------------------------------------------------------------------------------
  # Compiling in support for embedded Perl: If you want to be able to
-@@ -1269,7 +1269,7 @@
+@@ -1246,7 +1246,7 @@
  # aliases). The following setting can be changed to specify a different
  # location for the system alias file.
  
@@ -124,7 +124,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -1305,7 +1305,7 @@
+@@ -1282,7 +1282,7 @@
  #------------------------------------------------------------------------------
  # Uncomment this setting to include IPv6 support.
  
@@ -133,7 +133,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  ###############################################################################
  #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
-@@ -1326,13 +1326,13 @@
+@@ -1303,13 +1303,13 @@
  # haven't got Perl, Exim will still build and run; you just won't be able to
  # use those utilities.
  
@@ -154,7 +154,7 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  
  #------------------------------------------------------------------------------
-@@ -1534,7 +1534,7 @@
+@@ -1511,7 +1511,7 @@
  # (process id) to a file so that it can easily be identified. The path of the
  # file can be specified here. Some installations may want something like this:
  
@@ -163,9 +163,9 @@ diff -Nru exim-4.99.orig/src/EDITME exim-4.99/src/EDITME
  
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
-diff -Nru exim-4.99.orig/src/configure.default exim-4.99/src/configure.default
---- exim-4.99.orig/src/configure.default	2025-10-29 12:58:16.321985297 +0100
-+++ exim-4.99/src/configure.default	2025-10-29 12:58:37.532161830 +0100
+diff -Nru exim-4.100.orig/src/configure.default exim-4.100/src/configure.default
+--- exim-4.100.orig/src/configure.default	2026-08-21 10:50:28.926479496 +0200
++++ exim-4.100/src/configure.default	2026-08-21 10:52:42.465718892 +0200
 @@ -67,7 +67,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
