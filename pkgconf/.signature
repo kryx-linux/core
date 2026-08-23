@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqjCAsmPxMeG5ZbQ/7xX5fhOk1HhWRB7UAK+z99qlcwE6DKeupNs0R7dP9qQvZdLHSDd1EMJjuCIOIoFDiOjaCQ0=
-SHA256 (Pkgfile) = 1564ec1c710d243fd03c99efda74a0e4f21c145070a723d40a5a69413dc73c50
+RWRJc1FUaeVeqrgqwOT8KFXCrK4ZfJrZq6uSlLzkr4KMAPMwzwfJonqr4rVybVncz0r+BHCpRPJ5Rci7QpRKvzZu+xVl4OlmwgI=
+SHA256 (Pkgfile) = d256e851f0da21bd61740f23fcfc8b67d652696783b5fa4137e0788ada7fda7e
 SHA256 (.footprint) = b3b9174ee500851b2bf12c0b2a3dcba9a27a1ff7e97ce30678339ce8ed0826b9
-SHA256 (pkgconf-3.0.5.tar.xz) = 3acd3a8a3cce65a8d620321855d92fb602e026cbe8e13ee36bdec58483b59ace
+SHA256 (pkgconf-3.0.6.tar.xz) = c88a653fbabfa2a5857a30f6b6ad6c40dbacc3b7c72cc066e5c7dc4571cbddaa
 SHA256 (i686-pc-linux-gnu.personality) = 6697c6db7deaae269ea75624a70e80949241f2cf59a537f31ecfcac726d90bc1
 SHA256 (x86_64-pc-linux-gnu.personality) = c8297817ba0b57d003878db247ff34b4c47a7594c9f67dcfe8ff8d6567956cd5
