@@ -7,7 +7,7 @@ version=2.40
 release=3
 _kernel_version=6.6.119
 
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz
+source=(https://ftpmirror.gnu.org/glibc/glibc-$version.tar.xz
     https://www.kernel.org/pub/linux/kernel/v6.x/linux-$_kernel_version.tar.xz
     glibc-$version-2.patch
     glibc-2.39-fhs-1.patch
