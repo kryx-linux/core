@@ -4,7 +4,7 @@
 # Depends on: db libpcre2 libxcrypt openssl
 
 name=exim
-version=4.100
+version=4.100.1
 release=1
 source=(https://downloads.exim.org/exim4/$name-$version.tar.xz
     $name.rc $name-config.patch disable-id_update.patch)
