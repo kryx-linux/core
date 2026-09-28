@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqrbexW/h9WqZywRi0niaqvGHRobNjssUNetEwLV5fy0OjWiyDZCIr/jlFZqL6sBXKANyBq0MbL+HASyNkw//HwM=
-SHA256 (Pkgfile) = ef8c25385f7f05fdffac5eba3d2f3a07337809594b11faeed5802d697d169c16
+RWRJc1FUaeVeqt366uyy8m7eJpP6uWylnC+rFIPs46rykyBZhpnAu0qMxXiMnPHsFlNP5cYX9Afrm0rt/wOeaASGTKInaeK+lAA=
+SHA256 (Pkgfile) = 99e18bba9120d309d92886121a28b170210937b09a3a50da7da310d381a99f69
 SHA256 (.footprint) = b7adb63a38cbd15d9640333b2aa9f586b0577bbb5263ffbabec859a2ea3aba2c
-SHA256 (ports-1.6.tar.gz) = 8b2ba48e7440f4a71fa1c9c480a1212ce87c623e1d33121eb660829ba294ca94
+SHA256 (ports-1.7.tar.gz) = 3e35e79a715a4c2b5822561b56f46bcce23cd786a9d34d2a833e7bd626cc71ff
 SHA256 (core.pub) = 5a08b7f21fb1768b9e639da0b768edb536de0590b75e663dab6d185617613791
 SHA256 (opt.pub) = 4711f488546c38cdec792c1f16b3bf7c4db0c7dc0c3cdab0ecdd85e2c7247ae5
 SHA256 (xorg.pub) = 5db27d455f658ea8a6c7ae9aac601d66e74cedff5dd497910fd1ffead08e5237
