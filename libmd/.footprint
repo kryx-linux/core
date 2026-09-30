@@ -1,6 +1,6 @@
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libmd.so.0 -> libmd.so.0.2.0
--rwxr-xr-x	root/root	lib/libmd.so.0.2.0
+lrwxrwxrwx	root/root	lib/libmd.so.0 -> libmd.so.0.3.0
+-rwxr-xr-x	root/root	lib/libmd.so.0.3.0
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/md2.h
@@ -17,7 +17,7 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libmd.a
 -rwxr-xr-x	root/root	usr/lib/libmd.la
-lrwxrwxrwx	root/root	usr/lib/libmd.so -> ../../lib/libmd.so.0.2.0
+lrwxrwxrwx	root/root	usr/lib/libmd.so -> ../../lib/libmd.so.0.3.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libmd.pc
 drwxr-xr-x	root/root	usr/share/
