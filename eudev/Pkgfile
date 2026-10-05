@@ -4,8 +4,8 @@
 # Depends on: kmod
 
 name=eudev
-version=3.2.14
-release=3
+version=3.2.15
+release=1
 source=(https://github.com/eudev-project/eudev/releases/download/v$version/$name-$version.tar.gz
     81-crux.rules
     mount_fusectl.sh
