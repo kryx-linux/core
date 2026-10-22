@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqm9VQDm8ErIE013ikBkOfUE2MSCv5M2woIkMDvCQknGlXoHHKUQ2QKOTldi0KJmrDIwfbFfZjVSOe1nr46TDfwA=
-SHA256 (Pkgfile) = 30c660f57fdacc2f9c080c4a29c008139d000e5398bda14996aae5bec72b5cfc
-SHA256 (.footprint) = 2e7aa8a5388f68b02ab577b4cf75f5bc36095b75e8f78bb09264265026eec190
-SHA256 (man-pages-6.19.tar.xz) = 88a7c42ad2e03d8b96dc72d95e451f2d875ff0f43103a8eb8ac8242133bdcb05
+RWRJc1FUaeVeqgyldUHreOf35zmR/y1vbXZQQOWF0xGKV/9FMHJ4vDU3S09eE22y9Mw8A3/qDhxC1+E1IhIrZVIsHjDpsfp8rgs=
+SHA256 (Pkgfile) = 7df08775c069cfa762b3baba7d47526f19bf72c527dd693bf816641cffa4afcd
+SHA256 (.footprint) = 02679f299d5227a48427cf23cc269e99d50101912d9f0901c6917d9cf6e382ed
+SHA256 (man-pages-6.20.tar.xz) = 180f0d16a2142dd9671760ac0afeadcc25e861f695eb420293e1206a87ca083f
 SHA256 (man-pages-posix-2017-a.tar.xz) = ce67bb25b5048b20dad772e405a83f4bc70faf051afa289361c81f9660318bc3
