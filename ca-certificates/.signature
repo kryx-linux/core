@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqqnKeHmUqDkU8wqA6bVhmVEO6NZcmSABWAnG7e3MxJxE/3WKdxCsGMMCGcOLCBTqG4NomtZvi6Y/1lcZzqi52w0=
-SHA256 (Pkgfile) = fbf5646b29f81391799c71ea9c7ebd7c8c23a7a90acce0310918cd173db9f1d6
+RWRJc1FUaeVeqqiCstcFay98RPy9Q1VDbSseo0RohWNzxnlU/hrmiMAcjJBFVotPvy3DRXezaQdQpqWZfhSKsLOBVP3CUXvXHAo=
+SHA256 (Pkgfile) = a9d8d596b1b6c8551d8a0a71001467031f2db29bb1274179d03dfbf2d01cb965
 SHA256 (.footprint) = 92930b2d9b1d5da08760f16fa80c1ff0c13e811e50cb4414f98265cef748bf40
-SHA256 (cacert.pem) = 796f1389bfea13c0ed78f663b765baaff54a508e5483786bd6ece73c5e3e3cbe
+SHA256 (cacert.pem) = 427c064216761a1e72a8b30f0d954d08cb6e4435a82091fb865afd20c8497285
