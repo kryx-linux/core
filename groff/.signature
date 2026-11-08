@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqnLtjTOcdNh9D++7NuQ7/gXSfFINVfwuVDmMXkFqIRXZhdpcGSVmJs+VGmequsyoVdsmtmwQAUnYzvx/KtHbWgE=
-SHA256 (Pkgfile) = 5f2e4c0547da4673093ff43b3ea5bc779af32896d6ce9617e0b82357c9eb5544
+RWRJc1FUaeVeqtPYGERasHOg+EKozdUqQx0diXlHdpb/c62nJK6vi9KyMB0pYtA0KdVx8C+mj/2OtglRujkjwz23+5g/iBZ4nQ4=
+SHA256 (Pkgfile) = fd4caeae8e044946a91a2dd09c8c74b919fee04064bed1adea5ee6a11a6fc745
 SHA256 (.footprint) = 1e32887d97163b83b8f33f70c76683235f4dc28207fbd839db7c041e1db932ea
-SHA256 (groff-1.24.2.tar.gz) = f9c1efd5bebbe37fc6e1063db7473ce8df1e3e0be4ff0f43ce04fce57e9c5dd9
+SHA256 (groff-1.25.0.tar.gz) = 24d103a07eb79e418963bce206c8771b649871f83bda2fd4c2e65529c1c56921
