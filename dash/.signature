@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqrNlWv1stzVbPvmVbCHM492bcpQHhvOef0lMc0ufKIljAbnc6FZjumQMsuWT/N2wYM0bUEgtuyxJJcpIlQvvKA0=
-SHA256 (Pkgfile) = 657da4506c2b871dafbcb6d5cc8b81826a52b43f2e568ec9642bd04b2cfed5dc
+RWRJc1FUaeVeqln8IVf2hSJBD9UTDmNAZ4v4rvuNoqc/7Sa3AekpU+8kdlIqDDRuRbrSB5XsFSU7D2JdGSTGIpQVzC5rEiHCmQM=
+SHA256 (Pkgfile) = fd4f1e0b387b68a3e7ce3aa164ef0f680cf2b952f008ea04f7cab44863fb3764
 SHA256 (.footprint) = 3a7bbfc94c40691a4871ab86fb334dfcbc7f98f74ed06847f091ba0b1721d540
-SHA256 (dash-0.5.13.5.tar.gz) = 40090101a2a491f13e901d3d48e90414f26634628b9bfff35ff540363c227a7d
+SHA256 (dash-0.5.13.6.tar.gz) = 26aac476f476cef391c600cb064417d82a5465d8fc7c4fd56158c276e86538c1
