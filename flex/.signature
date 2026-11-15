@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/core.pub
-RWRJc1FUaeVeqkxUDlwpK7++En2IPaXUBJrCNNnjjTeANenI7XnXNjECi2yev79vZL9lR7QrKVm3LXXWssgIPf5PjEUOb3mZTwc=
-SHA256 (Pkgfile) = 4f1a3217b2c9d08b4021ef8e1180c27b495954f3f2ba6645dd8abf9404841bd3
+RWRJc1FUaeVeqiuzQ9d65k8JaU5kgd7U45OmWiYeCmTc2AmScNWKreDDRQOa3x869CT7hqKThWcmPJU8OiJxe1vzDttode83qgA=
+SHA256 (Pkgfile) = c589c783c37104dc0a1cfa48e7035b5c3afbcb4dcdf206213e1fdbd4bbed6e35
 SHA256 (.footprint) = defb1bdb0a6829fc6d88570c4a2bad33fced18180d35347cbb765d159abdee3e
-SHA256 (flex-2.6.11.tar.gz) = 188e9c96b8fc032b2a0bdd24d4f0b692480c1854511c2fcc3034946f14fdf49a
+SHA256 (flex-2.6.13.tar.gz) = a54de3a79dc191d9d9a3acd07b8981be160d1be588261ef7687ccfdaeb1190ed
