@@ -42,7 +42,8 @@ build() {
         --enable-default-pie \
         --enable-default-ssp \
         --enable-host-pie \
-        --with-pkgversion="CRUX-x86_64-multilib" \
+        --with-pkgversion="KryX-x86_64" \
+        --with-bugurl=https://github.com/kryx-linux/core/issues \
         --with-x=no \
         --disable-fixincludes \
         --disable-nls

@@ -63,11 +63,20 @@ build() {
     install -m 0644 mime.types $PKG/etc
     ln -s ../proc/self/mounts $PKG/etc/mtab
 
-    # /usr/bin/crux
+    # /usr/bin/kryx (plus /usr/bin/crux compatibility helper)
+    cat > $PKG/usr/bin/kryx << EOF
+#!/bin/sh
+
+echo "KryX Linux rolling (base $version)"
+
+# End of file
+EOF
+    chmod 755 $PKG/usr/bin/kryx
+
     cat > $PKG/usr/bin/crux << EOF
 #!/bin/sh
 
-echo "CRUX version $version"
+echo "KryX Linux rolling (CRUX $version compatible)"
 
 # End of file
 EOF
@@ -75,12 +84,13 @@ EOF
 
     # /etc/os-release
     cat > $PKG/etc/os-release << EOF
-NAME=CRUX
-VERSION_ID="$version"
-ID=crux
-PRETTY_NAME="CRUX"
-HOME_URL="https://crux.nu"
-DOCUMENTATION_URL="https://crux.nu/Main/Handbook$(echo $version | awk '{ gsub(/\./, "-", $1); print $1 }')"
-BUG_REPORT_URL="https://crux.nu/bugs"
+NAME="KryX Linux"
+VERSION_ID="rolling-$version"
+ID=kryx
+ID_LIKE=crux
+PRETTY_NAME="KryX Linux (Rolling)"
+HOME_URL="https://kryx.anrix.org"
+DOCUMENTATION_URL="https://kryx.anrix.org/docs/"
+BUG_REPORT_URL="https://github.com/kryx-linux/ports/issues"
 EOF
 }
